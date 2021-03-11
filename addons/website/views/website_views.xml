@@ -221,7 +221,7 @@
             <field name="model">website.menu</field>
             <field name="field_parent">child_id</field>
             <field name="arch" type="xml">
-                <tree string="Website menu" editable="bottom">
+                <tree string="Website menu">
                     <field name="sequence" widget="handle"/>
                     <field name="website_id" options="{'no_create': True}" groups="website.group_multi_website"/>
                     <field name="name"/>
@@ -363,10 +363,6 @@
                                     <hr t-if="record.url.value"/>
                                     <button role="button" type="edit" t-if="record.url.value" class="btn btn-secondary">Live Preview</button>
                                 </div>
-                                <i states="installed" t-if="record.is_installed_on_current_website.raw_value"
-                                    class="fa fa-check position-absolute p-1 m-2 rounded-circle bg-primary shadow"
-                                    style="top: 0; right: 0;"
-                                    role="img" aria-label="Installed" title="Installed"/>
                             </div>
                             <div class="o_theme_preview_bottom clearfix">
                                 <h5 t-if="record.display_name.value" class="text-uppercase float-left">

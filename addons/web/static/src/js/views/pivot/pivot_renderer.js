@@ -1,9 +1,7 @@
-odoo.define('web.PivotRenderer', function (require) {
-    "use strict";
+/** @odoo-module alias=web.PivotRenderer **/
 
-    const OwlAbstractRenderer = require('web.AbstractRendererOwl');
-    const field_utils = require('web.field_utils');
-    const patchMixin = require('web.patchMixin');
+    import OwlAbstractRenderer from '../abstract_renderer_owl';
+    import field_utils from 'web.field_utils';
 
     const { useExternalListener, useState, onMounted, onPatched } = owl.hooks;
 
@@ -47,9 +45,7 @@ odoo.define('web.PivotRenderer', function (require) {
 
             onPatched(() => this._updateTooltip());
 
-            if (!this.env.device.isMobile) {
-                useExternalListener(window, 'click', this._resetState);
-            }
+            useExternalListener(window, 'click', this._resetState);
         }
 
         //----------------------------------------------------------------------
@@ -199,6 +195,4 @@ odoo.define('web.PivotRenderer', function (require) {
 
     PivotRenderer.template = 'web.PivotRenderer';
 
-    return patchMixin(PivotRenderer);
-
-});
+    export default PivotRenderer;

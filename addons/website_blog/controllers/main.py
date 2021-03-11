@@ -116,7 +116,7 @@ class WebsiteBlog(http.Controller):
             step=self._blog_post_per_page,
         )
 
-        all_tags = blog and blogs.all_tags()[blog.id] or blogs.all_tags(join=True)
+        all_tags = blogs.all_tags(join=True) if not blog else blogs.all_tags().get(blog.id, request.env['blog.tag'])
         tag_category = sorted(all_tags.mapped('category_id'), key=lambda category: category.name.upper())
         other_tags = sorted(all_tags.filtered(lambda x: not x.category_id), key=lambda tag: tag.name.upper())
 
@@ -155,9 +155,6 @@ class WebsiteBlog(http.Controller):
     ], type='http', auth="public", website=True, sitemap=True)
     def blog(self, blog=None, tag=None, page=1, search=None, **opt):
         Blog = request.env['blog.blog']
-        if blog and not blog.can_access_from_current_website():
-            raise werkzeug.exceptions.NotFound()
-
         blogs = Blog.search(request.website.website_domain(), order="create_date asc, id asc")
 
         if not blog and len(blogs) == 1:
@@ -221,9 +218,6 @@ class WebsiteBlog(http.Controller):
          - 'nav_list': a dict [year][month] for archives navigation
          - 'next_post': next blog post, to direct the user towards the next interesting post
         """
-        if not blog.can_access_from_current_website():
-            raise werkzeug.exceptions.NotFound()
-
         BlogPost = request.env['blog.post']
         date_begin, date_end = post.get('date_begin'), post.get('date_end')
 

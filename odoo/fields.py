@@ -93,7 +93,7 @@ _global_seq = iter(itertools.count())
 class Field(MetaField('DummyField', (object,), {})):
     """The field descriptor contains the field definition, and manages accesses
     and assignments of the corresponding field on records. The following
-    attributes may be provided when instanciating a field:
+    attributes may be provided when instantiating a field:
 
     :param str string: the label of the field seen by users; if not
         set, the ORM takes the field name in the class (capitalized).
@@ -204,6 +204,7 @@ class Field(MetaField('DummyField', (object,), {})):
     column_type = None                  # database column type (ident, spec)
     column_format = '%s'                # placeholder for value in queries
     column_cast_from = ()               # column types that may be cast to this
+    write_sequence = 0                  # field ordering for write()
 
     args = None                         # the parameters given to __init__()
     _module = None                      # the field's module name
@@ -612,7 +613,7 @@ class Field(MetaField('DummyField', (object,), {})):
         Property._set_multi(self.name, self.model_name, values)
 
     def _search_company_dependent(self, records, operator, value):
-        Property = records.env['ir.property']
+        Property = records.env['ir.property'].sudo()
         return Property.search_multi(self.name, self.model_name, operator, value)
 
     #
@@ -816,6 +817,23 @@ class Field(MetaField('DummyField', (object,), {})):
         self.update_db_column(model, column)
         self.update_db_notnull(model, column)
 
+        # optimization for computing simple related fields like 'foo_id.bar'
+        if (
+            not column
+            and len(self.related or ()) == 2
+            and self.related_field.store and not self.related_field.compute
+            and not (self.related_field.type == 'binary' and self.related_field.attachment)
+            and self.related_field.type not in ('one2many', 'many2many')
+        ):
+            join_field = model._fields[self.related[0]]
+            if (
+                join_field.type == 'many2one'
+                and join_field.store and not join_field.compute
+            ):
+                model.pool.post_init(self.update_db_related, model)
+                # discard the "classical" computation
+                return False
+
         return not column
 
     def update_db_column(self, model, column):
@@ -865,6 +883,22 @@ class Field(MetaField('DummyField', (object,), {})):
 
         elif not self.required and has_notnull:
             sql.drop_not_null(model._cr, model._table, self.name)
+
+    def update_db_related(self, model):
+        """ Compute a stored related field directly in SQL. """
+        comodel = model.env[self.related_field.model_name]
+        model.env.cr.execute("""
+            UPDATE "{model_table}" AS x
+            SET "{model_field}" = y."{comodel_field}"
+            FROM "{comodel_table}" AS y
+            WHERE x."{join_field}" = y.id
+        """.format(
+            model_table=model._table,
+            model_field=self.name,
+            comodel_table=comodel._table,
+            comodel_field=self.related[1],
+            join_field=self.related[0],
+        ))
 
     ############################################################################
     #
@@ -1247,11 +1281,11 @@ class Float(Field):
 
     .. admonition:: Example
 
-        To round a quantity with the precision of the unit of mesure::
+        To round a quantity with the precision of the unit of measure::
 
             fields.Float.round(self.product_uom_qty, precision_rounding=self.product_uom_id.rounding)
 
-        To check if the quantity is zero with the precision of the unit of mesure::
+        To check if the quantity is zero with the precision of the unit of measure::
 
             fields.Float.is_zero(self.product_uom_qty, precision_rounding=self.product_uom_id.rounding)
 
@@ -1338,6 +1372,8 @@ class Monetary(Field):
         this monetary field is expressed in (default: `\'currency_id\'`)
     """
     type = 'monetary'
+    write_sequence = 10
+
     column_type = ('numeric', 'numeric')
     column_cast_from = ('float8',)
 
@@ -2550,6 +2586,9 @@ class Many2one(_Relational):
         # determine self.delegate
         if not self.delegate:
             self.delegate = name in model._inherits.values()
+        # self.delegate implies self.auto_join
+        if self.delegate:
+            self.auto_join = True
 
     def _setup_regular_base(self, model):
         super()._setup_regular_base(model)
@@ -2951,6 +2990,7 @@ class Command(enum.IntEnum):
 
 class _RelationalMulti(_Relational):
     """ Abstract class for relational fields *2many. """
+    write_sequence = 20
 
     # Important: the cache contains the ids of all the records in the relation,
     # including inactive records.  Inactive records are filtered out by
@@ -3070,6 +3110,9 @@ class _RelationalMulti(_Relational):
             value = record.env[self.comodel_name].browse(value)
 
         if isinstance(value, BaseModel) and value._name == self.comodel_name:
+            def get_origin(val):
+                return val._origin if isinstance(val, BaseModel) else val
+
             # make result with new and existing records
             inv_names = {field.name for field in record._field_inverses[self]}
             result = [Command.set([])]
@@ -3088,7 +3131,7 @@ class _RelationalMulti(_Relational):
                         values = record._convert_to_write({
                             name: record[name]
                             for name in record._cache
-                            if name not in inv_names and record[name] != origin[name]
+                            if name not in inv_names and get_origin(record[name]) != origin[name]
                         })
                         if values:
                             result.append(Command.update(origin.id, values))
@@ -3395,11 +3438,14 @@ class One2many(_RelationalMulti):
                         browse([command[1]])[inverse] = False
                     elif command[0] == Command.LINK:
                         browse([command[1]])[inverse] = recs[-1]
-                    elif command[0] in (Command.CLEAR, Command.SET):
+                    elif command[0] == Command.CLEAR:
+                        cache.update(recs, self, itertools.repeat(()))
+                    elif command[0] == Command.SET:
                         # assign the given lines to the last record only
-                        cache.update(recs, self, [()] * len(recs))
-                        lines = comodel.browse(command[2] if command[0] == Command.SET else [])
-                        cache.set(recs[-1], self, lines._ids)
+                        cache.update(recs, self, itertools.repeat(()))
+                        last, lines = recs[-1], browse(command[2])
+                        cache.set(last, self, lines._ids)
+                        cache.update(lines, inverse_field, itertools.repeat(last.id))
 
         else:
             def link(record, lines):
@@ -3596,6 +3642,7 @@ class Many2many(_RelationalMulti):
         context.update(self.context)
         comodel = records.env[self.comodel_name].with_context(**context)
         domain = self.get_domain_list(records)
+        comodel._flush_search(domain)
         wquery = comodel._where_calc(domain)
         comodel._apply_ir_rules(wquery, 'read')
         order_by = comodel._generate_order_by(None, wquery)

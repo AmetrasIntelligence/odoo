@@ -120,7 +120,7 @@ Here is what happens when a template is rendered by the server with these direct
     be replaced by a list of stylesheet tags pointing to the css files
 
   - the *t-call-assets* directive with the *t-css* attribute set to false will
-    be replaced by a list of script tags pointing to the js files
+    link to the non minified bundle file (which uses sourcemaps)
 
 - if we are not in *debug=assets* mode
 
@@ -178,7 +178,7 @@ to add a file from that addon.  In that case, it should be done in three steps:
 
     Note that the files in a bundle are all loaded immediately when the user loads the
     odoo web client.  This means that the files are transferred through the network
-    everytime (except when the browser cache is active).  In some cases, it may be
+    every time (except when the browser cache is active).  In some cases, it may be
     better to lazyload some assets.  For example, if a widget requires a large
     library, and that widget is not a core part of the experience, then it may be
     a good idea to only load the library when the widget is actually created. The
@@ -213,15 +213,56 @@ are a few things you can try to solve the issue:
     the proper files (if that does not work, the files may be cached).
 
 
-Javascript Module System
+Loading Javascript Code
 ========================
 
-Once we are able to load our javascript files into the browser, we need to make
-sure they are loaded in the correct order.  In order to do that, Odoo has defined
-a small module system (located in the file *addons/web/static/src/js/boot.js*,
-which needs to be loaded first).
+Large applications are usually broken up into smaller files, that need to be
+connected together.  Some file may need to use some part of code defined in
+another file. There are two ways of sharing code between files:
 
-The Odoo module system, inspired by AMD, works by defining the function *define*
+- use the global scope (the *window* object) to write/read references to some
+  objects or functions,
+
+- use a module system that will provide a way for each modules to export or import
+  values, and will make sure that they are loaded in a proper order.
+  
+While it's possible to work in the global scope, this has a number of issues:
+
+It is difficult to ensure that implementation details are not exposed by work done in the global scope directly.
+
+- Dependencies are implicit, leading to fragile and unreliable load ordering.
+
+- The lack of insight into execution means it's impossible to use various optimisations (e.g. deferred and asynchronous
+  loading).
+
+- Module systems help resolve these issues: because modules specify their dependencies the module system can ensure the
+  necessary order of loading is respected, and because modules can precisely specify their exports it is less likely
+  that they will leak implementation details.
+
+For most Odoo code, we want to use a module system.  Because of the way assets
+work in Odoo (and in particular, the fact that each installed odoo addon can
+modify the list of files contained in a bundle), Odoo has to resolve modules 
+browser side.  To do that, Odoo provides a small module system described just
+below (see :ref:`reference/javascript_reference/odoo_module`).
+
+However, Odoo also provides support for native javascript modules (see 
+:ref:`reference/javascript_reference/js_module`). These modules
+will simply be translated by the server into odoo modules. It is encouraged to
+write all javascript code as a native module, for a better IDE integration. In 
+the future, the Odoo module system should be considered an implementation detail,
+not the primary way to write javascript code.
+
+.. note::
+    Native javascript modules are the primary way to define javascript code.
+
+.. _reference/javascript_reference/odoo_module:
+
+Odoo Module System
+===================
+
+Odoo has defined a small module system (located in the file
+*addons/web/static/src/js/boot.js*, which needs to be loaded first). The Odoo
+module system, inspired by AMD, works by defining the function ``define``
 on the global odoo object. We then define each javascript module by calling that
 function.  In the Odoo framework, a module is a piece of code that will be executed
 as soon as possible.  It has a name and potentially some dependencies.  When its
@@ -282,10 +323,10 @@ The *odoo.define* method is given three arguments:
 
 - *moduleName*: the name of the javascript module.  It should be a unique string.
   The convention is to have the name of the odoo addon followed by a specific
-  description. For example, 'web.Widget' describes a module defined in the *web*
-  addon, which exports a *Widget* class (because the first letter is capitalized)
+  description. For example, ``web.Widget`` describes a module defined in the *web*
+  addon, which exports a ``Widget`` class (because the first letter is capitalized)
 
-  If the name is not unique, an exception will be thrown and displayed in the
+  If the name is not unique, an exception will be thrown and` displayed in the
   console.
 
 - *dependencies*: the second argument is optional. If given, it should be a list
@@ -293,7 +334,7 @@ The *odoo.define* method is given three arguments:
   dependencies that are required to be loaded before the module is executed. If
   the dependencies are not explicitly given here, then the module system will
   extract them from the function by calling toString on it, then using a regexp
-  to find all *require* statements.
+  to find all ``require`` statements.
 
 .. code-block:: javascript
 
@@ -369,6 +410,192 @@ Best practices
   in the short term, but this is actually harder to maintain.
 
 
+.. _reference/javascript_reference/js_module:
+
+Native Javascript Modules
+=========================
+
+Most new Odoo javascript code should use the native javascript module system. This
+is simpler, and brings the benefits of a better developer experience with a better
+integration with IDE.
+
+There is a very important point to know: since Odoo needs to know which files
+should be translated into odoo modules and which files should not be translated,
+this is an opt-in system: Odoo will look at the first line of a JS file. If it
+contains the string *@odoo-module*, then it will be automatically converted to an
+Odoo module.
+
+For example, let us consider the following module, located in *web/static/src/file_a.js*:
+
+.. code-block:: javascript
+
+  /** @odoo-module **/
+  import { someFunction } from './file_b';
+
+  export function otherFunction(val) {
+      return someFunction(val + 3);
+  }
+
+Note the comment in the first line: it describes that this file should be converted.
+Any file without that comment will be kept as-is (which will most likely be an
+error). This file will then be translated into an Odoo module that look like this:
+
+.. code-block:: javascript
+
+  odoo.define('@web/file_a', function (require) {                
+  'use strict';                
+  let __exports = {};                
+
+  const { someFunction } = require("@web/file_b");
+
+  __exports.otherFunction = function otherFunction(val) {
+      return someFunction(val + 3);
+  };
+
+  return __exports;
+  )};
+
+So, as you can see, the transformation is basically adding ``odoo.define`` on top,
+and updating the import/export statements.
+
+Another important point is that the translated module has an official name:
+*@web/file_a*.  This is the actual name of the module.  Every relative imports
+will be converted as well.  Every file located in an Odoo addon
+*some_addon/static/src/path/to/file.js* will be assigned a name prefixed by the
+addon name like this: *@some_addon/path/to/file*.
+
+
+Relative imports work, but only inside an odoo addon. So, imagine that we have
+the following file structure:
+
+.. code-block:: javascript
+
+  addons/
+      web/
+          static/
+              src/
+                  file_a.js
+                  file_b.js
+      stock/
+          static/
+              src/
+                  file_c.js
+
+The file ``file_b`` can import ``file_a`` like this:
+
+.. code-block:: javascript
+
+  /** @odoo-module **/
+  import {something} from `./file_a` 
+
+But ``file_c`` need to use the full name:
+
+.. code-block:: javascript
+
+  /** @odoo-module **/
+  import {something} from `@web/file_a` 
+
+
+Aliased modules
+---------------
+
+Because Odoo modules follow a different module naming pattern, a system exists to allow a smoother transition towards
+the new system. Currently, if a file is converted to a module (and therefore follow the new naming convention),
+other files not yet converted to ES6-like syntax in the project won't be able to require the module. Aliases are
+here to map old names with new ones by creating a small proxy function. The module can then be called by its new
+*and* old name.
+
+To add such alias, the comment tag on top of the file should look like this:
+
+.. code-block:: javascript
+
+  /** @odoo-module alias=web.someName**/
+  import { someFunction } from './file_b';
+
+  export default function otherFunction(val) {
+      return someFunction(val + 3);
+  }
+
+Then the translated module will also create an alias with the requested name:
+
+.. code-block:: javascript
+
+  odoo.define(`web.someName`, function(require) {
+      return require('@web/file_a')[Symbol.for("default")];
+  });
+
+The default behaviour of aliases is to re-export the ``default`` value of the
+module they alias. This is because "classic" modules generally export a single
+value which would be used directly, roughly matching the semantics of default
+exports.
+However it is also possible to delegate more directly, and follow the exact
+behaviour of the aliased module:
+
+.. code-block:: javascript
+
+  /** @odoo-module alias=web.someName default=0**/
+  import { someFunction } from './file_b';
+
+  export function otherFunction(val) {
+      return someFunction(val + 3);
+  }
+
+In that case, this will define an alias with exactly the values exported by the
+original module:
+
+.. code-block:: javascript
+
+  odoo.define(`web.someName`, function(require) {
+      return require('@web/file_a');
+  });
+
+.. note::
+    Only one alias can be defined using this method. If you were to need another one to have, by example, three
+    names to call the same module, you will have to manually add yourself a proxy. This is not good practice and
+    should be avoided unless there is no other options.
+
+Limitations
+-----------
+
+For performance reasons, Odoo does not use a full javascript
+parser to transform native modules. There are, therefore, a number of limitations including but not limited to:
+
+- an ``import`` or ``export`` keyword cannot be preceded by a non space character,
+- a multiline comment or string cannot have a line starting by ``import`` or ``export``
+
+  .. code-block:: javascript
+
+    // supported
+    import X from "xxx";
+    export X;
+      export default X;
+        import X from "xxx";
+
+    /*
+     * import X ...
+     */
+
+    /*
+     * export X
+     */
+
+
+    // not supported
+
+    var a= 1;import X from "xxx";
+    /*
+      import X ...
+    */
+
+- Odoo needs a way to determine if a module is described by a path (like ``./views/form_view``) or a name (like
+  ``web.FormView``). It has to use a heuristic to do just that: if there is a ``/`` in the name, it is considered
+  a path.  This means that Odoo does not really support anymore module names with a ``/``.
+
+As "classic" modules are not deprecated and there is currently no plan to remove them, you can and should keep using
+them if you encounter issues with or are constrained by the limitations of native modules. Both styles can coexist
+within the same Odoo addon.
+
+
 Class System
 ============
 
@@ -379,6 +606,14 @@ to use inheritance, mixins.
 
 For these reasons, Odoo decided to use its own class system, inspired by John
 Resig. The base Class is located in *web.Class*, in the file *class.js*.
+
+
+.. note ::
+
+    Note that the custom class system should be avoided for creating new code. It
+    will be deprecated at some point, and then removed.  New classes should use
+    the standard ES6 class system.
+    
 
 Creating a subclass
 -------------------
@@ -1557,7 +1792,7 @@ integer (FieldInteger)
     - type: setting the input type (*text* by default, can be set on *number*)
 
     On edit mode, the field is rendered as an input with the HTML attribute type
-    setted on *number* (so user can benefit the native support, especially on
+    set on *number* (so user can benefit the native support, especially on
     mobile). In this case, the default formatting is disabled to avoid incompability.
 
     .. code-block:: xml
@@ -1598,7 +1833,7 @@ float (FieldFloat)
   - type: setting the input type (*text* by default, can be set on *number*)
 
   On edit mode, the field is rendered as an input with the HTML attribute type
-  setted on *number* (so user can benefit the native support, especially on
+  set on *number* (so user can benefit the native support, especially on
   mobile). In this case, the default formatting is disabled to avoid incompability.
 
   .. code-block:: xml
@@ -2182,6 +2417,8 @@ many2many (FieldMany2Many)
 
   - create_text: allow the customization of the text displayed when adding a
     new record
+  - link: domain determining whether or not records can be added to the relation (default: True).
+  - unlink: domain determining whether or not records can be removed from the relation (default: True).
 
 many2many_binary (FieldMany2ManyBinaryMultiFiles)
   This widget helps the user to upload or delete one or more files at the same
@@ -2234,8 +2471,11 @@ kanban.many2many_tags (KanbanFieldMany2ManyTags)
   - Supported field types: *many2many*
 
 many2many_checkboxes (FieldMany2ManyCheckBoxes)
-  This field displays a list of checkboxes and allow the user to select a
-  subset of the choices.
+  This field displays a list of checkboxes and allows the user to select a
+  subset of the choices. Note that the number of displayed values is limited to
+  100. This limit isn't customizable. It simply allows to handle extreme cases
+  where this widget is wrongly set on a field with a huge comodel. In those
+  cases, a list view is more adequate as it allows pagination and filtering.
 
   - Supported field types: *many2many*
 
@@ -2423,3 +2663,158 @@ For more information, look into the `control_panel_renderer.js <https://github.c
     https://api.jquery.com/delegate/
 
 .. _datepicker: https://github.com/Eonasdan/bootstrap-datetimepicker
+
+
+Patching code
+=============
+
+Sometimes we need to modify an object or a class in place. To achieve that, Odoo
+provides the utility function ``patch``. It is mostly useful to override/update
+the behaviour of some other component/piece of code that one does not control.
+Obviously, it is not the primary tool of working with Odoo. It should be used
+with care.
+
+Patching a simple object
+------------------------
+
+Here is a simple example of how an object can be patched:
+
+.. code-block:: javascript
+
+  const { patch } = require("web.utils");
+
+  const object = {
+    field: "a field",
+    fn() {
+      // do something
+    },
+  };
+
+  patch(object, "patch name", {
+    fn() {
+      // do things
+    },
+  });
+
+
+When patching functions, we usually want to be able to access the ``parent``
+function.  Since we are working with patch objects, not ES6 classes, we cannot
+use the native ``super`` keyword. So, Odoo provides a special method to simulate
+this behaviour: ``this._super``:
+
+.. code-block:: javascript
+
+  patch(object, "_super patch", {
+    fn() {
+      this._super(...arguments);
+      // do other things
+    },
+  });
+
+.. warning::
+
+  ``this._super`` is reassigned after each patched function is called.
+  This means that if you use an asynchronous function in the patch then you
+  cannot call ``this._super`` after an ``await``, because it may or may not be
+  the function that you expect.  The correct way to do that is to keep a reference
+  to the initial ``_super` method:
+
+  .. code-block:: javascript
+
+    patch(object, "async _super patch", {
+      async myAsyncFn() {
+        const _super = this._super;
+        await Promise.resolve();
+        await _super(...arguments);
+        // await this._super(...arguments); // this._super is undefined.
+      },
+    });
+
+
+Getters and setters are supported too!
+
+.. code-block:: javascript
+
+    patch(object, "getter/setter patch", {
+      get number() {
+        return this._super() / 2;
+      },
+      set number(value) {
+        this._super(value * 2);
+      },
+    });
+
+Native JS class
+---------------
+
+
+The ``patch`` function is similar to ``OdooClass.include``, but it is designed
+to work with anything: object, Odoo class, ES6 class.
+
+However, since ES6 classes work with the javascript prototypal inheritance, when
+one wishes to patch a standard method from a class, then we actually need to patch
+the ``prototype``:
+
+.. code-block:: javascript
+
+  class MyClass {
+    static myStaticFn() {...}
+    myPrototypeFn() {...}
+  }
+
+  // this will patch static properties!!!
+  patch(MyClass, "static patch", {
+    myStaticFn() {...},
+  });
+
+  // this is probably the usual case: patching a class method
+  patch(MyClass.prototype, "prototype patch", {
+    myPrototypeFn() {...},
+  });
+
+
+Also, Javascript handle the constructor in a special native way which makes it
+impossible to be patched. The only workaround is to call a method in the original
+constructor and patch that method instead:
+
+.. code-block:: javascript
+
+  class MyClass {
+    constructor() {
+      this.setup();
+    }
+    setup() {
+      this.number = 1;
+    }
+  }
+
+  patch(MyClass.prototype, "constructor", {
+    setup() {
+      this._super(...arguments);
+      this.doubleNumber = this.number * 2;
+    },
+  });
+
+
+Note that for this reason, Owl component have all the ``setup`` method builtin.
+Therefore, patching a component constructor is always possible:
+
+.. code-block:: javascript
+
+  patch(MyComponent.prototype, "my patch", {
+    setup() {
+      useMyHook();
+    },
+  });
+
+
+Removing a patch
+-----------------
+
+We can also remove the patch by calling the ``unpatch`` function. This is really
+only useful for tests.
+
+.. code-block:: javascript
+
+  unpatch(object, "patch name");
+

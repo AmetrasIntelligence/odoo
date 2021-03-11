@@ -236,6 +236,9 @@ var CalendarController = AbstractController.extend({
             // When clicking on a random day of a random other week, switch to week view
             this.model.setScale('week');
         }
+        if (event.data.scale) {
+            this.model.setScale(event.data.scale);
+        }
         this.model.setDate(event.data.date);
         this.reload();
     },
@@ -315,7 +318,7 @@ var CalendarController = AbstractController.extend({
 
         var options = _.extend({}, this.options, event.options, {
             context: context,
-            title: _.str.sprintf(_t('Create: %s'), (this.displayName || this.renderer.arch.attrs.string))
+            title: _t('New Event')
         });
 
         if (this.quick != null) {
@@ -332,10 +335,7 @@ var CalendarController = AbstractController.extend({
             return;
         }
 
-        var title = _t("Create");
-        if (this.renderer.arch.attrs.string) {
-            title += ': ' + this.renderer.arch.attrs.string;
-        }
+        const title = _t('New Event')
         if (this.eventOpenPopup) {
             if (this.previousOpen) { this.previousOpen.close(); }
             this.previousOpen = new dialogs.FormViewDialog(self, {
@@ -395,7 +395,7 @@ var CalendarController = AbstractController.extend({
             res_model: self.modelName,
             res_id: id || null,
             context: event.context || self.context,
-            title: _t("Open: ") + event.data.title,
+            title: _t("Open: ") + _.escape(event.data.title),
             on_saved: function () {
                 if (event.data.on_save) {
                     event.data.on_save();

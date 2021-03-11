@@ -47,7 +47,7 @@ class CouponProgram(models.Model):
         default='on_current_order', string="Applicability")
     coupon_ids = fields.One2many('coupon.coupon', 'program_id', string="Generated Coupons", copy=False)
     coupon_count = fields.Integer(compute='_compute_coupon_count')
-    company_id = fields.Many2one('res.company', string="Company", default=lambda self: self.env.company)
+    company_id = fields.Many2one('res.company', string="Company", required=True, default=lambda self: self.env.company)
     currency_id = fields.Many2one(string="Currency", related='company_id.currency_id', readonly=True)
     validity_duration = fields.Integer(default=30,
         help="Validity duration for a coupon after its generation")
@@ -87,15 +87,8 @@ class CouponProgram(models.Model):
     def create(self, vals):
         program = super(CouponProgram, self).create(vals)
         if not vals.get('discount_line_product_id', False):
-            discount_line_product_id = self.env['product.product'].create({
-                'name': program.reward_id.display_name,
-                'type': 'service',
-                'taxes_id': False,
-                'supplier_taxes_id': False,
-                'sale_ok': False,
-                'purchase_ok': False,
-                'lst_price': 0, #Do not set a high value to avoid issue with coupon code
-            })
+            values = program._get_discount_product_values()
+            discount_line_product_id = self.env['product.product'].create(values)
             program.write({'discount_line_product_id': discount_line_product_id.id})
         return program
 
@@ -162,3 +155,14 @@ class CouponProgram(models.Model):
     def _compute_total_order_count(self):
         for program in self:
             program.total_order_count = 0
+
+    def _get_discount_product_values(self):
+        return {
+            'name': self.reward_id.display_name,
+            'type': 'service',
+            'taxes_id': False,
+            'supplier_taxes_id': False,
+            'sale_ok': False,
+            'purchase_ok': False,
+            'lst_price': 0, #Do not set a high value to avoid issue with coupon code
+        }

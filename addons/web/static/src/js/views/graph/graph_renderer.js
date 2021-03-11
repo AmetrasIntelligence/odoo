@@ -5,7 +5,6 @@ odoo.define("web/static/src/js/views/graph/graph_renderer", function (require) {
     const { device } = require("web.config");
     const { DateClasses } = require("web.dataComparisonUtils");
     const fieldUtils = require("web.field_utils");
-    const patchMixin = require("web.patchMixin");
     const { sortBy } = require("web.utils");
 
     const COLORS = [
@@ -101,6 +100,15 @@ odoo.define("web/static/src/js/views/graph/graph_renderer", function (require) {
         patched() {
             super.patched();
             this._renderChart();
+        }
+
+        //---------------------------------------------------------------------
+        // Getters
+        //---------------------------------------------------------------------
+
+        get measureDescription() {
+            const measure = this.props.measures.find(m => m.fieldName === this.props.measure);
+            return measure ? measure.description : this.props.fields[this.props.measure].string;
         }
 
         //---------------------------------------------------------------------
@@ -312,7 +320,7 @@ odoo.define("web/static/src/js/views/graph/graph_renderer", function (require) {
 
             const innerHTML = this.env.qweb.renderToString("web.GraphRenderer.CustomTooltip", {
                 maxWidth: getMaxWidth(this.chart.chartArea),
-                measure: this.props.fields[this.props.measure].string,
+                measure: this.measureDescription,
                 tooltipItems: this._getTooltipItems(tooltipModel),
             });
             const template = Object.assign(document.createElement("template"), { innerHTML });
@@ -460,8 +468,7 @@ odoo.define("web/static/src/js/views/graph/graph_renderer", function (require) {
                     datasetLabel ? ("/" + datasetLabel) : ""
                 );
             }
-            datasetLabel = datasetLabel || this.props.fields[this.props.measure].string;
-            return datasetLabel;
+            return datasetLabel || this.measureDescription;
         }
 
         /**
@@ -640,7 +647,7 @@ odoo.define("web/static/src/js/views/graph/graph_renderer", function (require) {
                 type: "linear",
                 scaleLabel: {
                     display: !this.props.isEmbedded,
-                    labelString: this.props.fields[this.props.measure].string,
+                    labelString: this.measureDescription,
                 },
                 ticks: {
                     callback: value => this._formatValue(value),
@@ -1028,6 +1035,7 @@ odoo.define("web/static/src/js/views/graph/graph_renderer", function (require) {
         isEmbedded: Boolean,
         isSample: { type: Boolean, optional: 1 },
         measure: String,
+        measures: { type: Array, element: Object },
         mode: { validate: m => ["bar", "line", "pie"].includes(m) },
         origins: { type: Array, element: String },
         processedGroupBy: { type: Array, element: String },
@@ -1039,6 +1047,6 @@ odoo.define("web/static/src/js/views/graph/graph_renderer", function (require) {
         withSearchPanel: { type: Boolean, optional: 1 },
     };
 
-    return patchMixin(GraphRenderer);
+    return GraphRenderer;
 
 });

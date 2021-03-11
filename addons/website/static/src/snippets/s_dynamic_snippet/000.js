@@ -94,14 +94,14 @@ const DynamicSnippet = publicWidget.Widget.extend({
      * domain if needed.
      * @private
      */
-    _getSearchDomain: async function () {
+    _getSearchDomain: function () {
         return [];
     },
     /**
      * Fetches the data.
      * @private
      */
-    _fetchData: async function () {
+    _fetchData: function () {
         if (this._isConfigComplete()) {
             return this._rpc(
                 {
@@ -110,7 +110,8 @@ const DynamicSnippet = publicWidget.Widget.extend({
                         'filter_id': parseInt(this.$el.get(0).dataset.filterId),
                         'template_key': this.$el.get(0).dataset.templateKey,
                         'limit': parseInt(this.$el.get(0).dataset.numberOfRecords),
-                        'search_domain': await this._getSearchDomain()
+                        'search_domain': this._getSearchDomain(),
+                        'with_sample': this.editableMode,
                     },
                 })
                 .then(
@@ -129,10 +130,17 @@ const DynamicSnippet = publicWidget.Widget.extend({
      *
      * @private
      */
+    _mustMessageWarningBeHidden: function() {
+        return this._isConfigComplete() || !this.editableMode;
+    },
+    /**
+     *
+     * @private
+     */
     _manageWarningMessageVisibility: async function () {
         this.$el.find('.missing_option_warning').toggleClass(
             'd-none',
-            this._isConfigComplete()
+            this._mustMessageWarningBeHidden()
         );
     },
     /**

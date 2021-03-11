@@ -213,13 +213,15 @@ class Registry(Mapping):
 
         At the Python level, the modules are already loaded, but not yet on a
         per-registry level. This method populates a registry with the given
-        modules, i.e. it instanciates all the classes of a the given module
+        modules, i.e. it instantiates all the classes of a the given module
         and registers them in the registry.
 
         """
         from .. import models
 
-        self.clear_caches()
+        # clear cache to ensure consistency, but do not signal it
+        self.__cache.clear()
+
         lazy_property.reset_all(self)
 
         # Instantiate registered classes (via the MetaModel automatic discovery
@@ -244,7 +246,9 @@ class Registry(Mapping):
             for model in env.values():
                 model._unregister_hook()
 
-        self.clear_caches()
+        # clear cache to ensure consistency, but do not signal it
+        self.__cache.clear()
+
         lazy_property.reset_all(self)
         self.registry_invalidated = True
 
@@ -448,7 +452,7 @@ class Registry(Mapping):
                 except psycopg2.OperationalError:
                     _schema.error("Unable to add index for %s", self)
             elif not index and indexname in existing:
-                sql.drop_index(cr, indexname, tablename)
+                _schema.info("Keep unexpected index %s on table %s", indexname, tablename)
 
     def add_foreign_key(self, table1, column1, table2, column2, ondelete,
                         model, module, force=True):
@@ -491,7 +495,7 @@ class Registry(Mapping):
             if spec is None:
                 sql.add_foreign_key(cr, table1, column1, table2, column2, ondelete)
                 model.env['ir.model.constraint']._reflect_constraint(model, conname, 'f', None, module)
-            elif spec != (conname, table2, column2, deltype):
+            elif (spec[1], spec[2], spec[3]) != (table2, column2, deltype):
                 sql.drop_constraint(cr, table1, spec[0])
                 sql.add_foreign_key(cr, table1, column1, table2, column2, ondelete)
                 model.env['ir.model.constraint']._reflect_constraint(model, conname, 'f', None, module)
@@ -597,7 +601,11 @@ class Registry(Mapping):
             elif self.cache_sequence != c:
                 _logger.info("Invalidating all model caches after database signaling.")
                 self.clear_caches()
-                self.cache_invalidated = False
+
+            # prevent re-signaling the clear_caches() above, or any residual one that
+            # would be inherited from the master process (first request in pre-fork mode)
+            self.cache_invalidated = False
+
             self.registry_sequence = r
             self.cache_sequence = c
 

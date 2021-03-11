@@ -1,15 +1,14 @@
-odoo.define('web.ListRenderer', function (require) {
-"use strict";
+/** @odoo-module alias=web.ListRenderer **/
 
-var BasicRenderer = require('web.BasicRenderer');
-const { ComponentWrapper } = require('web.OwlCompatibility');
-var config = require('web.config');
-var core = require('web.core');
-var dom = require('web.dom');
-var field_utils = require('web.field_utils');
-var Pager = require('web.Pager');
-var utils = require('web.utils');
-var viewUtils = require('web.viewUtils');
+import BasicRenderer from 'web.BasicRenderer';
+import { ComponentWrapper } from 'web.OwlCompatibility';
+import config from 'web.config';
+import core from 'web.core';
+import dom from 'web.dom';
+import field_utils from 'web.field_utils';
+import Pager from 'web.Pager';
+import utils from 'web.utils';
+import viewUtils from 'web.viewUtils';
 
 var _t = core._t;
 
@@ -568,7 +567,7 @@ var ListRenderer = BasicRenderer.extend({
         if (field.type !== 'boolean') {
             title = formatter(value, field, _.extend(formatOptions, {escape: false}));
         }
-        return $td.html(formattedValue).attr('title', title);
+        return $td.html(formattedValue).attr('title', title).attr('name', name);
     },
     /**
      * Renders the button element associated to the given node and record.
@@ -600,12 +599,15 @@ var ListRenderer = BasicRenderer.extend({
 
         if (record.res_id) {
             // TODO this should be moved to a handler
-            $button.on("click", function (e) {
-                e.stopPropagation();
+            const debouncedClick = _.debounce(() => {
                 self.trigger_up('button_clicked', {
                     attrs: node.attrs,
                     record: record,
                 });
+            }, 500, true);
+            $button.on("click", (e) => {
+                e.stopPropagation();
+                debouncedClick();
             });
         } else {
             if (node.attrs.options.warn) {
@@ -1474,5 +1476,4 @@ var ListRenderer = BasicRenderer.extend({
     },
 });
 
-return ListRenderer;
-});
+export default ListRenderer;

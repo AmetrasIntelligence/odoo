@@ -129,7 +129,7 @@ class RequestHandler(werkzeug.serving.WSGIRequestHandler):
 
 class ThreadedWSGIServerReloadable(LoggingBaseWSGIServerMixIn, werkzeug.serving.ThreadedWSGIServer):
     """ werkzeug Threaded WSGI Server patched to allow reusing a listen socket
-    given by the environement, this is used by autoreload to keep the listen
+    given by the environment, this is used by autoreload to keep the listen
     socket open when a reload happens.
     """
     def __init__(self, host, port, app):
@@ -305,6 +305,7 @@ class FSWatcherInotify(FSWatcherBase):
 class CommonServer(object):
     def __init__(self, app):
         self.app = app
+        self._on_stop_funcs = []
         # config
         self.interface = config['http_interface'] or '0.0.0.0'
         self.port = config['http_port']
@@ -331,6 +332,19 @@ class CommonServer(object):
             if e.errno != errno.ENOTCONN or platform.system() not in ['Darwin', 'Windows']:
                 raise
         sock.close()
+
+    def on_stop(self, func):
+        """ Register a cleanup function to be executed when the server stops """
+        self._on_stop_funcs.append(func)
+
+    def stop(self):
+        for func in self._on_stop_funcs:
+            try:
+                _logger.debug("on_close call %s", func)
+                func()
+            except Exception:
+                _logger.warning("Exception in %s", func.__name__, exc_info=True)
+
 
 class ThreadedServer(CommonServer):
     def __init__(self, app):
@@ -484,11 +498,11 @@ class ThreadedServer(CommonServer):
 
         test_mode = config['test_enable'] or config['test_file']
         if test_mode or (config['http_enable'] and not stop):
-            # some tests need the http deamon to be available...
+            # some tests need the http daemon to be available...
             self.http_spawn()
 
     def stop(self):
-        """ Shutdown the WSGI server. Wait for non deamon threads.
+        """ Shutdown the WSGI server. Wait for non daemon threads.
         """
         if getattr(odoo, 'phoenix', None):
             _logger.info("Initiating server reload")
@@ -500,6 +514,8 @@ class ThreadedServer(CommonServer):
 
         if self.httpd:
             self.httpd.shutdown()
+
+        super().stop()
 
         # Manually join() all threads before calling sys.exit() to allow a second signal
         # to trigger _force_quit() in case some non-daemon threads won't exit cleanly.
@@ -657,6 +673,7 @@ class GeventServer(CommonServer):
     def stop(self):
         import gevent
         self.httpd.stop()
+        super().stop()
         gevent.shutdown()
 
     def run(self, preload, stop):
@@ -670,9 +687,8 @@ class PreforkServer(CommonServer):
     dispatcher to will parse the first HTTP request line.
     """
     def __init__(self, app):
+        super().__init__(app)
         # config
-        self.address = config['http_enable'] and \
-            (config['http_interface'] or '0.0.0.0', config['http_port'])
         self.population = config['workers']
         self.timeout = config['limit_time_real']
         self.limit_request = config['limit_request']
@@ -681,8 +697,6 @@ class PreforkServer(CommonServer):
             self.cron_timeout = self.timeout
         # working vars
         self.beat = 4
-        self.app = app
-        self.pid = os.getpid()
         self.socket = None
         self.workers_http = {}
         self.workers_cron = {}
@@ -831,7 +845,7 @@ class PreforkServer(CommonServer):
                 raise
 
     def start(self):
-        # wakeup pipe, python doesnt throw EINTR when a syscall is interrupted
+        # wakeup pipe, python doesn't throw EINTR when a syscall is interrupted
         # by a signal simulating a pseudo SA_RESTART. We write to a pipe in the
         # signal handler to overcome this behaviour
         self.pipe = self.pipe_new()
@@ -845,13 +859,13 @@ class PreforkServer(CommonServer):
         signal.signal(signal.SIGQUIT, dumpstacks)
         signal.signal(signal.SIGUSR1, log_ormcache_stats)
 
-        if self.address:
+        if config['http_enable']:
             # listen to socket
-            _logger.info('HTTP service (werkzeug) running on %s:%s', *self.address)
+            _logger.info('HTTP service (werkzeug) running on %s:%s', self.interface, self.port)
             self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
             self.socket.setblocking(0)
-            self.socket.bind(self.address)
+            self.socket.bind((self.interface, self.port))
             self.socket.listen(8 * self.population)
 
     def stop(self, graceful=True):
@@ -861,6 +875,7 @@ class PreforkServer(CommonServer):
             self.long_polling_pid = None
         if graceful:
             _logger.info("Stopping gracefully")
+            super().stop()
             limit = time.time() + self.timeout
             for pid in self.workers:
                 self.worker_kill(pid, signal.SIGINT)
@@ -955,7 +970,7 @@ class Worker(object):
                 raise
 
     def check_limits(self):
-        # If our parent changed sucide
+        # If our parent changed suicide
         if self.ppid != os.getppid():
             _logger.info("Worker (%s) Parent changed", self.pid)
             self.alive = False
@@ -1019,7 +1034,7 @@ class Worker(object):
                          len(odoo.modules.registry.Registry.registries))
             self.stop()
         except Exception:
-            _logger.exception("Worker (%s) Exception occured, exiting..." % self.pid)
+            _logger.exception("Worker (%s) Exception occurred, exiting...", self.pid)
             # should we use 3 to abort everything ?
             sys.exit(1)
 
@@ -1037,7 +1052,7 @@ class Worker(object):
                     break
                 self.process_work()
         except:
-            _logger.exception("Worker %s (%s) Exception occured, exiting...", self.__class__.__name__, self.pid)
+            _logger.exception("Worker %s (%s) Exception occurred, exiting...", self.__class__.__name__, self.pid)
             sys.exit(1)
 
 class WorkerHTTP(Worker):
@@ -1047,7 +1062,7 @@ class WorkerHTTP(Worker):
 
         # The ODOO_HTTP_SOCKET_TIMEOUT environment variable allows to control socket timeout for
         # extreme latency situations. It's generally better to use a good buffering reverse proxy
-        # to quickly free workers rather than increasing this timeout to accomodate high network
+        # to quickly free workers rather than increasing this timeout to accommodate high network
         # latencies & b/w saturation. This timeout is also essential to protect against accidental
         # DoS due to idle HTTP connections.
         sock_timeout = os.environ.get("ODOO_HTTP_SOCKET_TIMEOUT")
@@ -1250,9 +1265,8 @@ def preload_registries(dbnames):
                 _logger.info("Starting post tests")
                 tests_before = registry._assertion_report.testsRun
                 with odoo.api.Environment.manage():
-                    for module_name in module_names:
-                        result = loader.run_suite(loader.make_suite(module_name, 'post_install'), module_name)
-                        registry._assertion_report.update(result)
+                    result = loader.run_suite(loader.make_suite(module_names, 'post_install'))
+                    registry._assertion_report.update(result)
                 _logger.info("%d post-tests in %.2fs, %s queries",
                              registry._assertion_report.testsRun - tests_before,
                              time.time() - t0,
@@ -1296,7 +1310,7 @@ def start(preload=None, stop=False):
             # On 32bit systems the default size of an arena is 512K while on 64bit systems it's 64M [3],
             # hence a threaded worker will quickly reach it's default memory soft limit upon concurrent requests.
             # We therefore set the maximum arenas allowed to 2 unless the MALLOC_ARENA_MAX env variable is set.
-            # Note: Setting MALLOC_ARENA_MAX=0 allow to explicitely set the default glibs's malloc() behaviour.
+            # Note: Setting MALLOC_ARENA_MAX=0 allow to explicitly set the default glibs's malloc() behaviour.
             #
             # [1] https://sourceware.org/glibc/wiki/MallocInternals#Arenas_and_Heaps
             # [2] https://www.gnu.org/software/libc/manual/html_node/The-GNU-Allocator.html

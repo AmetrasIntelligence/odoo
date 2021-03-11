@@ -4,7 +4,7 @@
 import logging
 import pytz
 
-from odoo import _, api, fields, models
+from odoo import _, api, Command, fields, models
 from odoo.addons.base.models.res_partner import _tz_get
 from odoo.tools import format_datetime
 from odoo.exceptions import ValidationError
@@ -126,7 +126,7 @@ class EventEvent(models.Model):
         compute='_compute_event_mail_ids', readonly=False, store=True)
     tag_ids = fields.Many2many(
         'event.tag', string="Tags", readonly=False,
-        store=True, compute="_compute_from_event_type")
+        store=True, compute="_compute_tag_ids")
     # Kanban fields
     kanban_state = fields.Selection([('normal', 'In Progress'), ('done', 'Done'), ('blocked', 'Blocked')], default='normal')
     kanban_state_label = fields.Char(
@@ -141,7 +141,7 @@ class EventEvent(models.Model):
     # Seats and computation
     seats_max = fields.Integer(
         string='Maximum Attendees Number',
-        compute='_compute_from_event_type', readonly=False, store=True,
+        compute='_compute_seats_max', readonly=False, store=True,
         help="For each event you can define a maximum registration of seats(number of attendees), above this numbers the registrations are not accepted.")
     seats_limited = fields.Boolean('Maximum Attendees', required=True, compute='_compute_seats_limited',
                                    readonly=False, store=True)
@@ -162,7 +162,7 @@ class EventEvent(models.Model):
         compute_sudo=True, readonly=True, compute='_compute_seats_expected')
     # Registration fields
     auto_confirm = fields.Boolean(
-        string='Autoconfirmation', compute='_compute_from_event_type', readonly=False, store=True,
+        string='Autoconfirmation', compute='_compute_auto_confirm', readonly=False, store=True,
         help='Autoconfirm Registrations. Registrations will automatically be confirmed upon creation.')
     registration_ids = fields.One2many('event.registration', 'event_id', string='Attendees')
     event_ticket_ids = fields.One2many(
@@ -344,52 +344,47 @@ class EventEvent(models.Model):
             if not event.date_tz:
                 event.date_tz = self.env.user.tz or 'UTC'
 
+    # seats
+
+    @api.depends('event_type_id')
+    def _compute_seats_max(self):
+        """ Update event configuration from its event type. Depends are set only
+        on event_type_id itself, not its sub fields. Purpose is to emulate an
+        onchange: if event type is changed, update event configuration. Changing
+        event type content itself should not trigger this method. """
+        for event in self:
+            if not event.event_type_id:
+                event.seats_max = event.seats_max or 0
+            else:
+                event.seats_max = event.event_type_id.seats_max or 0
+
     @api.depends('event_type_id')
     def _compute_seats_limited(self):
-        """ Make it separate from ``_compute_from_event_type`` because otherwise
-        a value given at create (see create override) would protect all other fields
-        depending on event type id from being computed as compute method will be
-        blacklisted during create (see ``registry.field_computed`` attribute used in create
-        to compute protected field from re-computation) """
+        """ Update event configuration from its event type. Depends are set only
+        on event_type_id itself, not its sub fields. Purpose is to emulate an
+        onchange: if event type is changed, update event configuration. Changing
+        event type content itself should not trigger this method. """
         for event in self:
-            if event.event_type_id.seats_max:
-                event.seats_limited = True
+            if event.event_type_id.has_seats_limitation != event.seats_limited:
+                event.seats_limited = event.event_type_id.has_seats_limitation
             if not event.seats_limited:
                 event.seats_limited = False
 
     @api.depends('event_type_id')
-    def _compute_from_event_type(self):
+    def _compute_auto_confirm(self):
         """ Update event configuration from its event type. Depends are set only
-        on event_type_id itself, not its sub fields. Indeed purpose is to emulate
-        an onchange: if event type is changed, update event configuration. Changing
-        event type content itself should not trigger this method.
-
-        Updated by this method
-          * seats_max -> triggers _compute_seats (all seats computation)
-          * seats_limited
-          * auto_confirm
-          * tag_ids
-        """
+        on event_type_id itself, not its sub fields. Purpose is to emulate an
+        onchange: if event type is changed, update event configuration. Changing
+        event type content itself should not trigger this method. """
         for event in self:
-            if not event.event_type_id:
-                if not event.seats_max:
-                    event.seats_max = 0
-                continue
-
-            event.seats_max = event.event_type_id.seats_max
-
-            if event.event_type_id.has_seats_limitation != event.seats_limited:
-                event.seats_limited = event.event_type_id.has_seats_limitation
-
             event.auto_confirm = event.event_type_id.auto_confirm
-            if not event.tag_ids and event.event_type_id.tag_ids:
-                event.tag_ids = event.event_type_id.tag_ids
 
     @api.depends('event_type_id')
     def _compute_event_mail_ids(self):
-        """ Update event mails from its event type. Depends are set only on
-        event_type_id itself to emulate an onchange. Changing event type content
-        itself should not trigger this method.
+        """ Update event configuration from its event type. Depends are set only
+        on event_type_id itself, not its sub fields. Purpose is to emulate an
+        onchange: if event type is changed, update event configuration. Changing
+        event type content itself should not trigger this method.
 
         When synchronizing mails:
 
@@ -402,11 +397,13 @@ class EventEvent(models.Model):
                 continue
 
             # lines to keep: those with already sent emails or registrations
-            mails_toremove = event._origin.event_mail_ids.filtered(lambda mail: not mail.mail_sent and not(mail.mail_registration_ids))
-            command = [(3, mail.id) for mail in mails_toremove]
+            mails_to_remove = event.event_mail_ids.filtered(
+                lambda mail: not(mail._origin.mail_sent or mail._origin.mail_registration_ids)
+            )
+            command = [Command.unlink(mail.id) for mail in mails_to_remove]
             if event.event_type_id.use_mail_schedule:
                 command += [
-                    (0, 0, {
+                    Command.create({
                         attribute_name: line[attribute_name] if not isinstance(line[attribute_name], models.BaseModel) else line[attribute_name].id
                         for attribute_name in self.env['event.type.mail']._get_event_mail_fields_whitelist()
                     }) for line in event.event_type_id.event_type_mail_ids
@@ -415,10 +412,21 @@ class EventEvent(models.Model):
                 event.event_mail_ids = command
 
     @api.depends('event_type_id')
+    def _compute_tag_ids(self):
+        """ Update event configuration from its event type. Depends are set only
+        on event_type_id itself, not its sub fields. Purpose is to emulate an
+        onchange: if event type is changed, update event configuration. Changing
+        event type content itself should not trigger this method. """
+        for event in self:
+            if not event.tag_ids and event.event_type_id.tag_ids:
+                event.tag_ids = event.event_type_id.tag_ids
+
+    @api.depends('event_type_id')
     def _compute_event_ticket_ids(self):
-        """ Update event tickets from its event type. Depends are set only on
-        event_type_id itself to emulate an onchange. Changing event type content
-        itself should not trigger this method.
+        """ Update event configuration from its event type. Depends are set only
+        on event_type_id itself, not its sub fields. Purpose is to emulate an
+        onchange: if event type is changed, update event configuration. Changing
+        event type content itself should not trigger this method.
 
         When synchronizing tickets:
 
@@ -428,27 +436,17 @@ class EventEvent(models.Model):
         Note that updating event_ticket_ids triggers _compute_start_sale_date
         (start_sale_date computation) so ensure result to avoid cache miss.
         """
-        if self.ids or self._origin.ids:
-            # lines to keep: those with already sent emails or registrations
-            tickets_tokeep_ids = self.env['event.registration'].search(
-                [('event_id', 'in', self.ids or self._origin.ids)]
-            ).event_ticket_id.ids
-        else:
-            tickets_tokeep_ids = []
         for event in self:
             if not event.event_type_id and not event.event_ticket_ids:
                 event.event_ticket_ids = False
                 continue
 
             # lines to keep: those with existing registrations
-            if tickets_tokeep_ids:
-                tickets_toremove = event._origin.event_ticket_ids.filtered(lambda ticket: ticket.id not in tickets_tokeep_ids)
-                command = [(3, ticket.id) for ticket in tickets_toremove]
-            else:
-                command = [(5, 0)]
+            tickets_to_remove = event.event_ticket_ids.filtered(lambda ticket: not ticket._origin.registration_ids)
+            command = [Command.unlink(ticket.id) for ticket in tickets_to_remove]
             if event.event_type_id.use_ticket:
                 command += [
-                    (0, 0, {
+                    Command.create({
                         attribute_name: line[attribute_name] if not isinstance(line[attribute_name], models.BaseModel) else line[attribute_name].id
                         for attribute_name in self.env['event.type.ticket']._get_event_ticket_fields_whitelist()
                     }) for line in event.event_type_id.event_type_ticket_ids
@@ -484,7 +482,7 @@ class EventEvent(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:
-            # Temporary fix for ``seats_limited`` and ``date_tz`` required fields (see ``_compute_from_event_type``
+            # Temporary fix for ``seats_limited`` and ``date_tz`` required fields
             vals.update(self._sync_required_computed(vals))
 
         events = super(EventEvent, self).create(vals_list)
@@ -495,6 +493,9 @@ class EventEvent(models.Model):
         return events
 
     def write(self, vals):
+        if 'stage_id' in vals and 'kanban_state' not in vals:
+            # reset kanban state when changing stage
+            vals['kanban_state'] = 'normal'
         res = super(EventEvent, self).write(vals)
         if vals.get('organizer_id'):
             self.message_subscribe([vals['organizer_id']])
@@ -513,7 +514,8 @@ class EventEvent(models.Model):
         missing_fields = list(set(['seats_limited', 'date_tz']).difference(set(values.keys())))
         if missing_fields and values:
             cache_event = self.new(values)
-            cache_event._compute_from_event_type()
+            cache_event._compute_seats_limited()
+            cache_event._compute_date_tz()
             return dict((fname, cache_event[fname]) for fname in missing_fields)
         else:
             return {}

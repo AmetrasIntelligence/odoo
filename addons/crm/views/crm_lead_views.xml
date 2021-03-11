@@ -6,16 +6,16 @@
             <field name="arch" type="xml">
                 <form class="o_lead_opportunity_form" js_class="crm_form">
                     <header>
-                        <button name="action_set_won_rainbowman" string="Mark Won"
+                        <button name="action_set_won_rainbowman" string="Won"
                             type="object" class="oe_highlight"
                             attrs="{'invisible': ['|','|', ('active','=',False), ('probability', '=', 100), ('type', '=', 'lead')]}"/>
-                        <button name="%(crm.crm_lead_lost_action)d" string="Mark Lost"
-                            type="action" class="oe_highlight" context="{'default_lead_id': active_id}" attrs="{'invisible': ['|', ('type', '=', 'lead'),('active', '=', False),('probability', '&lt;', 100)]}"/>
+                        <button name="%(crm.crm_lead_lost_action)d" string="Lost"
+                            type="action" context="{'default_lead_id': active_id}" attrs="{'invisible': ['|', ('type', '=', 'lead'),('active', '=', False),('probability', '&lt;', 100)]}"/>
                         <button name="%(crm.action_crm_lead2opportunity_partner)d" string="Convert to Opportunity" type="action" help="Convert to Opportunity"
                             class="oe_highlight" attrs="{'invisible': ['|', ('type', '=', 'opportunity'), ('active', '=', False)]}"/>
                         <button name="toggle_active" string="Restore" type="object"
                             attrs="{'invisible': ['|', ('probability', '&gt;', 0), ('active', '=', True)]}"/>
-                        <button name="action_set_lost" string="Mark as Lost" type="object"
+                        <button name="action_set_lost" string="Lost" type="object"
                             attrs="{'invisible': ['|', ('type', '=', 'opportunity'), '&amp;', ('probability', '=', 0), ('active', '=', False)]}"/>
                         <field name="stage_id" widget="statusbar"
                             options="{'clickable': '1', 'fold_field': 'fold'}"
@@ -38,12 +38,21 @@
                                     <span class="o_stat_text" attrs="{'invisible': [('meeting_count', '&gt;', 1)]}"> Meeting</span>
                                 </div>
                             </button>
+                            <button name="action_show_potential_duplicates" type="object"
+                                class="oe_stat_button" icon="fa-star"
+                                attrs="{'invisible': [('duplicate_lead_count', '&lt;', 1)]}">
+                                <div class="o_stat_info">
+                                    <field name="duplicate_lead_count" class="o_stat_value"/>
+                                    <span class="o_stat_text" attrs="{'invisible': [('duplicate_lead_count', '&lt;', 2)]}">Similar Leads</span>
+                                    <span class="o_stat_text" attrs="{'invisible': [('duplicate_lead_count', '&gt;', 1)]}">Similar Lead</span>
+                                </div>
+                            </button>
                         </div>
                         <widget name="web_ribbon" title="Lost" bg_color="bg-danger" attrs="{'invisible': ['|', ('probability', '&gt;', 0), ('active', '=', True)]}"/>
                         <widget name="web_ribbon" title="Won" attrs="{'invisible': [('probability', '&lt;', 100)]}" />
                         <div class="oe_title">
-                            <label for="name" class="oe_edit_only" string="Lead" attrs="{'invisible': [('type', '=', 'opportunity')]}"/>
-                            <label for="name" class="oe_edit_only" attrs="{'invisible': [('type', '=', 'lead')]}"/>
+                            <label for="name" string="Lead" attrs="{'invisible': [('type', '=', 'opportunity')]}"/>
+                            <label for="name" attrs="{'invisible': [('type', '=', 'lead')]}"/>
                             <h1><field class="o_text_overflow" name="name" placeholder="e.g. Product Pricing"/></h1>
                             <h2 class="o_row no-gutters align-items-end">
                                 <div class="col" attrs="{'invisible': [('type', '=', 'lead')]}">
@@ -213,10 +222,9 @@
                                 <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}"/>
                             </group>
                             <group>
-                                <field name="user_id" domain="[('share', '=', False)]"
+                                <field name="user_id"
                                     context="{'default_sales_team_id': team_id}" widget="many2one_avatar_user"/>
-                                <field name="team_id" widget="selection"
-                                    domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]"/>
+                                <field name="team_id" widget="selection"/>
                                 <field name="type" invisible="1"/>
                             </group>
                             <group name="lead_priority" attrs="{'invisible': [('type', '=', 'opportunity')]}">
@@ -227,6 +235,7 @@
                                 <field name="lost_reason" attrs="{'invisible': [('active', '=', True)]}"/>
                                 <field name="date_conversion" invisible="1"/>
                                 <field name="company_id" groups="base.group_multi_company"/>
+                                <field name="user_company_ids" invisible="1"/>
                             </group>
                         </group>
 
@@ -338,7 +347,9 @@
                     <field name="state_id" optional="hide"/>
                     <field name="country_id" optional="show" options="{'no_open': True, 'no_create': True}"/>
                     <field name="partner_id" invisible="1"/>
-                    <field name="user_id" optional="show"  widget="many2one_avatar_user" domain="[('share', '=', False)]"/>
+                    <!-- Explicit domain due to multi edit -> real company domain would be complicated -->
+                    <field name="user_id" optional="show"  widget="many2one_avatar_user"
+                        domain="[('share', '=', False)]"/>
                     <field name="team_id" optional="show"/>
                     <field name="active" invisible="1"/>
                     <field name="probability" invisible="1"/>
@@ -377,7 +388,7 @@
                                     <span class="o_kanban_record_subtitle"><field name="contact_name"/></span>
                                 </div>
                                 <div>
-                                  <field name="tag_ids"/>
+                                  <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
                                 </div>
                                 <div class="o_kanban_record_bottom">
                                     <div class="oe_kanban_bottom_left">
@@ -426,6 +437,8 @@
                             'default_company_name': type == 'opportunity' and partner_name,
                             'default_phone': phone,
                             'default_email': email_from,
+                            'default_user_id': user_id,
+                            'default_team_id': team_id,
                             'show_vat': True}"/>
                         <field name="name" placeholder="e.g. Product Pricing" />
                         <field name="email_from" string="Email" />
@@ -443,6 +456,7 @@
                         <field name="company_currency" invisible="1"/>
                         <field name="company_id" invisible="1"/>
                         <field name="user_id" invisible="1"/>
+                        <field name="user_company_ids" invisible="1"/>
                         <field name="team_id" invisible="1"/>
                         <field name="type" invisible="1"/>
                         <field name="partner_name" invisible="1"/>
@@ -506,7 +520,7 @@
                     <progressbar field="activity_state" colors='{"planned": "success", "today": "warning", "overdue": "danger"}' sum_field="expected_revenue" help="This bar allows to filter the opportunities based on scheduled activities."/>
                     <templates>
                         <t t-name="kanban-box">
-                            <div t-attf-class="#{!selection_mode ? kanban_color(record.color.raw_value) : ''} oe_kanban_global_click">
+                            <div t-attf-class="#{!selection_mode ? kanban_color(record.color.raw_value) : ''} oe_kanban_global_click oe_kanban_card d-flex flex-column">
                                 <div class="o_dropdown_kanban dropdown">
 
                                     <a class="dropdown-toggle o-no-caret btn" role="button" data-toggle="dropdown" data-display="static" href="#" aria-label="Dropdown menu" title="Dropdown menu">
@@ -518,7 +532,7 @@
                                         <ul class="oe_kanban_colorpicker" data-field="color"/>
                                     </div>
                                 </div>
-                                <div class="oe_kanban_content">
+                                <div class="oe_kanban_content flex-grow-1">
                                     <div class="o_kanban_record_title oe_kanban_details">
                                         <strong><field name="name"/></strong>
                                     </div>
@@ -538,6 +552,8 @@
                                     <div>
                                         <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
                                     </div>
+                                </div>
+                                <div class="oe_kanban_footer">
                                     <div class="o_kanban_record_bottom">
                                         <div class="oe_kanban_bottom_left">
                                             <field name="priority" widget="priority" groups="base.group_user"/>
@@ -669,12 +685,15 @@
                     <field name="city" optional="hide"/>
                     <field name="state_id" optional="hide"/>
                     <field name="country_id" optional="hide" options="{'no_open': True, 'no_create': True}"/>
-                    <field name="user_id" widget="many2one_avatar_user" optional="show" domain="[('share', '=', False)]"/>
+                    <!-- Explicit domain due to multi edit -> real company domain would be complicated -->
+                    <field name="user_id" widget="many2one_avatar_user" optional="show"
+                        domain="[('share', '=', False)]"/>
                     <field name="team_id" optional="hide"/>
-                    <field name="priority" optional="hide"/>
+                    <field name="priority" optional="hide" widget="priority"/>
                     <field name="activity_ids" widget="list_activity"/>
                     <field name="activity_user_id" optional="hide" string="Activity by" widget="many2one_avatar_user"/>
                     <field name="activity_date_deadline_my" string="My Deadline" widget="remaining_days" options="{'allow_order': '1'}"/>
+                    <field name="activity_calendar_event_id" invisible="1"/>
                     <field name="campaign_id" optional="hide"/>
                     <field name="medium_id" optional="hide"/>
                     <field name="source_id" optional="hide"/>
@@ -689,9 +708,13 @@
                     <field name="tag_ids" optional="hide" widget="many2many_tags" options="{'color_field': 'color'}"/>
                     <field name="referred" invisible="1"/>
                     <field name="message_needaction" invisible="1"/>
-                    <button name="action_snooze" class="text-warning" type="object" string="Snooze 7d" icon="fa-bell-slash"
-                        attrs="{'invisible': [('activity_date_deadline_my', '=', False)]}"/>
                     <button name="%(crm.action_lead_mail_compose)d" type="action" string="Email" icon="fa-envelope"/>
+                    <button name="action_reschedule_meeting" class="text-warning" type="object" string="Reschedule"
+                        icon="fa-calendar" attrs="{'invisible': ['|', ('activity_date_deadline_my', '=', False),
+                        ('activity_calendar_event_id', '=', False)]}"/>
+                    <button name="action_snooze" class="text-warning" type="object" string="Snooze 7d"
+                        icon="fa-bell-slash" attrs="{'invisible': ['|', ('activity_date_deadline_my', '=', False),
+                        ('activity_calendar_event_id', '!=', False)]}"/>
                 </tree>
             </field>
         </record>
@@ -814,6 +837,7 @@
                     <filter string="Won" name="won" domain="['&amp;', ('active', '=', True), ('stage_id.is_won', '=', True)]"/>
                     <filter string="Lost" name="lost" domain="['&amp;', ('active', '=', False), ('probability', '=', 0)]"/>
                     <separator/>
+                    <filter invisible="1" string="Overdue Opportunities" name="overdue_opp" domain="[('date_deadline', '&lt;', context_today().strftime('%Y-%m-%d'))]"/>
                     <filter invisible="1" string="Late Activities" name="activities_overdue"
                         domain="[('activity_ids.date_deadline', '&lt;', context_today().strftime('%Y-%m-%d'))]"
                         help="Show all opportunities for which the next action date is before today"/>
@@ -874,6 +898,13 @@ if record:
                     'search_default_to_process':1,
                 }
             </field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a Lead
+                </p><p>
+                    Leads are the qualification step before the creation of an opportunity.
+                </p>
+            </field>
         </record>
 
         <record id="crm_lead_all_leads_view_tree" model="ir.actions.act_window.view">
@@ -925,6 +956,13 @@ if record:
             <field name="search_view_id" ref="crm.view_crm_case_my_activities_filter"/>
             <field name="context">{'default_type': 'opportunity',
                     'search_default_assigned_to_me': 1}
+            </field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Looks like nothing is planned.
+                </p><p>
+                    Schedule activities to keep track of everything you have to do.
+                </p>
             </field>
         </record>
 
@@ -1036,6 +1074,52 @@ if record:
             <field name="view_mode">graph</field>
             <field name="view_id" ref="crm_lead_view_graph"/>
             <field name="act_window_id" ref="crm_lead_action_pipeline"/>
+        </record>
+
+        <record id="crm_lead_action_duplicates" model="ir.actions.act_window">
+            <field name="name">Similar Leads</field>
+            <field name="res_model">crm.lead</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="search_view_id" ref="crm.view_crm_case_leads_filter"/>
+        </record>
+
+        <record id="crm_lead_view_kanban_duplicates" model="ir.ui.view">
+            <field name="name">crm.lead.view.kanban.duplicates</field>
+            <field name="model">crm.lead</field>
+            <field name="mode">primary</field>
+            <field name="inherit_id" ref="crm.crm_case_kanban_view_leads"/>
+            <field name="arch" type="xml">
+                <xpath expr="//kanban" position="inside">
+                    <field name="probability" invisible="1"/>
+                </xpath>
+                <xpath expr="//div" position="attributes">
+                    <attribute name="t-att-data-ribbon">((
+                        !record.active.raw_value and
+                        record.probability and
+                        record.probability.raw_value == 0
+                    ) or (
+                        record.active.raw_value and
+                        record.probability and
+                        record.probability.raw_value == 100
+                    ))</attribute>
+                </xpath>
+                <xpath expr="//div[hasclass('o_dropdown_kanban')]" position="before">
+                    <div class="ribbon ribbon-top-right"
+                        attrs="{'invisible': ['|', ('probability', '&gt;', 0), ('active', '=', True)]}">
+                        <span class="bg-danger">Lost</span>
+                    </div>
+                    <div class="ribbon ribbon-top-right"
+                        attrs="{'invisible': [('probability', '&lt;', 100)]}">
+                        <span class="bg-success">Won</span>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="crm_lead_action_duplicates_view_kanban" model="ir.actions.act_window.view">
+            <field name="view_mode">kanban</field>
+            <field name="view_id" ref="crm_lead_view_kanban_duplicates"/>
+            <field name="act_window_id" ref="crm_lead_action_duplicates"/>
         </record>
 
         <record id="menu_crm_opportunities" model="ir.ui.menu">

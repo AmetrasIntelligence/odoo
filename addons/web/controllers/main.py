@@ -34,7 +34,7 @@ import odoo
 import odoo.modules.registry
 from odoo.api import call_kw, Environment
 from odoo.modules import get_module_path, get_resource_path
-from odoo.tools import image_process, topological_sort, html_escape, pycompat, ustr, apply_inheritance_specs, lazy_property, float_repr
+from odoo.tools import image_process, topological_sort, html_escape, pycompat, ustr, apply_inheritance_specs, lazy_property, float_repr, osutil
 from odoo.tools.mimetypes import guess_mimetype
 from odoo.tools.translate import _
 from odoo.tools.misc import str2bool, xlsxwriter, file_open
@@ -102,6 +102,7 @@ db_list = http.db_list
 
 db_monodb = http.db_monodb
 
+def clean(name): return name.replace('\x3c', '')
 def serialize_exception(f):
     @functools.wraps(f)
     def wrap(*args, **kwargs):
@@ -1433,15 +1434,16 @@ class Binary(http.Controller):
         '/web/content/<string:xmlid>/<string:filename>',
         '/web/content/<int:id>',
         '/web/content/<int:id>/<string:filename>',
-        '/web/content/<int:id>-<string:unique>',
-        '/web/content/<int:id>-<string:unique>/<string:filename>',
-        '/web/content/<int:id>-<string:unique>/<path:extra>/<string:filename>',
         '/web/content/<string:model>/<int:id>/<string:field>',
         '/web/content/<string:model>/<int:id>/<string:field>/<string:filename>'], type='http', auth="public")
     def content_common(self, xmlid=None, model='ir.attachment', id=None, field='datas',
                        filename=None, filename_field='name', unique=None, mimetype=None,
                        download=None, data=None, token=None, access_token=None, **kw):
 
+        return self._get_content_common(xmlid=xmlid, model=model, id=id, field=field, unique=unique, filename=filename,
+            filename_field=filename_field, download=download, mimetype=mimetype, access_token=access_token, token=token)
+
+    def _get_content_common(self, xmlid, model, id, field, unique, filename, filename_field, download, mimetype, access_token, token):
         status, headers, content = request.env['ir.http'].binary_content(
             xmlid=xmlid, model=model, id=id, field=field, unique=unique, filename=filename,
             filename_field=filename_field, download=download, mimetype=mimetype, access_token=access_token)
@@ -1455,6 +1457,19 @@ class Binary(http.Controller):
         if token:
             response.set_cookie('fileToken', token)
         return response
+
+    @http.route(['/web/assets/debug/<string:filename>',
+        '/web/assets/debug/<path:extra>/<string:filename>',
+        '/web/assets/<int:id>/<string:filename>',
+        '/web/assets/<int:id>-<string:unique>/<string:filename>',
+        '/web/assets/<int:id>-<string:unique>/<path:extra>/<string:filename>'], type='http', auth="public")
+    def content_assets(self, id=None, filename=None, unique=None, extra=None, **kw):
+        id = id or request.env['ir.attachment'].sudo().search_read(
+            [('url', '=like', f'/web/assets/%/{extra}/{filename}' if extra else f'/web/assets/%/{filename}')],
+             fields=['id'], limit=1)[0]['id']
+
+        return self._get_content_common(xmlid=None, model='ir.attachment', id=id, field='datas', unique=unique, filename=filename,
+            filename_field='name', download=None, mimetype=None, access_token=None, token=None)
 
     @http.route(['/web/partner_image',
         '/web/partner_image/<int:rec_id>',
@@ -1566,7 +1581,7 @@ class Binary(http.Controller):
                     ufile.content_type, pycompat.to_text(base64.b64encode(data))]
         except Exception as e:
             args = [False, str(e)]
-        return out % (json.dumps(callback), json.dumps(args)) if callback else json.dumps(args)
+        return out % (json.dumps(clean(callback)), json.dumps(args)) if callback else json.dumps(args)
 
     @http.route('/web/binary/upload_attachment', type='http', auth="user")
     @serialize_exception
@@ -1599,12 +1614,12 @@ class Binary(http.Controller):
                 _logger.exception("Fail to upload attachment %s" % ufile.filename)
             else:
                 args.append({
-                    'filename': filename,
+                    'filename': clean(filename),
                     'mimetype': ufile.content_type,
                     'id': attachment.id,
                     'size': attachment.file_size
                 })
-        return out % (json.dumps(callback), json.dumps(args)) if callback else json.dumps(args)
+        return out % (json.dumps(clean(callback)), json.dumps(args)) if callback else json.dumps(args)
 
     @http.route([
         '/web/binary/company_logo',
@@ -1883,11 +1898,19 @@ class ExportFormat(object):
         """ Provides the format's content type """
         raise NotImplementedError()
 
-    def filename(self, base):
-        """ Creates a valid filename for the format (with extension) from the
-         provided base name (exension-less)
-        """
+    @property
+    def extension(self):
         raise NotImplementedError()
+
+    def filename(self, base):
+        """ Creates a filename *without extension* for the item / format of
+        model ``base``.
+        """
+        if base not in request.env:
+            return base
+
+        model_description = request.env['ir.model']._get(base).name
+        return f"{model_description} ({base})"
 
     def from_data(self, fields, rows):
         """ Conversion method from Odoo's export data to whatever the
@@ -1938,9 +1961,11 @@ class ExportFormat(object):
             export_data = records.export_data(field_names).get('datas',[])
             response_data = self.from_data(columns_headers, export_data)
 
+        # TODO: call `clean_filename` directly in `content_disposition`?
         return request.make_response(response_data,
             headers=[('Content-Disposition',
-                            content_disposition(self.filename(model))),
+                            content_disposition(
+                                osutil.clean_filename(self.filename(model) + self.extension))),
                      ('Content-Type', self.content_type)],
             cookies={'fileToken': token})
 
@@ -1955,8 +1980,9 @@ class CSVExport(ExportFormat, http.Controller):
     def content_type(self):
         return 'text/csv;charset=utf8'
 
-    def filename(self, base):
-        return base + '.csv'
+    @property
+    def extension(self):
+        return '.csv'
 
     def from_group_data(self, fields, groups):
         raise UserError(_("Exporting grouped data to csv is not supported."))
@@ -1990,8 +2016,9 @@ class ExcelExport(ExportFormat, http.Controller):
     def content_type(self):
         return 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
 
-    def filename(self, base):
-        return base + '.xlsx'
+    @property
+    def extension(self):
+        return '.xlsx'
 
     def from_group_data(self, fields, groups):
         with GroupExportXlsxWriter(fields, groups.count) as xlsx_writer:

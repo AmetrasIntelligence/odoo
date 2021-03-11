@@ -98,15 +98,41 @@ class AccountEdiFormat(models.Model):
         # TO OVERRIDE
         return False
 
-    def _support_batching(self):
+    def _support_batching(self, move, state, company):
         """ Indicate if we can send multiple documents in the same time to the web services.
         If True, the _post_%s_edi methods will get multiple documents in the same time.
         Otherwise, these methods will be called with only one record at a time.
 
-        :returns: True if batching is supported, False otherwise.
+        :param move:    The move that we are trying to batch.
+        :param state:   The EDI state of the move.
+        :param company: The company with which we are sending the EDI.
+        :returns:       True if batching is supported, False otherwise.
         """
         # TO OVERRIDE
         return False
+
+    def _get_batch_key(self, move, state):
+        """ Returns a tuple that will be used as key to partitionnate the invoices/payments when creating batches
+        with multiple invoices/payments.
+        The type of move (invoice or payment), its company_id, its edi state and the edi_format are used by default, if
+        no further partition is needed for this format, this method should return (). It's not necessary to repeat those
+        fields in the custom key.
+
+        :param move:    The move to batch.
+        :param state:   The EDI state of the move.
+        :returns: The key to be used when partitionning the batches.
+        """
+        move.ensure_one()
+        return ()
+
+    def _check_move_configuration(self, move):
+        """ Checks the move and relevant records for potential error (missing data, etc).
+
+        :param move:    The move to check.
+        :returns:       A list of error messages.
+        """
+        # TO OVERRIDE
+        return []
 
     def _post_invoice_edi(self, invoices, test_mode=False):
         """ Create the file content representing the invoice (and calls web services if necessary).
@@ -116,6 +142,7 @@ class AccountEdiFormat(models.Model):
         :returns:           A dictionary with the invoice as key and as value, another dictionary:
         * attachment:       The attachment representing the invoice in this edi_format if the edi was successfully posted.
         * error:            An error if the edi was not successfully posted.
+        * blocking_level:   (optional) How bad is the error (how should the edi flow be blocked ?)
         """
         # TO OVERRIDE
         self.ensure_one()
@@ -129,6 +156,7 @@ class AccountEdiFormat(models.Model):
         :returns:           A dictionary with the invoice as key and as value, another dictionary:
         * success:          True if the invoice was successfully cancelled.
         * error:            An error if the edi was not successfully cancelled.
+        * blocking_level:   (optional) How bad is the error (how should the edi flow be blocked ?)
         """
         # TO OVERRIDE
         self.ensure_one()
@@ -142,6 +170,7 @@ class AccountEdiFormat(models.Model):
         :returns:           A dictionary with the payment as key and as value, another dictionary:
         * attachment:       The attachment representing the payment in this edi_format if the edi was successfully posted.
         * error:            An error if the edi was not successfully posted.
+        * blocking_level:   (optional) How bad is the error (how should the edi flow be blocked ?)
         """
         # TO OVERRIDE
         self.ensure_one()
@@ -155,6 +184,7 @@ class AccountEdiFormat(models.Model):
         :returns:         A dictionary with the payment as key and as value, another dictionary:
         * success:        True if the payment was successfully cancelled.
         * error:          An error if the edi was not successfully cancelled.
+        * blocking_level: (optional) How bad is the error (how should the edi flow be blocked ?)
         """
         # TO OVERRIDE
         self.ensure_one()
@@ -224,7 +254,7 @@ class AccountEdiFormat(models.Model):
         """
         attachments = []
         for edi_format in self:
-            attachment = invoice.edi_document_ids.filtered(lambda d: d.edi_format_id == edi_format).attachment_id
+            attachment = invoice._get_edi_attachment(edi_format)
             if attachment and edi_format._is_embedding_to_invoice_pdf_needed():
                 datas = base64.b64decode(attachment.with_context(bin_size=False).datas)
                 attachments.append({'name': attachment.name, 'datas': datas})
@@ -352,10 +382,6 @@ class AccountEdiFormat(models.Model):
                 except Exception as e:
                     _logger.exception("Error importing attachment \"%s\" as invoice with format \"%s\"", file_data['filename'], edi_format.name, str(e))
                 if res:
-                    if 'extract_state' in res:
-                        # Bypass the OCR to prevent overwriting data when an EDI was succesfully imported.
-                        # TODO : remove when we integrate the OCR to the EDI flow.
-                        res.write({'extract_state': 'done'})
                     return res
         return self.env['account.move']
 
@@ -377,10 +403,6 @@ class AccountEdiFormat(models.Model):
                 except Exception as e:
                     _logger.exception("Error importing attachment \"%s\" as invoice with format \"%s\"", file_data['filename'], edi_format.name, str(e))
                 if res:
-                    if 'extract_state' in res:
-                        # Bypass the OCR to prevent overwriting data when an EDI was succesfully imported.
-                        # TODO : remove when we integrate the OCR to the EDI flow.
-                        res.write({'extract_state': 'done'})
                     return res
         return self.env['account.move']
 
@@ -419,7 +441,7 @@ class AccountEdiFormat(models.Model):
 
         :param name:            The name of the product.
         :param default_code:    The default_code of the product.
-        :param bracode:         The barcode of the product.
+        :param barcode:         The barcode of the product.
         :returns:               A product or an empty recordset if not found.
         '''
         domains = []
@@ -455,3 +477,12 @@ class AccountEdiFormat(models.Model):
         :returns:    A currency or an empty recordset if not found.
         '''
         return self.env['res.currency'].search([('name', '=', code.upper())], limit=1)
+
+    ####################################################
+    # Other helpers
+    ####################################################
+
+    @api.model
+    def _format_error_message(self, error_title, errors):
+        bullet_list_msg = ''.join('<li>%s</li>' % msg for msg in errors)
+        return '%s<ul>%s</ul>' % (error_title, bullet_list_msg)

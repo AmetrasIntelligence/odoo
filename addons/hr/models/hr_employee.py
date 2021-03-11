@@ -43,6 +43,7 @@ class HrEmployeePrivate(models.Model):
         compute='_compute_is_address_home_a_company',
     )
     private_email = fields.Char(related='address_home_id.email', string="Private Email", groups="hr.group_hr_user")
+    lang = fields.Selection(related='address_home_id.lang', string="Lang", groups="hr.group_hr_user", readonly=False)
     country_id = fields.Many2one(
         'res.country', 'Nationality (Country)', groups="hr.group_hr_user", tracking=True)
     gender = fields.Selection([
@@ -90,6 +91,7 @@ class HrEmployeePrivate(models.Model):
     emergency_phone = fields.Char("Emergency Phone", groups="hr.group_hr_user", tracking=True)
     km_home_work = fields.Integer(string="Home-Work Distance", groups="hr.group_hr_user", tracking=True)
 
+    job_id = fields.Many2one(tracking=True)
     image_1920 = fields.Image()
     phone = fields.Char(related='address_home_id.phone', related_sudo=False, readonly=False, string="Private Phone", groups="hr.group_hr_user")
     # employee in company
@@ -103,12 +105,9 @@ class HrEmployeePrivate(models.Model):
     color = fields.Integer('Color Index', default=0, groups="hr.group_hr_user")
     barcode = fields.Char(string="Badge ID", help="ID used for employee identification.", groups="hr.group_hr_user", copy=False)
     pin = fields.Char(string="PIN", groups="hr.group_hr_user", copy=False,
-        help="PIN used to Check In/Out in Kiosk Mode (if enabled in Configuration).")
-    departure_reason = fields.Selection([
-        ('fired', 'Fired'),
-        ('resigned', 'Resigned'),
-        ('retired', 'Retired')
-    ], string="Departure Reason", groups="hr.group_hr_user", copy=False, tracking=True)
+        help="PIN used to Check In/Out in the Kiosk Mode of the Attendance application (if enabled in Configuration) and to change the cashier in the Point of Sale application.")
+    departure_reason_id = fields.Many2one("hr.departure.reason", string="Departure Reason", groups="hr.group_hr_user",
+                                          copy=False, tracking=True, ondelete='restrict')
     departure_description = fields.Text(string="Additional Information", groups="hr.group_hr_user", copy=False, tracking=True)
     departure_date = fields.Date(string="Departure Date", groups="hr.group_hr_user", copy=False, tracking=True)
     message_main_attachment_id = fields.Many2one(groups="hr.group_hr_user")
@@ -271,7 +270,7 @@ class HrEmployeePrivate(models.Model):
         res = super(HrEmployeePrivate, self).toggle_active()
         unarchived_employees = self.filtered(lambda employee: employee.active)
         unarchived_employees.write({
-            'departure_reason': False,
+            'departure_reason_id': False,
             'departure_description': False,
             'departure_date': False
         })

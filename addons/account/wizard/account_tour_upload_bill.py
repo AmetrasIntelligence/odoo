@@ -8,9 +8,11 @@ import base64
 class AccountTourUploadBill(models.TransientModel):
     _name = 'account.tour.upload.bill'
     _description = 'Account tour upload bill'
-    _inherits = {'mail.compose.message': 'composer_id'}
 
-    composer_id = fields.Many2one('mail.compose.message', string='Composer', required=True, ondelete='cascade')
+    attachment_ids = fields.Many2many(
+        comodel_name='ir.attachment',
+        relation='account_tour_upload_bill_ir_attachments_rel',
+        string='Attachments')
 
     selection = fields.Selection(
         selection=lambda self: self._selection_values(),
@@ -26,9 +28,9 @@ class AccountTourUploadBill(models.TransientModel):
         journal_alias = self.env['account.journal'] \
             .search([('type', '=', 'purchase'), ('company_id', '=', self.env.company.id)], limit=1)
 
-        return [('sample', 'Try a sample vendor bill'),
-                ('upload', 'Upload your own bill'),
-                ('email', 'Or send a bill to %s@%s' % (journal_alias.alias_name, journal_alias.alias_domain))]
+        return [('sample', _('Try a sample vendor bill')),
+                ('upload', _('Upload your own bill')),
+                ('email', _('Or send a bill to %s@%s', journal_alias.alias_name, journal_alias.alias_domain))]
 
     def _compute_sample_bill_image(self):
         """ Retrieve sample bill with facturx to speed up onboarding """
@@ -63,7 +65,7 @@ class AccountTourUploadBill(models.TransientModel):
                 'res_model': 'mail.compose.message',
                 'datas': self.sample_bill_preview,
             })
-            bill = purchase_journal.with_context(default_journal_id=purchase_journal.id, default_move_type='in_invoice')._create_invoice_from_single_attachment(attachment)
+            bill = purchase_journal.with_context(default_journal_id=purchase_journal.id, default_move_type='in_invoice').create_invoice_from_attachment(attachment.ids)
             if self.selection == 'sample':
                 bill.write({
                     'partner_id': self.env.ref('base.main_partner').id,

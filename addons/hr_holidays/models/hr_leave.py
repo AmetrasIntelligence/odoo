@@ -74,7 +74,7 @@ class HolidaysRequest(models.Model):
         defaults = self._default_get_request_parameters(defaults)
 
         if 'holiday_status_id' in fields_list and not defaults.get('holiday_status_id'):
-            lt = self.env['hr.leave.type'].search([('valid', '=', True)], limit=1)
+            lt = self.env['hr.leave.type'].search([('valid', '=', True), ('allocation_type', 'in', ['no', 'fixed_allocation'])], limit=1)
 
             if lt:
                 defaults['holiday_status_id'] = lt.id
@@ -84,10 +84,10 @@ class HolidaysRequest(models.Model):
             defaults['state'] = 'confirm' if lt and lt.leave_validation_type != 'no_validation' else 'draft'
 
         now = fields.Datetime.now()
-        defaults.update({
-            'date_from': now,
-            'date_to': now,
-        })
+        if 'date_from' not in defaults:
+            defaults.update({'date_from': now})
+        if 'date_to' not in defaults:
+            defaults.update({'date_to': now})
         return defaults
 
     def _default_get_request_parameters(self, values):
@@ -792,7 +792,7 @@ class HolidaysRequest(models.Model):
         is_officer = self.env.user.has_group('hr_holidays.group_hr_holidays_user') or self.env.is_superuser()
 
         if not is_officer:
-            if any(hol.date_from.date() < fields.Date.today() for hol in self):
+            if any(hol.date_from.date() < fields.Date.today() and hol.employee_id.leave_manager_id != self.env.user for hol in self):
                 raise UserError(_('You must have manager rights to modify/validate a time off that already begun'))
 
         employee_id = values.get('employee_id', False)
@@ -820,10 +820,13 @@ class HolidaysRequest(models.Model):
     def _unlink_if_correct_states(self):
         error_message = _('You cannot delete a time off which is in %s state')
         state_description_values = {elem[0]: elem[1] for elem in self._fields['state']._description_selection(self.env)}
+        now = fields.Datetime.now()
 
         if not self.user_has_groups('hr_holidays.group_hr_holidays_user'):
-            if any(hol.state != 'draft' for hol in self):
+            if any(hol.state not in ['draft', 'confirm'] for hol in self):
                 raise UserError(error_message % state_description_values.get(self[:1].state))
+            if any(hol.date_from < now for hol in self):
+                raise UserError(_('You cannot delete a time off which is in the past'))
         else:
             for holiday in self.filtered(lambda holiday: holiday.state not in ['draft', 'cancel', 'confirm']):
                 raise UserError(error_message % (state_description_values.get(holiday.state),))
@@ -853,7 +856,7 @@ class HolidaysRequest(models.Model):
         :returns: created `resource.calendar.leaves`
         """
         vals_list = [{
-            'name': leave.name,
+            'name': _("%s: Time Off", leave.employee_id.name),
             'date_from': leave.date_from,
             'holiday_id': leave.id,
             'date_to': leave.date_to,
@@ -903,6 +906,7 @@ class HolidaysRequest(models.Model):
                 'privacy': 'confidential',
                 'event_tz': holiday.user_id.tz,
                 'activity_ids': [(5, 0, 0)],
+                'res_id': holiday.id,
             }
             # Add the partner_id (if exist) as an attendee
             if holiday.user_id and holiday.user_id.partner_id:
@@ -1171,14 +1175,10 @@ class HolidaysRequest(models.Model):
     def activity_update(self):
         to_clean, to_do = self.env['hr.leave'], self.env['hr.leave']
         for holiday in self:
-            start = UTC.localize(holiday.date_from).astimezone(timezone(holiday.employee_id.tz or 'UTC'))
-            end = UTC.localize(holiday.date_to).astimezone(timezone(holiday.employee_id.tz or 'UTC'))
             note = _(
-                'New %(leave_type)s Request created by %(user)s from %(start)s to %(end)s',
+                'New %(leave_type)s Request created by %(user)s',
                 leave_type=holiday.holiday_status_id.name,
                 user=holiday.create_uid.name,
-                start=start,
-                end=end
             )
             if holiday.state == 'draft':
                 to_clean |= holiday

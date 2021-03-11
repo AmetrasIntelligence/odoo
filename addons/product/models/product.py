@@ -60,6 +60,11 @@ class ProductCategory(models.Model):
     def name_create(self, name):
         return self.create({'name': name}).name_get()[0]
 
+    def name_get(self):
+        if not self.env.context.get('hierarchical_naming', True):
+            return [(record.id, record.name) for record in self]
+        return super().name_get()
+
     @api.ondelete(at_uninstall=False)
     def _unlink_except_default_category(self):
         main_category = self.env.ref('product.product_category_all')
@@ -149,30 +154,33 @@ class ProductProduct(models.Model):
         for record in self:
             record.can_image_variant_1024_be_zoomed = record.image_variant_1920 and tools.is_image_size_above(record.image_variant_1920, record.image_variant_1024)
 
+    def _set_template_field(self, template_field, variant_field):
+        for record in self:
+            if (
+                # We are trying to remove a field from the variant even though it is already
+                # not set on the variant, remove it from the template instead.
+                (not record[template_field] and not record[variant_field])
+                # We are trying to add a field to the variant, but the template field is
+                # not set, write on the template instead.
+                or (record[template_field] and not record.product_tmpl_id[template_field])
+                # There is only one variant, always write on the template.
+                or self.search_count([
+                    ('product_tmpl_id', '=', record.product_tmpl_id.id),
+                    ('active', '=', True),
+                ]) <= 1
+            ):
+                record[variant_field] = False
+                record.product_tmpl_id[template_field] = record[template_field]
+            else:
+                record[variant_field] = record[template_field]
+
     def _compute_image_1920(self):
         """Get the image from the template if no image is set on the variant."""
         for record in self:
             record.image_1920 = record.image_variant_1920 or record.product_tmpl_id.image_1920
 
     def _set_image_1920(self):
-        for record in self:
-            if (
-                # We are trying to remove an image even though it is already
-                # not set, remove it from the template instead.
-                not record.image_1920 and not record.image_variant_1920 or
-                # We are trying to add an image, but the template image is
-                # not set, write on the template instead.
-                record.image_1920 and not record.product_tmpl_id.image_1920 or
-                # There is only one variant, always write on the template.
-                self.search_count([
-                    ('product_tmpl_id', '=', record.product_tmpl_id.id),
-                    ('active', '=', True),
-                ]) <= 1
-            ):
-                record.image_variant_1920 = False
-                record.product_tmpl_id.image_1920 = record.image_1920
-            else:
-                record.image_variant_1920 = record.image_1920
+        return self._set_template_field('image_1920', 'image_variant_1920')
 
     def _compute_image_1024(self):
         """Get the image from the template if no image is set on the variant."""
@@ -369,6 +377,9 @@ class ProductProduct(models.Model):
         self.clear_caches()
         return res
 
+    def _filter_to_unlink(self, check_access=True):
+        return self
+
     def _unlink_or_archive(self, check_access=True):
         """Unlink or archive products.
         Try in batch as much as possible because it is much faster.
@@ -386,6 +397,10 @@ class ProductProduct(models.Model):
             self.check_access_rights('write')
             self.check_access_rule('write')
             self = self.sudo()
+            to_unlink = self._filter_to_unlink()
+            to_archive = self - to_unlink
+            to_archive.write({'active': False})
+            self = to_unlink
 
         try:
             with self.env.cr.savepoint(), tools.mute_logger('odoo.sql_db'):

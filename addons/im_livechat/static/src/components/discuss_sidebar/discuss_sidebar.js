@@ -7,7 +7,7 @@ const components = {
 
 const { patch } = require('web.utils');
 
-patch(components.DiscussSidebar, 'im_livechat/static/src/components/discuss_sidebar/discuss_sidebar.js', {
+patch(components.DiscussSidebar.prototype, 'im_livechat/static/src/components/discuss_sidebar/discuss_sidebar.js', {
 
     //--------------------------------------------------------------------------
     // Public
@@ -69,15 +69,8 @@ patch(components.DiscussSidebar, 'im_livechat/static/src/components/discuss_side
      */
     _useStoreSelector(props) {
         return Object.assign(this._super(...arguments), {
-            allOrderedAndPinnedLivechats: this.env.models['mail.thread']
-                .all(thread =>
-                    thread.channel_type === 'livechat' &&
-                    thread.isPinned &&
-                    thread.model === 'mail.channel'
-                )
-                .map(livechat => livechat.__state),
-            }
-        );
+            allOrderedAndPinnedLivechats: this.quickSearchOrderedAndPinnedLivechatList(),
+        });
     },
 
 });

@@ -813,7 +813,7 @@ const BaseSelectionUserValueWidget = UserValueWidget.extend({
             if (widget.isActive()) {
                 // Only one select item can be true at a time, we consider the
                 // last one if multiple would be active.
-                return;
+                break;
             }
         }
         await _super(...arguments);
@@ -932,6 +932,14 @@ const SelectUserValueWidget = BaseSelectionUserValueWidget.extend({
         this.menuTogglerEl.textContent = textContent;
         if (this.menuTogglerItemEl) {
             this.menuTogglerEl.appendChild(this.menuTogglerItemEl);
+        }
+    },
+    /**
+     * @override
+     */
+    enable() {
+        if (!this.menuTogglerEl.classList.contains('active')) {
+            this.menuTogglerEl.click();
         }
     },
 
@@ -1241,8 +1249,12 @@ const ColorpickerUserValueWidget = SelectUserValueWidget.extend({
         const _super = this._super.bind(this);
         const args = arguments;
 
-        // Pre-instanciate the color palette widget
-        await this._renderColorPalette();
+        // TODO review in master, this was done in stable to keep the speed fix
+        // as stable as possible (to have a reference to a widget even if not a
+        // colorPalette widget).
+        this.colorPalette = new Widget(this);
+        this.colorPalette.getColorNames = () => [];
+        await this.colorPalette.appendTo(document.createDocumentFragment());
 
         // Build the select element with a custom span to hold the color preview
         this.colorPreviewEl = document.createElement('span');
@@ -1257,6 +1269,22 @@ const ColorpickerUserValueWidget = SelectUserValueWidget.extend({
     // Public
     //--------------------------------------------------------------------------
 
+    /**
+     * @override
+     */
+    open: function () {
+        if (this.colorPalette.setSelectedColor) {
+            this.colorPalette.setSelectedColor(this._value);
+        } else {
+            // TODO review in master, this does async stuff. Maybe the open
+            // method should now be async. This is not really robust as the
+            // colorPalette can be used without it to be fully rendered but
+            // the use of the saved promise where we can should mitigate that
+            // issue.
+            this._colorPaletteRenderPromise = this._renderColorPalette();
+        }
+        this._super(...arguments);
+    },
     /**
      * @override
      */
@@ -1320,7 +1348,7 @@ const ColorpickerUserValueWidget = SelectUserValueWidget.extend({
     async setValue(color) {
         await this._super(...arguments);
 
-        await this._renderColorPalette();
+        await this._colorPaletteRenderPromise;
 
         const classes = weUtils.computeColorClasses(this.colorPalette.getColorNames());
         this.colorPreviewEl.classList.remove(...classes);
@@ -1441,15 +1469,14 @@ const MediapickerUserValueWidget = UserValueWidget.extend({
      */
     async start() {
         await this._super(...arguments);
-        const iconEl = document.createElement('i');
         if (this.options.dataAttributes.buttonStyle) {
+            const iconEl = document.createElement('i');
             iconEl.classList.add('fa', 'fa-fw', 'fa-camera');
+            $(this.containerEl).prepend(iconEl);
         } else {
-            iconEl.classList.add('fa', 'fa-fw', 'fa-refresh', 'mr-1');
-            this.el.classList.add('o_we_no_toggle');
+            this.el.classList.add('o_we_no_toggle', 'o_we_bg_success');
             this.containerEl.textContent = _t("Replace");
         }
-        $(this.containerEl).prepend(iconEl);
     },
 
     //--------------------------------------------------------------------------
@@ -1554,7 +1581,9 @@ const DatetimePickerUserValueWidget = InputUserValueWidget.extend({
         'blur input': '_onInputBlur',
         'change.datetimepicker': '_onDateTimePickerChange',
         'error.datetimepicker': '_onDateTimePickerError',
+        'input input': '_onDateInputInput',
     },
+    defaultFormat: time.getLangDatetimeFormat(),
 
     /**
      * @override
@@ -1585,9 +1614,10 @@ const DatetimePickerUserValueWidget = InputUserValueWidget.extend({
                 close: 'fa fa-check primary',
             },
             locale: moment.locale(),
-            format: time.getLangDatetimeFormat(),
+            format: this.defaultFormat,
             sideBySide: true,
             buttons: {
+                showClear: true,
                 showClose: true,
                 showToday: true,
             },
@@ -1623,6 +1653,14 @@ const DatetimePickerUserValueWidget = InputUserValueWidget.extend({
     /**
      * @override
      */
+    getMethodsParams: function () {
+        return _.extend(this._super(...arguments), {
+            format: this.defaultFormat,
+        });
+    },
+    /**
+     * @override
+     */
     isPreviewed: function () {
         return this._super(...arguments) || !!$(this.inputEl).data('datetimepicker').widget;
     },
@@ -1631,9 +1669,12 @@ const DatetimePickerUserValueWidget = InputUserValueWidget.extend({
      */
     async setValue() {
         await this._super(...arguments);
-        let momentObj = moment.unix(this._value);
-        if (!momentObj.isValid()) {
-            momentObj = moment();
+        let momentObj = null;
+        if (this._value) {
+            momentObj = moment.unix(this._value);
+            if (!momentObj.isValid()) {
+                momentObj = moment();
+            }
         }
         this.__libInput++;
         $(this.inputEl).datetimepicker('date', momentObj);
@@ -1653,9 +1694,10 @@ const DatetimePickerUserValueWidget = InputUserValueWidget.extend({
             return;
         }
         if (!ev.date || !ev.date.isValid()) {
-            return;
+            this._value = '';
+        } else {
+            this._value = ev.date.unix().toString();
         }
-        this._value = ev.date.unix().toString();
         this._onUserValuePreview(ev);
     },
     /**
@@ -1664,6 +1706,289 @@ const DatetimePickerUserValueWidget = InputUserValueWidget.extend({
      */
     _onDateTimePickerError: function (ev) {
         ev.stopPropagation();
+    },
+    /**
+     * Handles the clear button of the datepicker.
+     *
+     * @private
+     * @param {Event} ev
+     */
+    _onDateInputInput(ev) {
+        if (!this.inputEl.value) {
+            this._value = '';
+            this._onUserValuePreview(ev);
+        }
+    },
+});
+
+const DatePickerUserValueWidget = DatetimePickerUserValueWidget.extend({
+    defaultFormat: time.getLangDateFormat(),
+});
+
+const ListUserValueWidget = UserValueWidget.extend({
+    tagName: 'we-list',
+    events: {
+        'click we-button.o_we_select_remove_option': '_onRemoveItemClick',
+        'click we-button.o_we_list_add_optional': '_onAddCustomItemClick',
+        'click we-button.o_we_list_add_existing': '_onAddExistingItemClick',
+        'click we-select.o_we_user_value_widget': '_onAddItemSelectClick',
+        'click we-button.o_we_checkbox_wrapper': '_onAddItemCheckboxClick',
+        'input table input': '_onListItemInput',
+    },
+
+    /**
+     * @override
+     */
+    start() {
+        this.addItemTitle = this.el.dataset.addItemTitle;
+        if (this.el.dataset.availableRecords) {
+            this.records = JSON.parse(this.el.dataset.availableRecords);
+        } else {
+            this.isCustom = true;
+        }
+        if (this.el.dataset.defaults || this.el.dataset.hasDefault) {
+            this.hasDefault = this.el.dataset.hasDefault || 'unique';
+            this.selected = this.el.dataset.defaults ? JSON.parse(this.el.dataset.defaults) : [];
+        }
+        this.listTable = document.createElement('table');
+        const tableWrapper = document.createElement('div');
+        tableWrapper.classList.add('o_we_table_wrapper');
+        tableWrapper.appendChild(this.listTable);
+        this.containerEl.appendChild(tableWrapper);
+        this.el.classList.add('o_we_fw');
+        this._makeListItemsSortable();
+    },
+
+    //--------------------------------------------------------------------------
+    // Public
+    //--------------------------------------------------------------------------
+
+    /**
+     * @override
+     */
+    getMethodsParams() {
+        return _.extend(this._super(...arguments), {
+            records: this.records,
+        });
+    },
+    /**
+     * @override
+     */
+    setValue() {
+        this._super(...arguments);
+        const currentValues = JSON.parse(this._value);
+        this.listTable.innerHTML = '';
+        if (this.addItemButton) {
+            this.addItemButton.remove();
+        }
+        if (this.isCustom) {
+            this.addItemButton = document.createElement('we-button');
+            this.addItemButton.textContent = this.addItemTitle;
+            this.addItemButton.classList.add('o_we_list_add_optional');
+            currentValues.forEach(el => this._addItemToTable(el, el));
+        } else {
+            // TODO use a real select widget ?
+            this.addItemButton = document.createElement('we-select');
+            this.addItemButton.classList.add('o_we_user_value_widget');
+            const divEl = document.createElement('div');
+            this.addItemButton.appendChild(divEl);
+            const togglerEl = document.createElement('we-toggler');
+            togglerEl.textContent = this.addItemTitle;
+            divEl.appendChild(togglerEl);
+            this.selectMenuEl = document.createElement('we-selection-items');
+            divEl.appendChild(this.selectMenuEl);
+            currentValues.forEach(val => {
+                const record = this.records.find(rec => rec.id === val);
+                this._addItemToTable(record.id, record.display_name);
+            });
+            this._reloadSelectDropdown(currentValues);
+        }
+        this.containerEl.appendChild(this.addItemButton);
+        this._makeListItemsSortable();
+    },
+
+    //----------------------------------------------------------------------
+    // Private
+    //----------------------------------------------------------------------
+
+    /**
+     * @private
+     * @param {string || integer} id
+     * @param {string} text
+     */
+    _addItemToTable(id, text) {
+        if (text === undefined) {
+            text = _t("Item");
+        }
+        const draggableEl = document.createElement('we-button');
+        draggableEl.classList.add('o_we_drag_handle', 'o_we_link', 'fa', 'fa-fw', 'fa-arrows');
+        draggableEl.dataset.noPreview = 'true';
+        const inputEl = document.createElement('input');
+        inputEl.type = 'text';
+        if (text) {
+            inputEl.value = text;
+        }
+        if (!this.isCustom && id) {
+            inputEl.name = id;
+        }
+        inputEl.disabled = !this.isCustom;
+        const trEl = document.createElement('tr');
+        const buttonEl = document.createElement('we-button');
+        buttonEl.classList.add('o_we_select_remove_option', 'o_we_link', 'o_we_text_danger', 'fa', 'fa-fw', 'fa-minus');
+        buttonEl.dataset.removeOption = id;
+        const draggableTdEl = document.createElement('td');
+        const inputTdEl = document.createElement('td');
+        const buttonTdEl = document.createElement('td');
+        draggableTdEl.appendChild(draggableEl);
+        trEl.appendChild(draggableTdEl);
+        inputTdEl.appendChild(inputEl);
+        trEl.appendChild(inputTdEl);
+        if (this.hasDefault) {
+            const checkboxEl = document.createElement('we-button');
+            checkboxEl.classList.add('o_we_user_value_widget', 'o_we_checkbox_wrapper');
+            if (this.selected.includes(id)) {
+                checkboxEl.classList.add('active');
+            }
+            const div = document.createElement('div');
+            const checkbox = document.createElement('we-checkbox');
+            div.appendChild(checkbox);
+            checkboxEl.appendChild(div);
+            checkboxEl.appendChild(checkbox);
+            const checkboxTdEl = document.createElement('td');
+            checkboxTdEl.appendChild(checkboxEl);
+            trEl.appendChild(checkboxTdEl);
+        }
+        buttonTdEl.appendChild(buttonEl);
+        trEl.appendChild(buttonTdEl);
+        this.listTable.appendChild(trEl);
+        if (this.isCustom) {
+            inputEl.focus();
+        }
+    },
+    /**
+     * @private
+     */
+    _makeListItemsSortable() {
+        $(this.listTable).sortable({
+            axis: 'y',
+            handle: '.o_we_drag_handle',
+            items: 'tr',
+            cursor: 'move',
+            opacity: 0.6,
+            stop: (event, ui) => {
+                this._notifyCurrentState();
+            },
+        });
+    },
+    /**
+     * @private
+     */
+    _notifyCurrentState() {
+        const values = [...this.listTable.querySelectorAll('input')].map(el => {
+            const id = this.isCustom ? el.value : el.name;
+            const idInt = parseInt(id);
+            return isNaN(idInt) ? id : idInt;
+        });
+        if (this.isCustom) {
+            this.records = values.map(v => ({id: v, display_name: v}));
+        }
+        if (this.hasDefault) {
+            const checkboxes = [...this.listTable.querySelectorAll('we-button.o_we_checkbox_wrapper.active')];
+            this.selected = checkboxes.map(el => {
+                const input = el.parentElement.previousSibling.firstChild;
+                const id = input.name || input.value;
+                const idInt = parseInt(id);
+                return isNaN(idInt) ? id : idInt;
+            });
+            this.records.forEach(r => {
+                r.selected = this.selected.includes(r.id);
+            });
+        }
+        this._value = JSON.stringify(values);
+        this.notifyValueChange(true);
+        if (!this.isCustom) {
+            this._reloadSelectDropdown(values);
+        }
+    },
+    /**
+     * @private
+     * @param {Array} currentValues
+     */
+    _reloadSelectDropdown(currentValues) {
+        this.selectMenuEl.innerHTML = '';
+        this.records.forEach(el => {
+            if (!currentValues.includes(el.id)) {
+                const option = document.createElement('we-button');
+                option.classList.add('o_we_list_add_existing');
+                option.dataset.addOption = el.id;
+                option.dataset.noPreview = 'true';
+                const divEl = document.createElement('div');
+                divEl.textContent = el.display_name;
+                option.appendChild(divEl);
+                this.selectMenuEl.appendChild(option);
+            }
+        });
+        if (!this.selectMenuEl.children.length) {
+            const title = document.createElement('we-title');
+            title.textContent = _("No more records");
+            this.selectMenuEl.appendChild(title);
+        }
+    },
+
+    //--------------------------------------------------------------------------
+    // Handlers
+    //--------------------------------------------------------------------------
+
+    /**
+     * @private
+     */
+    _onAddCustomItemClick() {
+        this._addItemToTable();
+        this._notifyCurrentState();
+    },
+    /**
+     * @private
+     * @param {Event} ev
+     */
+    _onAddExistingItemClick(ev) {
+        const value = ev.currentTarget.dataset.addOption;
+        this._addItemToTable(value, ev.currentTarget.textContent);
+        this._notifyCurrentState();
+    },
+    /**
+     * @private
+     * @param {Event} ev
+     */
+    _onAddItemSelectClick(ev) {
+        ev.currentTarget.querySelector('we-toggler').classList.toggle('active');
+    },
+    /**
+     * @private
+     * @param {Event} ev
+     */
+    _onAddItemCheckboxClick: function (ev) {
+        const isActive = ev.currentTarget.classList.contains('active');
+        if (this.hasDefault === 'unique') {
+            this.listTable.querySelectorAll('we-button.o_we_checkbox_wrapper.active').forEach(el => el.classList.remove('active'));
+        }
+        ev.currentTarget.classList.toggle('active', !isActive);
+        this._notifyCurrentState();
+    },
+    /**
+     * @private
+     */
+    _onListItemInput() {
+        this._notifyCurrentState();
+    },
+    /**
+     * @private
+     * @param {Event} ev
+     */
+    _onRemoveItemClick(ev) {
+        if (ev.target.closest('table').querySelectorAll('tr').length > 1) {
+            ev.target.closest('tr').remove();
+            this._notifyCurrentState();
+        }
     },
 });
 
@@ -1687,9 +2012,7 @@ const RangeUserValueWidget = UnitUserValueWidget.extend({
             [min, max] = [max, min];
             this.input.classList.add('o_we_inverted_range');
         }
-        this.input.setAttribute('min', min);
-        this.input.setAttribute('max', max);
-        this.input.setAttribute('step', step);
+        this._setInputAttributes(min, max, step);
         this.containerEl.appendChild(this.input);
     },
 
@@ -1700,9 +2023,31 @@ const RangeUserValueWidget = UnitUserValueWidget.extend({
     /**
      * @override
      */
+    loadMethodsData(validMethodNames) {
+        this._super(...arguments);
+        for (const methodName of this._methodsNames) {
+            const possibleValues = this._methodsParams.optionsPossibleValues[methodName];
+            if (possibleValues.length > 1) {
+                this._setInputAttributes(0, possibleValues.length - 1, 1);
+                break;
+            }
+        }
+    },
+    /**
+     * @override
+     */
     async setValue(value, methodName) {
         await this._super(...arguments);
-        this.input.value = this._value;
+        const possibleValues = this._methodsParams.optionsPossibleValues[methodName];
+        this.input.value = possibleValues.length > 1 ? possibleValues.indexOf(value) : this._value;
+    },
+    /**
+     * @override
+     */
+    getValue(methodName) {
+        const value = this._super(...arguments);
+        const possibleValues = this._methodsParams.optionsPossibleValues[methodName];
+        return possibleValues.length > 1 ? possibleValues[+value] : value;
     },
 
     //--------------------------------------------------------------------------
@@ -1715,6 +2060,14 @@ const RangeUserValueWidget = UnitUserValueWidget.extend({
     _onInputChange(ev) {
         this._value = ev.target.value;
         this._onUserValueChange(ev);
+    },
+    /**
+     * @private
+     */
+    _setInputAttributes(min, max, step) {
+        this.input.setAttribute('min', min);
+        this.input.setAttribute('max', max);
+        this.input.setAttribute('step', step);
     },
 });
 
@@ -1807,6 +2160,237 @@ const SelectPagerUserValueWidget = SelectUserValueWidget.extend({
     },
 });
 
+const Many2oneUserValueWidget = SelectUserValueWidget.extend({
+    className: (SelectUserValueWidget.prototype.className || '') + ' o_we_many2one',
+    events: Object.assign({}, SelectUserValueWidget.prototype.events, {
+        'input .o_we_m2o_search input': '_onSearchInput',
+        'keydown .o_we_m2o_search input': '_onSearchKeydown',
+        'click .o_we_m2o_search_more': '_onSearchMoreClick',
+    }),
+    // Data-attributes that will be read into `this.options` on init and not
+    // transfered to inner buttons.
+    configAttributes: ['model', 'fields', 'limit', 'domain', 'callWith'],
+
+    /**
+     * @override
+     */
+    init(parent, title, options, $target) {
+        this.afterSearch = [];
+        this.displayNameCache = {};
+        const {dataAttributes} = options;
+        Object.assign(options, {
+            limit: '5',
+            fields: '[]',
+            domain: '[]',
+            callWith: 'id',
+        });
+        this.configAttributes.forEach(attr => {
+            if (dataAttributes.hasOwnProperty(attr)) {
+                options[attr] = dataAttributes[attr];
+                delete dataAttributes[attr];
+            }
+        });
+        options.limit = parseInt(options.limit);
+        options.fields = JSON.parse(options.fields);
+        if (!options.fields.includes('display_name')) {
+            options.fields.push('display_name');
+        }
+        options.domain = JSON.parse(options.domain);
+        return this._super(...arguments);
+    },
+    /**
+     * @override
+     */
+    async start() {
+        await this._super(...arguments);
+
+        this.inputEl = document.createElement('input');
+        this.inputEl.setAttribute('placeholder', _t("Search for records..."));
+        const searchEl = document.createElement('div');
+        searchEl.classList.add('o_we_m2o_search');
+        searchEl.appendChild(this.inputEl);
+        this.menuEl.appendChild(searchEl);
+
+        this.searchMore = document.createElement('div');
+        this.searchMore.classList.add('o_we_m2o_search_more');
+        this.searchMore.textContent = _t("Search more...");
+        this.searchMore.title = _t("Search to show more records");
+        return this._search('');
+    },
+    /**
+     * @override
+     */
+    async setValue(value, methodName) {
+        await this._super(...arguments);
+        // The currently selected value is not present in the search, need to read
+        // its display name.
+        if (this.menuTogglerEl.textContent === '/' && value !== '') {
+            this.menuTogglerEl.textContent = await this._getDisplayName(parseInt(value));
+        }
+    },
+    /**
+     * Prevents double widget instanciation for we-buttons that have been
+     * created manually by _search (container widgets will have their innner
+     * html searched for userValueWidgets to instanciate during option startup)
+     *
+     * @override
+     */
+    isContainer() {
+        return false;
+    },
+
+    //--------------------------------------------------------------------------
+    // Private
+    //--------------------------------------------------------------------------
+
+    /**
+     * Searches the database for corresponding records and updates the dropdown
+     *
+     * @private
+     */
+    async _search(needle) {
+        const recTuples = await this._rpc({
+            model: this.options.model,
+            method: 'name_search',
+            kwargs: {
+                name: needle,
+                args: this.options.domain,
+                operator: "ilike",
+                limit: this.options.limit + 1,
+            },
+        });
+        const records = await this._rpc({
+            model: this.options.model,
+            method: 'read',
+            args: [recTuples.map(([id, _name]) => id), this.options.fields],
+        });
+        records.forEach(record => {
+            this.displayNameCache[record.id] = record.display_name;
+        });
+
+        await Promise.all(records.slice(0, this.options.limit).map(async record => {
+            // Copy over the data-attributes from the main element, and default the value
+            // to the callWith field of the record so that if it's a method, it will
+            // be called with that value
+            const buttonDataAttributes = Object.assign({}, this.options.dataAttributes);
+            Object.keys(buttonDataAttributes).forEach(key => {
+                buttonDataAttributes[key] = buttonDataAttributes[key] || record[this.options.callWith];
+            });
+            const buttonWidget = new ButtonUserValueWidget(this, undefined, {
+                dataAttributes: Object.assign({recordData: JSON.stringify(record)}, buttonDataAttributes),
+                childNodes: [document.createTextNode(record.display_name)],
+            }, this.$target);
+            this.registerSubWidget(buttonWidget);
+            await buttonWidget.appendTo(this.menuEl);
+            if (this._methodsNames) {
+                buttonWidget.loadMethodsData(this._methodsNames);
+            }
+        }));
+        // Load methodsData for new buttons if possible. It will not be possible
+        // when the widget is first created (as this._methodsNames will be undefined)
+        // but the snippetOption lifecycle will load the methods data explicitely
+        // just after creating the widget
+        if (this._methodsNames) {
+            this._methodsNames.forEach(methodName => {
+                this.setValue(this._value, methodName);
+            });
+        }
+
+        const hasMore = records.length > this.options.limit;
+        if (hasMore) {
+            this.menuEl.appendChild(this.searchMore);
+            this.searchMore.classList.remove('d-none');
+        } else {
+            this.searchMore.classList.add('d-none');
+        }
+
+        this.waitingForSearch = false;
+        this.afterSearch.forEach(cb => cb());
+        this.afterSearch = [];
+    },
+    /**
+     * Returns the display name for a given record.
+     *
+     * @private
+     */
+    async _getDisplayName(recordId) {
+        if (!this.displayNameCache.hasOwnProperty(recordId)) {
+            this.displayNameCache[recordId] = (await this._rpc({
+                model: this.options.model,
+                method: 'read',
+                args: [[recordId], ['display_name']],
+            }))[0].display_name;
+        }
+        return this.displayNameCache[recordId];
+    },
+
+    //--------------------------------------------------------------------------
+    // Handlers
+    //--------------------------------------------------------------------------
+
+    /**
+     * @override
+     */
+    _onClick(ev) {
+        // Prevent dropdown from closing if you click on the search or has_more
+        if (ev.target.closest('.o_we_m2o_search_more, .o_we_m2o_search')) {
+            ev.stopPropagation();
+            return;
+        }
+        return this._super(...arguments);
+    },
+    /**
+     * Handles changes to the search bar.
+     *
+     * @private
+     */
+    _onSearchInput(ev) {
+        // maybe there is a concurrency primitive we can use instead of manual record-keeping?
+        // Basically we want to queue the enter action to go after the current search if there
+        // is one that is ongoing (ie currently waiting for the debounce or RPC)
+        clearTimeout(this.searchIntent);
+        this.waitingForSearch = true;
+        this.searchIntent = setTimeout(() => {
+            this._userValueWidgets.forEach(widget => {
+                if (widget.isPreviewed()) {
+                    widget.notifyValueChange('reset');
+                }
+                widget.destroy();
+            });
+            this._search(ev.target.value);
+        }, 500);
+    },
+    /**
+     * Selects the first option when pressing enter in the search input.
+     *
+     * @private
+     */
+    _onSearchKeydown(ev) {
+        if (ev.which !== $.ui.keyCode.ENTER) {
+            return;
+        }
+        const action = () => {
+            const firstButton = this.menuEl.querySelector('we-button');
+            if (firstButton) {
+                firstButton.click();
+            }
+        };
+        if (this.waitingForSearch) {
+            this.afterSearch.push(action);
+        } else {
+            action();
+        }
+    },
+    /**
+     * Focuses the search input when clicking on the "Search more..." button.
+     *
+     * @private
+     */
+    _onSearchMoreClick(ev) {
+        this.inputEl.focus();
+    },
+});
+
 const userValueWidgetsRegistry = {
     'we-button': ButtonUserValueWidget,
     'we-checkbox': CheckboxUserValueWidget,
@@ -1816,10 +2400,13 @@ const userValueWidgetsRegistry = {
     'we-multi': MultiUserValueWidget,
     'we-colorpicker': ColorpickerUserValueWidget,
     'we-datetimepicker': DatetimePickerUserValueWidget,
+    'we-datepicker': DatePickerUserValueWidget,
+    'we-list': ListUserValueWidget,
     'we-imagepicker': ImagepickerUserValueWidget,
     'we-videopicker': VideopickerUserValueWidget,
     'we-range': RangeUserValueWidget,
     'we-select-pager': SelectPagerUserValueWidget,
+    'we-many2one': Many2oneUserValueWidget,
 };
 
 /**
@@ -2025,7 +2612,27 @@ const SnippetOptionWidget = Widget.extend({
      */
     selectAttribute: function (previewMode, widgetValue, params) {
         const value = this._selectAttributeHelper(widgetValue, params);
-        this.$target[0].setAttribute(params.attributeName, value);
+        if (value) {
+            this.$target[0].setAttribute(params.attributeName, value);
+        } else {
+            this.$target[0].removeAttribute(params.attributeName);
+        }
+    },
+    /**
+     * Default option method which allows to select a value and set it on the
+     * associated snippet as a property. The name of the property is
+     * given by the propertyName parameter.
+     *
+     * @param {boolean} previewMode - @see this.selectClass
+     * @param {string} widgetValue
+     * @param {Object} params
+     */
+    selectProperty: function (previewMode, widgetValue, params) {
+        if (!params.propertyName) {
+            throw new Error('Property name missing');
+        }
+        const value = this._selectValueHelper(widgetValue, params);
+        this.$target[0][params.propertyName] = value;
     },
     /**
      * Default option method which allows to select a value and set it on the
@@ -2678,14 +3285,22 @@ const SnippetOptionWidget = Widget.extend({
     /**
      * Used to handle attribute or data attribute value change
      *
-     * @param {string} value
-     * @param {Object} params
-     * @returns {string|undefined}
+     * @see this._selectValueHelper for parameters
      */
     _selectAttributeHelper(value, params) {
         if (!params.attributeName) {
             throw new Error('Attribute name missing');
         }
+        return this._selectValueHelper(value, params);
+    },
+    /**
+     * Used to handle value of a select
+     *
+     * @param {string} value
+     * @param {Object} params
+     * @returns {string|undefined}
+     */
+    _selectValueHelper(value, params) {
         if (params.saveUnit && !params.withUnit) {
             // Values that come with an unit are saved without unit as
             // data-attribute unless told otherwise.
@@ -3254,11 +3869,7 @@ const ImageHandlerOption = SnippetOptionWidget.extend({
      * @override
      */
     _computeVisibility() {
-        const img = this._getImg();
-        if (!['image/jpeg', 'image/png'].includes(img.dataset.mimetype)) {
-            return false;
-        }
-        const src = img.getAttribute('src');
+        const src = this._getImg().getAttribute('src');
         return src && src !== '/';
     },
     /**
@@ -3303,23 +3914,35 @@ const ImageHandlerOption = SnippetOptionWidget.extend({
      * @override
      */
     async _renderCustomXML(uiFragment) {
-        if (!this.originalSrc) {
+        const isLocalURL = href => new URL(href, window.location.origin).origin === window.location.origin;
+
+        const img = this._getImg();
+        if (!this.originalSrc || !['image/png', 'image/jpeg'].includes(img.dataset.mimetype)) {
             return [...uiFragment.childNodes].forEach(node => {
                 if (node.matches('.o_we_external_warning')) {
                     node.classList.remove('d-none');
+                    if (isLocalURL(img.getAttribute('src'))) {
+                        const title = node.querySelector('we-title');
+                        title.textContent = ` ${_t("Quality options unavailable")}`;
+                        $(title).prepend('<i class="fa fa-warning" />');
+                        if (img.dataset.mimetype) {
+                            title.setAttribute('title', _t("Only PNG and JPEG images support quality options and image filtering"));
+                        } else {
+                            title.setAttribute('title', _t("Due to technical limitations, you can only change optimization settings on this image by choosing it again in the media-dialog or reuploading it (double click on the image)"));
+                        }
+                    }
                 } else {
                     node.remove();
                 }
             });
         }
-        const img = this._getImg();
         const $select = $(uiFragment).find('we-select[data-name=width_select_opt]');
         (await this._computeAvailableWidths()).forEach(([value, label]) => {
             $select.append(`<we-button data-select-width="${value}">${label}</we-button>`);
         });
-        const qualityRange = uiFragment.querySelector('we-range');
+
         if (img.dataset.mimetype !== 'image/jpeg') {
-            qualityRange.remove();
+            uiFragment.querySelector('we-range[data-set-quality]').remove();
         }
     },
     /**
@@ -3369,8 +3992,11 @@ const ImageHandlerOption = SnippetOptionWidget.extend({
 
         if (update) {
             img.classList.add('o_modified_image_to_save');
-            return loadImage(dataURL, img);
+            const loadedImg = await loadImage(dataURL, img);
+            this._applyImage(loadedImg);
+            return loadedImg;
         }
+        return img;
     },
     /**
      * Loads the image's attachment info.
@@ -3416,6 +4042,14 @@ const ImageHandlerOption = SnippetOptionWidget.extend({
      * @returns {Int} the maximum width at which the image can be displayed
      */
     _computeMaxDisplayWidth() {},
+    /**
+     * Use the processed image when it's needed in the DOM.
+     *
+     * @private
+     * @abstract
+     * @param {HTMLImageElement} img
+     */
+    _applyImage(img) {},
 });
 
 /**
@@ -3555,22 +4189,16 @@ registry.BackgroundOptimize = ImageHandlerOption.extend({
         return 1920;
     },
     /**
-     * @override
-     */
-    async _applyOptions(update = true) {
-        await this._super(...arguments);
-        if (update) {
-            this.$target.css('background-image', `url('${this._getImg().getAttribute('src')}')`);
-        }
-    },
-    /**
      * Initializes this.img to an image with the background image url as src.
      *
      * @override
      */
     async _loadImageInfo() {
         this.img = new Image();
-        Object.entries(this.$target[0].dataset).forEach(([key, value]) => {
+        Object.entries(this.$target[0].dataset).filter(([key]) =>
+            // Avoid copying dynamic editor attributes
+            !['oeId','oeModel', 'oeField', 'oeXpath', 'noteId'].includes(key)
+        ).forEach(([key, value]) => {
             this.img.dataset[key] = value;
         });
         const src = getBgImageURL(this.$target[0]);
@@ -3593,6 +4221,12 @@ registry.BackgroundOptimize = ImageHandlerOption.extend({
             'flex': '0 0 0', // But force no forced width
             'margin-left': 'auto',
         });
+    },
+    /**
+     * @override
+     */
+    _applyImage(img) {
+        this.$target.css('background-image', `url('${img.getAttribute('src')}')`);
     },
 
     //--------------------------------------------------------------------------
@@ -3903,7 +4537,7 @@ registry.BackgroundShape = SnippetOptionWidget.extend({
      */
     shape(previewMode, widgetValue, params) {
         this._handlePreviewState(previewMode, () => {
-            return {shape: widgetValue, colors: this._getDefaultColors(), flip: []};
+            return {shape: widgetValue, colors: this._getImplicitColors(widgetValue, this._getShapeData().colors), flip: []};
         });
     },
     /**
@@ -4122,7 +4756,7 @@ registry.BackgroundShape = SnippetOptionWidget.extend({
         const defaultColors = this._getDefaultColors();
         const shapeData = Object.assign(this._getShapeData(), newData);
         const areColorsDefault = Object.entries(shapeData.colors).every(([colorName, colorValue]) => {
-            return colorValue.toLowerCase() === defaultColors[colorName].toLowerCase();
+            return defaultColors[colorName] && colorValue.toLowerCase() === defaultColors[colorName].toLowerCase();
         });
         if (areColorsDefault) {
             delete shapeData.colors;
@@ -4173,7 +4807,7 @@ registry.BackgroundShape = SnippetOptionWidget.extend({
     _getShapeData(target = this.$target[0]) {
         const defaultData = {
             shape: '',
-            colors: this._getDefaultColors(),
+            colors: this._getDefaultColors($(target)),
             flip: [],
         };
         const json = target.dataset.oeShapeData;
@@ -4183,9 +4817,11 @@ registry.BackgroundShape = SnippetOptionWidget.extend({
      * Returns the default colors for the currently selected shape.
      *
      * @private
+     * @param {jQueryElement} [$target=this.$target] the target on which to read
+     *   the shape data.
      */
-    _getDefaultColors() {
-        const $shapeContainer = this.$target.find('> .o_we_shape')
+    _getDefaultColors($target = this.$target) {
+        const $shapeContainer = $target.find('> .o_we_shape')
             .clone()
             .addClass('d-none')
             // Needs to be in document for bg-image class to take effect
@@ -4199,6 +4835,44 @@ registry.BackgroundShape = SnippetOptionWidget.extend({
         }
         const url = new URL(shapeSrc, window.location.origin);
         return Object.fromEntries(url.searchParams.entries());
+    },
+    /**
+     * Returns the default colors for the a shape in the selector.
+     *
+     * @private
+     * @param {String} shapeId identifier of the shape
+     */
+    _getShapeDefaultColors(shapeId) {
+        const $shapeContainer = this.$el.find(".o_we_shape_menu we-button[data-shape='" + shapeId + "'] div.o_we_shape");
+        const shapeContainer = $shapeContainer[0];
+        const shapeSrc = shapeContainer && getBgImageURL(shapeContainer);
+        const url = new URL(shapeSrc, window.location.origin);
+        return Object.fromEntries(url.searchParams.entries());
+    },
+    /**
+     * Returns the implicit colors for the currently selected shape.
+     *
+     * The implicit colors are use upon shape selection. They are computed as:
+     * - the default colors
+     * - patched with each set of colors of previous siblings shape
+     * - patched with the colors of the previously selected shape
+     * - filtered to only keep the colors involved in the current shape
+     *
+     * @private
+     * @param {String} shape identifier of the selected shape
+     * @param {Object} previousColors colors of the shape before its replacement
+     */
+    _getImplicitColors(shape, previousColors) {
+        const defaultColors = this._getShapeDefaultColors(shape);
+        let colors = previousColors || {};
+        let sibling = this.$target[0].previousElementSibling;
+        while (sibling) {
+            colors = Object.assign(this._getShapeData(sibling).colors || {}, colors);
+            sibling = sibling.previousElementSibling;
+        }
+        const defaultKeys = Object.keys(defaultColors);
+        colors = Object.assign(defaultColors, colors);
+        return _.pick(colors, defaultKeys);
     },
     /**
      * Toggles whether there is a shape or not, to be called from bg toggler.
@@ -4222,7 +4896,11 @@ registry.BackgroundShape = SnippetOptionWidget.extend({
             } else {
                 shapeToSelect = possibleShapes[1];
             }
-            return this._handlePreviewState(false, () => ({shape: shapeToSelect}));
+            this.trigger_up('snippet_edition_request', {exec: () => {
+                // options for shape will only be available after _toggleShape() returned
+                this._requestUserValueWidgets('bg_shape_opt')[0].enable();
+            }});
+            return this._handlePreviewState(false, () => ({shape: shapeToSelect, colors: this._getImplicitColors(shapeToSelect)}));
         }
     },
 });
@@ -4407,6 +5085,8 @@ registry.BackgroundPosition = SnippetOptionWidget.extend({
 
         // Create empty clone of $target with same display size, make it draggable and give it a tooltip.
         this.$bgDragger = this.$target.clone().empty();
+        // Prevent clone from being seen as editor if target is editor (eg. background on root tag)
+        this.$bgDragger.removeClass('o_editable');
         // Some CSS child selector rules will not be applied since the clone has a different container from $target.
         // The background-attachment property should be the same in both $target & $bgDragger, this will keep the
         // preview more "wysiwyg" instead of getting different result when bg position saved (e.g. parallax snippet)
@@ -4520,7 +5200,7 @@ registry.BackgroundPosition = SnippetOptionWidget.extend({
      * @private
      */
     _onDocumentClicked: function (ev) {
-        if (!ev.target.closest('.o_we_background_position_overlay')) {
+        if (!$(ev.target).closest('.o_we_background_position_overlay')) {
             this._toggleBgOverlay(false);
         }
     },
@@ -4569,54 +5249,62 @@ registry.ColoredLevelBackground = registry.BackgroundToggler.extend({
  * @todo replace this mechanism with real backend m2o field ?
  */
 registry.many2one = SnippetOptionWidget.extend({
-    xmlDependencies: ['/web_editor/static/src/xml/snippets.xml'],
     /**
      * @override
      */
-    start: function () {
-        var self = this;
-
-        this.Model = this.$target.data('oe-many2one-model');
-        this.ID = +this.$target.data('oe-many2one-id');
-
-        // create search button and bind search bar
-        this.$btn = $(qweb.render('web_editor.many2one.button'))
-            .prependTo(this.$el);
-
-        this.$ul = this.$btn.find('ul');
-        this.$search = this.$ul.find('li:first');
-        this.$search.find('input').on('mousedown click mouseup keyup keydown', function (e) {
-            e.stopPropagation();
-        });
-
-        // move menu item
-        setTimeout(function () {
-            self.$btn.find('a').on('click', function (e) {
-                self._clear();
-            });
-        }, 0);
-
-        // bind search input
-        this.$search.find('input')
-            .focus()
-            .on('keyup', function (e) {
-                self.$overlay.removeClass('o_overlay_hidden');
-                self._findExisting($(this).val());
-            });
-
-        // bind result
-        this.$ul.on('click', 'li:not(:first) a', function (e) {
-            self._selectRecord($(e.currentTarget));
-        });
-
-        return this._super.apply(this, arguments);
+    async willStart() {
+        const {oeMany2oneModel, oeMany2oneId} = this.$target[0].dataset;
+        this.fields = ['name', 'display_name'];
+        return Promise.all([
+            this._super(...arguments),
+            this._rpc({
+                model: oeMany2oneModel,
+                method: 'read',
+                args: [[parseInt(oeMany2oneId)], this.fields],
+            }).then(([initialRecord]) => {
+                this.initialRecord = initialRecord;
+            }),
+        ]);
     },
+
+    //--------------------------------------------------------------------------
+    // Options
+    //--------------------------------------------------------------------------
+
     /**
-     * @override
+     * @see this.selectClass for params
      */
-    onFocus: function () {
-        this.$target.attr('contentEditable', 'false');
-        this._clear();
+    async changeRecord(previewMode, widgetValue, params) {
+        const target = this.$target[0];
+        if (previewMode === 'reset') {
+            // Have to set the jQ data because it's used to update the record in other
+            // parts of the page, but have to set the dataset because used for saving.
+            this.$target.data('oeMany2oneId', this.prevId);
+            target.dataset.oeMany2oneId = this.prevId;
+            this.$target.empty().append(this.$prevContents);
+            return this._rerenderContacts(this.prevId, this.prevRecordName);
+        }
+
+        const record = JSON.parse(params.recordData);
+        if (previewMode === true) {
+            this.prevId = parseInt(target.dataset.oeMany2oneId);
+            this.$prevContents = this.$target.contents();
+            this.prevRecordName = this.prevRecordName || this.initialRecord.name;
+        }
+
+        this.$target.data('oeMany2oneId', record.id);
+        target.dataset.oeMany2oneId = record.id;
+
+        if (target.dataset.oeType !== 'contact') {
+            target.textContent = record.name;
+        }
+        await this._rerenderContacts(record.id, record.name);
+
+        if (previewMode === false) {
+            this.prevId = record.id;
+            this.$prevContents = this.$target.contents();
+            this.prevRecordName = record.name;
+        }
     },
 
     //--------------------------------------------------------------------------
@@ -4624,102 +5312,68 @@ registry.many2one = SnippetOptionWidget.extend({
     //--------------------------------------------------------------------------
 
     /**
-     * Removes the input value and suggestions.
-     *
-     * @private
+     * @override
      */
-    _clear: function () {
-        var self = this;
-        this.$search.siblings().remove();
-        self.$search.find('input').val('');
-        setTimeout(function () {
-            self.$search.find('input').focus();
-        }, 0);
+    _computeWidgetState(methodName, params) {
+        if (methodName === 'changeRecord') {
+            return this.$target[0].dataset.oeMany2oneId;
+        }
+        return this._super(...arguments);
     },
     /**
-     * Find existing record with the given name and suggest them.
-     *
-     * @private
-     * @param {string} name
-     * @returns {Promise}
+     * @override
      */
-    _findExisting: function (name) {
-        var self = this;
-        var domain = [];
-        if (!name || !name.length) {
-            self.$search.siblings().remove();
-            return;
-        }
-        if (isNaN(+name)) {
-            if (this.Model !== 'res.partner') {
-                domain.push(['name', 'ilike', name]);
-            } else {
-                domain.push('|', ['name', 'ilike', name], ['email', 'ilike', name]);
-            }
-        } else {
-            domain.push(['id', '=', name]);
-        }
+    async _renderCustomXML(uiFragment) {
+        const many2oneWidget = document.createElement('we-many2one');
+        many2oneWidget.dataset.changeRecord = '';
 
-        return this._rpc({
-            model: this.Model,
+        const model = this.$target[0].dataset.oeMany2oneModel;
+        const [{name: modelName}] = await this._rpc({
+            model: 'ir.model',
             method: 'search_read',
-            args: [domain, this.Model === 'res.partner' ? ['name', 'display_name', 'city', 'country_id'] : ['name', 'display_name']],
-            kwargs: {
-                order: [{name: 'name', asc: false}],
-                limit: 5,
-                context: this.options.context,
-            },
-        }).then(function (result) {
-            self.$search.siblings().remove();
-            self.$search.after(qweb.render('web_editor.many2one.search', {contacts: result}));
+            args: [[['model', '=', model]], ['name']],
         });
+        many2oneWidget.setAttribute('String', modelName);
+        many2oneWidget.dataset.model = model;
+        many2oneWidget.dataset.fields = JSON.stringify(this.fields);
+        uiFragment.appendChild(many2oneWidget);
     },
     /**
-     * Selects the given suggestion and displays it the proper way.
-     *
      * @private
-     * @param {jQuery} $li
      */
-    _selectRecord: function ($li) {
-        var self = this;
-
-        this.ID = +$li.data('id');
-        this.$target.attr('data-oe-many2one-id', this.ID).data('oe-many2one-id', this.ID);
-
-        this.trigger_up('request_history_undo_record', {$target: this.$target});
-        this.$target.trigger('content_changed');
-
-        if (self.$target.data('oe-type') === 'contact') {
-            $('[data-oe-contact-options]')
-                .filter('[data-oe-model="' + self.$target.data('oe-model') + '"]')
-                .filter('[data-oe-id="' + self.$target.data('oe-id') + '"]')
-                .filter('[data-oe-field="' + self.$target.data('oe-field') + '"]')
-                .filter('[data-oe-contact-options!="' + self.$target.data('oe-contact-options') + '"]')
-                .add(self.$target)
-                .attr('data-oe-many2one-id', self.ID).data('oe-many2one-id', self.ID)
-                .each(function () {
-                    var $node = $(this);
-                    var options = $node.data('oe-contact-options');
-                    self._rpc({
+    async _rerenderContacts(contactId, defaultText) {
+        // Rerender this same field in other places in the page (with different
+        // contact-options). Many2ones with the same contact options will just
+        // copy the HTML of the current m2o on content_changed. Not sure why we
+        // only do this for contacts, or why we do this here instead of in
+        // rte.summernote.js like we do for replacing text on content_changed
+        const selector = [
+            `[data-oe-model="${this.$target.data('oe-model')}"]`,
+            `[data-oe-id="${this.$target.data('oe-id')}"]`,
+            `[data-oe-field="${this.$target.data('oe-field')}"]`,
+            `[data-oe-contact-options!='${this.$target[0].dataset.oeContactOptions}']`,
+        ].join('');
+        let $toRerender = $(selector);
+        if (this.$target[0].dataset.oeType === 'contact') {
+            $toRerender = $toRerender.add(this.$target);
+        }
+        await Promise.all($toRerender
+            .attr('data-oe-many2one-id', contactId).data('oe-many2one-id', contactId)
+            .map(async (i, node) => {
+                if (node.dataset.oeType === 'contact') {
+                    const html = await this._rpc({
                         model: 'ir.qweb.field.contact',
                         method: 'get_record_to_html',
-                        args: [[self.ID]],
-                        kwargs: {
-                            options: options,
-                            context: self.options.context,
-                        },
-                    }).then(function (html) {
-                        $node.html(html);
+                        args: [[contactId]],
+                        kwargs: {options: JSON.parse(node.dataset.oeContactOptions)},
                     });
-                });
-        } else {
-            self.$target.html($li.data('name'));
-        }
-
-        this._clear();
-    }
+                    $(node).html(html);
+                } else {
+                    node.textContent = defaultText;
+                }
+            }));
+    },
 });
-
 /**
  * Allows to display a warning message on outdated snippets.
  */
@@ -4759,72 +5413,57 @@ registry.SnippetSave = SnippetOptionWidget.extend({
      */
     saveSnippet: function (previewMode, widgetValue, params) {
         return new Promise(resolve => {
-            const dialog = new Dialog(this, {
-                title: _t("Save Your Block"),
-                size: 'small',
-                $content: $(qweb.render('web_editor.dialog.save_snippet', {
-                    currentSnippetName: _.str.sprintf(_t("Custom %s"), this.data.snippetName),
-                })),
-                buttons: [{
-                    text: _t("Save"),
-                    classes: 'btn-primary',
-                    close: true,
-                    click: async () => {
-                        const save = await new Promise(resolve => {
-                            Dialog.confirm(this, _t("To save a snippet, we need to save all your previous modifications and reload the page."), {
-                                buttons: [
-                                    {
-                                        text: _t("Save and Reload"),
-                                        classes: 'btn-primary',
-                                        close: true,
-                                        click: () => resolve(true),
-                                    }, {
-                                        text: _t("Cancel"),
-                                        close: true,
-                                        click: () => resolve(false),
-                                    }
-                                ]
+            Dialog.confirm(this, _t("To save a snippet, we need to save all your previous modifications and reload the page."), {
+                cancel_callback: () => resolve(false),
+                buttons: [
+                    {
+                        text: _t("Save and Reload"),
+                        classes: 'btn-primary',
+                        close: true,
+                        click: () => {
+                            const snippetKey = this.$target[0].dataset.snippet;
+                            let thumbnailURL;
+                            this.trigger_up('snippet_thumbnail_url_request', {
+                                key: snippetKey,
+                                onSuccess: url => thumbnailURL = url,
                             });
-                        });
-                        if (!save) {
-                            return;
+                            let context;
+                            this.trigger_up('context_get', {
+                                callback: ctx => context = ctx,
+                            });
+                            this.trigger_up('request_save', {
+                                reloadEditor: true,
+                                onSuccess: async () => {
+                                    const defaultSnippetName = _.str.sprintf(_t("Custom %s"), this.data.snippetName);
+                                    const targetCopyEl = this.$target[0].cloneNode(true);
+                                    delete targetCopyEl.dataset.name;
+                                    // By the time onSuccess is called after request_save, the
+                                    // current widget has been destroyed and is orphaned, so this._rpc
+                                    // will not work as it can't trigger_up. For this reason, we need
+                                    // to bypass the service provider and use the global RPC directly
+                                    await rpc.query({
+                                        model: 'ir.ui.view',
+                                        method: 'save_snippet',
+                                        kwargs: {
+                                            'name': defaultSnippetName,
+                                            'arch': targetCopyEl.outerHTML,
+                                            'template_key': this.options.snippets,
+                                            'snippet_key': snippetKey,
+                                            'thumbnail_url': thumbnailURL,
+                                            'context': context,
+                                        },
+                                    });
+                                },
+                            });
+                            resolve(true);
                         }
-                        const snippetKey = this.$target[0].dataset.snippet;
-                        let thumbnailURL;
-                        this.trigger_up('snippet_thumbnail_url_request', {
-                            key: snippetKey,
-                            onSuccess: url => thumbnailURL = url,
-                        });
-                        this.trigger_up('request_save', {
-                            reloadEditor: true,
-                            onSuccess: async () => {
-                                const snippetName = dialog.el.querySelector('.o_we_snippet_name_input').value;
-                                const targetCopyEl = this.$target[0].cloneNode(true);
-                                delete targetCopyEl.dataset.name;
-                                // By the time onSuccess is called after request_save, the
-                                // current widget has been destroyed and is orphaned, so this._rpc
-                                // will not work as it can't trigger_up. For this reason, we need
-                                // to bypass the service provider and use the global RPC directly
-                                await rpc.query({
-                                    model: 'ir.ui.view',
-                                    method: 'save_snippet',
-                                    kwargs: {
-                                        'name': snippetName,
-                                        'arch': targetCopyEl.outerHTML,
-                                        'template_key': this.options.snippets,
-                                        'snippet_key': snippetKey,
-                                        'thumbnail_url': thumbnailURL,
-                                    },
-                                });
-                            },
-                        });
-                    },
-                }, {
-                    text: _t("Discard"),
-                    close: true,
-                }],
-            }).open();
-            dialog.on('closed', this, () => resolve());
+                    }, {
+                        text: _t("Cancel"),
+                        close: true,
+                        click: () => resolve(false),
+                    }
+                ]
+            });
         });
     },
 });

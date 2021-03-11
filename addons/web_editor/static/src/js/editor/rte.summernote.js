@@ -450,6 +450,7 @@ eventHandler.modules.linkDialog.showLinkDialog = function ($editable, $dialog, l
 
     var def = new $.Deferred();
     topBus.trigger('link_dialog_demand', {
+        options: eventHandler.modules.linkDialog.options,
         $editable: $editable,
         linkInfo: linkInfo,
         onSave: function (linkInfo) {
@@ -913,7 +914,7 @@ eventHandler.attach = function (oLayoutInfo, options) {
             if ($node.data('oe-type')) $nodes = $nodes.filter('[data-oe-type="'+$node.data('oe-type')+'"]');
             if ($node.data('oe-expression')) $nodes = $nodes.filter('[data-oe-expression="'+$node.data('oe-expression')+'"]');
             else if ($node.data('oe-xpath')) $nodes = $nodes.filter('[data-oe-xpath="'+$node.data('oe-xpath')+'"]');
-            if ($node.data('oe-contact-options')) $nodes = $nodes.filter('[data-oe-contact-options="'+$node.data('oe-contact-options')+'"]');
+            if ($node.data('oe-contact-options')) $nodes = $nodes.filter("[data-oe-contact-options='"+$node[0].dataset.oeContactOptions+"']");
 
             var nodes = $node.get();
 
@@ -1208,7 +1209,7 @@ var SummernoteManager = Class.extend(mixins.EventDispatcherMixin, ServicesMixin,
         }
         data.__alreadyDone = true;
         new weWidgets.ImageCropWidget(this, data.media)
-            .appendTo(data.$editable);
+            .appendTo(data.$editable.parent());
     },
     /**
      * Called when a demand to open a link dialog is received on the bus.

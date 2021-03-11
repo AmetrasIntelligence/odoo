@@ -245,7 +245,7 @@ exports.PosModel = Backbone.Model.extend({
         },
     },{
         model:  'account.tax',
-        fields: ['name','amount', 'price_include', 'include_base_amount', 'amount_type', 'children_tax_ids'],
+        fields: ['name','amount', 'price_include', 'include_base_amount', 'is_base_affected', 'amount_type', 'children_tax_ids'],
         domain: function(self) {return [['company_id', '=', self.company && self.company.id || false]]},
         loaded: function(self, taxes){
             self.taxes = taxes;
@@ -946,8 +946,12 @@ exports.PosModel = Backbone.Model.extend({
 
         return new Promise(function (resolve, reject) {
             self.flush_mutex.exec(function () {
-                var flushed = self._flush_orders([self.db.get_order(order_id)], opts);
-
+                var order = self.db.get_order(order_id);
+                if (order){
+                    var flushed = self._flush_orders([order], opts);
+                } else {
+                    var flushed = Promise.resolve([]);
+                }
                 flushed.then(resolve, reject);
 
                 return flushed;
@@ -1511,7 +1515,7 @@ exports.Product = Backbone.Model.extend({
     // product.pricelist.item records are loaded with a search_read
     // and were automatically sorted based on their _order by the
     // ORM. After that they are added in this order to the pricelists.
-    get_price: function(pricelist, quantity){
+    get_price: function(pricelist, quantity, price_extra){
         var self = this;
         var date = moment().startOf('day');
 
@@ -1540,6 +1544,9 @@ exports.Product = Backbone.Model.extend({
         });
 
         var price = self.lst_price;
+        if (price_extra){
+            price += price_extra;
+        }
         _.find(pricelist_items, function (rule) {
             if (rule.min_quantity && quantity < rule.min_quantity) {
                 return false;
@@ -1767,7 +1774,7 @@ exports.Orderline = Backbone.Model.extend({
 
         // just like in sale.order changing the quantity will recompute the unit price
         if(! keep_price && ! this.price_manually_set){
-            this.set_unit_price(this.product.get_price(this.order.pricelist, this.get_quantity()) + this.get_price_extra());
+            this.set_unit_price(this.product.get_price(this.order.pricelist, this.get_quantity(), this.get_price_extra()));
             this.order.fix_tax_included_price(this);
         }
         this.trigger('change', this);
@@ -2035,7 +2042,9 @@ exports.Orderline = Backbone.Model.extend({
         var taxes_ids = this.tax_ids || this.get_product().taxes_id;
         var taxes = [];
         for (var i = 0; i < taxes_ids.length; i++) {
-            taxes.push(this.pos.taxes_by_id[taxes_ids[i]]);
+            if (this.pos.taxes_by_id[taxes_ids[i]]) {
+                taxes.push(this.pos.taxes_by_id[taxes_ids[i]]);
+            }
         }
         return taxes;
     },
@@ -2209,11 +2218,16 @@ exports.Orderline = Backbone.Model.extend({
         i = 0;
         var cumulated_tax_included_amount = 0;
         _(taxes.reverse()).each(function(tax){
+            if(tax.price_include || tax.is_base_affected)
+                var tax_base_amount = base;
+            else
+                var tax_base_amount = total_excluded;
+
             if(tax.price_include && total_included_checkpoints[i] !== undefined){
                 var tax_amount = total_included_checkpoints[i] - (base + cumulated_tax_included_amount);
                 cumulated_tax_included_amount = 0;
             }else
-                var tax_amount = self._compute_all(tax, base, quantity, true);
+                var tax_amount = self._compute_all(tax, tax_base_amount, quantity, true);
 
             tax_amount = round_pr(tax_amount, currency_rounding);
 
@@ -2224,7 +2238,7 @@ exports.Orderline = Backbone.Model.extend({
                 'id': tax.id,
                 'name': tax.name,
                 'amount': sign * tax_amount,
-                'base': sign * round_pr(base, currency_rounding),
+                'base': sign * round_pr(tax_base_amount, currency_rounding),
             });
 
             if(tax.include_base_amount)
@@ -2664,6 +2678,7 @@ exports.Order = Backbone.Model.extend({
 
         this.temporary = false;     // FIXME
         this.to_invoice = false;    // FIXME
+        this.to_ship = false;
 
         var orderlines = json.lines;
         for (var i = 0; i < orderlines.length; i++) {
@@ -2714,13 +2729,13 @@ exports.Order = Backbone.Model.extend({
             pricelist_id: this.pricelist ? this.pricelist.id : false,
             partner_id: this.get_client() ? this.get_client().id : false,
             user_id: this.pos.user.id,
-            employee_id: this.pos.get_cashier().id,
             uid: this.uid,
             sequence_number: this.sequence_number,
             creation_date: this.validation_date || this.creation_date, // todo: rename creation_date in master
             fiscal_position_id: this.fiscal_position ? this.fiscal_position.id : false,
             server_id: this.server_id ? this.server_id : false,
             to_invoice: this.to_invoice ? this.to_invoice : false,
+            to_ship: this.to_ship ? this.to_ship : false,
             is_tipped: this.is_tipped || false,
             tip_amount: this.tip_amount || 0,
         };
@@ -2935,7 +2950,7 @@ exports.Order = Backbone.Model.extend({
             return ! line.price_manually_set;
         });
         _.each(lines_to_recompute, function (line) {
-            line.set_unit_price(line.product.get_price(self.pricelist, line.get_quantity()));
+            line.set_unit_price(line.product.get_price(self.pricelist, line.get_quantity(), line.get_price_extra()));
             self.fix_tax_included_price(line);
         });
         this.trigger('change');
@@ -2995,7 +3010,7 @@ exports.Order = Backbone.Model.extend({
 
         if (options.price_extra !== undefined){
             orderline.price_extra = options.price_extra;
-            orderline.set_unit_price(orderline.get_unit_price() + options.price_extra);
+            orderline.set_unit_price(orderline.product.get_price(this.pricelist, orderline.get_quantity(), options.price_extra));
             this.fix_tax_included_price(orderline);
         }
 
@@ -3431,7 +3446,15 @@ exports.Order = Backbone.Model.extend({
         }
         this.fiscal_position = newClientFiscalPosition;
         this.set_pricelist(newClientPricelist);
-    }
+    },
+    /* ---- Ship later --- */
+    set_to_ship: function(to_ship) {
+        this.assert_editable();
+        this.to_ship = to_ship;
+    },
+    is_to_ship: function(){
+        return this.to_ship;
+    },
 });
 
 var OrderCollection = Backbone.Collection.extend({

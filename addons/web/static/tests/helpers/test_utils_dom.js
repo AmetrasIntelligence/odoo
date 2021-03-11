@@ -33,6 +33,17 @@ odoo.define('web.test_utils_dom', function (require) {
         clientY: args ? args.pageY : undefined,
         view: window,
     });
+    const touchEventMapping = args => Object.assign({}, args, {
+        cancelable: true,
+        bubbles: true,
+        composed: true,
+        view: window,
+        rotation: 0.0,
+        zoom: 1.0,
+    });
+    const touchEventCancelMapping = args => Object.assign({}, touchEventMapping(args), {
+        cancelable: false,
+    });
     const noBubble = args => Object.assign({}, args, { bubbles: false });
     const onlyBubble = args => Object.assign({}, args, { bubbles: true });
     // TriggerEvent constructor/args processor mapping
@@ -75,6 +86,15 @@ odoo.define('web.test_utils_dom', function (require) {
         compositionstart: { constructor: CompositionEvent, processParameters: onlyBubble },
         compositionend: { constructor: CompositionEvent, processParameters: onlyBubble },
     };
+
+    if (typeof TouchEvent === 'function') {
+        Object.assign(EVENT_TYPES, {
+            touchstart: {constructor: TouchEvent, processParameters: touchEventMapping},
+            touchend: {constructor: TouchEvent, processParameters: touchEventMapping},
+            touchmove: {constructor: TouchEvent, processParameters: touchEventMapping},
+            touchcancel: {constructor: TouchEvent, processParameters: touchEventCancelMapping},
+        });
+    }
 
     /**
      * Check if an object is an instance of EventTarget.
@@ -533,6 +553,39 @@ odoo.define('web.test_utils_dom', function (require) {
         return el;
     }
 
+    /**
+     * Simulate a "TAP" (touch) event with a custom position x and y.
+     *
+     * @param {number} x
+     * @param {number} y
+     * @returns {HTMLElement}
+     */
+    async function triggerPositionalTapEvents(x, y) {
+        const element = document.elementFromPoint(x, y);
+        const touch = new Touch({
+            identifier: 0,
+            target: element,
+            clientX: x,
+            clientY: y,
+            pageX: x,
+            pageY: y,
+        });
+        await triggerEvent(element, 'touchstart', {
+            touches: [touch],
+            targetTouches: [touch],
+            changedTouches: [touch],
+        });
+        await triggerEvent(element, 'touchmove', {
+            touches: [touch],
+            targetTouches: [touch],
+            changedTouches: [touch],
+        });
+        await triggerEvent(element, 'touchend', {
+            changedTouches: [touch],
+        });
+        return element;
+    }
+
     return {
         click,
         clickFirst,
@@ -547,5 +600,6 @@ odoo.define('web.test_utils_dom', function (require) {
         triggerKeypressEvent,
         triggerMouseEvent,
         triggerPositionalMouseEvent,
+        triggerPositionalTapEvents,
     };
 });

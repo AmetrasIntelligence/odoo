@@ -159,6 +159,7 @@ var BasicModel = AbstractModel.extend({
         // sequentially, for example, an onchange needs to be completed before a
         // save is performed.
         this.mutex = new concurrency.Mutex();
+        this.bypassMutex = false; // never set this to true manually (see @executeDirectly)
 
         // this array is used to accumulate RPC requests done in the same call
         // stack, so that they can be batched in the minimum number of RPCs
@@ -457,6 +458,21 @@ var BasicModel = AbstractModel.extend({
                     context: context,
                 });
             });
+    },
+    /**
+     * This method allows to execute a callback for which '_notifyChanges' and
+     * 'save' will bypass the mutex. This is useful when we are leaving Odoo
+     * (closing tab/browser), and we want to quickly save pending changes (in
+     * an 'onbeforeunload' handler, which is mostly sync).
+     *
+     * This function should never be called except when we are leaving Odoo.
+     *
+     * @param {Function} callback
+     */
+    executeDirectly(callback) {
+        this.bypassMutex = true;
+        callback();
+        this.bypassMutex = false;
     },
     /**
      * For list resources, this freezes the current records order.
@@ -936,7 +952,11 @@ var BasicModel = AbstractModel.extend({
      * @returns {Promise<string[]>} list of changed fields
      */
     notifyChanges: function (record_id, changes, options) {
-        return this.mutex.exec(this._applyChange.bind(this, record_id, changes, options));
+        const notifyChanges = () => this._applyChange(record_id, changes, options);
+        if (this.bypassMutex) {
+            return notifyChanges();
+        }
+        return this.mutex.exec(notifyChanges);
     },
     /**
      * Reload all data for a given resource. At any time there is at most one
@@ -1087,7 +1107,7 @@ var BasicModel = AbstractModel.extend({
      */
     save: function (recordID, options) {
         var self = this;
-        return this.mutex.exec(function () {
+        function _save() {
             options = options || {};
             var record = self.localData[recordID];
             if (options.savePoint) {
@@ -1102,9 +1122,9 @@ var BasicModel = AbstractModel.extend({
 
                 // save the viewType of edition, so that the correct readonly modifiers
                 // can be evaluated when the record will be saved
-                _.each((record._changes || {}), function (value, fieldName) {
+                for (let fieldName in (record._changes || {})) {
                     record._editionViewType[fieldName] = options.viewType;
-                });
+                }
             }
             var shouldReload = 'reload' in options ? options.reload : true;
             var method = self.isNew(recordID) ? 'create' : 'write';
@@ -1179,7 +1199,12 @@ var BasicModel = AbstractModel.extend({
                 record._isDirty = false;
             });
             return prom;
-        });
+        }
+        if (this.bypassMutex) {
+            return _save();
+        } else {
+            return this.mutex.exec(_save);
+        }
     },
     /**
      * Manually sets a resource as dirty. This is used to notify that a field
@@ -1431,7 +1456,7 @@ var BasicModel = AbstractModel.extend({
             fieldsInfo: list.fieldsInfo,
             parentID: list.id,
             position: position,
-            viewType: list.viewType,
+            viewType: options.viewType || list.viewType,
             allowWarning: options && options.allowWarning
         };
 
@@ -1618,16 +1643,20 @@ var BasicModel = AbstractModel.extend({
         }
         var rel_data = _.pick(data, 'id', 'display_name');
 
+        const viewType = options.viewType || record.viewType;
+        const fieldInfo = record.fieldsInfo[viewType][fieldName] || {};
+        const fieldOptions = fieldInfo.options || {};
+
         // the reference field doesn't store its co-model in its field metadata
         // but directly in the data (as the co-model isn't fixed)
         var def;
-        if (rel_data.display_name === undefined) {
+        if (rel_data.display_name === undefined || fieldOptions.always_reload) {
             // TODO: refactor this to use _fetchNameGet
             def = this._rpc({
                     model: coModel,
                     method: 'name_get',
                     args: [data.id],
-                    context: record.context,
+                    context: this._getContext(record, { fieldName, viewType }),
                 })
                 .then(function (result) {
                     rel_data.display_name = result[0][1];
@@ -1666,7 +1695,8 @@ var BasicModel = AbstractModel.extend({
         const viewType = options.viewType || record.viewType;
         record._changes = record._changes || {};
 
-        _.each(values, function (val, name) {
+        for (let name in (values || {})) {
+            const val = values[name];
             var field = record.fields[name];
             if (!field) {
                 // this field is unknown so we can't process it for now (it is not
@@ -1685,7 +1715,7 @@ var BasicModel = AbstractModel.extend({
                 // if (options.firstOnChange) {
                 //     record._changes[name] = val;
                 // }
-                return;
+                continue;
             }
             if (record._rawChanges[name]) {
                 // if previous _rawChanges exists, clear them since the field is now knwon
@@ -1749,7 +1779,8 @@ var BasicModel = AbstractModel.extend({
                 } else {
                     var fieldInfo = record.fieldsInfo[viewType][name];
                     if (!fieldInfo) {
-                        return; // ignore changes of x2many not in view
+                        // ignore changes of x2many not in view
+                        continue;
                     }
                     var view = fieldInfo.views && fieldInfo.views[fieldInfo.mode];
                     list = self._makeDataPoint({
@@ -1847,7 +1878,7 @@ var BasicModel = AbstractModel.extend({
                     record._changes[name] = newValue;
                 }
             }
-        });
+        }
         return Promise.all(defs);
 
         // inner function that adds a record (based on its res_id) to a list
@@ -2003,6 +2034,7 @@ var BasicModel = AbstractModel.extend({
                     context: command.context,
                     position: command.position
                 }, options || {});
+                createOptions.viewType = fieldInfo.mode;
 
                 def = this._addX2ManyDefaultRecord(list, createOptions).then(function (ids) {
                     _.each(ids, function(id){
@@ -3679,10 +3711,10 @@ var BasicModel = AbstractModel.extend({
         // in general, the actual "company_id" field of the form should be used for m2o domains, not this fallback
         let current_company_id;
         if (session.user_context.allowed_company_ids) {
-            current_company_id = session.user_context.allowed_company_ids[0];
+            current_company_id = Object.keys(session.user_context.allowed_company_ids)[0];
         } else {
             current_company_id = session.user_companies ?
-                session.user_companies.current_company[0] :
+                session.user_companies.current_company :
                 false;
         }
         return Object.assign(
@@ -4126,7 +4158,7 @@ var BasicModel = AbstractModel.extend({
         // Hence preventing their value to crash when getting back to the originating view
         var parentRecord = params.parentID && this.localData[params.parentID].type === 'list' ? this.localData[params.parentID] : null;
 
-        if (parentRecord) {
+        if (parentRecord && parentRecord.viewType in parentRecord.fieldsInfo) {
             var originView = parentRecord.viewType;
             fieldNames = _.union(fieldNames, Object.keys(parentRecord.fieldsInfo[originView]));
             fieldsInfo[targetView] = _.defaults({}, fieldsInfo[targetView], parentRecord.fieldsInfo[originView]);

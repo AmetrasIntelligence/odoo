@@ -2,7 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo import api, fields, models, _
-
+from babel.dates import format_datetime
 
 class CouponProgram(models.Model):
     _inherit = 'coupon.program'
@@ -42,7 +42,11 @@ class CouponProgram(models.Model):
             message = {'error': _('The promotional offer is already applied on this order')}
         elif not self.active:
             message = {'error': _('Promo code is invalid')}
-        elif self.rule_date_from and self.rule_date_from > order.date_order or self.rule_date_to and order.date_order > self.rule_date_to:
+        elif self.rule_date_from and self.rule_date_from > fields.Datetime.now():
+            tzinfo = self.env.context.get('tz') or self.env.user.tz or 'UTC'
+            locale = self.env.context.get('lang') or self.env.user.lang or 'en_US'
+            message = {'error': _('This coupon is not yet usable. It will be starting from %s') % (format_datetime(self.rule_date_from, format='short', tzinfo=tzinfo, locale=locale))}
+        elif self.rule_date_to and fields.Datetime.now() > self.rule_date_to:
             message = {'error': _('Promo code is expired')}
         elif order.promo_code and self.promo_code_usage == 'code_needed':
             message = {'error': _('Promotionals codes are not cumulative.')}
@@ -87,9 +91,9 @@ class CouponProgram(models.Model):
 
     def _filter_on_validity_dates(self, order):
         return self.filtered(lambda program:
-            (not program.rule_date_from or program.rule_date_from <= order.date_order)
+            (not program.rule_date_from or program.rule_date_from <= fields.Datetime.now())
             and
-            (not program.rule_date_to or program.rule_date_to >= order.date_order)
+            (not program.rule_date_to or program.rule_date_to >= fields.Datetime.now())
         )
 
     def _filter_promo_programs_with_code(self, order):
@@ -168,6 +172,11 @@ class CouponProgram(models.Model):
             # Checking if rewards are in the SO should not be performed for rewards on_next_order
             programs += programs_curr_order._filter_not_ordered_reward_programs(order)
         return programs
+
+    def _get_discount_product_values(self):
+        res = super()._get_discount_product_values()
+        res['invoice_policy'] = 'order'
+        return res
 
     def _is_global_discount_program(self):
         self.ensure_one()

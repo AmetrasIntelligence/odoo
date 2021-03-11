@@ -1,5 +1,4 @@
-odoo.define('web.ListController', function (require) {
-"use strict";
+/** @odoo-module alias=web.ListController **/
 
 /**
  * The List Controller controls the list renderer and the list model.  Its role
@@ -7,14 +6,14 @@ odoo.define('web.ListController', function (require) {
  * and bind all extra buttons/pager in the control panel.
  */
 
-var config = require('web.config');
-var core = require('web.core');
-var BasicController = require('web.BasicController');
-var DataExport = require('web.DataExport');
-var Dialog = require('web.Dialog');
-var ListConfirmDialog = require('web.ListConfirmDialog');
-var session = require('web.session');
-const viewUtils = require('web.viewUtils');
+import config from 'web.config';
+import core from 'web.core';
+import BasicController from 'web.BasicController';
+import DataExport from 'web.DataExport';
+import Dialog from 'web.Dialog';
+import ListConfirmDialog from 'web.ListConfirmDialog';
+import session from 'web.session';
+import viewUtils from 'web.viewUtils';
 
 var _t = core._t;
 var qweb = core.qweb;
@@ -78,6 +77,15 @@ var ListController = BasicController.extend({
     // Public
     //--------------------------------------------------------------------------
 
+    /**
+     * @override
+     * @returns {Promise}
+     */
+    canBeRemoved: async function () {
+        const _super = this._super.bind(this);
+        await this.renderer.unselectRow();
+        return _super(...arguments);
+    },
     /*
      * @override
      */
@@ -406,7 +414,9 @@ var ListController = BasicController.extend({
         if (!state.count) {
             return null;
         }
-        return this._super(...arguments);
+        return Object.assign(this._super(...arguments), {
+            validate: () => this.renderer.unselectRow(),
+        });
     },
     /**
      * @override
@@ -428,8 +438,11 @@ var ListController = BasicController.extend({
             otherActionItems.push({
                 description: _t("Archive"),
                 callback: () => {
-                    Dialog.confirm(this, _t("Are you sure that you want to archive all the selected records?"), {
-                        confirm_callback: () => this._toggleArchiveState(true),
+                    const dialog = Dialog.confirm(this, _t("Are you sure that you want to archive all the selected records?"), {
+                        confirm_callback: () => {
+                            this._toggleArchiveState(true);
+                            dialog.close();
+                        },
                     });
                 }
             }, {
@@ -604,7 +617,7 @@ var ListController = BasicController.extend({
     _toggleCreateButton: function () {
         if (this.hasButtons) {
             var state = this.model.get(this.handle);
-            var createHidden = this.renderer.isEditable() && state.groupedBy.length && state.data.length;
+            var createHidden = this.editable && state.groupedBy.length && state.data.length;
             this.$buttons.find('.o_list_button_add').toggleClass('o_hidden', !!createHidden);
         }
     },
@@ -677,6 +690,17 @@ var ListController = BasicController.extend({
             this._addRecord(dataPointId);
         } else if (ev.data.onFail) {
             ev.data.onFail();
+        }
+    },
+    /**
+     * Save the row in edition, if any, when we are about to leave Odoo.
+     *
+     * @override
+     */
+    _onBeforeUnload: function () {
+        const recordId = this.renderer.getEditableRecordID();
+        if (recordId) {
+            this._urgentSave(recordId);
         }
     },
     /**
@@ -837,6 +861,9 @@ var ListController = BasicController.extend({
             ev.data.onFailure = saveMulti; // will show the appropriate dialog
             // disable onchanges as we'll save directly
             ev.data.notifyChange = false;
+            // In multi edit mode, we will be asked if we want to write on the selected
+            // records, so the force_save for readonly is not necessary.
+            ev.data.force_save = false;
         }
         this._super.apply(this, arguments);
     },
@@ -978,6 +1005,4 @@ var ListController = BasicController.extend({
     },
 });
 
-return ListController;
-
-});
+export default ListController;

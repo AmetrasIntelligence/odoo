@@ -117,6 +117,11 @@ odoo.define('point_of_sale.PaymentScreen', function (require) {
                 this.currentOrder.set_tip(parse.float(payload));
             }
         }
+        toggleIsToShip() {
+            // click_ship
+            this.currentOrder.set_to_ship(!this.currentOrder.is_to_ship());
+            this.render();
+        }
         deletePaymentLine(event) {
             const { cid } = event.detail;
             const line = this.paymentLines.find((line) => line.cid === cid);
@@ -149,7 +154,7 @@ odoo.define('point_of_sale.PaymentScreen', function (require) {
             }
         }
         async _finalizeValidation() {
-            if (this.currentOrder.is_paid_with_cash() && this.env.pos.config.iface_cashdrawer) {
+            if ((this.currentOrder.is_paid_with_cash() || this.currentOrder.get_change()) && this.env.pos.config.iface_cashdrawer) {
                 this.env.pos.proxy.printer.open_cashbox();
             }
 
@@ -220,16 +225,25 @@ odoo.define('point_of_sale.PaymentScreen', function (require) {
                 return false;
             }
 
-            if (this.currentOrder.is_to_invoice() && !this.currentOrder.get_client()) {
+            if ((this.currentOrder.is_to_invoice() || this.currentOrder.is_to_ship()) && !this.currentOrder.get_client()) {
                 const { confirmed } = await this.showPopup('ConfirmPopup', {
                     title: this.env._t('Please select the Customer'),
                     body: this.env._t(
-                        'You need to select the customer before you can invoice an order.'
+                        'You need to select the customer before you can invoice or ship an order.'
                     ),
                 });
                 if (confirmed) {
                     this.selectClient();
                 }
+                return false;
+            }
+
+            var customer = this.currentOrder.get_client()
+            if (this.currentOrder.is_to_ship() && !(customer.name && customer.street && customer.city && customer.country_id)) {
+                this.showPopup('ErrorPopup', {
+                    title: this.env._t('Incorrect address for shipping'),
+                    body: this.env._t('The selected customer needs an address.'),
+                });
                 return false;
             }
 
@@ -318,10 +332,11 @@ odoo.define('point_of_sale.PaymentScreen', function (require) {
         async _sendPaymentCancel({ detail: line }) {
             const payment_terminal = line.payment_method.payment_terminal;
             line.set_payment_status('waitingCancel');
-            try {
-                payment_terminal.send_payment_cancel(this.currentOrder, line.cid);
-            } finally {
+            const isCancelSuccessful = await payment_terminal.send_payment_cancel(this.currentOrder, line.cid);
+            if (isCancelSuccessful) {
                 line.set_payment_status('retry');
+            } else {
+                line.set_payment_status('waitingCard');
             }
         }
         async _sendPaymentReverse({ detail: line }) {

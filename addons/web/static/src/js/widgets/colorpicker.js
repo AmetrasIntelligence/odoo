@@ -36,6 +36,7 @@ var ColorpickerWidget = Widget.extend({
         this.opacitySliderFlag = false;
         this.colorComponents = {};
         this.uniqueId = _.uniqueId('colorpicker');
+        this.selectedHexValue = '';
 
         // Needs to be bound on document to work in all possible cases.
         const $document = $(document);
@@ -101,6 +102,17 @@ var ColorpickerWidget = Widget.extend({
     destroy: function () {
         this._super.apply(this, arguments);
         $(document).off(`.${this.uniqueId}`);
+    },
+    /**
+     * Sets the currently selected color
+     *
+     * @param {string} color rgb[a]
+     */
+    setSelectedColor: function (color) {
+        var rgba = ColorpickerWidget.convertCSSColorToRgba(color);
+        if (rgba) {
+            this._updateRgba(rgba.red, rgba.green, rgba.blue, rgba.opacity);
+        }
     },
 
     //--------------------------------------------------------------------------
@@ -276,6 +288,12 @@ var ColorpickerWidget = Widget.extend({
     _onClick: function (ev) {
         ev.originalEvent.__isColorpickerClick = true;
         $(ev.target).find('> .o_opacity_pointer, > .o_slider_pointer, > .o_picker_pointer').addBack('.o_opacity_pointer, .o_slider_pointer, .o_picker_pointer').focus();
+        if (ev.target.dataset.colorMethod === 'hex' && !this.selectedHexValue) {
+            ev.target.select();
+            this.selectedHexValue = ev.target.value;
+            return;
+        }
+        this.selectedHexValue = '';
     },
     /**
      * Updates color when the user starts clicking on the picker.

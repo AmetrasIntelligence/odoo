@@ -29,7 +29,7 @@ class PurchaseOrder(models.Model):
     is_shipped = fields.Boolean(compute="_compute_is_shipped")
     effective_date = fields.Datetime("Effective Date", compute='_compute_effective_date', store=True, copy=False,
         help="Completion date of the first receipt order.")
-    on_time_rate = fields.Float(related='partner_id.on_time_rate')
+    on_time_rate = fields.Float(related='partner_id.on_time_rate', compute_sudo=False)
 
     @api.depends('order_line.move_ids.picking_id')
     def _compute_picking(self):
@@ -214,7 +214,7 @@ class PurchaseOrder(models.Model):
 
     def _create_picking(self):
         StockPicking = self.env['stock.picking']
-        for order in self:
+        for order in self.filtered(lambda po: po.state in ('purchase', 'done')):
             if any(product.type in ['product', 'consu'] for product in order.order_line.product_id):
                 order = order.with_company(order.company_id)
                 pickings = order.picking_ids.filtered(lambda x: x.state not in ('done', 'cancel'))
@@ -276,6 +276,7 @@ class PurchaseOrderLine(models.Model):
     move_dest_ids = fields.One2many('stock.move', 'created_purchase_line_id', 'Downstream Moves')
     product_description_variants = fields.Char('Custom Description')
     propagate_cancel = fields.Boolean('Propagate cancellation', default=True)
+    forecasted_issue = fields.Boolean(compute='_compute_forecasted_issue')
 
     def _compute_qty_received_method(self):
         super(PurchaseOrderLine, self)._compute_qty_received_method()
@@ -316,6 +317,18 @@ class PurchaseOrderLine(models.Model):
                 line._track_qty_received(total)
                 line.qty_received = total
 
+    @api.depends('product_uom_qty', 'date_planned')
+    def _compute_forecasted_issue(self):
+        for line in self:
+            warehouse = line.order_id.picking_type_id.warehouse_id
+            line.forecasted_issue = False
+            if line.product_id:
+                virtual_available = line.product_id.with_context(warehouse=warehouse.id, to_date=line.date_planned).virtual_available
+                if line.state == 'draft':
+                    virtual_available += line.product_uom_qty
+                if virtual_available < 0:
+                    line.forecasted_issue = True
+
     @api.model_create_multi
     def create(self, vals_list):
         lines = super(PurchaseOrderLine, self).create(vals_list)
@@ -332,6 +345,20 @@ class PurchaseOrderLine(models.Model):
         if 'product_qty' in values:
             self.filtered(lambda l: l.order_id.state == 'purchase')._create_or_update_picking()
         return result
+
+    def action_product_forecast_report(self):
+        self.ensure_one()
+        action = self.product_id.action_product_forecast_report()
+        action['context'] = {
+            'active_id': self.product_id.id,
+            'active_model': 'product.product',
+            'move_to_match_ids': self.move_ids.filtered(lambda m: m.product_id == self.product_id).ids,
+            'purchase_line_to_match_id': self.id,
+        }
+        warehouse = self.order_id.picking_type_id.warehouse_id
+        if warehouse:
+            action['context']['warehouse'] = warehouse.id
+        return action
 
     # --------------------------------------------------
     # Business methods
@@ -460,15 +487,15 @@ class PurchaseOrderLine(models.Model):
 
     @api.model
     def _prepare_purchase_order_line_from_procurement(self, product_id, product_qty, product_uom, company_id, values, po):
-        line_description = product_id._get_description(po.picking_type_id)
+        line_description = ''
         if values.get('product_description_variants'):
-            line_description += values['product_description_variants']
+            line_description = values['product_description_variants']
         supplier = values.get('supplier')
         res = self._prepare_purchase_order_line(product_id, product_qty, product_uom, company_id, supplier, po)
         # We need to keep the vendor name set in _prepare_purchase_order_line. To avoid redundancy
         # in the line name, we add the line_description only if different from the product name.
         # This way, we shoud not lose any valuable information.
-        if product_id.name != line_description:
+        if line_description and product_id.name != line_description:
             res['name'] += '\n' + line_description
         res['move_dest_ids'] = [(4, x.id) for x in values.get('move_dest_ids', [])]
         res['orderpoint_id'] = values.get('orderpoint_id', False) and values.get('orderpoint_id').id
@@ -490,9 +517,9 @@ class PurchaseOrderLine(models.Model):
         args can be merged. If it returns an empty record then a new line will
         be created.
         """
-        description_picking = product_id._get_description(self.order_id.picking_type_id) or ''
+        description_picking = ''
         if values.get('product_description_variants'):
-            description_picking += values['product_description_variants']
+            description_picking = values['product_description_variants']
         lines = self.filtered(
             lambda l: l.propagate_cancel == values['propagate_cancel']
             and ((values['orderpoint_id'] and not values['move_dest_ids']) and l.orderpoint_id == values['orderpoint_id'] or True)

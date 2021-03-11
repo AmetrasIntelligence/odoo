@@ -2087,7 +2087,7 @@ class TestStockValuation(TransactionCase):
         move5.move_line_ids.qty_done = 30.0
         move5._action_done()
 
-        self.assertEqual(move5.stock_valuation_layer_ids.value, -477.6)
+        self.assertEqual(move5.stock_valuation_layer_ids.value, -477.5)
 
         # Receives 10 units but assign them to an owner, the valuation should not be impacted.
         move6 = self.env['stock.move'].create({
@@ -2106,6 +2106,24 @@ class TestStockValuation(TransactionCase):
         move6._action_done()
 
         self.assertEqual(move6.stock_valuation_layer_ids.value, 0)
+
+        # Sale 50 units @ $19.50 per unit (no stock anymore)
+        move7 = self.env['stock.move'].create({
+            'name': '50 units @ $19.50 per unit',
+            'location_id': self.stock_location.id,
+            'location_dest_id': self.customer_location.id,
+            'product_id': self.product1.id,
+            'product_uom': self.uom_unit.id,
+            'product_uom_qty': 50.0,
+        })
+        move7._action_confirm()
+        move7._action_assign()
+        move7.move_line_ids.qty_done = 50.0
+        move7._action_done()
+
+        self.assertEqual(move7.stock_valuation_layer_ids.value, -796.0)
+        self.assertAlmostEqual(self.product1.quantity_svl, 0.0)
+        self.assertAlmostEqual(self.product1.value_svl, 0.0)
 
     def test_average_perpetual_2(self):
         self.product1.categ_id.property_cost_method = 'average'
@@ -2468,6 +2486,37 @@ class TestStockValuation(TransactionCase):
 
         # increase the receipt to 15
         move1.move_line_ids.qty_done = 15
+
+    def test_average_stock_user(self):
+        """ deliver an average product as a stock user. """
+        self.product1.categ_id.property_cost_method = 'average'
+        # receive 10
+        move1 = self.env['stock.move'].create({
+            'name': 'IN 5@10',
+            'location_id': self.supplier_location.id,
+            'location_dest_id': self.stock_location.id,
+            'product_id': self.product1.id,
+            'product_uom': self.uom_unit.id,
+            'product_uom_qty': 10,
+            'price_unit': 10,
+        })
+        move1._action_confirm()
+        move1.quantity_done = 10
+        move1._action_done()
+
+        # sell 15
+        move2 = self.env['stock.move'].create({
+            'name': 'Deliver 10 units',
+            'location_id': self.stock_location.id,
+            'location_dest_id': self.customer_location.id,
+            'product_id': self.product1.id,
+            'product_uom': self.uom_unit.id,
+            'product_uom_qty': 15.0,
+        })
+        move2._action_confirm()
+        move2._action_assign()
+        move2.move_line_ids.qty_done = 15.0
+        move2.with_user(self.inventory_user)._action_done()
 
     def test_average_negative_1(self):
         """ Test edit in the past. Receive 10, send 20, edit the second move to only send 10.
@@ -3697,3 +3746,86 @@ class TestStockValuation(TransactionCase):
         self.assertEqual(self.product1.with_context(to_date=Datetime.to_string(date1)).value_svl, 100)
         self.assertEqual(self.product1.with_context(to_date=Datetime.to_string(date2)).quantity_svl, 5)
         self.assertEqual(self.product1.with_context(to_date=Datetime.to_string(date2)).value_svl, 50)
+
+    def test_forecast_report_value(self):
+        """ Create a SVL for two companies using different currency, and open
+        the forecast report. Checks the forecast report use the good currency to
+        display the product's valuation.
+        """
+        # Settings
+        self.product1.categ_id.property_valuation = 'manual_periodic'
+        # Creates two new currencies.
+        currency_1 = self.env['res.currency'].create({
+            'name': 'UNF',
+            'symbol': 'U',
+            'rounding': 0.01,
+            'currency_unit_label': 'Unifranc',
+            'rate': 1,
+            'position': 'before',
+        })
+        currency_2 = self.env['res.currency'].create({
+            'name': 'DBL',
+            'symbol': 'DD',
+            'rounding': 0.01,
+            'currency_unit_label': 'Doublard',
+            'rate': 2,
+        })
+        # Create a new company using the "Unifranc" as currency.
+        company_form = Form(self.env['res.company'])
+        company_form.name = "BB Inc."
+        company_form.currency_id = currency_1
+        company_1 = company_form.save()
+        # Create a new company using the "Doublard" as currency.
+        company_form = Form(self.env['res.company'])
+        company_form.name = "BB Corp"
+        company_form.currency_id = currency_2
+        company_2 = company_form.save()
+        # Gets warehouses and locations.
+        warehouse_1 = self.env['stock.warehouse'].search([('company_id', '=', company_1.id)], limit=1)
+        warehouse_2 = self.env['stock.warehouse'].search([('company_id', '=', company_2.id)], limit=1)
+        stock_1 = warehouse_1.lot_stock_id
+        stock_2 = warehouse_2.lot_stock_id
+        self.env.user.company_ids += company_1
+        self.env.user.company_ids += company_2
+        # Updates the product's value.
+        self.product1.with_company(company_1).standard_price = 10
+        self.product1.with_company(company_2).standard_price = 12
+
+        # ---------------------------------------------------------------------
+        # Receive 5 units @ 10.00 per unit (company_1)
+        # ---------------------------------------------------------------------
+        move_1 = self.env['stock.move'].with_company(company_1).create({
+            'name': 'IN 5 units @ 10.00 U per unit',
+            'location_id': self.supplier_location.id,
+            'location_dest_id': stock_1.id,
+            'product_id': self.product1.id,
+            'product_uom': self.uom_unit.id,
+            'product_uom_qty': 5.0,
+        })
+        move_1._action_confirm()
+        move_1.move_line_ids.qty_done = 5.0
+        move_1._action_done()
+
+        # ---------------------------------------------------------------------
+        # Receive 4 units @ 12.00 per unit (company_2)
+        # ---------------------------------------------------------------------
+        move_2 = self.env['stock.move'].with_company(company_2).create({
+            'name': 'IN 4 units @ 12.00 DD per unit',
+            'location_id': self.supplier_location.id,
+            'location_dest_id': stock_2.id,
+            'product_id': self.product1.id,
+            'product_uom': self.uom_unit.id,
+            'product_uom_qty': 4.0,
+        })
+        move_2._action_confirm()
+        move_2.move_line_ids.qty_done = 4.0
+        move_2._action_done()
+
+        # Opens the report for each company and compares the values.
+        report = self.env['report.stock.report_product_product_replenishment']
+        report_for_company_1 = report.with_context(warehouse=warehouse_1.id)
+        report_for_company_2 = report.with_context(warehouse=warehouse_2.id)
+        report_value_1 = report_for_company_1._get_report_values(docids=self.product1.ids)
+        report_value_2 = report_for_company_2._get_report_values(docids=self.product1.ids)
+        self.assertEqual(report_value_1['docs']['value'], "U 50.00")
+        self.assertEqual(report_value_2['docs']['value'], "48.00 DD")

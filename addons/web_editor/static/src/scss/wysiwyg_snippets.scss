@@ -27,8 +27,6 @@ body.editor_enable.editor_has_snippets {
 // Mobile fix for mass mailing
 @include media-breakpoint-down(md) {
     body.editor_enable.editor_has_snippets {
-        padding-right: inherit !important;
-
         #web_editor-top-edit {
             position: initial !important;
             height: initial !important;
@@ -301,6 +299,33 @@ body.editor_enable.editor_has_snippets {
     }
 }
 
+%we-generic-text-input {
+    > div {
+        border: $o-we-sidebar-content-field-border-width solid $o-we-sidebar-content-field-border-color;
+        border-radius: $o-we-sidebar-content-field-border-radius;
+        background-color: $o-we-sidebar-content-field-input-bg;
+
+        &:focus-within {
+            border-color: $o-we-sidebar-content-field-input-border-color;
+        }
+        input {
+            box-sizing: content-box;
+            padding: 0 $o-we-sidebar-content-field-clickable-spacing;
+            border: none;
+            border-radius: 0;
+            background-color: transparent;
+            color: inherit;
+
+            &:focus {
+                outline: none;
+            }
+        }
+        > we-button { // for input-group
+            border: none;
+        }
+    }
+}
+
 // SNIPPET PANEL
 #oe_snippets {
     @include o-w-preserve-btn;
@@ -446,10 +471,10 @@ body.editor_enable.editor_has_snippets {
         #snippet_custom .oe_snippet {
             width: 100%;
 
-            &, .oe_snippet_thumbnail, .o_delete_btn {
+            &, .oe_snippet_thumbnail, .btn {
                 display: flex;
             }
-            .oe_snippet_thumbnail, .o_delete_btn {
+            .oe_snippet_thumbnail, .btn {
                 align-items: center;
             }
             .oe_snippet_thumbnail {
@@ -460,14 +485,39 @@ body.editor_enable.editor_has_snippets {
             }
             .oe_snippet_thumbnail_img {
                 flex-shrink: 0;
-                width: 40px;
-                height: 32px;
+                width: 41px;
+                height: 30px; // 82x60 -> 41x30
                 padding: 0;
             }
-            .o_delete_btn {
+            .btn {
                 @extend %we-generic-link;
                 padding-top: 0;
                 padding-bottom: 0;
+                padding-left: 0;
+            }
+            &:not(:hover) .btn {
+                display: none;
+            }
+            we-input.o_we_user_value_widget {
+                @extend %we-generic-text-input;
+                cursor: pointer;
+                > div {
+                    display: flex;
+                }
+                input {
+                    cursor: text;
+                }
+                we-button {
+                    @extend %we-generic-clickable;
+                    cursor: pointer;
+                    flex: 1 1 auto;
+                    line-height: 17px;
+                    text-align: center;
+
+                    &:hover {
+                        background-color: gray;
+                    }
+                }
             }
         }
     }
@@ -890,45 +940,23 @@ body.editor_enable.editor_has_snippets {
 
         // Inputs
         we-input.o_we_user_value_widget {
-
+            @extend %we-generic-text-input;
             > div {
                 flex: 0 1 auto;
                 width: $o-we-sidebar-content-field-input-max-width;
-                border: $o-we-sidebar-content-field-border-width solid $o-we-sidebar-content-field-border-color;
-                border-radius: $o-we-sidebar-content-field-border-radius;
-                background-color: $o-we-sidebar-content-field-input-bg;
-
-                &:focus-within {
-                    border-color: $o-we-sidebar-content-field-input-border-color;
-                }
-
-                > we-button { // for input-group
-                    border: none;
-                }
             }
-
             &.o_we_large_input > div {
                 flex: 1 1 auto;
             }
-
             input {
-                box-sizing: content-box;
                 flex: 1 1 auto;
                 width: 0;
                 min-width: 2ch;
                 height: $o-we-sidebar-content-field-height - 2 * $o-we-sidebar-content-field-border-width;
-                padding: 0 $o-we-sidebar-content-field-clickable-spacing;
-                border: none;
-                border-radius: 0;
-                background-color: transparent;
-                color: inherit;
                 font-family: $o-we-sidebar-content-field-input-font-family;
 
                 &::placeholder {
                     color: $o-we-sidebar-content-field-control-item-color;
-                }
-                &:focus {
-                    outline: none;
                 }
             }
             span {
@@ -1146,6 +1174,51 @@ body.editor_enable.editor_has_snippets {
             }
         }
 
+        // Lists
+        we-list {
+            > div {
+                flex-flow: row wrap;
+            }
+            .o_we_table_wrapper {
+                width: 100%;
+                max-height: 200px;
+                overflow-y: auto;
+                margin-bottom: $o-we-sidebar-content-field-spacing / 2;
+
+                table {
+                    table-layout: auto;
+                    width: 100%;
+
+                    input {
+                        width: 100%;
+                        border: $o-we-sidebar-content-field-border-width solid $o-we-sidebar-content-field-border-color;
+                        border-radius: $o-we-sidebar-content-field-border-radius;
+                        padding: 0 $o-we-sidebar-content-field-clickable-spacing;
+                        background-color: $o-we-sidebar-content-field-input-bg;
+                        color: inherit;
+                        font-family: $o-we-sidebar-content-field-input-font-family;
+                    }
+                    tr {
+                        border: none;
+                    }
+                    td {
+                        padding-bottom: $o-we-sidebar-content-field-spacing / 2;
+
+                        &:first-child, &:last-child {
+                            width: 1px;
+                        }
+
+                        we-button.o_we_checkbox_wrapper {
+                            margin: 0 0 0 0.3em;
+                        }
+                    }
+                }
+            }
+            .o_we_user_value_widget {
+                flex: 1 1 auto;
+            }
+        }
+
         // Multi widgets
         we-multi.o_we_user_value_widget {
             margin-top: 0;
@@ -1157,6 +1230,51 @@ body.editor_enable.editor_has_snippets {
                     flex: 1 1 auto; // Needed for colorpicker...
                 }
             }
+        }
+
+        // Many2one search
+        .o_we_m2o_search {
+            background-color: $o-we-dropdown-item-bg;
+            flex-grow: 1 !important;
+            display: flex;
+            align-items: center;
+            margin-bottom: 1px;
+            border-radius: $o-we-sidebar-content-field-border-radius;
+            padding: .25em .5em;
+
+            &::before {
+                content: "\f002";
+                font-size: 1.2em;
+                padding-right: .5em;
+                font-family: FontAwesome;
+            }
+
+            input {
+                flex: 1 1 auto;
+                color: inherit;
+                border: $o-we-sidebar-content-field-border-width solid $o-we-sidebar-content-field-border-color;
+                border-radius: $o-we-sidebar-content-field-border-radius;
+                background-color: $o-we-sidebar-content-field-input-bg;
+                padding: 1px $o-we-sidebar-content-field-clickable-spacing;
+
+                &:focus {
+                    outline: none;
+                    border-color: $o-we-sidebar-content-field-input-border-color;
+                }
+                &::placeholder {
+                    color: $o-we-sidebar-content-field-control-item-color;
+                }
+            }
+        }
+
+        // Many2one search more indicator
+        .o_we_m2o_search_more {
+            color: var(--o-cc1-btn-primary);
+            margin-top: 1px;
+            width: 100%;
+            cursor: pointer;
+            padding-left: 2em;
+            line-height: $o-we-sidebar-content-field-height - 2 * $o-we-sidebar-content-field-border-width;
         }
 
         //----------------------------------------------------------------------
@@ -1284,6 +1402,10 @@ body.editor_enable.editor_has_snippets {
             margin-left: $o-we-sidebar-content-field-label-spacing * 2;
         }
 
+        .o_we_external_warning {
+            margin-top: $o-we-sidebar-content-field-spacing;
+        }
+
         .o_we_tag {
             padding: ($o-we-sidebar-content-field-label-spacing / 2) $o-we-sidebar-content-field-label-spacing;
             border-radius: 5px;
@@ -1399,6 +1521,21 @@ body.editor_enable.editor_has_snippets {
         @extend %we-generic-button;
     }
     .o_colorpicker_sections {
+        .o_colorpicker_widget {
+            .o_hex_div, .o_rgba_div  {
+                &:focus-within {
+                    border-color: $o-we-sidebar-content-field-input-border-color;
+                }
+            }
+            .o_color_picker_inputs {
+                input {
+                    border: none;
+                    &:focus {
+                        outline: none;
+                    }
+                }
+            }
+        }   
 
         .o_we_color_btn, .o_we_color_combination_btn {
             float: left;

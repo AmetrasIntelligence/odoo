@@ -74,7 +74,7 @@ class Survey(http.Controller):
         if survey_sudo.users_login_required and request.env.user._is_public():
             return 'survey_auth'
 
-        if (survey_sudo.state == 'closed' or survey_sudo.state == 'draft' or not survey_sudo.active) and (not answer_sudo or not answer_sudo.test_entry):
+        if not survey_sudo.active and (not answer_sudo or not answer_sudo.test_entry):
             return 'survey_closed'
 
         if (not survey_sudo.page_ids and survey_sudo.questions_layout == 'page_per_section') or not survey_sudo.question_ids:
@@ -535,7 +535,7 @@ class Survey(http.Controller):
                 if not isinstance(answers, list):
                     answers = [answers]
                 for answer in answers:
-                    if 'comment' in answer:
+                    if isinstance(answer, dict) and 'comment' in answer:
                         comment = answer['comment'].strip()
                     else:
                         answers_no_comment.append(answer)
@@ -568,6 +568,14 @@ class Survey(http.Controller):
             'scoring_display_correction': survey_sudo.scoring_type == 'scoring_with_answers' and answer_sudo,
             'format_datetime': lambda dt: format_datetime(request.env, dt, dt_format=False),
             'format_date': lambda date: format_date(request.env, date),
+        })
+
+    @http.route('/survey/<model("survey.survey"):survey>/certification_preview', type="http", auth="user", website=True)
+    def show_certification_pdf(self, survey, **kwargs):
+        preview_url = '/survey/%s/get_certification_preview' % survey.id
+        return request.render('survey.certification_preview', {
+            'preview_url': preview_url,
+            'page_title': survey.title,
         })
 
     @http.route(['/survey/<model("survey.survey"):survey>/get_certification_preview'], type="http", auth="user", methods=['GET'], website=True)

@@ -4,6 +4,7 @@
 import operator as py_operator
 from ast import literal_eval
 from collections import defaultdict
+from dateutil.relativedelta import relativedelta
 
 from odoo import _, api, fields, models, SUPERUSER_ID
 from odoo.exceptions import UserError
@@ -86,6 +87,8 @@ class Product(models.Model):
              "Location with 'internal' type.")
 
     orderpoint_ids = fields.One2many('stock.warehouse.orderpoint', 'product_id', 'Minimum Stock Rules')
+    nbr_moves_in = fields.Integer(compute='_compute_nbr_moves', compute_sudo=False, help="Number of incoming stock moves in the past 12 months")
+    nbr_moves_out = fields.Integer(compute='_compute_nbr_moves', compute_sudo=False, help="Number of outgoing stock moves in the past 12 months")
     nbr_reordering_rules = fields.Integer('Reordering Rules',
         compute='_compute_nbr_reordering_rules', compute_sudo=False)
     reordering_min_qty = fields.Float(
@@ -191,6 +194,29 @@ class Product(models.Model):
 
         return res
 
+    def _compute_nbr_moves(self):
+        res = defaultdict(dict)
+        incoming_moves = self.env['stock.move.line'].read_group([
+                ('product_id', 'in', self.ids),
+                ('state', '=', 'done'),
+                ('picking_code', '=', 'incoming'),
+                ('date', '>=', fields.Datetime.now() - relativedelta(years=1))
+            ], ['product_id'], ['product_id'])
+        outgoing_moves = self.env['stock.move.line'].read_group([
+                ('product_id', 'in', self.ids),
+                ('state', '=', 'done'),
+                ('picking_code', '=', 'outgoing'),
+                ('date', '>=', fields.Datetime.now() - relativedelta(years=1))
+            ], ['product_id'], ['product_id'])
+        for move in incoming_moves:
+            res[move['product_id'][0]]['moves_in'] = int(move['product_id_count'])
+        for move in outgoing_moves:
+            res[move['product_id'][0]]['moves_out'] = int(move['product_id_count'])
+        for product in self:
+            product_res = res.get(product.id) or {}
+            product.nbr_moves_in = product_res.get('moves_in', 0)
+            product.nbr_moves_out = product_res.get('moves_out', 0)
+
     def get_components(self):
         self.ensure_one()
         return self.ids
@@ -287,7 +313,7 @@ class Product(models.Model):
         # to use the quants, not the stock moves. Therefore, we bypass the usual
         # '_search_product_quantity' method and call '_search_qty_available_new' instead. This
         # allows better performances.
-        if value == 0.0 and operator == '>' and not ({'from_date', 'to_date'} & set(self.env.context.keys())):
+        if not ({'from_date', 'to_date'} & set(self.env.context.keys())):
             product_ids = self._search_qty_available_new(
                 operator, value, self.env.context.get('lot_id'), self.env.context.get('owner_id'),
                 self.env.context.get('package_id')
@@ -539,6 +565,13 @@ class Product(models.Model):
             return self._get_rules_from_location(rule.location_src_id, seen_rules=seen_rules | rule)
 
 
+    def _filter_to_unlink(self):
+        domain = [('product_id', 'in', self.ids)]
+        lines = self.env['stock.production.lot'].read_group(domain, ['product_id'], ['product_id'])
+        linked_product_ids = [group['product_id'][0] for group in lines]
+        return super(Product, self - self.browse(linked_product_ids))._filter_to_unlink()
+
+
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
     _check_company_auto = True
@@ -590,6 +623,8 @@ class ProductTemplate(models.Model):
         'stock.location.route', 'stock_route_product', 'product_id', 'route_id', 'Routes',
         domain=[('product_selectable', '=', True)],
         help="Depending on the modules installed, this will allow you to define the route of the product: whether it will be bought, manufactured, replenished on order, etc.")
+    nbr_moves_in = fields.Integer(compute='_compute_nbr_moves', compute_sudo=False, help="Number of incoming stock moves in the past 12 months")
+    nbr_moves_out = fields.Integer(compute='_compute_nbr_moves', compute_sudo=False, help="Number of outgoing stock moves in the past 12 months")
     nbr_reordering_rules = fields.Integer('Reordering Rules',
         compute='_compute_nbr_reordering_rules', compute_sudo=False)
     reordering_min_qty = fields.Float(
@@ -599,7 +634,7 @@ class ProductTemplate(models.Model):
     # TDE FIXME: seems only visible in a view - remove me ?
     route_from_categ_ids = fields.Many2many(
         relation="stock.location.route", string="Category Routes",
-        related='categ_id.total_route_ids', readonly=False, related_sudo=False)
+        related='categ_id.total_route_ids', related_sudo=False)
 
     @api.depends('type')
     def _compute_has_available_route_ids(self):
@@ -643,6 +678,32 @@ class ProductTemplate(models.Model):
                 "outgoing_qty": outgoing_qty,
             }
         return prod_available
+
+    def _compute_nbr_moves(self):
+        res = defaultdict(lambda: {'moves_in': 0, 'moves_out': 0})
+        incoming_moves = self.env['stock.move.line'].read_group([
+                ('product_id.product_tmpl_id', 'in', self.ids),
+                ('state', '=', 'done'),
+                ('picking_code', '=', 'incoming'),
+                ('date', '>=', fields.Datetime.now() - relativedelta(years=1))
+            ], ['product_id'], ['product_id'])
+        outgoing_moves = self.env['stock.move.line'].read_group([
+                ('product_id.product_tmpl_id', 'in', self.ids),
+                ('state', '=', 'done'),
+                ('picking_code', '=', 'outgoing'),
+                ('date', '>=', fields.Datetime.now() - relativedelta(years=1))
+            ], ['product_id'], ['product_id'])
+        for move in incoming_moves:
+            product = self.env['product.product'].browse([move['product_id'][0]])
+            product_tmpl_id = product.product_tmpl_id.id
+            res[product_tmpl_id]['moves_in'] += int(move['product_id_count'])
+        for move in outgoing_moves:
+            product = self.env['product.product'].browse([move['product_id'][0]])
+            product_tmpl_id = product.product_tmpl_id.id
+            res[product_tmpl_id]['moves_out'] += int(move['product_id_count'])
+        for template in self:
+            template.nbr_moves_in = int(res[template.id]['moves_in'])
+            template.nbr_moves_out = int(res[template.id]['moves_out'])
 
     @api.model
     def _get_action_view_related_putaway_rules(self, domain):

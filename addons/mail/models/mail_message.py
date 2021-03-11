@@ -3,9 +3,9 @@
 
 import logging
 import re
+from collections import defaultdict
 
 from binascii import Error as binascii_error
-from collections import defaultdict
 from operator import itemgetter
 
 from odoo import _, api, Command, fields, models, modules, tools
@@ -19,8 +19,51 @@ _image_dataurl = re.compile(r'(data:image/[a-z]+?);base64,([a-z0-9+/\n]{3,}=*)\n
 
 
 class Message(models.Model):
-    """ Messages model: system notification (replacing res.log notifications),
-        comments (OpenChatter discussion) and incoming emails. """
+    """ Message model: notification (system, replacing res.log notifications),
+    comment (user input), email (incoming emails) and user_notification
+    (user-specific notification)
+
+    Note:: State management / Error codes / Failure types summary
+
+    * mail.notification
+      * notification_status
+        'ready', 'sent', 'bounce', 'exception', 'canceled'
+      * notification_type
+            'inbox', 'email', 'sms' (SMS addon), 'snail' (snailmail addon)
+      * failure_type
+            # mail
+            "SMTP", "RECIPIENT", "BOUNCE", "UNKNOWN"
+            # sms (SMS addon)
+            'sms_number_missing', 'sms_number_format', 'sms_credit',
+            'sms_server', 'sms_acc'
+            # snailmail (snailmail addon)
+            'sn_credit', 'sn_trial', 'sn_price', 'sn_fields',
+            'sn_format', 'sn_error'
+
+    * mail.mail
+      * state
+            'outgoing', 'sent', 'received', 'exception', 'cancel'
+      * failure_reason: text
+
+    * sms.sms (SMS addon)
+      * state
+            'outgoing', 'sent', 'error', 'canceled'
+      * error_code
+            'sms_number_missing', 'sms_number_format', 'sms_credit',
+            'sms_server', 'sms_acc',
+            # mass mode specific codes
+            'sms_blacklist', 'sms_duplicate'
+
+    * snailmail.letter (snailmail addon)
+      * state
+            'pending', 'sent', 'error', 'canceled'
+      * error_code
+            'CREDIT_ERROR', 'TRIAL_ERROR', 'NO_PRICE_AVAILABLE', 'FORMAT_ERROR',
+            'UNKNOWN_ERROR',
+
+    See ``mailing.trace`` model in mass_mailing application for mailing trace
+    information.
+    """
     _name = 'mail.message'
     _description = 'Message'
     _order = 'id desc'
@@ -87,7 +130,7 @@ class Message(models.Model):
     # list of partner having a notification. Caution: list may change over time because of notif gc cron.
     # mainly usefull for testing
     notified_partner_ids = fields.Many2many(
-        'res.partner', 'mail_message_res_partner_needaction_rel', string='Partners with Need Action',
+        'res.partner', 'mail_notification', string='Partners with Need Action',
         context={'active_test': False}, depends=['notification_ids'])
     needaction = fields.Boolean(
         'Need Action', compute='_get_needaction', search='_search_needaction',
@@ -267,7 +310,7 @@ class Message(models.Model):
                 FROM "%s" m
                 LEFT JOIN "mail_message_res_partner_rel" partner_rel
                 ON partner_rel.mail_message_id = m.id AND partner_rel.res_partner_id = %%(pid)s
-                LEFT JOIN "mail_message_res_partner_needaction_rel" needaction_rel
+                LEFT JOIN "mail_notification" needaction_rel
                 ON needaction_rel.mail_message_id = m.id AND needaction_rel.res_partner_id = %%(pid)s
                 LEFT JOIN "mail_message_mail_channel_rel" channel_rel
                 ON channel_rel.mail_message_id = m.id
@@ -367,7 +410,7 @@ class Message(models.Model):
                                     message.id = ANY (%%s)''' % (self._table), ('comment', self.ids,))
             if self._cr.fetchall():
                 raise AccessError(
-                    _('The requested operation cannot be completed due to security restrictions. Please contact your system administrator.\n\n(Document type: %s, Operation: %s)') % (self._description, operation)
+                    _('The requested operation cannot be completed due to security restrictions. Please contact your system administrator.\n\n(Document type: %s, Operation: %s)', self._description, operation)
                     + ' - ({} {}, {} {})'.format(_('Records:'), self.ids[:6], _('User:'), self._uid)
                 )
 
@@ -389,7 +432,7 @@ class Message(models.Model):
                 FROM "%s" m
                 LEFT JOIN "mail_message_res_partner_rel" partner_rel
                 ON partner_rel.mail_message_id = m.id AND partner_rel.res_partner_id = %%(pid)s
-                LEFT JOIN "mail_message_res_partner_needaction_rel" needaction_rel
+                LEFT JOIN "mail_notification" needaction_rel
                 ON needaction_rel.mail_message_id = m.id AND needaction_rel.res_partner_id = %%(pid)s
                 LEFT JOIN "mail_message_mail_channel_rel" channel_rel
                 ON channel_rel.mail_message_id = m.id
@@ -418,7 +461,7 @@ class Message(models.Model):
                 FROM "%s" m
                 LEFT JOIN "mail_message_res_partner_rel" partner_rel
                 ON partner_rel.mail_message_id = m.id AND partner_rel.res_partner_id = %%(pid)s
-                LEFT JOIN "mail_message_res_partner_needaction_rel" needaction_rel
+                LEFT JOIN "mail_notification" needaction_rel
                 ON needaction_rel.mail_message_id = m.id AND needaction_rel.res_partner_id = %%(pid)s
                 LEFT JOIN "mail_message_mail_channel_rel" channel_rel
                 ON channel_rel.mail_message_id = m.id
@@ -580,7 +623,7 @@ class Message(models.Model):
         if not self.browse(messages_to_check).exists():
             return
         raise AccessError(
-            _('The requested operation cannot be completed due to security restrictions. Please contact your system administrator.\n\n(Document type: %s, Operation: %s)') % (self._description, operation)
+            _('The requested operation cannot be completed due to security restrictions. Please contact your system administrator.\n\n(Document type: %s, Operation: %s)', self._description, operation)
             + ' - ({} {}, {} {})'.format(_('Records:'), list(messages_to_check)[:6], _('User:'), self._uid)
         )
 
@@ -704,17 +747,17 @@ class Message(models.Model):
         notif_domain = [
             ('res_partner_id', '=', partner_id),
             ('is_read', '=', False)]
-
         if domain:
-            messages_ids = self.search(domain).ids  # need sudo?
-            notif_domain = expression.AND([notif_domain, [('mail_message_id', 'in', messages_ids)]])
+            messages = self.search(domain)
+            messages.set_message_done()
+            return messages.ids
 
         notifications = self.env['mail.notification'].sudo().search(notif_domain)
         notifications.write({'is_read': True})
 
         ids = [n['mail_message_id'] for n in notifications.read(['mail_message_id'])]
 
-        notification = {'type': 'mark_as_read', 'message_ids': [id[0] for id in ids]}
+        notification = {'type': 'mark_as_read', 'message_ids': [id[0] for id in ids], 'needaction_inbox_counter': self.env.user.partner_id.get_needaction_count()}
         self.env['bus.bus'].sendone((self._cr.dbname, 'res.partner', partner_id), notification)
 
         return ids
@@ -752,7 +795,8 @@ class Message(models.Model):
         notifications.write({'is_read': True})
 
         for (msg_ids, channel_ids) in groups:
-            notification = {'type': 'mark_as_read', 'message_ids': msg_ids, 'channel_ids': [c.id for c in channel_ids]}
+            # channel_ids in result is deprecated and will be removed in a future version
+            notification = {'type': 'mark_as_read', 'message_ids': msg_ids, 'channel_ids': [c.id for c in channel_ids], 'needaction_inbox_counter': self.env.user.partner_id.get_needaction_count()}
             self.env['bus.bus'].sendone((self._cr.dbname, 'res.partner', partner_id.id), notification)
 
     @api.model
@@ -948,6 +992,12 @@ class Message(models.Model):
         self.check_access_rule('read')
         vals_list = self._read_format(fnames)
         safari = request and request.httprequest.user_agent.browser == 'safari'
+
+        thread_ids_by_model_name = defaultdict(set)
+        for message in self:
+            if message.model and message.res_id:
+                thread_ids_by_model_name[message.model].add(message.res_id)
+
         for vals in vals_list:
             message_sudo = self.browse(vals['id']).sudo().with_prefetch(self.ids)
 
@@ -985,13 +1035,24 @@ class Message(models.Model):
                         'old_value': tracking.get_old_display_value()[0],
                         'new_value': tracking.get_new_display_value()[0],
                         'field_type': tracking.field_type,
+                        'currency_id': tracking.currency_id.id,
                     })
+
+            if message_sudo.model and message_sudo.res_id:
+                record_name = self.env[message_sudo.model] \
+                    .browse(message_sudo.res_id) \
+                    .sudo() \
+                    .with_prefetch(thread_ids_by_model_name[message_sudo.model]) \
+                    .display_name
+            else:
+                record_name = False
 
             vals.update({
                 'author_id': author,
                 'notifications': message_sudo.notification_ids._filtered_for_web_client()._notification_format(),
                 'attachment_ids': attachment_ids,
                 'tracking_value_ids': tracking_value_ids,
+                'record_name': record_name,
             })
 
         return vals_list

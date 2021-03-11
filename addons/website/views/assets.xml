@@ -29,6 +29,7 @@
         <script type="text/javascript" src="/website/static/tests/tours/website_navbar_menu.js"/>
         <script type="text/javascript" src="/website/static/tests/tours/snippet_version.js"/>
         <script type="text/javascript" src="/website/static/tests/tours/website_style_edition.js"/>
+        <script type="text/javascript" src="/website/static/tests/tours/snippet_empty_parent_autoremove.js"/>
     </xpath>
 </template>
 
@@ -81,6 +82,7 @@
         <script type="text/javascript" src="/website/static/src/js/utils.js"/>
 
         <script type="text/javascript" src="/website/static/src/js/content/website_root.js"/>
+        <script type="text/javascript" src="/website/static/src/js/widgets/fullscreen_indication.js"/>
         <script type="text/javascript" src="/website/static/src/js/content/compatibility.js"/>
         <script type="text/javascript" src="/website/static/src/js/content/menu.js"/>
         <script type="text/javascript" src="/website/static/src/js/content/snippets.animation.js"/>
@@ -119,7 +121,6 @@
     <link rel="stylesheet" type="text/scss" href="/website/static/src/scss/website.edit_mode.scss"/>
 
     <script type="text/javascript" src="/website/static/src/js/editor/editor.js"/>
-    <script type="text/javascript" src="/website/static/src/js/editor/mega_menu.js"/>
     <script type="text/javascript" src="/website/static/src/js/editor/snippets.editor.js"/>
     <script type="text/javascript" src="/website/static/src/js/editor/rte.summernote.js"/>
     <script type="text/javascript" src="/website/static/src/js/editor/snippets.options.js"/>

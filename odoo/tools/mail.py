@@ -13,6 +13,7 @@ import time
 
 from email.utils import getaddresses
 from lxml import etree
+from urllib.parse import urlparse
 from werkzeug import urls
 import idna
 
@@ -38,6 +39,7 @@ safe_attrs = clean.defs.safe_attrs | frozenset(
      'data-o-mail-quote',  # quote detection
      'data-oe-model', 'data-oe-id', 'data-oe-field', 'data-oe-type', 'data-oe-expression', 'data-oe-translation-id', 'data-oe-nodeid',
      'data-publish', 'data-id', 'data-res_id', 'data-interval', 'data-member_id', 'data-scroll-background-ratio', 'data-view-id',
+     'data-class',
      ])
 
 
@@ -511,7 +513,7 @@ def email_send(email_from, email_to, subject, body, email_cc=None, email_bcc=Non
     return res
 
 def email_split_tuples(text):
-    """ Return a list of (name, email) addresse tuples found in ``text``"""
+    """ Return a list of (name, email) address tuples found in ``text``"""
     if not text:
         return []
     return [(addr[0], addr[1]) for addr in getaddresses([text])
@@ -548,6 +550,28 @@ def email_normalize(text):
     if not emails or len(emails) != 1:
         return False
     return emails[0].lower()
+
+
+def email_domain_extract(email):
+    """ Extract the company domain to be used by IAP services notably. Domain
+    is extracted from email information e.g:
+        - info@proximus.be -> proximus.be
+    """
+    normalized_email = email_normalize(email)
+    if normalized_email:
+        return normalized_email.split('@')[1]
+    return False
+
+def url_domain_extract(url):
+    """ Extract the company domain to be used by IAP services notably. Domain
+    is extracted from an URL e.g:
+        - www.info.proximus.be -> proximus.be
+    """
+    parser_results = urlparse(url)
+    company_hostname = parser_results.hostname
+    if company_hostname and '.' in company_hostname:
+        return '.'.join(company_hostname.split('.')[-2:])  # remove subdomains
+    return False
 
 def email_escape_char(email_address):
     """ Escape problematic characters in the given email address string"""

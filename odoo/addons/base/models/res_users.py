@@ -835,6 +835,29 @@ class Users(models.Model):
     # for a few places explicitly clearing the has_group cache
     has_group.clear_cache = _has_group.clear_cache
 
+    def _action_show(self):
+        """If self is a singleton, directly access the form view. If it is a recordset, open a tree view"""
+        view_id = self.env.ref('base.view_users_form').id
+        action = {
+            'type': 'ir.actions.act_window',
+            'res_model': 'res.users',
+            'context': {'create': False},
+        }
+        if len(self) > 1:
+            action.update({
+                'name': _('Users'),
+                'view_mode': 'list,form',
+                'views': [[None, 'list'], [view_id, 'form']],
+                'domain': [('id', 'in', self.ids)],
+            })
+        else:
+            action.update({
+                'view_mode': 'form',
+                'views': [[view_id, 'form']],
+                'res_id': self.id,
+            })
+        return action
+
     def action_show_groups(self):
         self.ensure_one()
         return {
@@ -1643,7 +1666,11 @@ class APIKeys(models.Model):
     def _check_credentials(self, *, scope, key):
         assert scope, "scope is required"
         index = key[:INDEX_SIZE]
-        self.env.cr.execute('SELECT user_id, key FROM res_users_apikeys WHERE index = %s AND (scope IS NULL OR scope = %s)', [index, scope])
+        self.env.cr.execute('''
+            SELECT user_id, key
+            FROM res_users_apikeys INNER JOIN res_users u ON (u.id = user_id)
+            WHERE u.active and index = %s AND (scope IS NULL OR scope = %s)
+        ''', [index, scope])
         for user_id, current_key in self.env.cr.fetchall():
             if KEY_CRYPT_CONTEXT.verify(key, current_key):
                 return user_id

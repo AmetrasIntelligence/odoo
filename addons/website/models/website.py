@@ -30,6 +30,7 @@ DEFAULT_CDN_FILTERS = [
     "^/web/(css|js)/",
     "^/web/image",
     "^/web/content",
+    "^/web/assets",
     # retrocompatibility
     "^/website/image/",
 ]
@@ -196,7 +197,13 @@ class Website(models.Model):
             self.env['ir.qweb'].clear_caches()
 
         if 'cookies_bar' in values:
-            if values['cookies_bar']:
+            existing_policy_page = self.env['website.page'].search([
+                ('website_id', '=', self.id),
+                ('url', '=', '/cookie-policy'),
+            ])
+            if not values['cookies_bar']:
+                existing_policy_page.unlink()
+            elif not existing_policy_page:
                 cookies_view = self.env.ref('website.cookie_policy', raise_if_not_found=False)
                 if cookies_view:
                     cookies_view.with_context(website_id=self.id).write({'website_id': self.id})
@@ -208,11 +215,6 @@ class Website(models.Model):
                         'website_id': self.id,
                         'view_id': specific_cook_view.id,
                     })
-            else:
-                self.env['website.page'].search([
-                    ('website_id', '=', self.id),
-                    ('url', '=', '/cookie-policy'),
-                ]).unlink()
 
         return result
 

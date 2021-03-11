@@ -58,6 +58,8 @@
                 <script type="text/javascript" src="/mail/static/src/bugfix/bugfix.js"></script>
                 <script type="text/javascript" src="/mail/static/src/component_hooks/use_drag_visible_dropzone/use_drag_visible_dropzone.js"></script>
                 <script type="text/javascript" src="/mail/static/src/component_hooks/use_refs/use_refs.js"></script>
+                <script type="text/javascript" src="/mail/static/src/component_hooks/use_rendered_values/use_rendered_values.js"/>
+                <script type="text/javascript" src="/mail/static/src/component_hooks/use_should_update_based_on_props/use_should_update_based_on_props.js"/>
                 <script type="text/javascript" src="/mail/static/src/component_hooks/use_store/use_store.js"></script>
                 <script type="text/javascript" src="/mail/static/src/component_hooks/use_update/use_update.js"/>
                 <script type="text/javascript" src="/mail/static/src/components/activity/activity.js"></script>
@@ -164,6 +166,7 @@
                 <script type="text/javascript" src="/mail/static/src/models/user/user.js"></script>
                 <script type="text/javascript" src="/mail/static/src/services/chat_window_service/chat_window_service.js"></script>
                 <script type="text/javascript" src="/mail/static/src/services/dialog_service/dialog_service.js"></script>
+                <script type="text/javascript" src="/mail/static/src/services/messaging/messaging.js"/>
                 <script type="text/javascript" src="/mail/static/src/utils/deferred/deferred.js"></script>
                 <script type="text/javascript" src="/mail/static/src/utils/throttle/throttle.js"></script>
                 <script type="text/javascript" src="/mail/static/src/utils/timer/timer.js"></script>

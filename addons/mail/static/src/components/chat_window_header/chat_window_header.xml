@@ -9,13 +9,13 @@
                         <i class="fa fa-arrow-left"/>
                     </div>
                 </t>
-                <t t-if="chatWindow.thread">
+                <t t-if="chatWindow.thread and chatWindow.thread.model === 'mail.channel'">
                     <ThreadIcon
                         class="o_ChatWindowHeader_icon o_ChatWindowHeader_item"
                         threadLocalId="chatWindow.thread.localId"
                     />
                 </t>
-                <div class="o_ChatWindowHeader_item o_ChatWindowHeader_name" t-att-title="chatWindow.name" t-att-class="{'o-clickable': chatWindow.thread and chatWindow.thread.correspondent}" t-on-click="_onClickName">
+                <div class="o_ChatWindowHeader_item o_ChatWindowHeader_name" t-att-title="chatWindow.name">
                     <t t-esc="chatWindow.name"/>
                 </div>
                 <t t-if="chatWindow.thread and chatWindow.thread.mass_mailing">

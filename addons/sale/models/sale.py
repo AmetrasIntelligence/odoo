@@ -407,7 +407,7 @@ class SaleOrder(models.Model):
         if self.user_id:
             self.team_id = self.env['crm.team'].with_context(
                 default_team_id=self.team_id.id
-            )._get_default_team_id(user_id=self.user_id.id)
+            )._get_default_team_id(user_id=self.user_id.id, domain=None)
 
     @api.onchange('partner_id')
     def onchange_partner_id_warning(self):
@@ -505,18 +505,11 @@ class SaleOrder(models.Model):
         if field.name != 'invoice_status' or self.env.context.get('mail_activity_automation_skip'):
             return
 
-        filtered_self = self.filtered(lambda so: so.user_id and so.invoice_status == 'upselling')
-        if not filtered_self:
+        upselling_orders = self.filtered(lambda so: (so.user_id or so.partner_id.user_id) and so.invoice_status == 'upselling')
+        if not upselling_orders:
             return
 
-        filtered_self.activity_unlink(['sale.mail_act_sale_upsell'])
-        for order in filtered_self:
-            order.activity_schedule(
-                'sale.mail_act_sale_upsell',
-                user_id=order.user_id.id,
-                note=_("Upsell <a href='#' data-oe-model='%s' data-oe-id='%d'>%s</a> for customer <a href='#' data-oe-model='%s' data-oe-id='%s'>%s</a>") % (
-                         order._name, order.id, order.name,
-                         order.partner_id._name, order.partner_id.id, order.partner_id.display_name))
+        upselling_orders._create_upsell_activity()
 
     def copy_data(self, default=None):
         if default is None:
@@ -548,6 +541,17 @@ class SaleOrder(models.Model):
                 ])
                 return self._search(domain, limit=limit, access_rights_uid=name_get_uid)
         return super(SaleOrder, self)._name_search(name, args=args, operator=operator, limit=limit, name_get_uid=name_get_uid)
+
+    def _create_upsell_activity(self):
+        self and self.activity_unlink(['sale.mail_act_sale_upsell'])
+        for order in self:
+            ref = "<a href='#' data-oe-model='%s' data-oe-id='%d'>%s</a>"
+            order_ref = ref % (order._name, order.id, order.name)
+            customer_ref = ref % (order.partner_id._name, order.partner_id.id, order.partner_id.display_name)
+            order.activity_schedule(
+                'sale.mail_act_sale_upsell',
+                user_id=order.user_id.id or order.partner_id.user_id.id,
+                note=_("Upsell %(order)s for customer %(customer)s", order=order_ref, customer=customer_ref))
 
     def _prepare_invoice(self):
         """
@@ -1567,7 +1571,7 @@ class SaleOrderLine(models.Model):
                     # has to be called to retrieve the subtotal without them.
                     # `price_reduce_taxexcl` cannot be used as it is computed from `price_subtotal` field. (see upper Note)
                     price_subtotal = line.tax_id.compute_all(
-                        price_subtotal,
+                        line.price_reduce,
                         currency=line.order_id.currency_id,
                         quantity=line.product_uom_qty,
                         product=line.product_id,
@@ -1903,3 +1907,7 @@ class SaleOrderLine(models.Model):
             name += "\n" + pacv.with_context(lang=self.order_id.partner_id.lang).display_name
 
         return name
+
+    def _is_not_sellable_line(self):
+        # True if the line is a computed line (reward, delivery, ...) that user cannot add manually
+        return False

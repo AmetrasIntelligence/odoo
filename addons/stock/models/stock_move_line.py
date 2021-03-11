@@ -61,7 +61,7 @@ class StockMoveLine(models.Model):
     picking_type_use_existing_lots = fields.Boolean(related='picking_id.picking_type_id.use_existing_lots', readonly=True)
     picking_type_entire_packs = fields.Boolean(related='picking_id.picking_type_id.show_entire_packs', readonly=True)
     state = fields.Selection(related='move_id.state', store=True, related_sudo=False)
-    is_initial_demand_editable = fields.Boolean(related='move_id.is_initial_demand_editable', readonly=False)
+    is_initial_demand_editable = fields.Boolean(related='move_id.is_initial_demand_editable')
     is_locked = fields.Boolean(related='move_id.is_locked', default=True, readonly=True)
     consume_line_ids = fields.Many2many('stock.move.line', 'stock_move_line_consume_rel', 'consume_line_id', 'produce_line_id', help="Technical link to see who consumed what. ")
     produce_line_ids = fields.Many2many('stock.move.line', 'stock_move_line_consume_rel', 'produce_line_id', 'consume_line_id', help="Technical link to see which line was produced with this. ")
@@ -133,6 +133,7 @@ class StockMoveLine(models.Model):
         help him. This includes:
             - automatically switch `qty_done` to 1.0
             - warn if he has already encoded `lot_name` in another move line
+            - warn (and update if appropriate) if the SN is in a different source location than selected
         """
         res = {}
         if self.product_id.tracking == 'serial':
@@ -147,17 +148,25 @@ class StockMoveLine(models.Model):
                     if counter.get(self.lot_name) and counter[self.lot_name] > 1:
                         message = _('You cannot use the same serial number twice. Please correct the serial numbers encoded.')
                     elif not self.lot_id:
-                        counter = self.env['stock.production.lot'].search_count([
-                            ('company_id', '=', self.company_id.id),
-                            ('product_id', '=', self.product_id.id),
-                            ('name', '=', self.lot_name),
-                        ])
-                        if counter > 0:
-                            message = _('Existing Serial number (%s). Please correct the serial number encoded.') % self.lot_name
+                        lots = self.env['stock.production.lot'].search([('product_id', '=', self.product_id.id),
+                                                                        ('name', '=', self.lot_name),
+                                                                        ('company_id', '=', self.company_id.id)])
+                        quants = lots.quant_ids.filtered(lambda q: q.quantity != 0 and q.location_id.usage in ['customer', 'internal', 'transit'])
+                        if quants:
+                            message = _('Serial number (%s) already exists in location(s): %s. Please correct the serial number encoded.', self.lot_name, ', '.join(quants.location_id.mapped('display_name')))
                 elif self.lot_id:
                     counter = Counter([line.lot_id.id for line in move_lines_to_check])
                     if counter.get(self.lot_id.id) and counter[self.lot_id.id] > 1:
                         message = _('You cannot use the same serial number twice. Please correct the serial numbers encoded.')
+                    else:
+                        # check if in correct source location
+                        message, recommended_location = self.env['stock.quant']._check_serial_number(self.product_id,
+                                                                                                     self.lot_id,
+                                                                                                     self.company_id,
+                                                                                                     self.location_id,
+                                                                                                     self.picking_id.location_id)
+                        if recommended_location:
+                            self.location_id = recommended_location
             if message:
                 res['warning'] = {'title': _('Warning'), 'message': message}
         return res
@@ -277,6 +286,16 @@ class StockMoveLine(models.Model):
         for key, model in triggers:
             if key in vals:
                 updates[key] = self.env[model].browse(vals[key])
+
+        if 'result_package_id' in updates:
+            for ml in self.filtered(lambda ml: ml.package_level_id):
+                if updates.get('result_package_id'):
+                    ml.package_level_id.package_id = updates.get('result_package_id')
+                else:
+                    # TODO: make package levels less of a pain and fix this
+                    package_level = ml.package_level_id
+                    ml.package_level_id = False
+                    package_level.unlink()
 
         # When we try to write on a reserved move line any fields from `triggers` or directly
         # `product_uom_qty` (the actual reserved quantity), we need to make sure the associated
@@ -516,8 +535,7 @@ class StockMoveLine(models.Model):
                 if not ml._should_bypass_reservation(ml.location_id) and float_compare(ml.qty_done, ml.product_uom_qty, precision_rounding=rounding) > 0:
                     qty_done_product_uom = ml.product_uom_id._compute_quantity(ml.qty_done, ml.product_id.uom_id, rounding_method='HALF-UP')
                     extra_qty = qty_done_product_uom - ml.product_qty
-                    ml_to_ignore = self.env['stock.move.line'].browse(ml_ids_to_ignore)
-                    ml._free_reservation(ml.product_id, ml.location_id, extra_qty, lot_id=ml.lot_id, package_id=ml.package_id, owner_id=ml.owner_id, ml_to_ignore=ml_to_ignore)
+                    ml._free_reservation(ml.product_id, ml.location_id, extra_qty, lot_id=ml.lot_id, package_id=ml.package_id, owner_id=ml.owner_id, ml_ids_to_ignore=ml_ids_to_ignore)
                 # unreserve what's been reserved
                 if not ml._should_bypass_reservation(ml.location_id) and ml.product_id.type == 'product' and ml.product_qty:
                     try:
@@ -594,18 +612,18 @@ class StockMoveLine(models.Model):
             data['owner_name'] = self.env['res.partner'].browse(vals.get('owner_id')).name
         record.message_post_with_view(template, values={'move': move, 'vals': dict(vals, **data)}, subtype_id=self.env.ref('mail.mt_note').id)
 
-    def _free_reservation(self, product_id, location_id, quantity, lot_id=None, package_id=None, owner_id=None, ml_to_ignore=None):
+    def _free_reservation(self, product_id, location_id, quantity, lot_id=None, package_id=None, owner_id=None, ml_ids_to_ignore=None):
         """ When editing a done move line or validating one with some forced quantities, it is
         possible to impact quants that were not reserved. It is therefore necessary to edit or
         unlink the move lines that reserved a quantity now unavailable.
 
-        :param ml_to_ignore: recordset of `stock.move.line` that should NOT be unreserved
+        :param ml_ids_to_ignore: OrderedSet of `stock.move.line` ids that should NOT be unreserved
         """
         self.ensure_one()
 
-        if ml_to_ignore is None:
-            ml_to_ignore = self.env['stock.move.line']
-        ml_to_ignore |= self
+        if ml_ids_to_ignore is None:
+            ml_ids_to_ignore = OrderedSet()
+        ml_ids_to_ignore |= self.ids
 
         # Check the available quantity, with the `strict` kw set to `True`. If the available
         # quantity is greather than the quantity now unavailable, there is nothing to do.
@@ -623,8 +641,9 @@ class StockMoveLine(models.Model):
                 ('owner_id', '=', owner_id.id if owner_id else False),
                 ('package_id', '=', package_id.id if package_id else False),
                 ('product_qty', '>', 0.0),
-                ('id', 'not in', ml_to_ignore.ids),
+                ('id', 'not in', tuple(ml_ids_to_ignore)),
             ]
+
             # We take the current picking first, then the pickings with the latest scheduled date
             current_picking_first = lambda cand: (
                 cand.picking_id != self.move_id.picking_id,

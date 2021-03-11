@@ -16,6 +16,9 @@ $o-we-zindex: $o-we-overlay-zindex + 1 !default;
     * {
         font-weight: inherit !important;
     }
+    .btn {
+        text-align: unset !important;
+    }
 }
 
 // EDITOR TOP BAR AND POPOVER
@@ -293,8 +296,7 @@ body .modal {
             }
 
             .o_we_attachment_selected {
-                border-color: $o-brand-primary;
-                box-shadow: 0px 0px 2px 2px $o-brand-primary;
+                @include o-we-active-wrapper($top: 5px, $left: 5px);
             }
 
             .o_we_attachment_optimized .badge {

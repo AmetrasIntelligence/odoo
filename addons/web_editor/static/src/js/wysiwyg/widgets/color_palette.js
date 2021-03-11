@@ -136,14 +136,17 @@ const ColorPaletteWidget = Widget.extend({
         this._markSelectedColor();
 
         // Colorpicker
-        let defaultColor = this.selectedColor;
-        if (defaultColor && !ColorpickerWidget.isCSSColor(defaultColor)) {
-            defaultColor = weUtils.getCSSVariableValue(defaultColor, this.style);
+        if (!this.options.excluded.includes('custom')) {
+            let defaultColor = this.selectedColor;
+            if (defaultColor && !ColorpickerWidget.isCSSColor(defaultColor)) {
+                defaultColor = weUtils.getCSSVariableValue(defaultColor, this.style);
+            }
+            this.colorPicker = new ColorpickerWidget(this, {
+                defaultColor: defaultColor,
+            });
+            await this.colorPicker.prependTo($colorSection);
         }
-        this.colorPicker = new ColorpickerWidget(this, {
-            defaultColor: defaultColor,
-        });
-        await this.colorPicker.prependTo($colorSection);
+
         return res;
     },
     /**
@@ -151,6 +154,14 @@ const ColorPaletteWidget = Widget.extend({
      */
     getColorNames: function () {
         return this.colorNames;
+    },
+    /**
+     * Sets the currently selected color
+     *
+     * @param {string} color rgb[a]
+     */
+    setSelectedColor: function (color) {
+        this._selectColor({color: color});
     },
 
     //--------------------------------------------------------------------------
@@ -254,13 +265,18 @@ const ColorPaletteWidget = Widget.extend({
      * Set the selectedColor and trigger an event
      *
      * @param {Object} color
-     * @param {string} eventName
+     * @param {string} [eventName]
      */
     _selectColor: function (colorInfo, eventName) {
         this.selectedColor = colorInfo.color = this.colorToColorNames[colorInfo.color] || colorInfo.color;
-        this.trigger_up(eventName, colorInfo);
+        if (eventName) {
+            this.trigger_up(eventName, colorInfo);
+        }
         this._buildCustomColors();
         this._markSelectedColor();
+        if (this.colorPicker) {
+            this.colorPicker.setSelectedColor(colorInfo.color);
+        }
     },
     /**
      * Mark the selected color

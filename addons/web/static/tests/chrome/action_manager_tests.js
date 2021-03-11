@@ -440,6 +440,7 @@ QUnit.module('ActionManager', {
         // execute action 3 and open a record in form view
         await actionManager.doAction(3);
         testUtils.dom.click(actionManager.$('.o_list_view .o_data_row:first'));
+        await testUtils.nextTick(); // wait for clearUncommittedChanges
 
         // execute action 4 without 'on_reverse_breadcrumb' handler, then go back
         await actionManager.doAction(4);
@@ -549,6 +550,7 @@ QUnit.module('ActionManager', {
         assert.containsOnce(actionManager, '.o_form_view');
 
         await testUtils.dom.click(actionManager.$('.o_form_view .o_data_row:first'));
+        await testUtils.nextTick(); // wait for quick edit
         assert.containsOnce(document.body, '.modal .o_form_view');
 
         await actionManager.doAction(1); // target != 'new'
@@ -580,6 +582,7 @@ QUnit.module('ActionManager', {
         assert.containsOnce(actionManager, '.o_form_view');
 
         await testUtils.dom.click(actionManager.$('.o_form_view .o_data_row:first'));
+        await testUtils.nextTick(); // wait for quick edit
         assert.containsOnce(document.body, '.modal .o_form_view');
 
         await actionManager.doAction(5); // target 'new'
@@ -1664,6 +1667,7 @@ QUnit.module('ActionManager', {
         def = testUtils.makeTestPromise();
         await testUtils.nextTick();
         testUtils.dom.click(actionManager.$('.o_list_view .o_data_row:first'));
+        await testUtils.nextTick(); // wait for clearUncommittedChanges
 
         assert.containsOnce(actionManager, '.o_list_view',
         "should still display the list view of action 3");
@@ -3316,13 +3320,22 @@ QUnit.module('ActionManager', {
         actionManager.destroy();
     });
 
-    QUnit.test('ask for confirmation when leaving a "dirty" view', async function (assert) {
+    QUnit.test('save when leaving a "dirty" view', async function (assert) {
         assert.expect(4);
 
         var actionManager = await createActionManager({
             actions: this.actions,
             archs: this.archs,
             data: this.data,
+            mockRPC(route, { args, method, model }) {
+                if (model === 'partner' && method === 'write') {
+                    assert.deepEqual(args, [
+                        [1],
+                        { foo: 'pinkypie', },
+                    ]);
+                }
+                return this._super(...arguments);
+            }
         });
         await actionManager.doAction(4);
 
@@ -3336,22 +3349,7 @@ QUnit.module('ActionManager', {
         // go back to kanban view
         await testUtils.dom.click($('.o_control_panel .breadcrumb-item:first a'));
 
-        assert.strictEqual($('.modal .modal-body').text(),
-            "The record has been modified, your changes will be discarded. Do you want to proceed?",
-            "should display a modal dialog to confirm discard action");
-
-        // cancel
-        await testUtils.dom.click($('.modal .modal-footer button.btn-secondary'));
-
-        assert.containsOnce(actionManager, '.o_form_view',
-            "should still be in form view");
-
-        // go back again to kanban view
-        await testUtils.dom.click($('.o_control_panel .breadcrumb-item:first a'));
-
-        // confirm discard
-        await testUtils.dom.click($('.modal .modal-footer button.btn-primary'));
-
+        assert.containsNone(document.body, '.modal', "should not display a modal dialog");
         assert.containsNone(actionManager, '.o_form_view',
             "should no longer be in form view");
         assert.containsOnce(actionManager, '.o_kanban_view',
@@ -3774,10 +3772,11 @@ QUnit.module('ActionManager', {
     });
 
     QUnit.test('execute action from dirty, new record, and come back', async function (assert) {
-        assert.expect(17);
+        assert.expect(18);
 
         this.data.partner.fields.bar.default = 1;
         this.archs['partner,false,form'] = '<form>' +
+                                                '<field name="display_name"/>' +
                                                 '<field name="foo"/>' +
                                                 '<field name="bar" readonly="1"/>' +
                                             '</form>';
@@ -3814,32 +3813,33 @@ QUnit.module('ActionManager', {
             "PartnersNew");
 
         // set form view dirty and open m2o record
+        await testUtils.fields.editInput(actionManager.$('input[name="display_name"]'), 'test');
         await testUtils.fields.editInput(actionManager.$('input[name=foo]'), 'val');
         await testUtils.dom.click(actionManager.$('.o_form_uri:contains(First record)'));
-        assert.containsOnce($('body'), '.modal'); // confirm discard dialog
-
-        // confirm discard changes
-        await testUtils.dom.click($('.modal .modal-footer .btn-primary'));
+        assert.containsNone(document.body, '.modal', 'should not open modal');
 
         assert.containsOnce(actionManager, '.o_form_view.o_form_readonly');
         assert.strictEqual(actionManager.$('.o_control_panel .breadcrumb-item').text(),
-            "PartnersNewFirst record");
+            "PartnerstestFirst record");
 
-        // go back to New using the breadcrumbs
+        // go back to test using the breadcrumbs
         await testUtils.dom.click(actionManager.$('.o_control_panel .breadcrumb-item:nth(1) a'));
-        assert.containsOnce(actionManager, '.o_form_view.o_form_editable');
+
+        // should be readonly and so saved
+        assert.containsOnce(actionManager, '.o_form_view.o_form_readonly');
         assert.strictEqual(actionManager.$('.o_control_panel .breadcrumb-item').text(),
-            "PartnersNew");
+            "Partnerstest");
 
         assert.verifySteps([
             '/web/action/load', // action 3
             'load_views', // views of action 3
             '/web/dataset/search_read', // list
-            'onchange', // form (create)
+            'onchange', // edit input
             'get_formview_action', // click on m2o
             'load_views', // form view of dynamic action
             'read', // form
-            'onchange', // form (create)
+            'create', // form (create)
+            'read', // click breadcrumb
         ]);
 
         actionManager.destroy();
@@ -4031,6 +4031,58 @@ QUnit.module('ActionManager', {
         assert.strictEqual($(".modal").length, 1, "It should display a modal");
         await testUtils.dom.click(`button[name="some_method"]`);
         assert.strictEqual($(".modal").length, 0, "It should have closed the modal");
+
+        actionManager.destroy();
+    });
+
+    QUnit.test('can execute act_window actions in target="new"', async function (assert) {
+        assert.expect(5);
+
+        this.actions.push({
+            id: 999,
+            name: 'A window action',
+            res_model: 'partner',
+            target: 'new',
+            type: 'ir.actions.act_window',
+            views: [[999, 'form']],
+        });
+        this.archs['partner,999,form'] = `
+            <form>
+                <button name="method" string="Call method" type="object" confirm="Are you sure?"/>
+            </form>`;
+        this.archs['partner,1000,form'] = `<form>Another action</form>`;
+
+        const actionManager = await createActionManager({
+            actions: this.actions,
+            archs: this.archs,
+            data: this.data,
+            mockRPC: function (route, args) {
+                if (args.method === 'method') {
+                    return Promise.resolve({
+                        id: 1000,
+                        name: 'Another window action',
+                        res_model: 'partner',
+                        target: 'new',
+                        type: 'ir.actions.act_window',
+                        views: [[1000, 'form']],
+                    });
+                }
+                return this._super.apply(this, arguments);
+            },
+        });
+        await actionManager.doAction(999);
+
+        assert.containsOnce(document.body, '.modal button[name=method]');
+
+        await testUtils.dom.click($('.modal button[name=method]'));
+
+        assert.containsN(document.body, '.modal', 2);
+        assert.strictEqual($('.modal:last .modal-body').text(), 'Are you sure?');
+
+        await testUtils.dom.click($('.modal:last .modal-footer .btn-primary'));
+        assert.containsOnce(document.body, '.modal');
+        assert.strictEqual($('.modal:last .modal-body').text().trim(), 'Another action');
+
         actionManager.destroy();
     });
 
@@ -4567,9 +4619,10 @@ QUnit.module('ActionManager', {
         actionManager.destroy();
     });
 
-    QUnit.test('Call twice clearUncommittedChanges in a row does not display twice the discard warning', async function (assert) {
-        assert.expect(4);
+    QUnit.test('Call twice clearUncommittedChanges in a row does not save twice', async function (assert) {
+        assert.expect(5);
 
+        let writeCalls = 0;
         var actionManager = await createActionManager({
             actions: this.actions,
             archs: this.archs,
@@ -4578,6 +4631,12 @@ QUnit.module('ActionManager', {
                 clear_uncommitted_changes: function () {
                     actionManager.clearUncommittedChanges();
                 },
+            },
+            mockRPC(route, { method }) {
+                if (method === 'write') {
+                    writeCalls += 1;
+                }
+                return this._super(...arguments);
             },
         });
 
@@ -4594,14 +4653,13 @@ QUnit.module('ActionManager', {
         actionManager.trigger_up('clear_uncommitted_changes');
         await testUtils.nextTick();
 
-        assert.containsOnce($('body'), '.modal'); // confirm discard dialog
-        // confirm discard changes
-        await testUtils.dom.click($('.modal .modal-footer .btn-primary'));
+        assert.containsNone($('body'), '.modal');
 
         actionManager.trigger_up('clear_uncommitted_changes');
         await testUtils.nextTick();
 
         assert.containsNone($('body'), '.modal');
+        assert.strictEqual(writeCalls, 1);
 
         actionManager.destroy();
     });

@@ -64,7 +64,7 @@ class StockRule(models.Model):
              "Trigger Another Rule: the system will try to find a stock rule to bring the products in the source location. The available stock will be ignored.\n"
              "Take From Stock, if Unavailable, Trigger Another Rule: the products will be taken from the available stock of the source location."
              "If there is no stock available, the system will try to find a  rule to bring the products in the source location.")
-    route_sequence = fields.Integer('Route Sequence', related='route_id.sequence', store=True, readonly=False, compute_sudo=True)
+    route_sequence = fields.Integer('Route Sequence', related='route_id.sequence', store=True, compute_sudo=True)
     picking_type_id = fields.Many2one(
         'stock.picking.type', 'Operation Type',
         required=True, check_company=True,
@@ -169,6 +169,10 @@ class StockRule(models.Model):
         if self.auto == 'transparent':
             old_dest_location = move.location_dest_id
             move.write({'date': new_date, 'location_dest_id': self.location_id.id})
+            # make sure the location_dest_id is consistent with the move line location dest
+            if move.move_line_ids:
+                move.move_line_ids.location_dest_id = move.location_dest_id._get_putaway_strategy(move.product_id) or move.location_dest_id
+
             # avoid looping if a push rule is not well configured; otherwise call again push_apply to see if a next step is defined
             if self.location_id != old_dest_location:
                 # TDE FIXME: should probably be done in the move model IMO

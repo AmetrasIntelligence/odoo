@@ -260,10 +260,8 @@ GROUP BY fol.id%s%s""" % (
         res_model and the document res_ids. This method does not handle access rights. This is the
         role of the caller to ensure there is no security breach.
 
-        :param partner_subtypes: optional subtypes for new partner followers. If not given, default
-         ones are computed;
-        :param channel_subtypes: optional subtypes for new channel followers. If not given, default
-         ones are computed;
+        :param partner_subtypes: see ``_add_followers``. If not given, default ones are computed.
+        :param channel_subtypes: see ``_add_followers``. If not given, default ones are computed.
         :param customer_ids: see ``_add_default_followers``
         :param check_existing: see ``_add_followers``;
         :param existing_policy: see ``_add_followers``;
@@ -329,10 +327,18 @@ GROUP BY fol.id%s%s""" % (
          * second one is a dict which keys are follower ids. Value is a dict of values valid for
            updating the related follower record;
 
-        :param check_existing: if True, check for existing followers for given documents and handle
-        them according to existing_policy parameter. Setting to False allows to save some computation
-        if caller is sure there are no conflict for followers;
-        :param existing policy: if check_existing, tells what to do with already-existing followers:
+        :param partner_subtypes: optional subtypes for new partner followers. This
+          is a dict whose keys are partner IDs and value subtype IDs for that
+          partner.
+        :param channel_subtypes: optional subtypes for new channel followers. This
+          is a dict whose keys are channel IDs and value subtype IDs for that
+          channel.
+        :param check_existing: if True, check for existing followers for given
+          documents and handle them according to existing_policy parameter.
+          Setting to False allows to save some computation if caller is sure
+          there are no conflict for followers;
+        :param existing policy: if check_existing, tells what to do with already
+          existing followers:
 
           * skip: simply skip existing followers, do not touch them;
           * force: update existing with given subtypes only;
@@ -366,11 +372,15 @@ GROUP BY fol.id%s%s""" % (
                 elif existing_policy in ('replace', 'update'):
                     fol_id, sids = next(((key, val[3]) for key, val in data_fols.items() if val[0] == res_id and val[1] == partner_id), (False, []))
                     new_sids = set(partner_subtypes[partner_id]) - set(sids)
-                    old_sids = set(sids  if sids[0] is not None else []) - set(partner_subtypes[partner_id])
+                    old_sids = set(sids) - set(partner_subtypes[partner_id])
+                    update_cmd = []
                     if fol_id and new_sids:
-                        update[fol_id] = {'subtype_ids': [Command.link(sid) for sid in new_sids]}
+                        update_cmd += [Command.link(sid) for sid in new_sids]
                     if fol_id and old_sids and existing_policy == 'replace':
-                        update[fol_id] = {'subtype_ids': [Command.unlink(sid) for sid in old_sids]}
+                        update_cmd += [Command.unlink(sid) for sid in old_sids]
+                    if update_cmd:
+                        update[fol_id] = {'subtype_ids': update_cmd}
+
             for channel_id in set(channel_ids or []):
                 if channel_id not in doc_cids[res_id]:
                     new.setdefault(res_id, list()).append({
@@ -382,9 +392,12 @@ GROUP BY fol.id%s%s""" % (
                     fol_id, sids = next(((key, val[3]) for key, val in data_fols.items() if val[0] == res_id and val[2] == channel_id), (False, []))
                     new_sids = set(channel_subtypes[channel_id]) - set(sids)
                     old_sids = set(sids) - set(channel_subtypes[channel_id])
+                    update_cmd = []
                     if fol_id and new_sids:
-                        update[fol_id] = {'subtype_ids': [Command.link(sid) for sid in new_sids]}
+                        update_cmd += [Command.link(sid) for sid in new_sids]
                     if fol_id and old_sids and existing_policy == 'replace':
-                        update[fol_id] = {'subtype_ids': [Command.unlink(sid) for sid in old_sids]}
+                        update_cmd += [Command.unlink(sid) for sid in old_sids]
+                    if update_cmd:
+                        update[fol_id] = {'subtype_ids': update_cmd}
 
         return new, update
