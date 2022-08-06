@@ -1,32 +1,21 @@
-# Translation of Odoo Server.
-# This file contains the translation of the following modules:
-# 	* website_hr_recruitment
-# 
-# Translators:
-# e2f <projects@e2f.com>, 2019
-# Martin Trigaux, 2019
-# Wolfgang Taferner, 2019
-# Ermin Trevisan <trevi@twanda.com>, 2019
-# Fabian Liesch <fabian.liesch@gmail.com>, 2019
-# Katharina Moritz <kmo@e2f.com>, 2019
-# Niki Waibel, 2019
-# Jan Brodersen <4rmitxes@gmail.com>, 2019
-# Jan Meyer, 2019
-# Chris Egal <sodaswed@web.de>, 2019
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~12.5\n"
+"Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-27 09:12+0000\n"
-"PO-Revision-Date: 2019-08-26 09:15+0000\n"
-"Last-Translator: Chris Egal <sodaswed@web.de>, 2019\n"
-"Language-Team: German (https://www.transifex.com/odoo/teams/41243/de/)\n"
+"PO-Revision-Date: 2022-08-06 22:44\n"
+"Last-Translator: \n"
+"Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: ametras-xsolutions\n"
+"X-Crowdin-Project-ID: 530964\n"
+"X-Crowdin-Language: de\n"
+"X-Crowdin-File: /[AmetrasIntelligence.odoo] 13.0/addons/website_hr_recruitment/i18n/website_hr_recruitment.pot\n"
+"X-Crowdin-File-ID: 8436\n"
+"Language: de_DE\n"
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
@@ -56,9 +45,7 @@ msgstr ""
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.index
-msgid ""
-"<i class=\"fa fa-clock-o\" title=\"Publication date\" role=\"img\" aria-"
-"label=\"Publication date\"/>"
+msgid "<i class=\"fa fa-clock-o\" title=\"Publication date\" role=\"img\" aria-label=\"Publication date\"/>"
 msgstr ""
 
 #. module: website_hr_recruitment
@@ -69,61 +56,51 @@ msgstr ""
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
-msgid ""
-"<span class=\"fa fa-2x fa-calendar\"/>\n"
+msgid "<span class=\"fa fa-2x fa-calendar\"/>\n"
 "                    Sponsored Events"
 msgstr ""
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
-msgid ""
-"<span class=\"fa fa-2x fa-car\"/>\n"
+msgid "<span class=\"fa fa-2x fa-car\"/>\n"
 "                    Save on commute"
 msgstr ""
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
-msgid ""
-"<span class=\"fa fa-2x fa-check-circle\"/>\n"
+msgid "<span class=\"fa fa-2x fa-check-circle\"/>\n"
 "                    Discount Programs"
 msgstr ""
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
-msgid ""
-"<span class=\"fa fa-2x fa-coffee\"/>\n"
+msgid "<span class=\"fa fa-2x fa-coffee\"/>\n"
 "                    Eat &amp; Drink"
-msgstr ""
-"<span class=\"fa fa-2x fa-coffee\"/>\n"
+msgstr "<span class=\"fa fa-2x fa-coffee\"/>\n"
 "                    Essen &amp; Trinken"
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
-msgid ""
-"<span class=\"fa fa-2x fa-futbol-o\"/>\n"
+msgid "<span class=\"fa fa-2x fa-futbol-o\"/>\n"
 "                    Sport Activity"
-msgstr ""
-"<span class=\"fa fa-2x fa-futbol-o\"/>\n"
+msgstr "<span class=\"fa fa-2x fa-futbol-o\"/>\n"
 "                    Sportliche Aktivitäten"
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
-msgid ""
-"<span class=\"fa fa-2x fa-heart\"/>\n"
+msgid "<span class=\"fa fa-2x fa-heart\"/>\n"
 "                    Benefits"
 msgstr ""
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
-msgid ""
-"<span class=\"fa fa-2x fa-map-marker\"/>\n"
+msgid "<span class=\"fa fa-2x fa-map-marker\"/>\n"
 "                    Prime location"
 msgstr ""
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
-msgid ""
-"<span class=\"fa fa-2x fa-sun-o\"/>\n"
+msgid "<span class=\"fa fa-2x fa-sun-o\"/>\n"
 "                    PTOs"
 msgstr ""
 
@@ -135,13 +112,11 @@ msgstr ""
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.thankyou_ir_ui_view
 #: model_terms:website.page,arch_db:website_hr_recruitment.thankyou
-msgid ""
-"<span>\n"
+msgid "<span>\n"
 "                                            We usually reply between one and three days.<br/>\n"
 "                                            Feel free to contact him/her if you have further questions.\n"
 "                                        </span>"
-msgstr ""
-"<span>\n"
+msgstr "<span>\n"
 " Wir antworten normalerweise innerhalb von drei Tagen. <br/>\n"
 " Bei weiteren Fragen können Sie ihn/sie jederzeit kontaktieren.\n"
 "</span>"
@@ -215,12 +190,8 @@ msgstr "Durchschn. Angebotsumfang:"
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
-msgid ""
-"Brand-name product and services in categories like travel, electronics, "
-"health, fitness, cellular, and more"
-msgstr ""
-"Markenprodukte und -dienstleistungen in Kategorien wie Reisen, Elektronik, "
-"Gesundheit, Fitness, Mobiltelefon und mehr."
+msgid "Brand-name product and services in categories like travel, electronics, health, fitness, cellular, and more"
+msgstr "Markenprodukte und -dienstleistungen in Kategorien wie Reisen, Elektronik, Gesundheit, Fitness, Mobiltelefon und mehr."
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
@@ -251,11 +222,8 @@ msgstr "Fortfahren auf unserer Website"
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.index
-msgid ""
-"Create new job pages from the <strong><i>+New</i></strong> top-right button."
-msgstr ""
-"Erstellen Sie mit der Schaltfläche <strong><i>+Neu</i></strong> oben rechts "
-"neue Job-Seiten."
+msgid "Create new job pages from the <strong><i>+New</i></strong> top-right button."
+msgstr "Erstellen Sie mit der Schaltfläche <strong><i>+Neu</i></strong> oben rechts neue Job-Seiten."
 
 #. module: website_hr_recruitment
 #. openerp-web
@@ -267,12 +235,8 @@ msgstr "Abteilung"
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
-msgid ""
-"Direct coordination with functional consultants for qualification and follow"
-" ups"
-msgstr ""
-"Direkte Koordination mit spezifischen Beratern für Qualifikation und "
-"Folgemaßnahmen."
+msgid "Direct coordination with functional consultants for qualification and follow ups"
+msgstr "Direkte Koordination mit spezifischen Beratern für Qualifikation und Folgemaßnahmen."
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
@@ -281,13 +245,8 @@ msgstr "Voller Verkaufssyklus"
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
-msgid ""
-"Healthcare, dental, vision, life insurance, Flexible Spending Account (FSA),"
-" Health Savings Account (HSA)"
-msgstr ""
-"Krankenversicherung, zahn- und augenärztliche Versorgung, "
-"Lebensversicherungen, flexibles Girokonto (FSA, Flexible Spending Account), "
-"Sparkonto für medizinische Ausgaben (HSA, Health Savings Account)"
+msgid "Healthcare, dental, vision, life insurance, Flexible Spending Account (FSA), Health Savings Account (HSA)"
+msgstr "Krankenversicherung, zahn- und augenärztliche Versorgung, Lebensversicherungen, flexibles Girokonto (FSA, Flexible Spending Account), Sparkonto für medizinische Ausgaben (HSA, Health Savings Account)"
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
@@ -303,7 +262,7 @@ msgstr "In der Zwischenzeit"
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.apply
 msgid "Job"
-msgstr "Arbeitsstelle"
+msgstr ""
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.apply
@@ -345,7 +304,7 @@ msgstr "Arbeitsstelle"
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.detail
 #: model:website.menu,name:website_hr_recruitment.menu_jobs
 msgid "Jobs"
-msgstr "Jobs"
+msgstr ""
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.index
@@ -354,20 +313,16 @@ msgstr "Helfen Sie uns, Marktführer für Unternehmenssoftware zu werden !"
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.index
-msgid ""
-"Join us, we offer you an extraordinary chance to learn, to\n"
+msgid "Join us, we offer you an extraordinary chance to learn, to\n"
 "                                    develop and to be part of an exciting experience and\n"
 "                                    team."
-msgstr ""
-"Begleiten Sie uns und nutzen Sie die außerordentliche Chance, um\n"
+msgstr "Begleiten Sie uns und nutzen Sie die außerordentliche Chance, um\n"
 "                                    als Mitglied unseres Teams eine inspirierende Erfahrung zu machen."
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
-msgid ""
-"Large apps scope: CRM, MRP, Accounting, Inventory, HR, Project Mgt, etc."
-msgstr ""
-"Umfangreiche Apps: CRM, MRP, Buchhaltung, Bestand, HR, Projekt-Mgmt., usw."
+msgid "Large apps scope: CRM, MRP, Accounting, Inventory, HR, Project Mgt, etc."
+msgstr "Umfangreiche Apps: CRM, MRP, Buchhaltung, Bestand, HR, Projekt-Mgmt., usw."
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.thankyou_ir_ui_view
@@ -383,18 +338,12 @@ msgstr "Benötigen Sie weitere Infos?"
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
 msgid "No outbound calls, you get leads and focus on providing value to them"
-msgstr ""
-"Keine ausgehenden Anrufe, Sie erhalten Interessenten und konzentrieren sich "
-"darauf, diesen wertvolle Dienste bereitzustellen."
+msgstr "Keine ausgehenden Anrufe, Sie erhalten Interessenten und konzentrieren sich darauf, diesen wertvolle Dienste bereitzustellen."
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
-msgid ""
-"Only a couple blocs from BART, Caltrain, Highway 101, carpool pickup, and "
-"Bay Bridge."
-msgstr ""
-"Nur wenige Blocks von BART, Caltrain, Highway 101, Autopool-Abholung und Bay"
-" Bridge entfernt."
+msgid "Only a couple blocs from BART, Caltrain, Highway 101, carpool pickup, and Bay Bridge."
+msgstr "Nur wenige Blocks von BART, Caltrain, Highway 101, Autopool-Abholung und Bay Bridge entfernt."
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.index
@@ -409,9 +358,7 @@ msgstr "Möglichkeiten für Leistungsspitzen:"
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
 msgid "Peet's and Philz coffee provided all day to order and pantry snacks"
-msgstr ""
-"Peet's und Philz stellen den ganzen Tag lang bestellte und vorbereitete "
-"Snacks bereit."
+msgstr "Peet's und Philz stellen den ganzen Tag lang bestellte und vorbereitete Snacks bereit."
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
@@ -428,9 +375,7 @@ msgstr "Telefonnummer:"
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
 msgid "Play any sport with colleagues and the bill is covered"
-msgstr ""
-"Spielen Sie mit Kollegen jede Sportart, ohne sich um die Rechnung zu "
-"kümmern."
+msgstr "Spielen Sie mit Kollegen jede Sportart, ohne sich um die Rechnung zu kümmern."
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
@@ -465,17 +410,12 @@ msgstr "Kurzer Überblick"
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
-msgid ""
-"Short summary of the job: A sales job for smart people and can\n"
+msgid "Short summary of the job: A sales job for smart people and can\n"
 "                learn quickly new industries management practices. You will be\n"
 "                in charge of the full sales cycle from the opportunity\n"
 "                qualification to the negotiation, going through astonishing\n"
 "                product demos."
-msgstr ""
-"Kurze Zusammenfassung des Jobs: Eine Verkaufsstelle für intelligente "
-"Personen, die schnell neue Managementmethoden der Branche lernen. Sie "
-"steuern den gesamten Verkaufszyklus von der Qualifikation von Chancen bis "
-"hin zur Verhandlung, bei der Sie erstaunliche Produkt-Demos vorstellen."
+msgstr "Kurze Zusammenfassung des Jobs: Eine Verkaufsstelle für intelligente Personen, die schnell neue Managementmethoden der Branche lernen. Sie steuern den gesamten Verkaufszyklus von der Qualifikation von Chancen bis hin zur Verhandlung, bei der Sie erstaunliche Produkt-Demos vorstellen."
 
 #. module: website_hr_recruitment
 #: model:ir.model,name:website_hr_recruitment.model_hr_recruitment_source
@@ -485,7 +425,7 @@ msgstr "Bewerberherkunft"
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.apply
 msgid "Submit"
-msgstr "Absenden"
+msgstr ""
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
@@ -504,11 +444,8 @@ msgstr "Geschichte des Gründers"
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
-msgid ""
-"Tuesday Dinners, Monthly Lunch Mixers, Monthly Happy Hour, Annual day event"
-msgstr ""
-"Abendessen am Dienstag, monatliches gemeinsames Mittagessen, monatliche "
-"Happy Hour, jährliches Tagesevent"
+msgid "Tuesday Dinners, Monthly Lunch Mixers, Monthly Happy Hour, Annual day event"
+msgstr "Abendessen am Dienstag, monatliches gemeinsames Mittagessen, monatliche Happy Hour, jährliches Tagesevent"
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
@@ -547,12 +484,8 @@ msgstr "Was sagen andere über uns?"
 
 #. module: website_hr_recruitment
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.default_website_description
-msgid ""
-"You sell management software to directors of SMEs: interesting projects and "
-"people"
-msgstr ""
-"Sie verkaufen Managementsoftware an KMU-Inhaber, das bedeutet interessante "
-"Projekte und Personen."
+msgid "You sell management software to directors of SMEs: interesting projects and people"
+msgstr "Sie verkaufen Managementsoftware an KMU-Inhaber, das bedeutet interessante Projekte und Personen."
 
 #. module: website_hr_recruitment
 #. openerp-web
@@ -601,3 +534,4 @@ msgstr "offene Arbeitsstellen"
 #: model_terms:ir.ui.view,arch_db:website_hr_recruitment.index
 msgid "unpublished"
 msgstr "unveröffentlicht"
+
