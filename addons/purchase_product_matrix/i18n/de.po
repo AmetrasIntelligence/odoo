@@ -1,32 +1,26 @@
-# Translation of Odoo Server.
-# This file contains the translation of the following modules:
-# 	* purchase_product_matrix
-# 
-# Translators:
-# Martin Trigaux, 2019
-# Chris Egal <sodaswed@web.de>, 2019
-# Leon Grill <leg@odoo.com>, 2019
-# Patrick Heuel <patrick.heuel@odoo-bs.com>, 2019
-# Philip Kuß <philip.kuss@gmx.de>, 2019
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~12.5\n"
+"Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-09 12:18+0000\n"
-"PO-Revision-Date: 2019-08-26 09:13+0000\n"
-"Last-Translator: Philip Kuß <philip.kuss@gmx.de>, 2019\n"
-"Language-Team: German (https://www.transifex.com/odoo/teams/41243/de/)\n"
+"PO-Revision-Date: 2022-08-06 22:43\n"
+"Last-Translator: \n"
+"Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: ametras-xsolutions\n"
+"X-Crowdin-Project-ID: 530964\n"
+"X-Crowdin-Language: de\n"
+"X-Crowdin-File: /[AmetrasIntelligence.odoo] 13.0/addons/purchase_product_matrix/i18n/purchase_product_matrix.pot\n"
+"X-Crowdin-File-ID: 8320\n"
+"Language: de_DE\n"
 
 #. module: purchase_product_matrix
 #: model:ir.model.fields,field_description:purchase_product_matrix.field_purchase_order_line__product_template_attribute_value_ids
 msgid "Attribute Values"
-msgstr "Attributwerte"
+msgstr "Attributswerte"
 
 #. module: purchase_product_matrix
 #. openerp-web
@@ -61,9 +55,7 @@ msgstr "Gitter aktualisieren"
 
 #. module: purchase_product_matrix
 #: model:ir.model.fields,help:purchase_product_matrix.field_purchase_order__report_grids
-msgid ""
-"If set, the matrix of configurable products will be shown on the report of "
-"this order."
+msgid "If set, the matrix of configurable products will be shown on the report of this order."
 msgstr ""
 
 #. module: purchase_product_matrix
@@ -94,12 +86,12 @@ msgstr "Werte von Produktattributen, die keine Varianten anlegen."
 #. module: purchase_product_matrix
 #: model:ir.model,name:purchase_product_matrix.model_purchase_order
 msgid "Purchase Order"
-msgstr "Beschaffungsauftrag"
+msgstr "Bestellung"
 
 #. module: purchase_product_matrix
 #: model:ir.model,name:purchase_product_matrix.model_purchase_order_line
 msgid "Purchase Order Line"
-msgstr "Bestellposition"
+msgstr "Angebotsanfragen Position"
 
 #. module: purchase_product_matrix
 #: model:ir.model.fields,help:purchase_product_matrix.field_purchase_order__grid_product_tmpl_id
@@ -108,8 +100,7 @@ msgstr ""
 
 #. module: purchase_product_matrix
 #: model:ir.model.fields,help:purchase_product_matrix.field_purchase_order__grid
-msgid ""
-"Technical storage of grid. \n"
+msgid "Technical storage of grid. \n"
 "If grid_update, will be loaded on the SO. \n"
 "If not, represents the matrix to open."
 msgstr ""
@@ -122,9 +113,6 @@ msgstr ""
 #. module: purchase_product_matrix
 #: code:addons/purchase_product_matrix/models/purchase.py:0
 #, python-format
-msgid ""
-"You cannot change the quantity of a product present in multiple purchase "
-"lines."
-msgstr ""
-"Die Menge eines Produktes, das in mehreren Positionszeilen enthalten ist, "
-"kann nicht geändert werden."
+msgid "You cannot change the quantity of a product present in multiple purchase lines."
+msgstr "Die Menge eines Produktes, das in mehreren Positionszeilen enthalten ist, kann nicht geändert werden."
+
