@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-05 12:32+0000\n"
-"PO-Revision-Date: 2022-08-06 22:38\n"
+"PO-Revision-Date: 2022-08-06 23:36\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -36,7 +36,7 @@ msgstr "<strong>Produkt</strong>"
 #: model:ir.model.fields,field_description:account_analytic_default.field_account_analytic_default__account_id
 #: model_terms:ir.ui.view,arch_db:account_analytic_default.view_account_analytic_default_form
 msgid "Account"
-msgstr ""
+msgstr "Konto"
 
 #. module: account_analytic_default
 #: model_terms:ir.ui.view,arch_db:account_analytic_default.view_account_analytic_default_form_search
@@ -54,7 +54,7 @@ msgstr "Eine Analytisch Vorgabe benötigt mindestens ein Analytisches Benutzerko
 #: model:ir.model.fields,field_description:account_analytic_default.field_account_move_line__analytic_account_id
 #: model_terms:ir.ui.view,arch_db:account_analytic_default.view_account_analytic_default_form_search
 msgid "Analytic Account"
-msgstr ""
+msgstr "Kostenstelle"
 
 #. module: account_analytic_default
 #: model_terms:ir.ui.view,arch_db:account_analytic_default.view_account_analytic_default_form
