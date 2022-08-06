@@ -1,24 +1,21 @@
-# Translation of Odoo Server.
-# This file contains the translation of the following modules:
-# 	* pos_hr
-# 
-# Translators:
-# Martin Trigaux, 2019
-# thomas quertinmont <tqu@odoo.com>, 2019
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~12.5\n"
+"Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-26 08:16+0000\n"
-"PO-Revision-Date: 2019-08-26 09:13+0000\n"
-"Last-Translator: thomas quertinmont <tqu@odoo.com>, 2019\n"
-"Language-Team: French (https://www.transifex.com/odoo/teams/41243/fr/)\n"
+"PO-Revision-Date: 2022-08-06 22:42\n"
+"Last-Translator: \n"
+"Language-Team: French\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Crowdin-Project: ametras-xsolutions\n"
+"X-Crowdin-Project-ID: 530964\n"
+"X-Crowdin-Language: fr\n"
+"X-Crowdin-File: /[AmetrasIntelligence.odoo] 13.0/addons/pos_hr/i18n/pos_hr.pot\n"
+"X-Crowdin-File-ID: 8288\n"
+"Language: fr_FR\n"
 
 #. module: pos_hr
 #: model_terms:ir.ui.view,arch_db:pos_hr.pos_config_form_view_inherit
@@ -30,7 +27,7 @@ msgstr "<span class=\"o_form_label oe_edit_only\">Employés autorisés </span>"
 #: model_terms:ir.ui.view,arch_db:pos_hr.pos_order_form_inherit
 #: model_terms:ir.ui.view,arch_db:pos_hr.pos_order_list_select_inherit
 msgid "Cashier"
-msgstr "Caissier"
+msgstr ""
 
 #. module: pos_hr
 #. openerp-web
@@ -69,9 +66,7 @@ msgstr "Employés ayant accès"
 #. module: pos_hr
 #: model:ir.model.fields,help:pos_hr.field_pos_config__employee_ids
 msgid "If left empty, all employees can log in to the PoS session"
-msgstr ""
-"S'il est laissé vide, tous les employés peuvent se connecter à la session du"
-" POS"
+msgstr "S'il est laissé vide, tous les employés peuvent se connecter à la session du POS"
 
 #. module: pos_hr
 #. openerp-web
@@ -85,7 +80,7 @@ msgstr "Mot de passe incorrect"
 #: code:addons/pos_hr/static/src/js/chrome.js:0
 #, python-format
 msgid "Lock"
-msgstr "Bloquer"
+msgstr "Fermer à clé"
 
 #. module: pos_hr
 #. openerp-web
@@ -96,12 +91,8 @@ msgstr "Connectez-vous à"
 
 #. module: pos_hr
 #: model_terms:ir.ui.view,arch_db:pos_hr.pos_config_form_view_inherit
-msgid ""
-"Only users with Manager access rights for PoS app can modify the product "
-"prices on orders."
-msgstr ""
-"Seuls les utilisateurs disposant des droits d'accès de responsable dans "
-"l'application PdV peuvent modifier le prix d'un produit sur une commande."
+msgid "Only users with Manager access rights for PoS app can modify the product prices on orders."
+msgstr "Seuls les utilisateurs disposant des droits d'accès de responsable dans l'application PdV peuvent modifier le prix d'un produit sur une commande."
 
 #. module: pos_hr
 #. openerp-web
@@ -112,22 +103,18 @@ msgstr "Mot de passe? "
 
 #. module: pos_hr
 #: model:ir.model.fields,help:pos_hr.field_pos_order__employee_id
-msgid ""
-"Person who uses the cash register. It can be a reliever, a student or an "
-"interim employee."
+msgid "Person who uses the cash register. It can be a reliever, a student or an interim employee."
 msgstr ""
-"Personnes qui utilisent la caisse. Il peut être un releveur, un étudiant ou "
-"un employé interimaire."
 
 #. module: pos_hr
 #: model:ir.model,name:pos_hr.model_pos_config
 msgid "Point of Sale Configuration"
-msgstr "Paramétrage du point de vente"
+msgstr "Configuration du point de vente"
 
 #. module: pos_hr
 #: model:ir.model,name:pos_hr.model_pos_order
 msgid "Point of Sale Orders"
-msgstr "Commandes du point de vente"
+msgstr "Commandes au point de vente"
 
 #. module: pos_hr
 #: model:ir.model,name:pos_hr.model_report_pos_order
@@ -168,12 +155,8 @@ msgstr "Sélectionnez un utilisateur"
 #. module: pos_hr
 #: code:addons/pos_hr/models/hr_employee.py:0
 #, python-format
-msgid ""
-"You cannot delete an employee that may be used in an active PoS session, "
-"close the session(s) first: \n"
-msgstr ""
-"Vous ne pouvez pas supprimer un employé qui peut être utilisé dans une "
-"session de POS active, fermez d'abord la ou les session: \n"
+msgid "You cannot delete an employee that may be used in an active PoS session, close the session(s) first: \n"
+msgstr "Vous ne pouvez pas supprimer un employé qui peut être utilisé dans une session de POS active, fermez d'abord la ou les session: \n"
 
 #. module: pos_hr
 #. openerp-web
@@ -181,3 +164,4 @@ msgstr ""
 #, python-format
 msgid "or"
 msgstr "ou"
+
