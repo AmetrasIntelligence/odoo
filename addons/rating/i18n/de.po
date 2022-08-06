@@ -1,43 +1,32 @@
-# Translation of Odoo Server.
-# This file contains the translation of the following modules:
-# 	* rating
-# 
-# Translators:
-# Martin Trigaux, 2019
-# Leon Grill <leg@odoo.com>, 2019
-# Chris Egal <sodaswed@web.de>, 2019
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~12.5\n"
+"Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-26 08:17+0000\n"
-"PO-Revision-Date: 2019-08-26 09:13+0000\n"
-"Last-Translator: Chris Egal <sodaswed@web.de>, 2019\n"
-"Language-Team: German (https://www.transifex.com/odoo/teams/41243/de/)\n"
+"PO-Revision-Date: 2022-08-06 22:43\n"
+"Last-Translator: \n"
+"Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: ametras-xsolutions\n"
+"X-Crowdin-Project-ID: 530964\n"
+"X-Crowdin-Language: de\n"
+"X-Crowdin-File: /[AmetrasIntelligence.odoo] 13.0/addons/rating/i18n/rating.pot\n"
+"X-Crowdin-File-ID: 8328\n"
+"Language: de_DE\n"
 
 #. module: rating
 #: model_terms:ir.ui.view,arch_db:rating.rating_external_page_submit
-msgid ""
-"<br/>\n"
+msgid "<br/>\n"
 "                            on our services on \""
 msgstr ""
-"<br/>\n"
-"                            on our services on \""
 
 #. module: rating
 #: model_terms:ir.ui.view,arch_db:rating.rating_external_page_view
-msgid ""
-"<i class=\"fa fa-check-circle fa-5x text-success\" role=\"img\" aria-"
-"label=\"Thank you!\" title=\"Thank you!\"/>"
+msgid "<i class=\"fa fa-check-circle fa-5x text-success\" role=\"img\" aria-label=\"Thank you!\" title=\"Thank you!\"/>"
 msgstr ""
-"<i class=\"fa fa-check-circle fa-5x text-success\" role=\"img\" aria-"
-"label=\"Thank you!\" title=\"Thank you!\"/>"
 
 #. module: rating
 #: model_terms:ir.ui.view,arch_db:rating.rating_rating_view_form
@@ -51,11 +40,8 @@ msgstr "Zugriffsschlüssel, um die Bewertung dieses Wertes zu setzen"
 
 #. module: rating
 #: model:ir.model.fields,help:rating.field_rating_rating__message_id
-msgid ""
-"Associated message when posting a review. Mainly used in website addons."
-msgstr ""
-"Benachrichtigung, die auf eine versendete Beurteilung folgt. Hauptsächlich "
-"erfolgt dies in den Website Erweiterungen."
+msgid "Associated message when posting a review. Mainly used in website addons."
+msgstr "Benachrichtigung, die auf eine versendete Beurteilung folgt. Hauptsächlich erfolgt dies in den Website Erweiterungen."
 
 #. module: rating
 #: model:ir.model.fields,help:rating.field_rating_rating__partner_id
@@ -108,7 +94,7 @@ msgstr "Dokumentenmodell"
 #. module: rating
 #: model:ir.model,name:rating.model_mail_thread
 msgid "Email Thread"
-msgstr "E-Mail Thread"
+msgstr ""
 
 #. module: rating
 #: model:ir.model.fields,help:rating.field_rating_rating__consumed
@@ -128,7 +114,7 @@ msgstr "Besuchen Sie unsere Website."
 #. module: rating
 #: model_terms:ir.ui.view,arch_db:rating.rating_rating_view_search
 msgid "Group By"
-msgstr "Gruppieren nach"
+msgstr "Gruppiere nach"
 
 #. module: rating
 #: model:ir.model.fields.selection,name:rating.selection__rating_rating__rating_text__highly_dissatisfied
@@ -151,14 +137,14 @@ msgstr "ID des bewerteten Objekts"
 #. module: rating
 #: model:ir.model.fields,field_description:rating.field_rating_rating__rating_image
 msgid "Image"
-msgstr "Bild"
+msgstr ""
 
 #. module: rating
 #: model:ir.model.fields,field_description:rating.field_rating_mixin____last_update
 #: model:ir.model.fields,field_description:rating.field_rating_parent_mixin____last_update
 #: model:ir.model.fields,field_description:rating.field_rating_rating____last_update
 msgid "Last Modified on"
-msgstr "Letzte Änderung am"
+msgstr "Zuletzt geändert am"
 
 #. module: rating
 #: model:ir.model.fields,field_description:rating.field_rating_rating__write_uid
@@ -255,7 +241,7 @@ msgstr "Bewertete Person"
 #: model_terms:ir.ui.view,arch_db:rating.rating_rating_view_search
 #: model_terms:ir.ui.view,arch_db:rating.rating_rating_view_tree
 msgid "Rating"
-msgstr "Bewertung"
+msgstr ""
 
 #. module: rating
 #: model:ir.model.fields,field_description:rating.field_rating_mixin__rating_avg
@@ -324,7 +310,7 @@ msgstr "Bewertung Werte: 0 = unzufrieden, 10 = zufrieden"
 #: model:ir.model.fields,field_description:rating.field_rating_parent_mixin__rating_ids
 #: model_terms:ir.ui.view,arch_db:rating.rating_rating_view_search
 msgid "Ratings"
-msgstr "Bewertungen"
+msgstr ""
 
 #. module: rating
 #: model:ir.model.fields,help:rating.field_rating_mixin__rating_last_feedback
@@ -335,7 +321,7 @@ msgstr "Begründung der Bewertung"
 #. module: rating
 #: model:ir.model.fields,field_description:rating.field_rating_rating__res_model_id
 msgid "Related Document Model"
-msgstr "Zugehöriges Dokumenten-Modell"
+msgstr ""
 
 #. module: rating
 #: model:ir.model.fields,field_description:rating.field_mail_mail__rating_ids
@@ -346,7 +332,7 @@ msgstr "Zugehörige Bewertungen"
 #. module: rating
 #: model_terms:ir.ui.view,arch_db:rating.rating_rating_view_search
 msgid "Resource"
-msgstr "Ressource (Objekt)"
+msgstr ""
 
 #. module: rating
 #: model:ir.model.fields,field_description:rating.field_rating_rating__res_name
@@ -362,7 +348,7 @@ msgstr "Zufrieden"
 #. module: rating
 #: model:ir.model.fields,field_description:rating.field_rating_rating__access_token
 msgid "Security Token"
-msgstr "Security Token"
+msgstr ""
 
 #. module: rating
 #: model_terms:ir.ui.view,arch_db:rating.rating_external_page_submit
@@ -398,8 +384,7 @@ msgstr "Wir freuen uns über Ihr Feedback!"
 #. module: rating
 #: model_terms:ir.ui.view,arch_db:rating.rating_external_page_submit
 msgid "Would be great if you can provide more information:"
-msgstr ""
-"Es wäre sehr hilfreich, wenn Sie weitere Informationen angeben können:"
+msgstr "Es wäre sehr hilfreich, wenn Sie weitere Informationen angeben können:"
 
 #. module: rating
 #: model_terms:ir.ui.view,arch_db:rating.rating_external_page_submit
@@ -432,7 +417,7 @@ msgstr "nicht zufrieden"
 #. module: rating
 #: model_terms:ir.ui.view,arch_db:rating.rating_rating_view_kanban
 msgid "on"
-msgstr "an"
+msgstr ""
 
 #. module: rating
 #: code:addons/rating/controllers/main.py:0
@@ -444,3 +429,4 @@ msgstr "zufrieden"
 #: model_terms:ir.ui.view,arch_db:rating.rating_external_page_submit
 msgid "you are"
 msgstr "Sie sind"
+
