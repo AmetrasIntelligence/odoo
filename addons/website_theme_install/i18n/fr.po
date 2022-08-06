@@ -1,56 +1,41 @@
-# Translation of Odoo Server.
-# This file contains the translation of the following modules:
-# 	* website_theme_install
-# 
-# Translators:
-# Cécile Collart <cco@odoo.com>, 2019
-# Martin Trigaux, 2019
-# Frédéric LIETART <stuff@tifred.fr>, 2019
-# Olivier Lenoir <olivier.lenoir@free.fr>, 2019
-# Richard Mathot <rim@odoo.com>, 2019
-# Xavier Symons <xsy@openerp.com>, 2019
-# Fred Gilson <fgi@odoo.com>, 2019
-# Eloïse Stilmant <est@odoo.com>, 2019
-# Laura Piraux <lap@odoo.com>, 2019
-# Nathan Noël <nathan070@me.com>, 2019
-# Sébastien BÜHL <buhlsebastien@gmail.com>, 2019
-# Olivier ANDRE <frsw194@gmail.com>, 2019
-# Vallen Delobel <edv@odoo.com>, 2020
-# Priscilla Sanchez <prs@odoo.com>, 2020
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 13.0\n"
+"Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-18 09:48+0000\n"
-"PO-Revision-Date: 2019-08-26 09:16+0000\n"
-"Last-Translator: Priscilla Sanchez <prs@odoo.com>, 2020\n"
-"Language-Team: French (https://www.transifex.com/odoo/teams/41243/fr/)\n"
+"PO-Revision-Date: 2022-08-06 22:45\n"
+"Last-Translator: \n"
+"Language-Team: French\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Crowdin-Project: ametras-xsolutions\n"
+"X-Crowdin-Project-ID: 530964\n"
+"X-Crowdin-Language: fr\n"
+"X-Crowdin-File: /[AmetrasIntelligence.odoo] 13.0/addons/website_theme_install/i18n/website_theme_install.pot\n"
+"X-Crowdin-File-ID: 8484\n"
+"Language: fr_FR\n"
 
 #. module: website_theme_install
 #: model:ir.model.fields,field_description:website_theme_install.field_theme_ir_ui_view__active
 msgid "Active"
-msgstr "Active"
+msgstr "Actif"
 
 #. module: website_theme_install
 #: model:ir.model.fields,field_description:website_theme_install.field_theme_ir_ui_view__arch
 msgid "Arch"
-msgstr "Arch"
+msgstr "Arc"
 
 #. module: website_theme_install
 #: model:ir.model.fields,field_description:website_theme_install.field_theme_ir_ui_view__arch_fs
 msgid "Arch Fs"
-msgstr "Arch Fs"
+msgstr ""
 
 #. module: website_theme_install
 #: model:ir.model,name:website_theme_install.model_ir_attachment
 msgid "Attachment"
-msgstr "Pièce jointe"
+msgstr ""
 
 #. module: website_theme_install
 #: model:ir.model.fields,field_description:website_theme_install.field_theme_ir_attachment__copy_ids
@@ -91,12 +76,12 @@ msgstr "Choisissez un thème pour votre site web"
 #. module: website_theme_install
 #: model:ir.model,name:website_theme_install.model_res_company
 msgid "Companies"
-msgstr "Sociétés"
+msgstr "Entreprises"
 
 #. module: website_theme_install
 #: model:ir.model,name:website_theme_install.model_res_config_settings
 msgid "Config Settings"
-msgstr "Paramètres de config"
+msgstr ""
 
 #. module: website_theme_install
 #: model:ir.actions.server,name:website_theme_install.theme_install_todo_action
@@ -126,7 +111,7 @@ msgstr "Créé le"
 #: model:ir.model.fields,field_description:website_theme_install.field_theme_website_menu__display_name
 #: model:ir.model.fields,field_description:website_theme_install.field_theme_website_page__display_name
 msgid "Display Name"
-msgstr "Afficher Nom"
+msgstr "Nom d'affichage"
 
 #. module: website_theme_install
 #: model:ir.model.fields.selection,name:website_theme_install.selection__theme_ir_ui_view__mode__extension
@@ -140,7 +125,7 @@ msgstr "Vue étendue"
 #: model:ir.model.fields,field_description:website_theme_install.field_theme_website_menu__id
 #: model:ir.model.fields,field_description:website_theme_install.field_theme_website_page__id
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #. module: website_theme_install
 #: model:ir.model.fields,field_description:website_theme_install.field_theme_ir_ui_view__inherit_id
@@ -163,7 +148,7 @@ msgstr "Est installé sur le site web actuel"
 #: model:ir.model.fields,field_description:website_theme_install.field_theme_ir_attachment__key
 #: model:ir.model.fields,field_description:website_theme_install.field_theme_ir_ui_view__key
 msgid "Key"
-msgstr "Clé"
+msgstr ""
 
 #. module: website_theme_install
 #: model:ir.model.fields,field_description:website_theme_install.field_theme_ir_attachment____last_update
@@ -208,12 +193,12 @@ msgstr "Menu utilisant une copie de moi"
 #. module: website_theme_install
 #: model:ir.model.fields,field_description:website_theme_install.field_theme_ir_ui_view__mode
 msgid "Mode"
-msgstr "Mode"
+msgstr ""
 
 #. module: website_theme_install
 #: model:ir.model,name:website_theme_install.model_ir_module_module
 msgid "Module"
-msgstr "Module"
+msgstr ""
 
 #. module: website_theme_install
 #: model:ir.model.fields,field_description:website_theme_install.field_theme_ir_attachment__name
@@ -236,7 +221,7 @@ msgstr "Les étapes de la découverte du thème sont faites"
 #: model:ir.model,name:website_theme_install.model_website_page
 #: model:ir.model.fields,field_description:website_theme_install.field_theme_website_menu__page_id
 msgid "Page"
-msgstr "Page"
+msgstr ""
 
 #. module: website_theme_install
 #: model:ir.model.fields,field_description:website_theme_install.field_theme_website_page__website_indexed
@@ -251,7 +236,7 @@ msgstr "Page utilisant une copie de moi "
 #. module: website_theme_install
 #: model:ir.model.fields,field_description:website_theme_install.field_theme_website_menu__parent_id
 msgid "Parent"
-msgstr "Parent"
+msgstr ""
 
 #. module: website_theme_install
 #: model_terms:ir.ui.view,arch_db:website_theme_install.customize_modal
@@ -261,7 +246,7 @@ msgstr "S'il vous plaît"
 #. module: website_theme_install
 #: model:ir.model.fields,field_description:website_theme_install.field_theme_ir_ui_view__priority
 msgid "Priority"
-msgstr "Priorité"
+msgstr ""
 
 #. module: website_theme_install
 #: model_terms:ir.ui.view,arch_db:website_theme_install.theme_view_kanban
@@ -286,12 +271,8 @@ msgstr "Séquence"
 #. module: website_theme_install
 #: model:ir.model.fields,help:website_theme_install.field_ir_attachment__key
 #: model:ir.model.fields,help:website_theme_install.field_mrp_document__key
-msgid ""
-"Technical field used to resolve multiple attachments in a multi-website "
-"environment."
-msgstr ""
-"Champ technique utilisé pour gérer les pièces jointes multiples dans un "
-"environnement multi-sites web."
+msgid "Technical field used to resolve multiple attachments in a multi-website environment."
+msgstr "Champ technique utilisé pour gérer les pièces jointes multiples dans un environnement multi-sites web."
 
 #. module: website_theme_install
 #: model_terms:ir.ui.view,arch_db:website_theme_install.theme_view_search
@@ -330,7 +311,7 @@ msgstr "Aperçu du thème"
 #. module: website_theme_install
 #: model:ir.model.fields,field_description:website_theme_install.field_theme_ir_ui_view__type
 msgid "Type"
-msgstr "Type"
+msgstr ""
 
 #. module: website_theme_install
 #: model_terms:ir.ui.view,arch_db:website_theme_install.theme_view_kanban
@@ -342,7 +323,7 @@ msgstr "Mettre à jour le thème"
 #: model:ir.model.fields,field_description:website_theme_install.field_theme_website_menu__url
 #: model:ir.model.fields,field_description:website_theme_install.field_theme_website_page__url
 msgid "Url"
-msgstr "Url"
+msgstr ""
 
 #. module: website_theme_install
 #: model_terms:ir.ui.view,arch_db:website_theme_install.theme_view_kanban
@@ -363,7 +344,7 @@ msgstr "Vues utilisant une copie de moi"
 #. module: website_theme_install
 #: model:ir.model,name:website_theme_install.model_website
 msgid "Website"
-msgstr "Site Web"
+msgstr ""
 
 #. module: website_theme_install
 #: model:ir.model,name:website_theme_install.model_website_menu
@@ -393,14 +374,15 @@ msgstr "Installez un thème"
 #. module: website_theme_install
 #: model:ir.model.fields.selection,name:website_theme_install.selection__theme_ir_ui_view__inherit_id__ir_ui_view
 msgid "ir.ui.view"
-msgstr "ir.ui.view"
+msgstr ""
 
 #. module: website_theme_install
 #: model:ir.model.fields.selection,name:website_theme_install.selection__theme_ir_ui_view__inherit_id__theme_ir_ui_view
 msgid "theme.ir.ui.view"
-msgstr "theme.ir.ui.view"
+msgstr ""
 
 #. module: website_theme_install
 #: model_terms:ir.ui.view,arch_db:website_theme_install.customize_modal
 msgid "to customize your website."
 msgstr "pour personnaliser votre site web."
+
