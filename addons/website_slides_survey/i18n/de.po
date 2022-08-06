@@ -1,35 +1,25 @@
-# Translation of Odoo Server.
-# This file contains the translation of the following modules:
-# 	* website_slides_survey
-# 
-# Translators:
-# Ermin Trevisan <trevi@twanda.com>, 2019
-# f91684c3ff9ec3e650d5c8461e534581_686eae3 <449b96d9f63071f94d89e129677b83de_366193>, 2019
-# Leon Grill <leg@odoo.com>, 2019
-# Martin Trigaux, 2019
-# Chris Egal <sodaswed@web.de>, 2019
-# Oliver Roch <oliver.roch@d9t.de>, 2020
-# JEK Odoo <jek@odoo.com>, 2020
-# Kevin Harrings <kha@odoo.com>, 2020
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 13.0\n"
+"Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-07 07:13+0000\n"
-"PO-Revision-Date: 2019-08-26 09:16+0000\n"
-"Last-Translator: Kevin Harrings <kha@odoo.com>, 2020\n"
-"Language-Team: German (https://www.transifex.com/odoo/teams/41243/de/)\n"
+"PO-Revision-Date: 2022-08-06 22:45\n"
+"Last-Translator: \n"
+"Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: ametras-xsolutions\n"
+"X-Crowdin-Project-ID: 530964\n"
+"X-Crowdin-Language: de\n"
+"X-Crowdin-File: /[AmetrasIntelligence.odoo] 13.0/addons/website_slides_survey/i18n/website_slides_survey.pot\n"
+"X-Crowdin-File-ID: 8482\n"
+"Language: de_DE\n"
 
 #. module: website_slides_survey
 #: model:mail.template,body_html:website_slides_survey.mail_template_user_input_certification_failed
-msgid ""
-"<div style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+msgid "<div style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
 "    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
 "        Dear ${object.partner_id.name or 'participant'}<br/><br/>\n"
 "        Unfortunately, you have failed the certification and are no longer a member of the course: ${object.slide_partner_id.channel_id.name}.<br/><br/>\n"
@@ -43,8 +33,7 @@ msgid ""
 "    </p>\n"
 "</div>\n"
 "            "
-msgstr ""
-"<div style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+msgstr "<div style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
 "    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
 "        Sehr geehrte(r) ${object.partner_id.name or 'participant'}<br/><br/>\n"
 "        Leider haben Sie die Zertifizierung nicht bestanden und sind demnach kein Teilnehmer mehr des Kurses: ${object.slide_partner_id.channel_id.name}.<br/><br/>\n"
@@ -61,13 +50,8 @@ msgstr ""
 
 #. module: website_slides_survey
 #: model_terms:ir.ui.view,arch_db:website_slides_survey.slide_content_detailed
-msgid ""
-"<i class=\"fa fa-fw fa-trophy\" role=\"img\" aria-label=\"Download "
-"certification\" title=\"Download certification\"/> Download certification"
-msgstr ""
-"<i class=\"fa fa-fw fa-trophy\" role=\"img\" aria-label=\"Download "
-"certification\" title=\"Download certification\"/> Zertifizierung "
-"herunterladen"
+msgid "<i class=\"fa fa-fw fa-trophy\" role=\"img\" aria-label=\"Download certification\" title=\"Download certification\"/> Download certification"
+msgstr "<i class=\"fa fa-fw fa-trophy\" role=\"img\" aria-label=\"Download certification\" title=\"Download certification\"/> Zertifizierung herunterladen"
 
 #. module: website_slides_survey
 #: model_terms:ir.ui.view,arch_db:website_slides_survey.courses_home_inherit_survey
@@ -76,11 +60,9 @@ msgstr "<span class=\"ml-1\">Zertifizierungen</span>"
 
 #. module: website_slides_survey
 #: model_terms:ir.ui.view,arch_db:website_slides_survey.slide_channel_view_form
-msgid ""
-"<span class=\"o_stat_text\" attrs=\"{'invisible': [('nbr_certification', '&gt;', 0)]}\">Finished</span>\n"
+msgid "<span class=\"o_stat_text\" attrs=\"{'invisible': [('nbr_certification', '&gt;', 0)]}\">Finished</span>\n"
 "                <span class=\"o_stat_text\" attrs=\"{'invisible': [('nbr_certification', '=', 0)]}\">Certified</span>"
-msgstr ""
-"<span class=\"o_stat_text\" attrs=\"{'invisible': [('nbr_certification', '&gt;', 0)]}\">Abgeschlossen</span>\n"
+msgstr "<span class=\"o_stat_text\" attrs=\"{'invisible': [('nbr_certification', '&gt;', 0)]}\">Abgeschlossen</span>\n"
 "               <span class=\"o_stat_text\" attrs=\"{'invisible': [('nbr_certification', '=', 0)]}\">Zertifiziert</span>"
 
 #. module: website_slides_survey
@@ -106,9 +88,7 @@ msgstr "<span class=\"text-muted\">Abgeschlossen</span>"
 #. module: website_slides_survey
 #: model_terms:ir.ui.view,arch_db:website_slides_survey.course_main
 msgid "<span>Start Now</span><i class=\"fa fa-chevron-right ml-2 align-middle\"/>"
-msgstr ""
-"<span>Jetzt beginnen</span><i class=\"fa fa-chevron-right ml-2 align-"
-"middle\"/>"
+msgstr "<span>Jetzt beginnen</span><i class=\"fa fa-chevron-right ml-2 align-middle\"/>"
 
 #. module: website_slides_survey
 #: model:ir.model.constraint,message:website_slides_survey.constraint_slide_slide_check_survey_id
@@ -118,8 +98,7 @@ msgstr ""
 #. module: website_slides_survey
 #: model:ir.model.constraint,message:website_slides_survey.constraint_slide_slide_check_certification_preview
 msgid "A slide of type certification cannot be previewed."
-msgstr ""
-"Eine Folie des Typs Zertifizierung kann nicht vorher angesehen werden."
+msgstr "Eine Folie des Typs Zertifizierung kann nicht vorher angesehen werden."
 
 #. module: website_slides_survey
 #: model_terms:ir.ui.view,arch_db:website_slides_survey.slide_channel_view_form
@@ -246,7 +225,7 @@ msgstr "Tanne"
 #: model:survey.question,question:website_slides_survey.furniture_certification_page_1
 #: model:survey.question,title:website_slides_survey.furniture_certification_page_1
 msgid "Furniture"
-msgstr "Möbel"
+msgstr "Möbelhandel"
 
 #. module: website_slides_survey
 #: model:slide.slide,name:website_slides_survey.slide_slide_demo_5_4
@@ -279,8 +258,7 @@ msgstr "Noch keine Zertifizierung!"
 
 #. module: website_slides_survey
 #: model:slide.slide,description:website_slides_survey.slide_slide_demo_5_4
-msgid ""
-"Now that you have completed the course, it's time to test your knowledge!"
+msgid "Now that you have completed the course, it's time to test your knowledge!"
 msgstr "Da Sie den Kurse beendet haben, testen jetzt Ihr Wissen!"
 
 #. module: website_slides_survey
@@ -345,7 +323,7 @@ msgstr "Folien"
 #. module: website_slides_survey
 #: model:ir.model.fields,field_description:website_slides_survey.field_survey_user_input__slide_partner_id
 msgid "Subscriber information"
-msgstr "Abonnenten-Information "
+msgstr "Abonnenten-Information"
 
 #. module: website_slides_survey
 #: model:ir.model,name:website_slides_survey.model_survey_survey
@@ -390,13 +368,8 @@ msgstr ""
 
 #. module: website_slides_survey
 #: model:ir.model.fields,help:website_slides_survey.field_slide_slide__slide_type
-msgid ""
-"The document type will be set automatically based on the document URL and "
-"properties (e.g. height and width for presentation and document)."
-msgstr ""
-"Der Dokumenttyp wird automatisch basierend auf der Dokument-URL und den "
-"Eigenschaften (z. B. Höhe und Breite für Präsentation und Dokument) "
-"festgelegt."
+msgid "The document type will be set automatically based on the document URL and properties (e.g. height and width for presentation and document)."
+msgstr "Der Dokumenttyp wird automatisch basierend auf der Dokument-URL und den Eigenschaften (z. B. Höhe und Breite für Präsentation und Dokument) festgelegt."
 
 #. module: website_slides_survey
 #: model:ir.model.fields,help:website_slides_survey.field_survey_user_input__slide_id
@@ -414,7 +387,7 @@ msgstr "Diese Frage muss beantwortet werden"
 #. module: website_slides_survey
 #: model:ir.model.fields,field_description:website_slides_survey.field_slide_slide__slide_type
 msgid "Type"
-msgstr "Typ"
+msgstr "Art"
 
 #. module: website_slides_survey
 #: model:survey.question,question:website_slides_survey.furniture_certification_page_1_question_3
@@ -432,3 +405,4 @@ msgstr ""
 #: model:mail.template,subject:website_slides_survey.mail_template_user_input_certification_failed
 msgid "You have failed the course: ${object.slide_partner_id.channel_id.name}"
 msgstr ""
+
