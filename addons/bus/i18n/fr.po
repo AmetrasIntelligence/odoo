@@ -1,26 +1,21 @@
-# Translation of Odoo Server.
-# This file contains the translation of the following modules:
-# 	* bus
-# 
-# Translators:
-# Cécile Collart <cco@odoo.com>, 2019
-# Eloïse Stilmant <est@odoo.com>, 2019
-# thomas quertinmont <tqu@odoo.com>, 2019
-# Martin Trigaux, 2019
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~12.5\n"
+"Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-26 08:16+0000\n"
-"PO-Revision-Date: 2019-08-26 09:09+0000\n"
-"Last-Translator: Martin Trigaux, 2019\n"
-"Language-Team: French (https://www.transifex.com/odoo/teams/41243/fr/)\n"
+"PO-Revision-Date: 2022-08-06 22:39\n"
+"Last-Translator: \n"
+"Language-Team: French\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Crowdin-Project: ametras-xsolutions\n"
+"X-Crowdin-Project-ID: 530964\n"
+"X-Crowdin-Language: fr\n"
+"X-Crowdin-File: /[AmetrasIntelligence.odoo] 13.0/addons/bus/i18n/bus.pot\n"
+"X-Crowdin-File-ID: 8068\n"
+"Language: fr_FR\n"
 
 #. module: bus
 #: model:ir.model.constraint,message:bus.constraint_bus_presence_bus_user_presence_unique
@@ -30,7 +25,7 @@ msgstr "Un utilisateur ne peut avoir qu'un statut de messagerie instantanée."
 #. module: bus
 #: model:ir.model,name:bus.model_ir_autovacuum
 msgid "Automatic Vacuum"
-msgstr "Aspiration automatique"
+msgstr "Aspirateur automatique"
 
 #. module: bus
 #: model:ir.model.fields.selection,name:bus.selection__bus_presence__status__away
@@ -40,7 +35,7 @@ msgstr "Absent"
 #. module: bus
 #: model:ir.model.fields,field_description:bus.field_bus_bus__channel
 msgid "Channel"
-msgstr "Canal"
+msgstr ""
 
 #. module: bus
 #: model:ir.model,name:bus.model_bus_bus
@@ -50,7 +45,7 @@ msgstr "Bus de communication"
 #. module: bus
 #: model:ir.model,name:bus.model_res_partner
 msgid "Contact"
-msgstr "Contact"
+msgstr ""
 
 #. module: bus
 #: model:ir.model.fields,field_description:bus.field_bus_bus__create_uid
@@ -66,13 +61,13 @@ msgstr "Créé le"
 #: model:ir.model.fields,field_description:bus.field_bus_bus__display_name
 #: model:ir.model.fields,field_description:bus.field_bus_presence__display_name
 msgid "Display Name"
-msgstr "Afficher Nom"
+msgstr "Nom d'affichage"
 
 #. module: bus
 #: model:ir.model.fields,field_description:bus.field_bus_bus__id
 #: model:ir.model.fields,field_description:bus.field_bus_presence__id
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #. module: bus
 #: model:ir.model.fields,field_description:bus.field_bus_presence__status
@@ -110,7 +105,7 @@ msgstr "Dernière mise à jour le"
 #. module: bus
 #: model:ir.model.fields,field_description:bus.field_bus_bus__message
 msgid "Message"
-msgstr "Message"
+msgstr ""
 
 #. module: bus
 #: model:ir.model.fields.selection,name:bus.selection__bus_presence__status__offline
@@ -138,3 +133,4 @@ msgstr "Utilisateurs"
 #, python-format
 msgid "bus.Bus not available in test mode"
 msgstr "bus.Bus pas disponible en mode test"
+
