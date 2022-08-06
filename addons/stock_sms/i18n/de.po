@@ -1,31 +1,25 @@
-# Translation of Odoo Server.
-# This file contains the translation of the following modules:
-# 	* stock_sms
-# 
-# Translators:
-# Martin Trigaux, 2019
-# Andi, 2019
-# Leon Grill <leg@odoo.com>, 2019
-# Niki Waibel, 2021
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 13.0\n"
+"Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-07 07:13+0000\n"
-"PO-Revision-Date: 2019-08-26 09:14+0000\n"
-"Last-Translator: Niki Waibel, 2021\n"
-"Language-Team: German (https://www.transifex.com/odoo/teams/41243/de/)\n"
+"PO-Revision-Date: 2022-08-06 22:44\n"
+"Last-Translator: \n"
+"Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: ametras-xsolutions\n"
+"X-Crowdin-Project-ID: 530964\n"
+"X-Crowdin-Language: de\n"
+"X-Crowdin-File: /[AmetrasIntelligence.odoo] 13.0/addons/stock_sms/i18n/stock_sms.pot\n"
+"X-Crowdin-File-ID: 8384\n"
+"Language: de_DE\n"
 
 #. module: stock_sms
 #: model:sms.template,body:stock_sms.sms_template_data_stock_delivery
-msgid ""
-"\n"
+msgid "\n"
 "                %if object.origin:\n"
 "                    ${object.company_id.name}: We are glad to inform you that your order n° ${object.origin} has been shipped.\n"
 "                %else:\n"
@@ -55,12 +49,12 @@ msgstr "Unternehmen"
 #. module: stock_sms
 #: model:ir.model,name:stock_sms.model_res_config_settings
 msgid "Config Settings"
-msgstr "Konfigurationseinstellungen"
+msgstr "Konfigurationseinstellung"
 
 #. module: stock_sms
 #: model_terms:ir.ui.view,arch_db:stock_sms.view_confirm_stock_sms
 msgid "Confirm"
-msgstr "Bestätigen"
+msgstr "bestätigen"
 
 #. module: stock_sms
 #: model:ir.model,name:stock_sms.model_confirm_stock_sms
@@ -105,7 +99,7 @@ msgstr "ID"
 #. module: stock_sms
 #: model:ir.model.fields,field_description:stock_sms.field_confirm_stock_sms____last_update
 msgid "Last Modified on"
-msgstr "Letzte Änderung am"
+msgstr "Zuletzt geändert am"
 
 #. module: stock_sms
 #: model:ir.model.fields,field_description:stock_sms.field_confirm_stock_sms__write_uid
@@ -120,14 +114,14 @@ msgstr "Zuletzt aktualisiert am"
 #. module: stock_sms
 #: model:ir.model.fields,field_description:stock_sms.field_confirm_stock_sms__picking_id
 msgid "Picking"
-msgstr "Liefervorgang"
+msgstr "Kommissionierung"
 
 #. module: stock_sms
 #: code:addons/stock_sms/models/stock_picking.py:0
 #: model_terms:ir.ui.view,arch_db:stock_sms.view_confirm_stock_sms
 #, python-format
 msgid "SMS"
-msgstr "SMS"
+msgstr ""
 
 #. module: stock_sms
 #: model:ir.model.fields,field_description:stock_sms.field_res_company__stock_move_sms_validation
@@ -155,11 +149,11 @@ msgstr ""
 #. module: stock_sms
 #: model:ir.model,name:stock_sms.model_stock_picking
 msgid "Transfer"
-msgstr "Lieferung vornehmen"
+msgstr ""
 
 #. module: stock_sms
 #: model_terms:ir.ui.view,arch_db:stock_sms.view_confirm_stock_sms
-msgid ""
-"You are about to confirm this Delivery Order by SMS Text Message.<br/>\n"
+msgid "You are about to confirm this Delivery Order by SMS Text Message.<br/>\n"
 "                This feature can easily be disabled from the Settings of Inventory or by clicking on \"Disable SMS\".<br/>"
 msgstr ""
+
