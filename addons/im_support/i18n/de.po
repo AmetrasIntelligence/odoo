@@ -1,26 +1,21 @@
-# Translation of Odoo Server.
-# This file contains the translation of the following modules:
-# 	* im_support
-# 
-# Translators:
-# Martin Trigaux, 2019
-# Johannes Croe <jcr@odoo.com>, 2019
-# Marco Tarsia <marco.y.tarsia@gmail.com>, 2019
-# Chris Egal <sodaswed@web.de>, 2019
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 13.0\n"
+"Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-18 09:47+0000\n"
-"PO-Revision-Date: 2019-08-26 09:11+0000\n"
-"Last-Translator: Chris Egal <sodaswed@web.de>, 2019\n"
-"Language-Team: German (https://www.transifex.com/odoo/teams/41243/de/)\n"
+"PO-Revision-Date: 2022-08-06 22:41\n"
+"Last-Translator: \n"
+"Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: ametras-xsolutions\n"
+"X-Crowdin-Project-ID: 530964\n"
+"X-Crowdin-Language: de\n"
+"X-Crowdin-File: /[AmetrasIntelligence.odoo] 13.0/addons/im_support/i18n/im_support.pot\n"
+"X-Crowdin-File-ID: 8166\n"
+"Language: de_DE\n"
 
 #. module: im_support
 #. openerp-web
@@ -32,7 +27,7 @@ msgstr "(Offline)"
 #. module: im_support
 #: model:ir.model,name:im_support.model_ir_http
 msgid "HTTP Routing"
-msgstr "HTTP Routing"
+msgstr ""
 
 #. module: im_support
 #: model_terms:ir.ui.view,arch_db:im_support.support_qunit_suite
@@ -43,13 +38,8 @@ msgstr "IM-Support-Tests"
 #. openerp-web
 #: code:addons/im_support/static/src/js/support_channel.js:0
 #, python-format
-msgid ""
-"None of our operators are available. <a href='https://www.odoo.com/help' "
-"target='_blank'>Submit a ticket</a> to ask your question now."
-msgstr ""
-"Keiner unserer Mitarbeiter ist verfügbar. <a "
-"href='https://www.odoo.com/help' target='_blank'>Senden Sie jetzt ein "
-"Ticket</a> um Ihre Frage zu stellen."
+msgid "None of our operators are available. <a href='https://www.odoo.com/help' target='_blank'>Submit a ticket</a> to ask your question now."
+msgstr "Keiner unserer Mitarbeiter ist verfügbar. <a href='https://www.odoo.com/help' target='_blank'>Senden Sie jetzt ein Ticket</a> um Ihre Frage zu stellen."
 
 #. module: im_support
 #. openerp-web
@@ -64,14 +54,14 @@ msgstr ""
 #: code:addons/im_support/static/src/xml/discuss.xml:0
 #, python-format
 msgid "Odoo Support"
-msgstr "Odoo Support"
+msgstr ""
 
 #. module: im_support
 #. openerp-web
 #: code:addons/im_support/static/src/js/support_channel.js:0
 #, python-format
 msgid "Support"
-msgstr "Support"
+msgstr ""
 
 #. module: im_support
 #. openerp-web
@@ -79,3 +69,4 @@ msgstr "Support"
 #, python-format
 msgid "The Support server can't be reached."
 msgstr "Der Support Server ist nicht erreichbar."
+
