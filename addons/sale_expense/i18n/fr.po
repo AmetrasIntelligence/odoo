@@ -1,26 +1,21 @@
-# Translation of Odoo Server.
-# This file contains the translation of the following modules:
-# 	* sale_expense
-# 
-# Translators:
-# Martin Trigaux, 2019
-# Eloïse Stilmant <est@odoo.com>, 2019
-# Alexandra Jubert <aju@odoo.com>, 2020
-# Cécile Collart <cco@odoo.com>, 2020
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~12.5\n"
+"Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-26 08:17+0000\n"
-"PO-Revision-Date: 2019-08-26 09:14+0000\n"
-"Last-Translator: Cécile Collart <cco@odoo.com>, 2020\n"
-"Language-Team: French (https://www.transifex.com/odoo/teams/41243/fr/)\n"
+"PO-Revision-Date: 2022-08-06 22:43\n"
+"Last-Translator: \n"
+"Language-Team: French\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Crowdin-Project: ametras-xsolutions\n"
+"X-Crowdin-Project-ID: 530964\n"
+"X-Crowdin-Language: fr\n"
+"X-Crowdin-File: /[AmetrasIntelligence.odoo] 13.0/addons/sale_expense/i18n/sale_expense.pot\n"
+"X-Crowdin-File-ID: 8342\n"
+"Language: fr_FR\n"
 
 #. module: sale_expense
 #: model:ir.model.fields,field_description:sale_expense.field_sale_order__expense_count
@@ -30,9 +25,7 @@ msgstr "# de notes de frais"
 #. module: sale_expense
 #: model_terms:digest.tip,tip_description:sale_expense.digest_tip_sale_expense_0
 msgid "<strong style=\"font-size: 16px;\">Submit expenses by email</strong>"
-msgstr ""
-"<strong style=\"font-size: 16px;\">Soumettre la note de frais par "
-"email</strong>"
+msgstr "<strong style=\"font-size: 16px;\">Soumettre la note de frais par email</strong>"
 
 #. module: sale_expense
 #: model_terms:digest.tip,tip_description:sale_expense.digest_tip_sale_expense_0
@@ -47,23 +40,19 @@ msgstr "Peut être refacturé"
 #. module: sale_expense
 #: model:ir.model,name:sale_expense.model_hr_expense
 msgid "Expense"
-msgstr "Dépense"
+msgstr ""
 
 #. module: sale_expense
 #: model:ir.actions.act_window,name:sale_expense.hr_expense_action_from_sale_order
 #: model:ir.model.fields,field_description:sale_expense.field_sale_order__expense_ids
 #: model_terms:ir.ui.view,arch_db:sale_expense.sale_order_form_view_inherit
 msgid "Expenses"
-msgstr "Notes de Frais"
+msgstr ""
 
 #. module: sale_expense
 #: model:ir.model.fields,help:sale_expense.field_hr_expense__sale_order_id
-msgid ""
-"If the product has an expense policy, it will be reinvoiced on this sales "
-"order"
-msgstr ""
-"Si le produit a une politique de notes de frais, il sera refacturé sur ce "
-"bon de commande."
+msgid "If the product has an expense policy, it will be reinvoiced on this sales order"
+msgstr "Si le produit a une politique de notes de frais, il sera refacturé sur ce bon de commande."
 
 #. module: sale_expense
 #: model_terms:ir.ui.view,arch_db:sale_expense.product_product_view_form_inherit_sale_expense
@@ -73,12 +62,12 @@ msgstr "Facturation"
 #. module: sale_expense
 #: model:ir.model,name:sale_expense.model_account_move_line
 msgid "Journal Item"
-msgstr "Écriture comptable"
+msgstr ""
 
 #. module: sale_expense
 #: model:ir.model,name:sale_expense.model_product_template
 msgid "Product Template"
-msgstr "Modèle d'article"
+msgstr ""
 
 #. module: sale_expense
 #: model:ir.model.fields,field_description:sale_expense.field_hr_expense__sale_order_id
@@ -92,7 +81,6 @@ msgstr "Bon de commande"
 
 #. module: sale_expense
 #: model_terms:digest.tip,tip_description:sale_expense.digest_tip_sale_expense_0
-msgid ""
-"Take a snapshot of your expenses and submit your expenses by email.<br>"
-msgstr ""
-"Prenez une photo de votre notes de frais et soumettez-la par email.<br>"
+msgid "Take a snapshot of your expenses and submit your expenses by email.<br>"
+msgstr "Prenez une photo de votre notes de frais et soumettez-la par email.<br>"
+
