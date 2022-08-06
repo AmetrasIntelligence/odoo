@@ -1,29 +1,21 @@
-# Translation of Odoo Server.
-# This file contains the translation of the following modules:
-# * website_gengo
-# 
-# Translators:
-# e2f <projects@e2f.com>, 2019
-# Ralf Hilgenstock <rh@dialoge.info>, 2019
-# Martin Trigaux, 2019
-# Felix Schubert <felix.schubert@go-erp.com>, 2019
-# Ermin Trevisan <trevi@twanda.com>, 2019
-# darenkster <inactive+darenkster@transifex.com>, 2019
-# Chris Egal <sodaswed@web.de>, 2019
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~12.2\n"
+"Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-20 13:50+0000\n"
-"PO-Revision-Date: 2019-08-26 09:15+0000\n"
-"Last-Translator: Chris Egal <sodaswed@web.de>, 2019\n"
-"Language-Team: German (https://www.transifex.com/odoo/teams/41243/de/)\n"
+"PO-Revision-Date: 2022-08-06 22:45\n"
+"Last-Translator: <>\n"
+"Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: ametras-xsolutions\n"
+"X-Crowdin-Project-ID: 530964\n"
+"X-Crowdin-Language: de\n"
+"X-Crowdin-File: /[AmetrasIntelligence.odoo] 13.0/addons/website_gengo/i18n/website_gengo.pot\n"
+"X-Crowdin-File-ID: 8434\n"
+"Language: de_DE\n"
 
 #. module: website_gengo
 #. openerp-web
@@ -102,7 +94,7 @@ msgstr "Abbrechen"
 #: code:addons/website_gengo/static/src/xml/website.gengo.xml:129
 #, python-format
 msgid "Close"
-msgstr "Abschliessen"
+msgstr "schließen"
 
 #. module: website_gengo
 #. openerp-web
@@ -137,7 +129,7 @@ msgstr "Zähle die Wörter"
 #: code:addons/website_gengo/static/src/xml/website.gengo.xml:13
 #, python-format
 msgid "Gengo"
-msgstr "Gengo"
+msgstr ""
 
 #. module: website_gengo
 #. openerp-web
@@ -186,14 +178,14 @@ msgstr "Hier den öffentlichen Schlüssel einfügen"
 #: code:addons/website_gengo/static/src/xml/website.gengo.xml:51
 #, python-format
 msgid "Post"
-msgstr "Beitrag"
+msgstr "Bestätigen"
 
 #. module: website_gengo
 #. openerp-web
 #: code:addons/website_gengo/static/src/xml/website.gengo.xml:106
 #, python-format
 msgid "Private key"
-msgstr "Privater Schlüssel"
+msgstr ""
 
 #. module: website_gengo
 #. openerp-web
@@ -214,7 +206,7 @@ msgstr "Öffentlicher Schlüssel"
 #: code:addons/website_gengo/static/src/xml/website.gengo.xml:119
 #, python-format
 msgid "Sandbox"
-msgstr "Sandbox"
+msgstr ""
 
 #. module: website_gengo
 #. openerp-web
@@ -242,7 +234,7 @@ msgstr "Schritte für die Gengo Konfiguration"
 #: code:addons/website_gengo/static/src/xml/website.gengo.xml:128
 #, python-format
 msgid "Submit"
-msgstr "Absenden"
+msgstr ""
 
 #. module: website_gengo
 #. openerp-web
@@ -320,3 +312,4 @@ msgstr "zum Übersetzen."
 #, python-format
 msgid "new words found on this page."
 msgstr "neue Wörter, die auf dieser Seite gefunden wurden."
+
