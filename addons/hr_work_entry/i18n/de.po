@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-27 09:21+0000\n"
-"PO-Revision-Date: 2022-08-06 22:40\n"
+"PO-Revision-Date: 2022-08-06 23:37\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -49,7 +49,7 @@ msgstr "Storniert"
 #. module: hr_work_entry
 #: model:ir.model.fields,field_description:hr_work_entry.field_hr_work_entry_type__code
 msgid "Code"
-msgstr ""
+msgstr "Code"
 
 #. module: hr_work_entry
 #: model:ir.model.fields,field_description:hr_work_entry.field_hr_work_entry__color
