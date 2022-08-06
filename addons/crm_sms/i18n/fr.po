@@ -1,32 +1,30 @@
-# Translation of Odoo Server.
-# This file contains the translation of the following modules:
-# 	* crm_sms
-# 
-# Translators:
-# Martin Trigaux, 2019
-# Nicolas Roussey <nro@odoo.com>, 2019
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~12.5\n"
+"Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-26 08:16+0000\n"
-"PO-Revision-Date: 2019-08-26 09:09+0000\n"
-"Last-Translator: Nicolas Roussey <nro@odoo.com>, 2019\n"
-"Language-Team: French (https://www.transifex.com/odoo/teams/41243/fr/)\n"
+"PO-Revision-Date: 2022-08-06 22:39\n"
+"Last-Translator: \n"
+"Language-Team: French\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Crowdin-Project: ametras-xsolutions\n"
+"X-Crowdin-Project-ID: 530964\n"
+"X-Crowdin-Language: fr\n"
+"X-Crowdin-File: /[AmetrasIntelligence.odoo] 13.0/addons/crm_sms/i18n/crm_sms.pot\n"
+"X-Crowdin-File-ID: 8086\n"
+"Language: fr_FR\n"
 
 #. module: crm_sms
 #: model:ir.model,name:crm_sms.model_crm_lead
 msgid "Lead/Opportunity"
-msgstr "Piste/opportunité"
+msgstr ""
 
 #. module: crm_sms
 #: model:ir.actions.act_window,name:crm_sms.crm_lead_act_window_sms_composer_multi
 #: model:ir.actions.act_window,name:crm_sms.crm_lead_act_window_sms_composer_single
 msgid "Send SMS Text Message"
 msgstr "Envoyer un SMS"
+
