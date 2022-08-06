@@ -1,37 +1,29 @@
-# Translation of Odoo Server.
-# This file contains the translation of the following modules:
-# 	* board
-# 
-# Translators:
-# Cécile Collart <cco@odoo.com>, 2019
-# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2019
-# Moka Tourisme <hello@mokatourisme.fr>, 2019
-# Martin Trigaux, 2019
-# Eloïse Stilmant <est@odoo.com>, 2019
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~12.4\n"
+"Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-12 11:32+0000\n"
-"PO-Revision-Date: 2019-08-26 09:09+0000\n"
-"Last-Translator: Eloïse Stilmant <est@odoo.com>, 2019\n"
-"Language-Team: French (https://www.transifex.com/odoo/teams/41243/fr/)\n"
+"PO-Revision-Date: 2022-08-06 22:39\n"
+"Last-Translator: \n"
+"Language-Team: French\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Crowdin-Project: ametras-xsolutions\n"
+"X-Crowdin-Project-ID: 530964\n"
+"X-Crowdin-Language: fr\n"
+"X-Crowdin-File: /[AmetrasIntelligence.odoo] 13.0/addons/board/i18n/board.pot\n"
+"X-Crowdin-File-ID: 8066\n"
+"Language: fr_FR\n"
 
 #. module: board
 #. openerp-web
 #: code:addons/board/static/src/xml/board.xml:58
 #, python-format
-msgid ""
-"\"Add to\n"
+msgid "\"Add to\n"
 "                Dashboard\""
-msgstr ""
-"\"Ajouter à mon\n"
+msgstr "\"Ajouter à mon\n"
 "                tableau de bord\""
 
 #. module: board
@@ -39,14 +31,14 @@ msgstr ""
 #: code:addons/board/static/src/xml/board.xml:30
 #, python-format
 msgid "&nbsp;"
-msgstr "&nbsp;"
+msgstr ""
 
 #. module: board
 #. openerp-web
 #: code:addons/board/static/src/js/add_to_board_menu.js:132
 #, python-format
 msgid "'%s' added to dashboard"
-msgstr " %s  Ajouter à votre tableau de bord"
+msgstr ""
 
 #. module: board
 #. openerp-web
@@ -110,7 +102,7 @@ msgstr "Impossible d'ajouter le filtre au tableau de bord"
 #. module: board
 #: model:ir.model.fields,field_description:board.field_board_board__display_name
 msgid "Display Name"
-msgstr "Afficher Nom"
+msgstr "Nom d'affichage"
 
 #. module: board
 #. openerp-web
@@ -122,7 +114,7 @@ msgstr "Modifier l'agencement"
 #. module: board
 #: model:ir.model.fields,field_description:board.field_board_board__id
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #. module: board
 #: model:ir.model.fields,field_description:board.field_board_board____last_update
@@ -134,7 +126,7 @@ msgstr "Dernière modification le"
 #: code:addons/board/static/src/xml/board.xml:46
 #, python-format
 msgid "Layout"
-msgstr "Agencement"
+msgstr "Mise en page"
 
 #. module: board
 #. openerp-web
@@ -151,28 +143,24 @@ msgstr "Mon tableau de bord"
 #: code:addons/board/static/src/js/add_to_board_menu.js:133
 #, python-format
 msgid "Please refresh your browser for the changes to take effect."
-msgstr "Veuillez rafraichir votre navigateur pour appliquer les changements."
+msgstr ""
 
 #. module: board
 #. openerp-web
 #: code:addons/board/static/src/xml/board.xml:56
 #, python-format
-msgid ""
-"To add your first report into this dashboard, go to any\n"
+msgid "To add your first report into this dashboard, go to any\n"
 "                menu, switch to list or graph view, and click"
-msgstr ""
-"Pour ajouter votre premier rapport à ce tableau de bord, rendez-vous dans n'importe quel\n"
+msgstr "Pour ajouter votre premier rapport à ce tableau de bord, rendez-vous dans n'importe quel\n"
 "                menu, basculez entre vue liste ou vue graphique, et cliquez sur"
 
 #. module: board
 #. openerp-web
 #: code:addons/board/static/src/xml/board.xml:60
 #, python-format
-msgid ""
-"You can filter and group data before inserting into the\n"
+msgid "You can filter and group data before inserting into the\n"
 "                dashboard using the search options."
-msgstr ""
-"Vous pouvez filtrer et regrouper les données avant de les ajouter à votre\n"
+msgstr "Vous pouvez filtrer et regrouper les données avant de les ajouter à votre\n"
 "                tableau de bord, en utilisant les options de recherche avancées."
 
 #. module: board
@@ -188,3 +176,4 @@ msgstr "Votre tableau de bord personnel est vide"
 #, python-format
 msgid "in the extended search options."
 msgstr "dans le menu \"Favoris\" des options de recherches."
+
