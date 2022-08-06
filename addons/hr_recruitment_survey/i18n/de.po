@@ -1,37 +1,31 @@
-# Translation of Odoo Server.
-# This file contains the translation of the following modules:
-# 	* hr_recruitment_survey
-# 
-# Translators:
-# Leon Grill <leg@odoo.com>, 2019
-# Jan Meyer, 2019
-# Martin Trigaux, 2019
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 13.0\n"
+"Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-07 07:12+0000\n"
-"PO-Revision-Date: 2019-08-26 09:10+0000\n"
-"Last-Translator: Martin Trigaux, 2019\n"
-"Language-Team: German (https://www.transifex.com/odoo/teams/41243/de/)\n"
+"PO-Revision-Date: 2022-08-06 22:39\n"
+"Last-Translator: \n"
+"Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: ametras-xsolutions\n"
+"X-Crowdin-Project-ID: 530964\n"
+"X-Crowdin-Language: de\n"
+"X-Crowdin-File: /[AmetrasIntelligence.odoo] 13.0/addons/hr_recruitment_survey/i18n/hr_recruitment_survey.pot\n"
+"X-Crowdin-File-ID: 8142\n"
+"Language: de_DE\n"
 
 #. module: hr_recruitment_survey
 #: model_terms:ir.ui.view,arch_db:hr_recruitment_survey.hr_applicant_view_form_inherit
-msgid ""
-"<span class=\"o_stat_text\">Print</span>\n"
+msgid "<span class=\"o_stat_text\">Print</span>\n"
 "                        <span class=\"o_stat_text\">Interview</span>"
 msgstr "<span class=\"o_stat_text\"/><span class=\"o_stat_text\"/>"
 
 #. module: hr_recruitment_survey
 #: model_terms:ir.ui.view,arch_db:hr_recruitment_survey.hr_applicant_view_form_inherit
-msgid ""
-"<span class=\"o_stat_text\">Start</span>\n"
+msgid "<span class=\"o_stat_text\">Start</span>\n"
 "                        <span class=\"o_stat_text\">Interview</span>"
 msgstr "<span class=\"o_stat_text\"/><span class=\"o_stat_text\"/>"
 
@@ -45,7 +39,7 @@ msgstr ""
 #: model:survey.question,question:hr_recruitment_survey.survey_recruitment_form_p1_q7
 #: model:survey.question,title:hr_recruitment_survey.survey_recruitment_form_p1_q7
 msgid "Activities"
-msgstr "Aktivitäten"
+msgstr ""
 
 #. module: hr_recruitment_survey
 #: model_terms:ir.ui.view,arch_db:hr_recruitment_survey.hr_applicant_view_form_inherit
@@ -64,21 +58,14 @@ msgstr "Kategorie"
 
 #. module: hr_recruitment_survey
 #: model:ir.model.fields,help:hr_recruitment_survey.field_survey_survey__category
-msgid ""
-"Category is used to know in which context the survey is used. Various apps "
-"may define their own categories when they use survey like jobs recruitment "
-"or employee appraisal surveys."
+msgid "Category is used to know in which context the survey is used. Various apps may define their own categories when they use survey like jobs recruitment or employee appraisal surveys."
 msgstr ""
 
 #. module: hr_recruitment_survey
 #: model:ir.model.fields,help:hr_recruitment_survey.field_hr_applicant__survey_id
 #: model:ir.model.fields,help:hr_recruitment_survey.field_hr_job__survey_id
-msgid ""
-"Choose an interview form for this job position and you will be able to "
-"print/answer this interview from all applicants who apply for this job"
-msgstr ""
-"Wählen Sie ein Interview Formular für diesen Job damit Sie diese für alle "
-"Anwärter drucken und auswerten können"
+msgid "Choose an interview form for this job position and you will be able to print/answer this interview from all applicants who apply for this job"
+msgstr "Wählen Sie ein Interview Formular für diesen Job damit Sie diese für alle Anwärter drucken und auswerten können"
 
 #. module: hr_recruitment_survey
 #: model:survey.question,question:hr_recruitment_survey.survey_recruitment_form_p1_q3
@@ -167,7 +154,7 @@ msgstr "Stelle"
 #: model:survey.question,question:hr_recruitment_survey.survey_recruitment_form_p1_q6
 #: model:survey.question,title:hr_recruitment_survey.survey_recruitment_form_p1_q6
 msgid "Knowledge"
-msgstr "Knowledge"
+msgstr ""
 
 #. module: hr_recruitment_survey
 #: model:survey.label,value:hr_recruitment_survey.survey_recruitment_form_p1_q8_row6
@@ -197,29 +184,24 @@ msgstr ""
 
 #. module: hr_recruitment_survey
 #: model_terms:survey.survey,description:hr_recruitment_survey.survey_recruitment_form
-msgid ""
-"Please answer those questions to help recruitment officers to preprocess "
-"your application."
+msgid "Please answer those questions to help recruitment officers to preprocess your application."
 msgstr ""
 
 #. module: hr_recruitment_survey
 #: model_terms:survey.question,description:hr_recruitment_survey.survey_recruitment_form_p1
-msgid ""
-"Please fill information about you: who you are, what are your education, experience, and activities.\n"
+msgid "Please fill information about you: who you are, what are your education, experience, and activities.\n"
 "    It will help us managing your application."
 msgstr ""
 
 #. module: hr_recruitment_survey
 #: model_terms:survey.question,description:hr_recruitment_survey.survey_recruitment_form_p1_q4
 #: model_terms:survey.question,description:hr_recruitment_survey.survey_recruitment_form_p1_q5
-msgid ""
-"Please summarize your education history: schools, location, diplomas, ..."
+msgid "Please summarize your education history: schools, location, diplomas, ..."
 msgstr ""
 
 #. module: hr_recruitment_survey
 #: model_terms:survey.question,description:hr_recruitment_survey.survey_recruitment_form_p1_q7
-msgid ""
-"Please tell us a bit more about yourself: what are your main activities, ..."
+msgid "Please tell us a bit more about yourself: what are your main activities, ..."
 msgstr ""
 
 #. module: hr_recruitment_survey
@@ -240,7 +222,7 @@ msgstr "Bewerberfragebogen"
 #. module: hr_recruitment_survey
 #: model:ir.model.fields,field_description:hr_recruitment_survey.field_hr_applicant__response_id
 msgid "Response"
-msgstr "Rückmeldung"
+msgstr "Antwort"
 
 #. module: hr_recruitment_survey
 #: model:ir.model,name:hr_recruitment_survey.model_survey_survey
@@ -305,3 +287,4 @@ msgstr ""
 #: model:survey.label,value:hr_recruitment_survey.survey_recruitment_form_p1_q8_row4
 msgid "Working with state of the art technology"
 msgstr ""
+
