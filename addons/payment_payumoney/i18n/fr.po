@@ -1,23 +1,21 @@
-# Translation of Odoo Server.
-# This file contains the translation of the following modules:
-# 	* payment_payumoney
-# 
-# Translators:
-# Martin Trigaux, 2019
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~12.5\n"
+"Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-26 08:16+0000\n"
-"PO-Revision-Date: 2019-08-26 09:12+0000\n"
-"Last-Translator: Martin Trigaux, 2019\n"
-"Language-Team: French (https://www.transifex.com/odoo/teams/41243/fr/)\n"
+"PO-Revision-Date: 2022-08-06 22:42\n"
+"Last-Translator: \n"
+"Language-Team: French\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Crowdin-Project: ametras-xsolutions\n"
+"X-Crowdin-Project-ID: 530964\n"
+"X-Crowdin-Language: fr\n"
+"X-Crowdin-File: /[AmetrasIntelligence.odoo] 13.0/addons/payment_payumoney/i18n/payment_payumoney.pot\n"
+"X-Crowdin-File-ID: 8262\n"
+"Language: fr_FR\n"
 
 #. module: payment_payumoney
 #: model:ir.model.fields,field_description:payment_payumoney.field_payment_acquirer__payumoney_merchant_key
@@ -32,50 +30,44 @@ msgstr "Salage du vendeur"
 #. module: payment_payumoney
 #: model:ir.model.fields.selection,name:payment_payumoney.selection__payment_acquirer__provider__payumoney
 msgid "PayUmoney"
-msgstr "PayUmoney"
+msgstr ""
 
 #. module: payment_payumoney
 #: code:addons/payment_payumoney/models/payment.py:0
 #, python-format
 msgid "PayUmoney: invalid shasign, received %s, computed %s, for data %s"
-msgstr ""
-"PayUmoney : shasign incorrect, %s reçu, %s calculé pour les données %s"
+msgstr "PayUmoney : shasign incorrect, %s reçu, %s calculé pour les données %s"
 
 #. module: payment_payumoney
 #: code:addons/payment_payumoney/models/payment.py:0
 #, python-format
 msgid "PayUmoney: received data for reference %s; multiple orders found"
-msgstr ""
-"PayUmoney : données reçues pour la référence %s ; plusieurs commandes "
-"trouvées"
+msgstr "PayUmoney : données reçues pour la référence %s ; plusieurs commandes trouvées"
 
 #. module: payment_payumoney
 #: code:addons/payment_payumoney/models/payment.py:0
 #, python-format
 msgid "PayUmoney: received data for reference %s; no order found"
-msgstr ""
-"PayUmoney : données reçues pour la référence %s ; aucune commande trouvée"
+msgstr "PayUmoney : données reçues pour la référence %s ; aucune commande trouvée"
 
 #. module: payment_payumoney
 #: code:addons/payment_payumoney/models/payment.py:0
 #, python-format
-msgid ""
-"PayUmoney: received data with missing reference (%s) or pay_id (%s) or "
-"shashign (%s)"
-msgstr ""
-"PayUmoney : données reçues sans référence (%s), pay_id (%s) ou shashign (%s)"
+msgid "PayUmoney: received data with missing reference (%s) or pay_id (%s) or shashign (%s)"
+msgstr "PayUmoney : données reçues sans référence (%s), pay_id (%s) ou shashign (%s)"
 
 #. module: payment_payumoney
 #: model:ir.model,name:payment_payumoney.model_payment_acquirer
 msgid "Payment Acquirer"
-msgstr "Intermédiaire de Paiement"
+msgstr ""
 
 #. module: payment_payumoney
 #: model:ir.model,name:payment_payumoney.model_payment_transaction
 msgid "Payment Transaction"
-msgstr "Transaction"
+msgstr ""
 
 #. module: payment_payumoney
 #: model:ir.model.fields,field_description:payment_payumoney.field_payment_acquirer__provider
 msgid "Provider"
-msgstr "Fournisseur"
+msgstr ""
+
