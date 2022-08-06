@@ -1,23 +1,21 @@
-# Translation of Odoo Server.
-# This file contains the translation of the following modules:
-# 	* payment_adyen
-# 
-# Translators:
-# Martin Trigaux, 2019
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~12.5\n"
+"Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-26 08:16+0000\n"
-"PO-Revision-Date: 2019-08-26 09:12+0000\n"
-"Last-Translator: Martin Trigaux, 2019\n"
-"Language-Team: German (https://www.transifex.com/odoo/teams/41243/de/)\n"
+"PO-Revision-Date: 2022-08-06 22:41\n"
+"Last-Translator: \n"
+"Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: ametras-xsolutions\n"
+"X-Crowdin-Project-ID: 530964\n"
+"X-Crowdin-Language: de\n"
+"X-Crowdin-File: /[AmetrasIntelligence.odoo] 13.0/addons/payment_adyen/i18n/payment_adyen.pot\n"
+"X-Crowdin-File-ID: 8248\n"
+"Language: de_DE\n"
 
 #. module: payment_adyen
 #: code:addons/payment_adyen/models/payment.py:0
@@ -34,7 +32,7 @@ msgstr "; keine Bestellung gefunden"
 #. module: payment_adyen
 #: model:ir.model.fields.selection,name:payment_adyen.selection__payment_acquirer__provider__adyen
 msgid "Adyen"
-msgstr "Adyen"
+msgstr ""
 
 #. module: payment_adyen
 #: code:addons/payment_adyen/models/payment.py:0
@@ -57,12 +55,8 @@ msgstr "Ayden: empfangene Daten für Referenz %s"
 #. module: payment_adyen
 #: code:addons/payment_adyen/models/payment.py:0
 #, python-format
-msgid ""
-"Adyen: received data with missing reference (%s) or missing pspReference "
-"(%s)"
-msgstr ""
-"Ayden: erhaltene Daten mit fehlender Referenz (%s) oder fehlender "
-"pspReferenz (%s)"
+msgid "Adyen: received data with missing reference (%s) or missing pspReference (%s)"
+msgstr "Ayden: erhaltene Daten mit fehlender Referenz (%s) oder fehlender pspReferenz (%s)"
 
 #. module: payment_adyen
 #: model_terms:ir.ui.view,arch_db:payment_adyen.acquirer_form_adyen
@@ -77,24 +71,25 @@ msgstr "Händler-Konto"
 #. module: payment_adyen
 #: model:ir.model,name:payment_adyen.model_payment_acquirer
 msgid "Payment Acquirer"
-msgstr "Zahlungsanbieter"
+msgstr ""
 
 #. module: payment_adyen
 #: model:ir.model,name:payment_adyen.model_payment_transaction
 msgid "Payment Transaction"
-msgstr "Zahlungstransaktion"
+msgstr ""
 
 #. module: payment_adyen
 #: model:ir.model.fields,field_description:payment_adyen.field_payment_acquirer__provider
 msgid "Provider"
-msgstr "Anbieter"
+msgstr ""
 
 #. module: payment_adyen
 #: model:ir.model.fields,field_description:payment_adyen.field_payment_acquirer__adyen_skin_code
 msgid "Skin Code"
-msgstr "Skin Code"
+msgstr ""
 
 #. module: payment_adyen
 #: model:ir.model.fields,field_description:payment_adyen.field_payment_acquirer__adyen_skin_hmac_key
 msgid "Skin HMAC Key"
 msgstr "Skin HMAC Schlüssel"
+
