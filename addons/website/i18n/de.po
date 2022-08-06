@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-27 09:21+0000\n"
-"PO-Revision-Date: 2022-08-06 22:45\n"
+"PO-Revision-Date: 2022-08-06 23:37\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -3189,7 +3189,7 @@ msgstr ""
 #: code:addons/website/static/src/xml/website.facebook_page.xml:0
 #, python-format
 msgid "Messages"
-msgstr ""
+msgstr "Mitteilungen"
 
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.s_company_team
@@ -4436,7 +4436,7 @@ msgstr ""
 #: code:addons/website/models/website.py:0
 #, python-format
 msgid "Template"
-msgstr ""
+msgstr "Vorlage"
 
 #. module: website
 #: code:addons/website/models/website.py:0
@@ -4704,7 +4704,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:website.theme_customize
 #, python-format
 msgid "Title"
-msgstr ""
+msgstr "Titel"
 
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.s_three_columns
