@@ -1,29 +1,25 @@
-# Translation of Odoo Server.
-# This file contains the translation of the following modules:
-# 	* payment_paypal
-# 
-# Translators:
-# Martin Trigaux, 2019
-# Ermin Trevisan <trevi@twanda.com>, 2020
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~12.5\n"
+"Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-26 08:16+0000\n"
-"PO-Revision-Date: 2019-08-26 09:12+0000\n"
-"Last-Translator: Ermin Trevisan <trevi@twanda.com>, 2020\n"
-"Language-Team: German (https://www.transifex.com/odoo/teams/41243/de/)\n"
+"PO-Revision-Date: 2022-08-06 22:42\n"
+"Last-Translator: \n"
+"Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: ametras-xsolutions\n"
+"X-Crowdin-Project-ID: 530964\n"
+"X-Crowdin-Language: de\n"
+"X-Crowdin-File: /[AmetrasIntelligence.odoo] 13.0/addons/payment_paypal/i18n/payment_paypal.pot\n"
+"X-Crowdin-File-ID: 8258\n"
+"Language: de_DE\n"
 
 #. module: payment_paypal
 #: model_terms:ir.ui.view,arch_db:payment_paypal.mail_template_paypal_invite_user_to_configure
-msgid ""
-"<br/><br/>\n"
+msgid "<br/><br/>\n"
 "                Thanks,<br/>\n"
 "                <b>The Odoo Team</b>"
 msgstr ""
@@ -37,7 +33,7 @@ msgstr ""
 #. module: payment_paypal
 #: model:ir.model.fields,field_description:payment_paypal.field_payment_acquirer__paypal_email_account
 msgid "Email"
-msgstr "E-Mail"
+msgstr "E-mail"
 
 #. module: payment_paypal
 #: model:ir.model.fields,field_description:payment_paypal.field_payment_acquirer__fees_dom_fixed
@@ -51,14 +47,12 @@ msgstr "Feste Gebühren für internationale Verkäufe"
 
 #. module: payment_paypal
 #: model_terms:ir.ui.view,arch_db:payment_paypal.mail_template_paypal_invite_user_to_configure
-msgid ""
-"Hello,\n"
+msgid "Hello,\n"
 "                <br/><br/>\n"
 "                You have received a payment through PayPal.<br/>\n"
 "                Kindly follow the instructions given by PayPal to create your account.<br/>\n"
 "                Then, help us complete your Paypal credentials in Odoo.<br/><br/>"
-msgstr ""
-"Guten Tag\n"
+msgstr "Guten Tag\n"
 "                <br/><br/>\n"
 "                Sie haben eine Zahlung von Paypal erhalten.<br/>\n"
 "                Bitte folgen Sie den Anweisungen von Paypal, um Ihr Konto zu konfigurieren.<br/>\n"
@@ -82,26 +76,22 @@ msgstr ""
 #. module: payment_paypal
 #: model:ir.model,name:payment_paypal.model_payment_acquirer
 msgid "Payment Acquirer"
-msgstr "Zahlungsanbieter"
+msgstr ""
 
 #. module: payment_paypal
 #: model:ir.model.fields,help:payment_paypal.field_payment_acquirer__paypal_pdt_token
-msgid ""
-"Payment Data Transfer allows you to receive notification of successful "
-"payments as they are made."
-msgstr ""
-"Der Zahlungsdaten-Transfer ermöglicht es Ihnen, Benachrichtigungen für "
-"erfolgreiche Zahlungen zu erhalten."
+msgid "Payment Data Transfer allows you to receive notification of successful payments as they are made."
+msgstr "Der Zahlungsdaten-Transfer ermöglicht es Ihnen, Benachrichtigungen für erfolgreiche Zahlungen zu erhalten."
 
 #. module: payment_paypal
 #: model:ir.model,name:payment_paypal.model_payment_transaction
 msgid "Payment Transaction"
-msgstr "Zahlungstransaktion"
+msgstr ""
 
 #. module: payment_paypal
 #: model:ir.model.fields.selection,name:payment_paypal.selection__payment_acquirer__provider__paypal
 msgid "Paypal"
-msgstr "Paypal"
+msgstr ""
 
 #. module: payment_paypal
 #: model:ir.model.fields,help:payment_paypal.field_payment_acquirer__paypal_use_ipn
@@ -117,7 +107,7 @@ msgstr "Paypal: Daten mit fehlender Referenz (%s) oder txn_id (%s) erhalten."
 #. module: payment_paypal
 #: model:ir.model.fields,field_description:payment_paypal.field_payment_acquirer__provider
 msgid "Provider"
-msgstr "Anbieter"
+msgstr ""
 
 #. module: payment_paypal
 #: model_terms:ir.ui.view,arch_db:payment_paypal.mail_template_paypal_invite_user_to_configure
@@ -126,17 +116,13 @@ msgstr ""
 
 #. module: payment_paypal
 #: model:ir.model.fields,help:payment_paypal.field_payment_acquirer__paypal_seller_account
-msgid ""
-"The Merchant ID is used to ensure communications coming from Paypal are "
-"valid and secured."
-msgstr ""
-"Die Händler-ID stellt sicher, daß die eingehenden Nachrichten von Paypal "
-"gültig und sicher sind."
+msgid "The Merchant ID is used to ensure communications coming from Paypal are valid and secured."
+msgstr "Die Händler-ID stellt sicher, daß die eingehenden Nachrichten von Paypal gültig und sicher sind."
 
 #. module: payment_paypal
 #: model:ir.model.fields,field_description:payment_paypal.field_payment_transaction__paypal_txn_type
 msgid "Transaction type"
-msgstr "Transaktions-Typ"
+msgstr ""
 
 #. module: payment_paypal
 #: model:ir.model.fields,field_description:payment_paypal.field_payment_acquirer__paypal_use_ipn
@@ -152,3 +138,4 @@ msgstr "Variable Inlands-Gebühren (in Prozent)"
 #: model:ir.model.fields,field_description:payment_paypal.field_payment_acquirer__fees_int_var
 msgid "Variable international fees (in percents)"
 msgstr "Variable Auslands-Gebühren (in Prozent)"
+
