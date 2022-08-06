@@ -1,31 +1,21 @@
-# Translation of Odoo Server.
-# This file contains the translation of the following modules:
-# 	* website_links
-# 
-# Translators:
-# e2f <projects@e2f.com>, 2019
-# aNj <anj2j@yahoo.de>, 2019
-# Philipp Hug <philipp@hug.cx>, 2019
-# Martin Trigaux, 2019
-# Wolfgang Taferner, 2019
-# f91684c3ff9ec3e650d5c8461e534581_686eae3 <449b96d9f63071f94d89e129677b83de_366193>, 2019
-# Katharina Moritz <kmo@e2f.com>, 2019
-# Chris Egal <sodaswed@web.de>, 2019
-# Patrick Heuel <patrick.heuel@odoo-bs.com>, 2020
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~12.5\n"
+"Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-27 09:12+0000\n"
-"PO-Revision-Date: 2019-08-26 09:15+0000\n"
-"Last-Translator: Patrick Heuel <patrick.heuel@odoo-bs.com>, 2020\n"
-"Language-Team: German (https://www.transifex.com/odoo/teams/41243/de/)\n"
+"PO-Revision-Date: 2022-08-06 22:44\n"
+"Last-Translator: \n"
+"Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: ametras-xsolutions\n"
+"X-Crowdin-Project-ID: 530964\n"
+"X-Crowdin-Language: de\n"
+"X-Crowdin-File: /[AmetrasIntelligence.odoo] 13.0/addons/website_links/i18n/website_links.pot\n"
+"X-Crowdin-File-ID: 8438\n"
+"Language: de_DE\n"
 
 #. module: website_links
 #. openerp-web
@@ -51,8 +41,7 @@ msgstr "Anzahl an Klicks"
 #. module: website_links
 #: model_terms:ir.ui.view,arch_db:website_links.share_page_menu
 msgid "<span title=\"Track this page to count clicks\">Track this Page</span>"
-msgstr ""
-"<span title=\"Track this page to count clicks\">Diese Seite verfolgen</span>"
+msgstr "<span title=\"Track this page to count clicks\">Diese Seite verfolgen</span>"
 
 #. module: website_links
 #: model_terms:ir.ui.view,arch_db:website_links.graphs
@@ -62,12 +51,12 @@ msgstr "<strong>Kampagne</strong>"
 #. module: website_links
 #: model_terms:ir.ui.view,arch_db:website_links.graphs
 msgid "<strong>Medium</strong>"
-msgstr "<strong>Medium</strong>"
+msgstr ""
 
 #. module: website_links
 #: model_terms:ir.ui.view,arch_db:website_links.graphs
 msgid "<strong>Original URL</strong>"
-msgstr "<strong>Original URL</strong>"
+msgstr ""
 
 #. module: website_links
 #: model_terms:ir.ui.view,arch_db:website_links.graphs
@@ -91,11 +80,7 @@ msgstr "Immer"
 
 #. module: website_links
 #: model_terms:ir.ui.view,arch_db:website_links.create_shorten_url
-msgid ""
-"Campaign <i class=\"fa fa-info-circle\" data-toggle=\"tooltip\" data-"
-"placement=\"top\" role=\"img\" aria-label=\"Tooltip info\" title=\"Defines "
-"the context of your link. It might be an event you want to promote or a "
-"special promotion.\"/>"
+msgid "Campaign <i class=\"fa fa-info-circle\" data-toggle=\"tooltip\" data-placement=\"top\" role=\"img\" aria-label=\"Tooltip info\" title=\"Defines the context of your link. It might be an event you want to promote or a special promotion.\"/>"
 msgstr "Kampagne"
 
 #. module: website_links
@@ -103,7 +88,7 @@ msgstr "Kampagne"
 #: code:addons/website_links/static/src/js/website_links.js:0
 #, python-format
 msgid "Copied"
-msgstr "Kopiert"
+msgstr ""
 
 #. module: website_links
 #. openerp-web
@@ -138,7 +123,7 @@ msgstr "Verfolgten Link abrufen"
 #: code:addons/website_links/static/src/xml/recent_link.xml:0
 #, python-format
 msgid "Icon"
-msgstr "Icon"
+msgstr "Symbol"
 
 #. module: website_links
 #: model_terms:ir.ui.view,arch_db:website_links.graphs
@@ -148,27 +133,19 @@ msgstr "Letzter Monat"
 #. module: website_links
 #: model_terms:ir.ui.view,arch_db:website_links.graphs
 msgid "Last Week"
-msgstr "Letzte Woche"
+msgstr ""
 
 #. module: website_links
 #: model:ir.model,name:website_links.model_link_tracker
 #: model_terms:ir.ui.view,arch_db:website_links.create_shorten_url
 #: model_terms:ir.ui.view,arch_db:website_links.graphs
 msgid "Link Tracker"
-msgstr "Link Tracker"
+msgstr ""
 
 #. module: website_links
 #: model_terms:ir.ui.view,arch_db:website_links.create_shorten_url
-msgid ""
-"Medium <i class=\"fa fa-info-circle\" data-toggle=\"tooltip\" data-"
-"placement=\"top\" role=\"img\" aria-label=\"Tooltip info\" title=\"Defines "
-"the medium used to share your link. It might be an email, or a Facebook Ads "
-"for instance.\"/>"
+msgid "Medium <i class=\"fa fa-info-circle\" data-toggle=\"tooltip\" data-placement=\"top\" role=\"img\" aria-label=\"Tooltip info\" title=\"Defines the medium used to share your link. It might be an email, or a Facebook Ads for instance.\"/>"
 msgstr ""
-"Medium <i class=\"fa fa-info-circle\" data-toggle=\"tooltip\" data-"
-"placement=\"top\" role=\"img\" aria-label=\"Tooltip info\" title=\"Defines "
-"the medium used to share your link. It might be an email, or a Facebook Ads "
-"for instance.\"/>"
 
 #. module: website_links
 #: model_terms:ir.ui.view,arch_db:website_links.create_shorten_url
@@ -178,7 +155,7 @@ msgstr "Meist geklickt"
 #. module: website_links
 #: model_terms:ir.ui.view,arch_db:website_links.create_shorten_url
 msgid "Newest"
-msgstr "Aktuellste"
+msgstr ""
 
 #. module: website_links
 #. openerp-web
@@ -194,31 +171,19 @@ msgstr "Zuletzt verwendet"
 
 #. module: website_links
 #: model_terms:ir.ui.view,arch_db:website_links.create_shorten_url
-msgid ""
-"Share this page with a <strong>short link</strong> that includes "
-"<strong>analytics trackers</strong>."
-msgstr ""
-"Teilen Sie diese Seite mit einem <strong>kurzen Link</strong>, der einen "
-"<strong>Analytics-Tracker</strong> enthält."
+msgid "Share this page with a <strong>short link</strong> that includes <strong>analytics trackers</strong>."
+msgstr "Teilen Sie diese Seite mit einem <strong>kurzen Link</strong>, der einen <strong>Analytics-Tracker</strong> enthält."
 
 #. module: website_links
 #: model_terms:ir.ui.view,arch_db:website_links.create_shorten_url
-msgid ""
-"Source <i class=\"fa fa-info-circle\" data-toggle=\"tooltip\" data-"
-"placement=\"top\" role=\"img\" aria-label=\"Tooltip info\" title=\"Defines "
-"the source from which your traffic will come from, Facebook or Twitter for "
-"instance.\"/>"
-msgstr ""
-"Quelle <i class=\"fa fa-info-circle\" data-toggle=\"tooltip\" data-"
-"placement=\"top\" role=\"img\" aria-label=\"Tooltip info\" title=\"Defines "
-"the source from which your traffic will come from, Facebook or Twitter for "
-"instance.\"/>"
+msgid "Source <i class=\"fa fa-info-circle\" data-toggle=\"tooltip\" data-placement=\"top\" role=\"img\" aria-label=\"Tooltip info\" title=\"Defines the source from which your traffic will come from, Facebook or Twitter for instance.\"/>"
+msgstr "Quelle <i class=\"fa fa-info-circle\" data-toggle=\"tooltip\" data-placement=\"top\" role=\"img\" aria-label=\"Tooltip info\" title=\"Defines the source from which your traffic will come from, Facebook or Twitter for instance.\"/>"
 
 #. module: website_links
 #: model_terms:ir.ui.view,arch_db:website_links.graphs
 #: model_terms:ir.ui.view,arch_db:website_links.link_tracker_view_tree
 msgid "Statistics"
-msgstr "Statistik"
+msgstr ""
 
 #. module: website_links
 #. openerp-web
@@ -254,18 +219,13 @@ msgstr ""
 
 #. module: website_links
 #: model_terms:ir.ui.view,arch_db:website_links.create_shorten_url
-msgid ""
-"Those trackers can be used in Google Analytics to track clicks and visitors,"
-" or in Odoo reports to track opportunities and related revenues."
-msgstr ""
-"Diese Tracker können bei Google Analytics verwendet werden, um Klicks und "
-"Besucher zu verfolgen, oder bei Odoo-Berichten, um Chancen und damit "
-"verbundene Umsätze zu verfolgen."
+msgid "Those trackers can be used in Google Analytics to track clicks and visitors, or in Odoo reports to track opportunities and related revenues."
+msgstr "Diese Tracker können bei Google Analytics verwendet werden, um Klicks und Besucher zu verfolgen, oder bei Odoo-Berichten, um Chancen und damit verbundene Umsätze zu verfolgen."
 
 #. module: website_links
 #: model_terms:ir.ui.view,arch_db:website_links.create_shorten_url
 msgid "URL"
-msgstr "URL"
+msgstr ""
 
 #. module: website_links
 #. openerp-web
@@ -279,7 +239,7 @@ msgstr "Zuletzt geöffnete Links können nicht abgerufen werden."
 #: code:addons/website_links/static/src/js/website_links_charts.js:0
 #, python-format
 msgid "Undefined"
-msgstr "Undefiniert"
+msgstr "Nicht definiert"
 
 #. module: website_links
 #: code:addons/website_links/models/link_tracker.py:0
@@ -359,4 +319,5 @@ msgstr "Ok"
 #: model_terms:ir.ui.view,arch_db:website_links.graphs
 #, python-format
 msgid "or"
-msgstr "oder"
+msgstr ""
+
