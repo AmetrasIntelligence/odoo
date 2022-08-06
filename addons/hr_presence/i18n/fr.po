@@ -1,34 +1,25 @@
-# Translation of Odoo Server.
-# This file contains the translation of the following modules:
-# 	* hr_presence
-# 
-# Translators:
-# Martin Trigaux, 2019
-# Eloïse Stilmant <est@odoo.com>, 2019
-# Frédéric GILSON <frederic.gilson@logicasoft.eu>, 2020
-# Pauline Thiry <pth@odoo.com>, 2020
-# Cécile Collart <cco@odoo.com>, 2020
-# Julien Goergen <jgo@odoo.com>, 2020
-# Priscilla Sanchez <prs@odoo.com>, 2020
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~12.5\n"
+"Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-13 11:27+0000\n"
-"PO-Revision-Date: 2019-08-26 09:10+0000\n"
-"Last-Translator: Priscilla Sanchez <prs@odoo.com>, 2020\n"
-"Language-Team: French (https://www.transifex.com/odoo/teams/41243/fr/)\n"
+"PO-Revision-Date: 2022-08-06 22:39\n"
+"Last-Translator: \n"
+"Language-Team: French\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Crowdin-Project: ametras-xsolutions\n"
+"X-Crowdin-Project-ID: 530964\n"
+"X-Crowdin-Language: fr\n"
+"X-Crowdin-File: /[AmetrasIntelligence.odoo] 13.0/addons/hr_presence/i18n/hr_presence.pot\n"
+"X-Crowdin-File-ID: 8138\n"
+"Language: fr_FR\n"
 
 #. module: hr_presence
 #: model:mail.template,body_html:hr_presence.mail_template_presence
-msgid ""
-"<?xml version=\"1.0\"?>\n"
+msgid "<?xml version=\"1.0\"?>\n"
 "<div>\n"
 "                    Dear ${object.name},<br/><br/>\n"
 "                    Exception made if there was a mistake of ours, it seems that you are not at your office and there is not request of leaves from you.<br/>\n"
@@ -37,8 +28,7 @@ msgid ""
 "                    <br/>Best Regards,<br/><br/>\n"
 "                </div>\n"
 "            "
-msgstr ""
-"<?xml version=\"1.0\"?>\n"
+msgstr "<?xml version=\"1.0\"?>\n"
 "<div>\n"
 "                    Cher/chère ${object.name},<br/><br/>\n"
 "                    Exception faite en cas d'erreur de notre part, il semble que vous ne soyez pas à votre bureau et qu'il n'y ait pas de demande de congé de votre part.<br/>\n"
@@ -53,7 +43,7 @@ msgstr ""
 #: model:ir.model.fields.selection,name:hr_presence.selection__hr_employee_base__hr_presence_state_display__absent
 #: model:ir.model.fields.selection,name:hr_presence.selection__hr_employee_public__hr_presence_state_display__absent
 msgid "Absent"
-msgstr "Absent"
+msgstr ""
 
 #. module: hr_presence
 #: model:ir.model,name:hr_presence.model_hr_employee_base
@@ -63,13 +53,13 @@ msgstr "Employé basique"
 #. module: hr_presence
 #: model:ir.model,name:hr_presence.model_res_company
 msgid "Companies"
-msgstr "Sociétés"
+msgstr "Entreprises"
 
 #. module: hr_presence
 #: code:addons/hr_presence/models/hr_employee.py:0
 #, python-format
 msgid "Compose Email"
-msgstr "Rédiger un email"
+msgstr "Rédiger courriel"
 
 #. module: hr_presence
 #: model:ir.actions.server,name:hr_presence.ir_actions_server_action_open_presence_view
@@ -102,12 +92,10 @@ msgstr "Employé: rappel de présence"
 #: code:addons/hr_presence/models/hr_employee.py:0
 #: model:sms.template,body:hr_presence.sms_template_data_hr_presence
 #, python-format
-msgid ""
-"Exception made if there was a mistake of ours, it seems that you are not at your office and there is not request of leaves from you.\n"
+msgid "Exception made if there was a mistake of ours, it seems that you are not at your office and there is not request of leaves from you.\n"
 "Please, take appropriate measures in order to carry out this work absence.\n"
 "Do not hesitate to contact your manager or the human resource department."
-msgstr ""
-"Exception faite en cas d'erreur de notre part, il semble que vous ne soyez pas à votre bureau et qu'il n'y ait pas de demande de congé de votre part.\n"
+msgstr "Exception faite en cas d'erreur de notre part, il semble que vous ne soyez pas à votre bureau et qu'il n'y ait pas de demande de congé de votre part.\n"
 "Veuillez prendre les mesures appropriées afin de réaliser cette absence.\n"
 "N'hésitez pas à contacter votre responsable ou le service des ressources humaines."
 
@@ -138,7 +126,7 @@ msgstr "IP connecté"
 #. module: hr_presence
 #: model_terms:ir.ui.view,arch_db:hr_presence.hr_employee_view_kanban
 msgid "Mail"
-msgstr "Mail"
+msgstr ""
 
 #. module: hr_presence
 #: model:ir.model.fields,field_description:hr_presence.field_hr_employee__manually_set_present
@@ -162,7 +150,7 @@ msgstr "Présent"
 #. module: hr_presence
 #: model_terms:ir.ui.view,arch_db:hr_presence.hr_employee_view_kanban
 msgid "SMS"
-msgstr "SMS"
+msgstr ""
 
 #. module: hr_presence
 #: model_terms:ir.ui.view,arch_db:hr_presence.hr_employee_view_kanban
@@ -209,6 +197,5 @@ msgstr "Log utilisateurs"
 #: code:addons/hr_presence/models/hr_employee.py:0
 #, python-format
 msgid "You don't have the right to do this. Please contact an Administrator."
-msgstr ""
-"Vous n'avez pas le droit de faire ceci. Veuillez contacter un "
-"administrateur."
+msgstr "Vous n'avez pas le droit de faire ceci. Veuillez contacter un administrateur."
+
