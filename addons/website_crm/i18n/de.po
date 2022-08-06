@@ -1,30 +1,21 @@
-# Translation of Odoo Server.
-# This file contains the translation of the following modules:
-# 	* website_crm
-# 
-# Translators:
-# Leon Grill <leg@odoo.com>, 2019
-# Ermin Trevisan <trevi@twanda.com>, 2019
-# JackTheHunter <Maximilian.N98@gmail.com>, 2019
-# Torsten Wichmann <t.wichmann@intero-technologies.de>, 2019
-# Katharina Moritz <kmo@e2f.com>, 2019
-# Chris Egal <sodaswed@web.de>, 2019
-# Martin Trigaux, 2019
-# JEK Odoo <jek@odoo.com>, 2020
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~12.5\n"
+"Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-23 11:31+0000\n"
-"PO-Revision-Date: 2019-08-26 09:15+0000\n"
-"Last-Translator: JEK Odoo <jek@odoo.com>, 2020\n"
-"Language-Team: German (https://www.transifex.com/odoo/teams/41243/de/)\n"
+"PO-Revision-Date: 2022-08-06 22:45\n"
+"Last-Translator: \n"
+"Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: ametras-xsolutions\n"
+"X-Crowdin-Project-ID: 530964\n"
+"X-Crowdin-Language: de\n"
+"X-Crowdin-File: /[AmetrasIntelligence.odoo] 13.0/addons/website_crm/i18n/website_crm.pot\n"
+"X-Crowdin-File-ID: 8414\n"
+"Language: de_DE\n"
 
 #. module: website_crm
 #: model:ir.model.fields,field_description:website_crm.field_website_visitor__lead_count
@@ -58,12 +49,12 @@ msgstr ""
 #. module: website_crm
 #: model_terms:ir.ui.view,arch_db:website_crm.res_config_settings_view_form
 msgid "Communication"
-msgstr "Kommunikation"
+msgstr ""
 
 #. module: website_crm
 #: model:ir.model,name:website_crm.model_res_config_settings
 msgid "Config Settings"
-msgstr "Konfigurationseinstellungen"
+msgstr "Konfigurationseinstellung"
 
 #. module: website_crm
 #: model_terms:ir.ui.view,arch_db:website_crm.res_config_settings_view_form
@@ -84,9 +75,7 @@ msgstr "Standard Verkaufsteam"
 #: model:ir.model.fields,help:website_crm.field_res_config_settings__crm_default_team_id
 #: model:ir.model.fields,help:website_crm.field_website__crm_default_team_id
 msgid "Default Sales Team for new leads created through the Contact Us form."
-msgstr ""
-"Standardverkaufsteam für neue Interessenten, die über das Kontaktformular "
-"erstellt wurden."
+msgstr "Standardverkaufsteam für neue Interessenten, die über das Kontaktformular erstellt wurden."
 
 #. module: website_crm
 #: model:ir.model.fields,field_description:website_crm.field_website__crm_default_team_id
@@ -103,9 +92,7 @@ msgstr "Standard Verkäufer"
 #: model:ir.model.fields,help:website_crm.field_res_config_settings__crm_default_user_id
 #: model:ir.model.fields,help:website_crm.field_website__crm_default_user_id
 msgid "Default salesperson for new leads created through the Contact Us form."
-msgstr ""
-"Standard-Verkäufer für neue Interessenten, die über das Kontaktformular "
-"erstellt werden."
+msgstr "Standard-Verkäufer für neue Interessenten, die über das Kontaktformular erstellt werden."
 
 #. module: website_crm
 #. openerp-web
@@ -113,7 +100,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:website_crm.contactus_form
 #, python-format
 msgid "Email"
-msgstr "E-Mail"
+msgstr "E-mail"
 
 #. module: website_crm
 #: model:ir.model,name:website_crm.model_crm_lead
@@ -136,9 +123,7 @@ msgstr "Interessenten / Chancen"
 #. module: website_crm
 #: model_terms:ir.ui.view,arch_db:website_crm.res_config_settings_view_form
 msgid "New messages are managed as leads or opportunities in your CRM app."
-msgstr ""
-"Neue Nachrichten werden als Interessenten oder Chancen in Ihrer CRM-App "
-"verwaltet."
+msgstr "Neue Nachrichten werden als Interessenten oder Chancen in Ihrer CRM-App verwaltet."
 
 #. module: website_crm
 #: model_terms:ir.actions.act_window,help:website_crm.website_visitor_crm_lead_action
@@ -160,12 +145,8 @@ msgstr "Telefonnummer:"
 
 #. module: website_crm
 #: model_terms:ir.ui.view,arch_db:website_crm.res_config_settings_view_form
-msgid ""
-"Please set a Sales Team for the website. Otherwise you can't follow related "
-"events."
-msgstr ""
-"Bitte stellen Sie ein Verkaufsteam für die Website ein. Andernfalls können "
-"Sie ähnlichen Veranstaltungen nicht folgen."
+msgid "Please set a Sales Team for the website. Otherwise you can't follow related events."
+msgstr "Bitte stellen Sie ein Verkaufsteam für die Website ein. Andernfalls können Sie ähnlichen Veranstaltungen nicht folgen."
 
 #. module: website_crm
 #. openerp-web
@@ -185,7 +166,7 @@ msgstr "Verkaufsteam"
 #: model_terms:ir.ui.view,arch_db:website_crm.res_config_settings_view_form
 #, python-format
 msgid "Salesperson"
-msgstr "Verkäufer"
+msgstr ""
 
 #. module: website_crm
 #: model_terms:ir.ui.view,arch_db:website_crm.contactus_form
@@ -198,7 +179,7 @@ msgstr "Senden"
 #: model_terms:ir.ui.view,arch_db:website_crm.contactus_form
 #, python-format
 msgid "Subject"
-msgstr "Betreff"
+msgstr ""
 
 #. module: website_crm
 #: model_terms:ir.ui.view,arch_db:website_crm.website_visitor_view_search
@@ -213,7 +194,7 @@ msgstr "Web-Besucher"
 #. module: website_crm
 #: model:ir.model,name:website_crm.model_website
 msgid "Website"
-msgstr "Website"
+msgstr ""
 
 #. module: website_crm
 #: model:ir.actions.act_url,name:website_crm.action_open_website
@@ -252,4 +233,5 @@ msgstr "Ihre Frage"
 #. module: website_crm
 #: model_terms:ir.ui.view,arch_db:website_crm.res_config_settings_view_form
 msgid "page"
-msgstr "Seite"
+msgstr ""
+
