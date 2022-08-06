@@ -1,39 +1,26 @@
-# Translation of Odoo Server.
-# This file contains the translation of the following modules:
-# 	* auth_signup
-# 
-# Translators:
-# Martin Trigaux, 2019
-# Eloïse Stilmant <est@odoo.com>, 2019
-# William Olhasque <william.olhasque@scopea.fr>, 2019
-# a270031086f2a0d3514bc0cb507b48f6, 2019
-# Cécile Collart <cco@odoo.com>, 2020
-# Olivier Dony <odo@odoo.com>, 2020
-# Priscilla Sanchez <prs@odoo.com>, 2020
-# Vallen Delobel <edv@odoo.com>, 2020
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~12.5\n"
+"Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-26 08:16+0000\n"
-"PO-Revision-Date: 2019-08-26 09:09+0000\n"
-"Last-Translator: Vallen Delobel <edv@odoo.com>, 2020\n"
-"Language-Team: French (https://www.transifex.com/odoo/teams/41243/fr/)\n"
+"PO-Revision-Date: 2022-08-06 22:38\n"
+"Last-Translator: \n"
+"Language-Team: French\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Crowdin-Project: ametras-xsolutions\n"
+"X-Crowdin-Project-ID: 530964\n"
+"X-Crowdin-Language: fr\n"
+"X-Crowdin-File: /[AmetrasIntelligence.odoo] 13.0/addons/auth_signup/i18n/auth_signup.pot\n"
+"X-Crowdin-File-ID: 8040\n"
+"Language: fr_FR\n"
 
 #. module: auth_signup
 #: model:mail.template,subject:auth_signup.set_password_email
-msgid ""
-"${object.create_uid.name} from ${object.company_id.name} invites you to "
-"connect to Odoo"
-msgstr ""
-"${object.create_uid.name} de ${object.company_id.name} vous invite à vous "
-"connecter à Odoo"
+msgid "${object.create_uid.name} from ${object.company_id.name} invites you to connect to Odoo"
+msgstr "${object.create_uid.name} de ${object.company_id.name} vous invite à vous connecter à Odoo"
 
 #. module: auth_signup
 #: code:addons/auth_signup/models/res_users.py:0
@@ -43,26 +30,17 @@ msgstr "%s connecté"
 
 #. module: auth_signup
 #: model_terms:ir.ui.view,arch_db:auth_signup.res_users_view_form
-msgid ""
-"<strong>A password reset has been requested for this user. An email "
-"containing the following link has been sent:</strong>"
-msgstr ""
-"<strong>Une réinitialisation du mot de passe a été demandée pour cet "
-"utilisateur. Un email lui a été envoyé, contenant le lien suivant :</strong>"
+msgid "<strong>A password reset has been requested for this user. An email containing the following link has been sent:</strong>"
+msgstr "<strong>Une réinitialisation du mot de passe a été demandée pour cet utilisateur. Un email lui a été envoyé, contenant le lien suivant :</strong>"
 
 #. module: auth_signup
 #: model_terms:ir.ui.view,arch_db:auth_signup.res_users_view_form
-msgid ""
-"<strong>An invitation email containing the following subscription link has "
-"been sent:</strong>"
-msgstr ""
-"<strong>Une invitation a été envoyée par email. Elle contient le lien "
-"suivant pour s'abonner :</strong>"
+msgid "<strong>An invitation email containing the following subscription link has been sent:</strong>"
+msgstr "<strong>Une invitation a été envoyée par email. Elle contient le lien suivant pour s'abonner :</strong>"
 
 #. module: auth_signup
 #: model:mail.template,body_html:auth_signup.mail_template_data_unregistered_users
-msgid ""
-"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
+msgid "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
 "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"padding: 16px; background-color: white; color: #454748; border-collapse:separate;\">\n"
 "<tbody>\n"
 "    <!-- CONTENT -->\n"
@@ -101,8 +79,7 @@ msgid ""
 "</td></tr>\n"
 "</table>\n"
 "            "
-msgstr ""
-"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
+msgstr "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
 "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"padding: 16px; background-color: white; color: #454748; border-collapse:separate;\">\n"
 "<tbody>\n"
 "    <!-- CONTENU -->\n"
@@ -144,8 +121,7 @@ msgstr ""
 
 #. module: auth_signup
 #: model:mail.template,body_html:auth_signup.set_password_email
-msgid ""
-"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
+msgid "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
 "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"padding: 16px; background-color: white; color: #454748; border-collapse:separate;\">\n"
 "<tbody>\n"
 "    <!-- HEADER -->\n"
@@ -229,8 +205,7 @@ msgid ""
 "    </table>\n"
 "</td></tr>\n"
 "</table>"
-msgstr ""
-"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
+msgstr "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
 "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"padding: 16px; background-color: white; color: #454748; border-collapse:separate;\">\n"
 "<tbody>\n"
 "    <!-- HEADER -->\n"
@@ -317,8 +292,7 @@ msgstr ""
 
 #. module: auth_signup
 #: model:mail.template,body_html:auth_signup.reset_password_email
-msgid ""
-"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
+msgid "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
 "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"padding: 16px; background-color: white; color: #454748; border-collapse:separate;\">\n"
 "<tbody>\n"
 "    <!-- HEADER -->\n"
@@ -398,8 +372,7 @@ msgid ""
 "</td></tr>\n"
 "</table>\n"
 "            "
-msgstr ""
-"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
+msgstr "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
 "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"padding: 16px; background-color: white; color: #454748; border-collapse:separate;\">\n"
 "<tbody>\n"
 "    <!-- HEADER -->\n"
@@ -482,8 +455,7 @@ msgstr ""
 
 #. module: auth_signup
 #: model:mail.template,body_html:auth_signup.mail_template_user_signup_account_created
-msgid ""
-"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
+msgid "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
 "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"padding: 16px; background-color: white; color: #454748; border-collapse:separate;\">\n"
 "<tbody>\n"
 "    <!-- HEADER -->\n"
@@ -562,8 +534,7 @@ msgid ""
 "    </table>\n"
 "</td></tr>\n"
 "</table>"
-msgstr ""
-"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
+msgstr "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
 "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"padding: 16px; background-color: white; color: #454748; border-collapse:separate;\">\n"
 "<tbody>\n"
 "    <!-- HEADER -->\n"
@@ -652,15 +623,13 @@ msgstr "Vous avez déjà un compte ?"
 #: code:addons/auth_signup/controllers/main.py:0
 #, python-format
 msgid "An email has been sent with credentials to reset your password"
-msgstr ""
-"Un email a été envoyé avec les informations pour réinitialiser votre mot de "
-"passe"
+msgstr "Un email a été envoyé avec les informations pour réinitialiser votre mot de passe"
 
 #. module: auth_signup
 #: code:addons/auth_signup/controllers/main.py:0
 #, python-format
 msgid "Another user is already registered using this email address."
-msgstr "Un autre utilisateur est déjà enregistré avec cette adresse email."
+msgstr ""
 
 #. module: auth_signup
 #: code:addons/auth_signup/controllers/main.py:0
@@ -677,8 +646,7 @@ msgstr "Retour à la page d'authentification"
 #: code:addons/auth_signup/models/res_users.py:0
 #, python-format
 msgid "Cannot send email: user %s has no email address."
-msgstr ""
-"Impossible d'envoyer l'email : l'utilisateur %s n'a pas d'adresse email."
+msgstr "Impossible d'envoyer l'email : l'utilisateur %s n'a pas d'adresse email."
 
 #. module: auth_signup
 #: model_terms:ir.ui.view,arch_db:auth_signup.res_users_view_form
@@ -688,7 +656,7 @@ msgstr "Fermer"
 #. module: auth_signup
 #: model:ir.model,name:auth_signup.model_res_config_settings
 msgid "Config Settings"
-msgstr "Paramètres de config"
+msgstr ""
 
 #. module: auth_signup
 #: model_terms:ir.ui.view,arch_db:auth_signup.reset_password
@@ -703,12 +671,12 @@ msgstr "Confirmez le mot de passe"
 #. module: auth_signup
 #: model:ir.model.fields.selection,name:auth_signup.selection__res_users__state__active
 msgid "Confirmed"
-msgstr "Confirmé"
+msgstr ""
 
 #. module: auth_signup
 #: model:ir.model,name:auth_signup.model_res_partner
 msgid "Contact"
-msgstr "Contact"
+msgstr ""
 
 #. module: auth_signup
 #: code:addons/auth_signup/controllers/main.py:0
@@ -741,8 +709,7 @@ msgstr "Vous n'avez pas de compte ?"
 #: model:ir.model.fields,field_description:auth_signup.field_res_config_settings__auth_signup_reset_password
 #: model_terms:ir.ui.view,arch_db:auth_signup.res_config_settings_view_form
 msgid "Enable password reset from Login page"
-msgstr ""
-"Permettre la réinitialisation du mot de passe depuis la page de connexion"
+msgstr "Permettre la réinitialisation du mot de passe depuis la page de connexion"
 
 #. module: auth_signup
 #: model:ir.model.fields.selection,name:auth_signup.selection__res_config_settings__auth_signup_uninvited__b2c
@@ -763,8 +730,7 @@ msgstr "La session d'authentification est invalide"
 #. module: auth_signup
 #: model_terms:ir.ui.view,arch_db:auth_signup.res_config_settings_view_form
 msgid "Let your customers log in to see their documents"
-msgstr ""
-"Permettre à vos clients de se connecter pour consulter leurs documents"
+msgstr "Permettre à vos clients de se connecter pour consulter leurs documents"
 
 #. module: auth_signup
 #: model:ir.model.fields.selection,name:auth_signup.selection__res_users__state__new
@@ -801,8 +767,7 @@ msgstr "Réinitialisation du mot de passe"
 #: code:addons/auth_signup/controllers/main.py:0
 #, python-format
 msgid "Passwords do not match; please retype them."
-msgstr ""
-"Les mots de passe ne correspondent pas, veuillez les saisir à nouveau."
+msgstr "Les mots de passe ne correspondent pas, veuillez les saisir à nouveau."
 
 #. module: auth_signup
 #: model:mail.template,subject:auth_signup.mail_template_data_unregistered_users
@@ -818,9 +783,7 @@ msgstr "Réinitialiser le mot de passe"
 #: code:addons/auth_signup/models/res_users.py:0
 #, python-format
 msgid "Reset password: invalid username or email"
-msgstr ""
-"Veuillez réinitialiser votre mot de passe : nom d'utilisateur ou adresse "
-"email incorrecte"
+msgstr "Veuillez réinitialiser votre mot de passe : nom d'utilisateur ou adresse email incorrecte"
 
 #. module: auth_signup
 #: model_terms:ir.ui.view,arch_db:auth_signup.res_users_view_form
@@ -906,13 +869,12 @@ msgstr "Inscription: pas de nom ni de partenaire pour le nouvel utilisateur"
 #. module: auth_signup
 #: model:ir.model.fields,field_description:auth_signup.field_res_users__state
 msgid "Status"
-msgstr "État"
+msgstr ""
 
 #. module: auth_signup
 #: model:ir.model.fields,field_description:auth_signup.field_res_config_settings__auth_signup_template_user_id
 msgid "Template user for new users created through signup"
-msgstr ""
-"Utilisateur modèle pour les nouveaux utilisateurs créés à travers signup"
+msgstr "Utilisateur modèle pour les nouveaux utilisateurs créés à travers signup"
 
 #. module: auth_signup
 #: code:addons/auth_signup/controllers/main.py:0
@@ -928,14 +890,8 @@ msgstr "C'est sa première connection. Souhaitez-lui la bienvenue! "
 
 #. module: auth_signup
 #: model_terms:ir.ui.view,arch_db:auth_signup.res_config_settings_view_form
-msgid ""
-"To send invitations in B2B mode, open a contact or select several ones in "
-"list view and click on 'Portal Access Management' option in the dropdown "
-"menu *Action*."
-msgstr ""
-"Pour envoyer des invitations en mode B2B, ouvrez un contact ou sélectionnez-"
-"en plusieurs dans la liste et cliquez sur l'option 'Portal Access "
-"Management' dans le menu déroulant * Action *."
+msgid "To send invitations in B2B mode, open a contact or select several ones in list view and click on 'Portal Access Management' option in the dropdown menu *Action*."
+msgstr "Pour envoyer des invitations en mode B2B, ouvrez un contact ou sélectionnez-en plusieurs dans la liste et cliquez sur l'option 'Portal Access Management' dans le menu déroulant * Action *."
 
 #. module: auth_signup
 #: model:ir.model,name:auth_signup.model_res_users
@@ -969,3 +925,4 @@ msgstr "Votre Nom"
 #: model_terms:ir.ui.view,arch_db:auth_signup.fields
 msgid "e.g. John Doe"
 msgstr "ex. John Doe"
+
