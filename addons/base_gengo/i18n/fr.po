@@ -1,49 +1,31 @@
-# Translation of Odoo Server.
-# This file contains the translation of the following modules:
-# 	* base_gengo
-# 
-# Translators:
-# Martin Trigaux, 2019
-# Lucas Deliege <lud@odoo.com>, 2019
-# Eloïse Stilmant <est@odoo.com>, 2019
-# Cécile Collart <cco@odoo.com>, 2020
-# Julien Goergen <jgo@odoo.com>, 2020
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 13.0\n"
+"Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-22 08:19+0000\n"
-"PO-Revision-Date: 2019-08-26 09:09+0000\n"
-"Last-Translator: Julien Goergen <jgo@odoo.com>, 2020\n"
-"Language-Team: French (https://www.transifex.com/odoo/teams/41243/fr/)\n"
+"PO-Revision-Date: 2022-08-06 22:38\n"
+"Last-Translator: \n"
+"Language-Team: French\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Crowdin-Project: ametras-xsolutions\n"
+"X-Crowdin-Project-ID: 530964\n"
+"X-Crowdin-Language: fr\n"
+"X-Crowdin-File: /[AmetrasIntelligence.odoo] 13.0/addons/base_gengo/i18n/base_gengo.pot\n"
+"X-Crowdin-File-ID: 8050\n"
+"Language: fr_FR\n"
 
 #. module: base_gengo
 #: model_terms:ir.ui.view,arch_db:base_gengo.base_gengo_translation_wizard_from
-msgid ""
-"<span class=\"o_form_label\">Gengo Public or Private keys are wrong or "
-"missing.</span>"
-msgstr ""
-"<span class=\"o_form_label\">Les clés publiques ou privées de Gengo sont "
-"erronées ou manquantes.</span>"
+msgid "<span class=\"o_form_label\">Gengo Public or Private keys are wrong or missing.</span>"
+msgstr "<span class=\"o_form_label\">Les clés publiques ou privées de Gengo sont erronées ou manquantes.</span>"
 
 #. module: base_gengo
 #: model_terms:ir.ui.view,arch_db:base_gengo.view_ir_translation_inherit_base_gengo_form
-msgid ""
-"<span class=\"o_form_label\">Note: If the translation state is 'In "
-"Progress', it means that the translation has to be approved to be uploaded "
-"in this system. You are supposed to do that directly by using your Gengo "
-"Account</span>"
-msgstr ""
-"<span class=\"o_form_label\">Note: Si le statut de traduction est \"En "
-"Cours\", cela signifie que la traduction doit être approuvée pour être "
-"chargée dans le système. Vous êtes supposé le faire directement dans votre "
-"compte Gengo.</span>"
+msgid "<span class=\"o_form_label\">Note: If the translation state is 'In Progress', it means that the translation has to be approved to be uploaded in this system. You are supposed to do that directly by using your Gengo Account</span>"
+msgstr "<span class=\"o_form_label\">Note: Si le statut de traduction est \"En Cours\", cela signifie que la traduction doit être approuvée pour être chargée dans le système. Vous êtes supposé le faire directement dans votre compte Gengo.</span>"
 
 #. module: base_gengo
 #: model_terms:ir.ui.view,arch_db:base_gengo.res_config_settings_view_form
@@ -89,12 +71,8 @@ msgstr "Annuler"
 #. module: base_gengo
 #: model:ir.model.fields,help:base_gengo.field_res_company__gengo_sandbox
 #: model:ir.model.fields,help:base_gengo.field_res_config_settings__gengo_sandbox
-msgid ""
-"Check this box if you're using the sandbox mode of Gengo, mainly used for "
-"testing purpose."
-msgstr ""
-"Cochez cette case si vous utilisez le mode bac-à-sable de Gengo, utilisé "
-"principalement pour des essais."
+msgid "Check this box if you're using the sandbox mode of Gengo, mainly used for testing purpose."
+msgstr "Cochez cette case si vous utilisez le mode bac-à-sable de Gengo, utilisé principalement pour des essais."
 
 #. module: base_gengo
 #: model_terms:ir.ui.view,arch_db:base_gengo.base_gengo_translation_wizard_from
@@ -104,13 +82,13 @@ msgstr "Cliquez ici pour configurer les paramètres de Gengo"
 #. module: base_gengo
 #: model_terms:ir.ui.view,arch_db:base_gengo.res_config_settings_view_form
 msgid "Comment"
-msgstr "Commentaires"
+msgstr "Commenter"
 
 #. module: base_gengo
 #: model:ir.model.fields,field_description:base_gengo.field_res_company__gengo_comment
 #: model:ir.model.fields,field_description:base_gengo.field_res_config_settings__gengo_comment
 msgid "Comments"
-msgstr "Commentaires"
+msgstr ""
 
 #. module: base_gengo
 #: model:ir.model.fields,field_description:base_gengo.field_ir_translation__gengo_comment
@@ -120,12 +98,12 @@ msgstr "Commentaires et activité liés à Gengo"
 #. module: base_gengo
 #: model:ir.model,name:base_gengo.model_res_company
 msgid "Companies"
-msgstr "Sociétés"
+msgstr "Entreprises"
 
 #. module: base_gengo
 #: model:ir.model,name:base_gengo.model_res_config_settings
 msgid "Config Settings"
-msgstr "Paramètres de config"
+msgstr ""
 
 #. module: base_gengo
 #: model:ir.model.fields,field_description:base_gengo.field_base_gengo_translations__create_uid
@@ -140,7 +118,7 @@ msgstr "Créé le"
 #. module: base_gengo
 #: model:ir.model.fields,field_description:base_gengo.field_base_gengo_translations__display_name
 msgid "Display Name"
-msgstr "Afficher Nom"
+msgstr "Nom d'affichage"
 
 #. module: base_gengo
 #: model_terms:ir.ui.view,arch_db:base_gengo.view_ir_translation_inherit_base_gengo_form
@@ -182,32 +160,22 @@ msgstr "Niveau de service de traduction Gengo"
 #. module: base_gengo
 #: code:addons/base_gengo/wizard/base_gengo_translations.py:0
 #, python-format
-msgid ""
-"Gengo `Public Key` or `Private Key` are missing. Enter your Gengo "
-"authentication parameters under `Settings > Companies > Gengo Parameters`."
-msgstr ""
-"La \"clé publique\" ou \"clé privée\" Gengo est manquante. Entrez les "
-"paramètres d'authentification Gengo sous \"Paramètres > Sociétés > "
-"Paramètres Gengo\"."
+msgid "Gengo `Public Key` or `Private Key` are missing. Enter your Gengo authentication parameters under `Settings > Companies > Gengo Parameters`."
+msgstr "La \"clé publique\" ou \"clé privée\" Gengo est manquante. Entrez les paramètres d'authentification Gengo sous \"Paramètres > Sociétés > Paramètres Gengo\"."
 
 #. module: base_gengo
 #: code:addons/base_gengo/wizard/base_gengo_translations.py:0
 #, python-format
-msgid ""
-"Gengo connection failed with this message:\n"
+msgid "Gengo connection failed with this message:\n"
 "``%s``"
-msgstr ""
-"La connexion Gengo a échoué avec le message:\n"
+msgstr "La connexion Gengo a échoué avec le message:\n"
 "``%s``"
 
 #. module: base_gengo
 #: code:addons/base_gengo/wizard/base_gengo_translations.py:0
 #, python-format
-msgid ""
-"Gengo library not installed. Contact your system administrator to use it."
-msgstr ""
-"La bibliothèque Gengo n'est pas installée. Contactez votre administrateur "
-"système pour l'utiliser."
+msgid "Gengo library not installed. Contact your system administrator to use it."
+msgstr "La bibliothèque Gengo n'est pas installée. Contactez votre administrateur système pour l'utiliser."
 
 #. module: base_gengo
 #: model:ir.actions.act_window,name:base_gengo.action_wizard_base_gengo_translations
@@ -232,7 +200,7 @@ msgstr "Gengo : synchronisation de traduction (réponse)"
 #. module: base_gengo
 #: model:ir.model.fields,field_description:base_gengo.field_base_gengo_translations__id
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #. module: base_gengo
 #: model:ir.model.fields,help:base_gengo.field_res_company__gengo_auto_approve
@@ -243,7 +211,7 @@ msgstr "Les travaux sont automatiquement validés par Gengo."
 #. module: base_gengo
 #: model:ir.model.fields,field_description:base_gengo.field_base_gengo_translations__lang_id
 msgid "Language"
-msgstr "Langue"
+msgstr ""
 
 #. module: base_gengo
 #: model:ir.model.fields,field_description:base_gengo.field_base_gengo_translations____last_update
@@ -273,7 +241,7 @@ msgstr "Clé privée"
 #. module: base_gengo
 #: model:ir.model.fields.selection,name:base_gengo.selection__ir_translation__gengo_translation__pro
 msgid "Pro"
-msgstr "Pro"
+msgstr ""
 
 #. module: base_gengo
 #: model_terms:ir.ui.view,arch_db:base_gengo.res_config_settings_view_form
@@ -305,7 +273,7 @@ msgstr "Envoyer les nouveaux mots"
 #. module: base_gengo
 #: model:ir.model.fields.selection,name:base_gengo.selection__ir_translation__gengo_translation__standard
 msgid "Standard"
-msgstr "Standard"
+msgstr ""
 
 #. module: base_gengo
 #: model:ir.model.fields,field_description:base_gengo.field_base_gengo_translations__sync_type
@@ -315,12 +283,8 @@ msgstr "Type de synchronisation"
 #. module: base_gengo
 #: code:addons/base_gengo/wizard/base_gengo_translations.py:0
 #, python-format
-msgid ""
-"The number of terms to sync should be between 1 to 200 to work with Gengo "
-"translation services."
-msgstr ""
-"Le nombre de termes à synchroniser doit être compris entre 1 et 200 pour "
-"travailler avec le service de traduction Gengo."
+msgid "The number of terms to sync should be between 1 to 200 to work with Gengo translation services."
+msgstr "Le nombre de termes à synchroniser doit être compris entre 1 et 200 pour travailler avec le service de traduction Gengo."
 
 #. module: base_gengo
 #: model:ir.model.fields,field_description:base_gengo.field_base_gengo_translations__authorized_credentials
@@ -330,12 +294,8 @@ msgstr "Les clés privée et publique sont valides"
 #. module: base_gengo
 #: model:ir.model.fields,help:base_gengo.field_res_company__gengo_comment
 #: model:ir.model.fields,help:base_gengo.field_res_config_settings__gengo_comment
-msgid ""
-"This comment will be automatically be enclosed in each an every request sent"
-" to Gengo"
-msgstr ""
-"Ce commentaire sera automatiquement joint dans chaque requête envoyée à "
-"Gengo"
+msgid "This comment will be automatically be enclosed in each an every request sent to Gengo"
+msgstr "Ce commentaire sera automatiquement joint dans chaque requête envoyée à Gengo"
 
 #. module: base_gengo
 #: code:addons/base_gengo/wizard/base_gengo_translations.py:0
@@ -361,13 +321,10 @@ msgstr "Traduction par une machine"
 #. module: base_gengo
 #: model:ir.model.fields.selection,name:base_gengo.selection__ir_translation__gengo_translation__ultra
 msgid "Ultra"
-msgstr "Ultra"
+msgstr ""
 
 #. module: base_gengo
 #: model:ir.model.fields,help:base_gengo.field_ir_translation__gengo_translation
-msgid ""
-"You can select here the service level you want for an automatic translation "
-"using Gengo."
-msgstr ""
-"Vous pouvez ici sélectionner le niveau de service que vous voulez pour la "
-"traduction automatique en utilisant Gengo"
+msgid "You can select here the service level you want for an automatic translation using Gengo."
+msgstr "Vous pouvez ici sélectionner le niveau de service que vous voulez pour la traduction automatique en utilisant Gengo"
+
