@@ -1,30 +1,21 @@
-# Translation of Odoo Server.
-# This file contains the translation of the following modules:
-# 	* website_mail_channel
-# 
-# Translators:
-# 4e7311735ad180fde514b5b19202d965, 2019
-# DE T2 <e2f48d4s5vd1s2@outlook.com>, 2019
-# Ralf Hilgenstock <rh@dialoge.info>, 2019
-# Martin Trigaux, 2019
-# Wolfgang Taferner, 2019
-# Ermin Trevisan <trevi@twanda.com>, 2019
-# Johannes Croe <jcr@odoo.com>, 2019
-# Chris Egal <sodaswed@web.de>, 2019
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~12.4\n"
+"Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-12 11:32+0000\n"
-"PO-Revision-Date: 2019-08-26 09:16+0000\n"
-"Last-Translator: Chris Egal <sodaswed@web.de>, 2019\n"
-"Language-Team: German (https://www.transifex.com/odoo/teams/41243/de/)\n"
+"PO-Revision-Date: 2022-08-06 22:44\n"
+"Last-Translator: \n"
+"Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: ametras-xsolutions\n"
+"X-Crowdin-Project-ID: 530964\n"
+"X-Crowdin-Language: de\n"
+"X-Crowdin-File: /[AmetrasIntelligence.odoo] 13.0/addons/website_mail_channel/i18n/website_mail_channel.pot\n"
+"X-Crowdin-File-ID: 8444\n"
+"Language: de_DE\n"
 
 #. module: website_mail_channel
 #: model_terms:ir.ui.view,arch_db:website_mail_channel.group_message
@@ -34,51 +25,37 @@ msgstr ""
 
 #. module: website_mail_channel
 #: model_terms:ir.ui.view,arch_db:website_mail_channel.messages_short
-msgid ""
-"- <i class=\"fa fa-paperclip\" role=\"img\" aria-label=\"Attachments\" "
-"title=\"Attachments\"/>"
+msgid "- <i class=\"fa fa-paperclip\" role=\"img\" aria-label=\"Attachments\" title=\"Attachments\"/>"
 msgstr ""
 
 #. module: website_mail_channel
 #: model_terms:ir.ui.view,arch_db:website_mail_channel.group_message
-msgid ""
-"<i class=\"fa fa-arrow-left\" role=\"img\" aria-label=\"Previous message\" "
-"title=\"Previous message\"/>"
+msgid "<i class=\"fa fa-arrow-left\" role=\"img\" aria-label=\"Previous message\" title=\"Previous message\"/>"
 msgstr ""
 
 #. module: website_mail_channel
 #: model_terms:ir.ui.view,arch_db:website_mail_channel.group_message
-msgid ""
-"<i class=\"fa fa-arrow-right\" role=\"img\" aria-label=\"Next message\" "
-"title=\"Next message\"/>"
+msgid "<i class=\"fa fa-arrow-right\" role=\"img\" aria-label=\"Next message\" title=\"Next message\"/>"
 msgstr ""
 
 #. module: website_mail_channel
 #: model_terms:ir.ui.view,arch_db:website_mail_channel.group_message
-msgid ""
-"<i class=\"fa fa-chevron-down\" role=\"img\" aria-label=\"Show attachments\""
-" title=\"Show attachments\"/>"
+msgid "<i class=\"fa fa-chevron-down\" role=\"img\" aria-label=\"Show attachments\" title=\"Show attachments\"/>"
 msgstr ""
 
 #. module: website_mail_channel
 #: model_terms:ir.ui.view,arch_db:website_mail_channel.messages_short
-msgid ""
-"<i class=\"fa fa-chevron-down\" role=\"img\" aria-label=\"Show replies\" "
-"title=\"Show replies\"/>"
+msgid "<i class=\"fa fa-chevron-down\" role=\"img\" aria-label=\"Show replies\" title=\"Show replies\"/>"
 msgstr ""
 
 #. module: website_mail_channel
 #: model_terms:ir.ui.view,arch_db:website_mail_channel.group_message
-msgid ""
-"<i class=\"fa fa-chevron-right\" role=\"img\" aria-label=\"Hide "
-"attachments\" title=\"Hide attachments\"/>"
+msgid "<i class=\"fa fa-chevron-right\" role=\"img\" aria-label=\"Hide attachments\" title=\"Hide attachments\"/>"
 msgstr ""
 
 #. module: website_mail_channel
 #: model_terms:ir.ui.view,arch_db:website_mail_channel.messages_short
-msgid ""
-"<i class=\"fa fa-chevron-right\" role=\"img\" aria-label=\"Hide replies\" "
-"title=\"Hide replies\"/>"
+msgid "<i class=\"fa fa-chevron-right\" role=\"img\" aria-label=\"Hide replies\" title=\"Hide replies\"/>"
 msgstr ""
 
 #. module: website_mail_channel
@@ -102,9 +79,7 @@ msgstr "<i class=\"fa fa-file-o\"/> Archive"
 
 #. module: website_mail_channel
 #: model_terms:ir.ui.view,arch_db:website_mail_channel.mail_channels
-msgid ""
-"<i class=\"fa fa-fw fa-user\" role=\"img\" aria-label=\"Recipients\" "
-"title=\"Recipients\"/>"
+msgid "<i class=\"fa fa-fw fa-user\" role=\"img\" aria-label=\"Recipients\" title=\"Recipients\"/>"
 msgstr ""
 
 #. module: website_mail_channel
@@ -120,8 +95,7 @@ msgstr "<span class=\"oe_snippet_thumbnail_title\">Diskussionsgruppe</span>"
 
 #. module: website_mail_channel
 #: model:mail.template,body_html:website_mail_channel.mail_template_list_subscribe
-msgid ""
-"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
+msgid "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
 "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"padding: 16px; background-color: white; color: #454748; border-collapse:separate;\">\n"
 "<tbody>\n"
 "    <!-- HEADER -->\n"
@@ -199,8 +173,7 @@ msgid ""
 "</td></tr>\n"
 "</table>\n"
 "            "
-msgstr ""
-"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
+msgstr "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
 "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"padding: 16px; background-color: white; color: #454748; border-collapse:separate;\">\n"
 "<tbody>\n"
 "    <!-- HEADER -->\n"
@@ -281,8 +254,7 @@ msgstr ""
 
 #. module: website_mail_channel
 #: model:mail.template,body_html:website_mail_channel.mail_template_list_unsubscribe
-msgid ""
-"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
+msgid "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
 "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"padding: 16px; background-color: white; color: #454748; border-collapse:separate;\">\n"
 "<tbody>\n"
 "    <!-- HEADER -->\n"
@@ -360,8 +332,7 @@ msgid ""
 "</td></tr>\n"
 "</table>\n"
 "            "
-msgstr ""
-"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
+msgstr "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
 "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"padding: 16px; background-color: white; color: #454748; border-collapse:separate;\">\n"
 "<tbody>\n"
 "    <!-- HEADER -->\n"
@@ -461,7 +432,7 @@ msgstr "Archive"
 #: model_terms:ir.ui.view,arch_db:website_mail_channel.group_message
 #: model_terms:ir.ui.view,arch_db:website_mail_channel.messages_short
 msgid "Avatar"
-msgstr "Avatar"
+msgstr ""
 
 #. module: website_mail_channel
 #: model_terms:ir.ui.view,arch_db:website_mail_channel.group_message
@@ -515,7 +486,7 @@ msgstr "Folgenachrichten"
 #. module: website_mail_channel
 #: model_terms:ir.ui.view,arch_db:website_mail_channel.mail_channels
 msgid "Group"
-msgstr "Gruppe"
+msgstr ""
 
 #. module: website_mail_channel
 #: model_terms:ir.ui.view,arch_db:website_mail_channel.invalid_token_subscription
@@ -537,13 +508,8 @@ msgstr "E-Mail-Versandliste"
 
 #. module: website_mail_channel
 #: model_terms:ir.ui.view,arch_db:website_mail_channel.mail_channels
-msgid ""
-"Need to unsubscribe? It's right here! <span class=\"fa fa-2x fa-arrow-down "
-"float-right\" role=\"img\" aria-label=\"\" title=\"Read this !\"/>"
-msgstr ""
-"Müssen Sie sich abmelden? Es ist genau hier! <span class=\"fa fa-2x fa-"
-"arrow-down float-right\" role=\"img\" aria-label=\"\" title=\"Read this "
-"!\"/>"
+msgid "Need to unsubscribe? It's right here! <span class=\"fa fa-2x fa-arrow-down float-right\" role=\"img\" aria-label=\"\" title=\"Read this !\"/>"
+msgstr "Müssen Sie sich abmelden? Es ist genau hier! <span class=\"fa fa-2x fa-arrow-down float-right\" role=\"img\" aria-label=\"\" title=\"Read this !\"/>"
 
 #. module: website_mail_channel
 #: model:ir.model,name:website_mail_channel.model_mail_mail
@@ -570,7 +536,7 @@ msgstr "Bleiben Sie in Kontakt mit der Community"
 #: model_terms:ir.ui.view,arch_db:website_mail_channel.mail_channels
 #: model_terms:ir.ui.view,arch_db:website_mail_channel.subscribe
 msgid "Subscribe"
-msgstr "Abonnieren"
+msgstr "Aktiviere"
 
 #. module: website_mail_channel
 #: model_terms:ir.ui.view,arch_db:website_mail_channel.not_subscribed
@@ -580,19 +546,15 @@ msgstr "Die Adresse"
 #. module: website_mail_channel
 #: code:addons/website_mail_channel/controllers/main.py:245
 #, python-format
-msgid ""
-"The address %s is already unsubscribed or was never subscribed to any "
-"mailing list"
-msgstr ""
-"Die Adresse %s wurde bereits abgemeldet oder war bei keiner E-Mail-"
-"Versandliste angemeldet."
+msgid "The address %s is already unsubscribed or was never subscribed to any mailing list"
+msgstr "Die Adresse %s wurde bereits abgemeldet oder war bei keiner E-Mail-Versandliste angemeldet."
 
 #. module: website_mail_channel
 #: code:addons/website_mail_channel/models/mail_mail.py:22
 #: model_terms:ir.ui.view,arch_db:website_mail_channel.mail_channels
 #, python-format
 msgid "Unsubscribe"
-msgstr "Abmelden"
+msgstr "Deaktivieren"
 
 #. module: website_mail_channel
 #: model_terms:ir.ui.view,arch_db:website_mail_channel.confirmation_subscription
@@ -617,13 +579,11 @@ msgstr "durch"
 
 #. module: website_mail_channel
 #: model_terms:ir.ui.view,arch_db:website_mail_channel.not_subscribed
-msgid ""
-"is already\n"
+msgid "is already\n"
 "                    unsubscribed or was never subscribed to the mailing\n"
 "                    list, you may want to check that the address was\n"
 "                    correct."
-msgstr ""
-"ist bereits\n"
+msgstr "ist bereits\n"
 "                    abgemeldet oder war bisher nicht bei der E-Mail-Versandliste\n"
 "                    angemeldet. Bitte prüfen Sie, ob die E-Mail-Adresse\n"
 "                    korrekt ist."
@@ -636,11 +596,9 @@ msgstr "Mailinglisten Archive"
 
 #. module: website_mail_channel
 #: model_terms:ir.ui.view,arch_db:website_mail_channel.mail_channels
-msgid ""
-"members<br/>\n"
+msgid "members<br/>\n"
 "                    <i class=\"fa fa-fw fa-envelope-o\" role=\"img\" aria-label=\"Traffic\" title=\"Traffic\"/>"
-msgstr ""
-"Mitglieder<br/>\n"
+msgstr "Mitglieder<br/>\n"
 "                    <i class=\"fa fa-fw fa-envelope-o\" role=\"img\" aria-label=\"Traffic\" title=\"Traffic\"/>"
 
 #. module: website_mail_channel
@@ -683,3 +641,4 @@ msgstr "abgemeldet"
 #: model_terms:ir.ui.view,arch_db:website_mail_channel.subscribe
 msgid "your email..."
 msgstr "Ihre E-Mail..."
+
