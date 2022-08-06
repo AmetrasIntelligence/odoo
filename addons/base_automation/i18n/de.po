@@ -1,41 +1,29 @@
-# Translation of Odoo Server.
-# This file contains the translation of the following modules:
-# 	* base_automation
-# 
-# Translators:
-# Martin Trigaux, 2019
-# darenkster <inactive+darenkster@transifex.com>, 2019
-# Jan Meyer, 2019
-# Johannes Croe <jcr@odoo.com>, 2019
-# Leon Grill <leg@odoo.com>, 2019
-# e2f <projects@e2f.com>, 2019
-# Katharina Moritz <kmo@e2f.com>, 2019
-# Chris Egal <sodaswed@web.de>, 2020
-# philku79 <philip.kuss@gmx.de>, 2020
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 13.0\n"
+"Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-27 09:21+0000\n"
-"PO-Revision-Date: 2019-08-26 09:09+0000\n"
-"Last-Translator: philku79 <philip.kuss@gmx.de>, 2020\n"
-"Language-Team: German (https://www.transifex.com/odoo/teams/41243/de/)\n"
+"PO-Revision-Date: 2022-08-06 22:38\n"
+"Last-Translator: \n"
+"Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: ametras-xsolutions\n"
+"X-Crowdin-Project-ID: 530964\n"
+"X-Crowdin-Language: de\n"
+"X-Crowdin-File: /[AmetrasIntelligence.odoo] 13.0/addons/base_automation/i18n/base_automation.pot\n"
+"X-Crowdin-File-ID: 8048\n"
+"Language: de_DE\n"
 
 #. module: base_automation
 #. openerp-web
 #: code:addons/base_automation/static/src/xml/base_automation_error_dialog.xml:0
 #, python-format
-msgid ""
-"\"\n"
+msgid "\"\n"
 "                    (ID:"
-msgstr ""
-"\"\n"
+msgstr "\"\n"
 "(ID:"
 
 #. module: base_automation
@@ -51,7 +39,7 @@ msgstr "Aktionsbeschreibung"
 #. module: base_automation
 #: model:ir.model.fields,field_description:base_automation.field_base_automation__name
 msgid "Action Name"
-msgstr "Name der Aktion"
+msgstr ""
 
 #. module: base_automation
 #: model:ir.model.fields,field_description:base_automation.field_base_automation__state
@@ -92,12 +80,12 @@ msgstr "Abonnenten hinzufügen"
 #. module: base_automation
 #: model:ir.model.fields,field_description:base_automation.field_base_automation__filter_domain
 msgid "Apply on"
-msgstr "Anzuwenden auf"
+msgstr ""
 
 #. module: base_automation
 #: model_terms:ir.ui.view,arch_db:base_automation.view_base_automation_search
 msgid "Archived"
-msgstr "Archiviert"
+msgstr ""
 
 #. module: base_automation
 #: model:ir.model.fields,field_description:base_automation.field_base_automation_lead_test__is_assigned_to_admin
@@ -129,7 +117,7 @@ msgstr "Automatischer Regeltest"
 #. module: base_automation
 #: model_terms:ir.ui.view,arch_db:base_automation.view_base_automation_tree
 msgid "Automation"
-msgstr "Automation"
+msgstr ""
 
 #. module: base_automation
 #: model:ir.actions.server,name:base_automation.ir_cron_data_base_automation_check_ir_actions_server
@@ -214,12 +202,12 @@ msgstr "Bindungstyp"
 #. module: base_automation
 #: model:ir.model.fields,field_description:base_automation.field_base_automation__binding_view_types
 msgid "Binding View Types"
-msgstr "Binding View Types"
+msgstr ""
 
 #. module: base_automation
 #: model:ir.model.fields.selection,name:base_automation.selection__base_automation_lead_test__state__cancel
 msgid "Cancelled"
-msgstr "Abgebrochen"
+msgstr "Storniert"
 
 #. module: base_automation
 #: model:ir.model.fields,field_description:base_automation.field_base_automation__child_ids
@@ -228,18 +216,13 @@ msgstr "Abhängige Aktion"
 
 #. module: base_automation
 #: model:ir.model.fields,help:base_automation.field_base_automation__child_ids
-msgid ""
-"Child server actions that will be executed. Note that the last return "
-"returned action value will be used as global return value."
-msgstr ""
-"Abhängige Server-Aktion, die ausgeführt werden soll. Bitte beachten Sie, das"
-" der letzte Rückgabewert der ausgeführten Aktion als globaler Rückgabewert "
-"verwendet wird."
+msgid "Child server actions that will be executed. Note that the last return returned action value will be used as global return value."
+msgstr "Abhängige Server-Aktion, die ausgeführt werden soll. Bitte beachten Sie, das der letzte Rückgabewert der ausgeführten Aktion als globaler Rückgabewert verwendet wird."
 
 #. module: base_automation
 #: model:ir.model.fields.selection,name:base_automation.selection__base_automation_lead_test__state__done
 msgid "Closed"
-msgstr "Abgeschlossen"
+msgstr ""
 
 #. module: base_automation
 #: model:ir.model.fields,help:base_automation.field_base_automation__on_change_fields
@@ -273,16 +256,14 @@ msgstr "Tage"
 #. module: base_automation
 #: model:ir.model.fields,field_description:base_automation.field_base_automation_lead_test__deadline
 msgid "Deadline"
-msgstr "Frist"
+msgstr ""
 
 #. module: base_automation
 #: model:ir.model.fields,help:base_automation.field_base_automation__trg_date_range
-msgid ""
-"Delay after the trigger date.\n"
+msgid "Delay after the trigger date.\n"
 "                                    You can put a negative number if you need a delay before the\n"
 "                                    trigger date, like sending a reminder 15 minutes before a meeting."
-msgstr ""
-"Verzögerung nach dem Auslösedatum.\n"
+msgstr "Verzögerung nach dem Auslösedatum.\n"
 "Sie können eine negative Zahl eingeben, wenn Sie eine Verzögerung vor dem Triggerdatum, wie z.B. das Senden einer Erinnerung 15 Minuten vor einer Besprechung."
 
 #. module: base_automation
@@ -298,7 +279,7 @@ msgstr "Typ Zeitverzug"
 #. module: base_automation
 #: model:ir.model,name:base_automation.model_ir_demo
 msgid "Demo"
-msgstr "Demo"
+msgstr ""
 
 #. module: base_automation
 #. openerp-web
@@ -311,13 +292,11 @@ msgstr "Aufgabe deaktivieren"
 #. openerp-web
 #: code:addons/base_automation/static/src/xml/base_automation_error_dialog.xml:0
 #, python-format
-msgid ""
-"Disabling this automated action will enable you to continue your workflow\n"
+msgid "Disabling this automated action will enable you to continue your workflow\n"
 "                    but any data created after this could potentially be corrupted,\n"
 "                    as you are effectively disabling a customization that may set\n"
 "                    important and/or required fields."
-msgstr ""
-"Deaktivieren Sie diese automatisierte Aufgabe, um den Arbeitsablauf wieder zu ermöglichen.\n"
+msgstr "Deaktivieren Sie diese automatisierte Aufgabe, um den Arbeitsablauf wieder zu ermöglichen.\n"
 "Beachten Sie, dass alle Daten nach dieser Anpassung womöglich beschädigt sein können,\n"
 "da eine diese Aufgabe mitunter wichtige Felder anpasst."
 
@@ -348,7 +327,7 @@ msgstr "Aufgabe bearbeiten"
 #. module: base_automation
 #: model:ir.model.fields,field_description:base_automation.field_base_automation__template_id
 msgid "Email Template"
-msgstr "E-Mail Vorlage"
+msgstr ""
 
 #. module: base_automation
 #: model:ir.model.fields,field_description:base_automation.field_base_automation_lead_test__employee
@@ -363,12 +342,12 @@ msgstr "Externe ID"
 #. module: base_automation
 #: model:ir.model.fields,field_description:base_automation.field_base_automation__groups_id
 msgid "Groups"
-msgstr "Gruppen"
+msgstr ""
 
 #. module: base_automation
 #: model:ir.model.fields.selection,name:base_automation.selection__base_automation__trg_date_range_type__hour
 msgid "Hours"
-msgstr "Stunden"
+msgstr ""
 
 #. module: base_automation
 #: model:ir.model.fields,field_description:base_automation.field_base_automation__id
@@ -384,26 +363,18 @@ msgstr "Die ID für diese ist in einem xml File definiert."
 
 #. module: base_automation
 #: model:ir.model.fields,help:base_automation.field_base_automation__filter_domain
-msgid ""
-"If present, this condition must be satisfied before executing the action "
-"rule."
-msgstr ""
-"Bei Verfügbarkeit muß diese Kondition vor Ausführung der Aktionsregel "
-"erfüllt sein."
+msgid "If present, this condition must be satisfied before executing the action rule."
+msgstr "Bei Verfügbarkeit muß diese Kondition vor Ausführung der Aktionsregel erfüllt sein."
 
 #. module: base_automation
 #: model:ir.model.fields,help:base_automation.field_base_automation__filter_pre_domain
-msgid ""
-"If present, this condition must be satisfied before the update of the "
-"record."
-msgstr ""
-"Falls vorhanden, muß diese Bedingung vor der Aktualisierung des Datensatzes "
-"erfüllt werden."
+msgid "If present, this condition must be satisfied before the update of the record."
+msgstr "Falls vorhanden, muß diese Bedingung vor der Aktualisierung des Datensatzes erfüllt werden."
 
 #. module: base_automation
 #: model:ir.model.fields.selection,name:base_automation.selection__base_automation_lead_test__state__open
 msgid "In Progress"
-msgstr "In Arbeit"
+msgstr ""
 
 #. module: base_automation
 #: model:ir.model.fields,field_description:base_automation.field_base_automation_lead_test__date_action_last
@@ -415,7 +386,7 @@ msgstr "Letzte Aktion"
 #: model:ir.model.fields,field_description:base_automation.field_base_automation_lead_test____last_update
 #: model:ir.model.fields,field_description:base_automation.field_base_automation_line_test____last_update
 msgid "Last Modified on"
-msgstr "Letzte Änderung am"
+msgstr "Zuletzt geändert am"
 
 #. module: base_automation
 #: model:ir.model.fields,field_description:base_automation.field_base_automation__last_run
@@ -468,12 +439,8 @@ msgstr "Modellname"
 
 #. module: base_automation
 #: model:ir.model.fields,help:base_automation.field_base_automation__crud_model_id
-msgid ""
-"Model for record creation / update. Set this field only to specify a "
-"different model than the base model."
-msgstr ""
-"Datenmodell für das Beleg erstellen / updaten . Setzen Sie dies Modul nur "
-"für den Fall ein,"
+msgid "Model for record creation / update. Set this field only to specify a different model than the base model."
+msgstr "Datenmodell für das Beleg erstellen / updaten . Setzen Sie dies Modul nur für den Fall ein,"
 
 #. module: base_automation
 #: model:ir.model.fields,help:base_automation.field_base_automation__model_id
@@ -483,7 +450,7 @@ msgstr "Modell, auf dem die Server-Aktion läuft."
 #. module: base_automation
 #: model:ir.model.fields.selection,name:base_automation.selection__base_automation__trg_date_range_type__month
 msgid "Months"
-msgstr "Monate"
+msgstr ""
 
 #. module: base_automation
 #: model:ir.model.fields,field_description:base_automation.field_base_automation_line_test__name
@@ -527,22 +494,18 @@ msgstr "Beim Aktualisieren"
 
 #. module: base_automation
 #: model:ir.model.fields,help:base_automation.field_base_automation__help
-msgid ""
-"Optional help text for the users with a description of the target view, such"
-" as its usage and purpose."
-msgstr ""
-"Optionaler Hilfetext für Benutzer mit der Beschreibung der Ansicht, deren "
-"Verwendung und Aufgabe."
+msgid "Optional help text for the users with a description of the target view, such as its usage and purpose."
+msgstr "Optionaler Hilfetext für Benutzer mit der Beschreibung der Ansicht, deren Verwendung und Aufgabe."
 
 #. module: base_automation
 #: model:ir.model.fields,field_description:base_automation.field_base_automation_lead_test__partner_id
 msgid "Partner"
-msgstr "Partner"
+msgstr "Kontakt"
 
 #. module: base_automation
 #: model:ir.model.fields.selection,name:base_automation.selection__base_automation_lead_test__state__pending
 msgid "Pending"
-msgstr "Anstehend"
+msgstr "Ausstehend"
 
 #. module: base_automation
 #: model:ir.model.fields,field_description:base_automation.field_base_automation_lead_test__priority
@@ -551,17 +514,13 @@ msgstr "Priorität"
 
 #. module: base_automation
 #: model:ir.model.fields,help:base_automation.field_base_automation__link_field_id
-msgid ""
-"Provide the field used to link the newly created record on the record on "
-"used by the server action."
-msgstr ""
-"Geben Sie das Feld an, das verwendet wird, um den neu erstellten Datensatz "
-"mit dem Datensatz zu verknüpfen, der von der Serveraktion verwendet wird."
+msgid "Provide the field used to link the newly created record on the record on used by the server action."
+msgstr "Geben Sie das Feld an, das verwendet wird, um den neu erstellten Datensatz mit dem Datensatz zu verknüpfen, der von der Serveraktion verwendet wird."
 
 #. module: base_automation
 #: model:ir.model.fields,field_description:base_automation.field_base_automation__code
 msgid "Python Code"
-msgstr "Python Code"
+msgstr ""
 
 #. module: base_automation
 #: model:ir.model.fields,field_description:base_automation.field_base_automation__activity_user_id
@@ -586,12 +545,8 @@ msgstr "Server-Aktionen"
 
 #. module: base_automation
 #: model:ir.model.fields,help:base_automation.field_base_automation__binding_model_id
-msgid ""
-"Setting a value makes this action available in the sidebar for the given "
-"model."
-msgstr ""
-"Das Setzen eines Wertes macht diese Aktion in der Sidebar für das gegebene "
-"Modell verfügbar."
+msgid "Setting a value makes this action available in the sidebar for the given model."
+msgstr "Das Setzen eines Wertes macht diese Aktion in der Sidebar für das gegebene Modell verfügbar."
 
 #. module: base_automation
 #: model_terms:ir.actions.act_window,help:base_automation.base_automation_act
@@ -601,22 +556,22 @@ msgstr "Richten Sie eine neue automatisierte Automatisierung ein"
 #. module: base_automation
 #: model:ir.model.fields,field_description:base_automation.field_base_automation_lead_test__state
 msgid "Status"
-msgstr "Status"
+msgstr ""
 
 #. module: base_automation
 #: model:ir.model.fields,field_description:base_automation.field_base_automation_lead_test__name
 msgid "Subject"
-msgstr "Betreff"
+msgstr ""
 
 #. module: base_automation
 #: model:ir.model.fields,field_description:base_automation.field_base_automation__activity_summary
 msgid "Summary"
-msgstr "Zusammenfassung"
+msgstr ""
 
 #. module: base_automation
 #: model:ir.model.fields,field_description:base_automation.field_base_automation__crud_model_name
 msgid "Target Model"
-msgstr "Ziel-Modell"
+msgstr ""
 
 #. module: base_automation
 #: model:ir.model.fields,help:base_automation.field_base_automation__activity_user_field_name
@@ -626,31 +581,21 @@ msgstr "Technischer Name des Benutzers im Datensatz"
 #. module: base_automation
 #: code:addons/base_automation/models/base_automation.py:0
 #, python-format
-msgid ""
-"The \"%(trigger_value)s\" %(trigger_label)s can only be used with the "
-"\"%(state_value)s\" action type"
-msgstr ""
-"Der \"%(trigger_value)s\" %(trigger_label)s kann nur benutzt werden mit "
-"dem\"%(state_value)s\" Aktionstyp"
+msgid "The \"%(trigger_value)s\" %(trigger_label)s can only be used with the \"%(state_value)s\" action type"
+msgstr "Der \"%(trigger_value)s\" %(trigger_label)s kann nur benutzt werden mit dem\"%(state_value)s\" Aktionstyp"
 
 #. module: base_automation
 #: model:ir.model.fields,help:base_automation.field_base_automation__trigger_field_ids
-msgid ""
-"The action will be triggered if and only if one of these fields is "
-"updated.If empty, all fields are watched."
-msgstr ""
-"Diese Aufgabe wird ausgelöst, wenn eines dieser Felder aktualisiert wird. "
-"Ohne Angabe werden alle Felder auf Änderungen beobachtet."
+msgid "The action will be triggered if and only if one of these fields is updated.If empty, all fields are watched."
+msgstr "Diese Aufgabe wird ausgelöst, wenn eines dieser Felder aktualisiert wird. Ohne Angabe werden alle Felder auf Änderungen beobachtet."
 
 #. module: base_automation
 #. openerp-web
 #: code:addons/base_automation/static/src/xml/base_automation_error_dialog.xml:0
 #, python-format
-msgid ""
-"The error occurred during the execution of the automated action\n"
+msgid "The error occurred during the execution of the automated action\n"
 "                    \""
-msgstr ""
-"Der Fehler trat während des Ausführung der automatisierten Aufgabe auf."
+msgstr "Der Fehler trat während des Ausführung der automatisierten Aufgabe auf."
 
 #. module: base_automation
 #: model:ir.model.fields,field_description:base_automation.field_base_automation__trigger
@@ -664,8 +609,7 @@ msgstr "Auslösedatum"
 
 #. module: base_automation
 #: model:ir.model.fields,help:base_automation.field_base_automation__state
-msgid ""
-"Type of server action. The following values are available:\n"
+msgid "Type of server action. The following values are available:\n"
 "- 'Execute Python Code': a block of python code that will be executed\n"
 "- 'Create': create a new record with new values\n"
 "- 'Update a Record': update the values of a record\n"
@@ -674,32 +618,17 @@ msgid ""
 "- 'Add Followers': add followers to a record (Discuss)\n"
 "- 'Create Next Activity': create an activity (Discuss)"
 msgstr ""
-"Type of server action. The following values are available:\n"
-"- 'Execute Python Code': a block of python code that will be executed\n"
-"- 'Create': create a new record with new values\n"
-"- 'Update a Record': update the values of a record\n"
-"- 'Execute several actions': define an action that triggers several other server actions\n"
-"- 'Send Email': automatically send an email (Discuss)\n"
-"- 'Add Followers': add followers to a record (Discuss)\n"
-"- 'Create Next Activity': create an activity (Discuss)"
 
 #. module: base_automation
 #: model:ir.model.fields,field_description:base_automation.field_base_automation__usage
 #: model:ir.model.fields,field_description:base_automation.field_ir_actions_server__usage
 msgid "Usage"
-msgstr "Verwendung"
+msgstr ""
 
 #. module: base_automation
 #: model:ir.model.fields,help:base_automation.field_base_automation__activity_user_type
-msgid ""
-"Use 'Specific User' to always assign the same user on the next activity. Use"
-" 'Generic User From Record' to specify the field name of the user to choose "
-"on the record."
-msgstr ""
-"Verwenden Sie einen \"Bestimmten Benutzer\", um bei der nächsten Aktivität "
-"immer denselben Benutzer zugewiesen  zu bekommen.Verwenden Sie 'Generierter "
-"Benutzer aus Datensatz', um den Feldnamen des Benutzers anzugeben, der im "
-"Datensatz ausgewählt werden soll."
+msgid "Use 'Specific User' to always assign the same user on the next activity. Use 'Generic User From Record' to specify the field name of the user to choose on the record."
+msgstr "Verwenden Sie einen \"Bestimmten Benutzer\", um bei der nächsten Aktivität immer denselben Benutzer zugewiesen  zu bekommen.Verwenden Sie 'Generierter Benutzer aus Datensatz', um den Feldnamen des Benutzers anzugeben, der im Datensatz ausgewählt werden soll."
 
 #. module: base_automation
 #: model:ir.model.fields,field_description:base_automation.field_base_automation__trg_date_calendar_id
@@ -708,14 +637,12 @@ msgstr "Benutze Kalender"
 
 #. module: base_automation
 #: model_terms:ir.actions.act_window,help:base_automation.base_automation_act
-msgid ""
-"Use automated actions to automatically trigger actions for\n"
+msgid "Use automated actions to automatically trigger actions for\n"
 "                various screens. Example: a lead created by a specific user may\n"
 "                be automatically set to a specific Sales Team, or an\n"
 "                opportunity which still has status pending after 14 days might\n"
 "                trigger an automatic reminder email."
-msgstr ""
-"Verwenden Sie automatisierte Aktionen, um automatisch Aktionen auszulösen für \n"
+msgstr "Verwenden Sie automatisierte Aktionen, um automatisch Aktionen auszulösen für \n"
 "                verschiedene Bildschirme. Beispiel: Ein Führung von einem bestimmten Benutzer erstelltet werden darf\n"
 "                automatisch auf ein bestimmtes Verkaufsteam eingestellt werden, oder eine\n"
 "                Gelegenheit, deren Status nach 14 Tagen noch aussteht, könnte\n"
@@ -724,7 +651,7 @@ msgstr ""
 #. module: base_automation
 #: model:ir.model.fields,field_description:base_automation.field_base_automation_line_test__user_id
 msgid "User"
-msgstr "Benutzer"
+msgstr ""
 
 #. module: base_automation
 #: model:ir.model.fields,field_description:base_automation.field_base_automation__activity_user_field_name
@@ -749,63 +676,42 @@ msgstr "Beobachtete Felder"
 
 #. module: base_automation
 #: model:ir.model.fields,help:base_automation.field_base_automation__trg_date_calendar_id
-msgid ""
-"When calculating a day-based timed condition, it is possible to use a "
-"calendar to compute the date based on working days."
-msgstr ""
-"Zur Berechnung Ihrer täglichen Terminrestriktionen, können Sie einen "
-"Kalender für die Terminberechnung auf Basis von Arbeitstagen nutzen."
+msgid "When calculating a day-based timed condition, it is possible to use a calendar to compute the date based on working days."
+msgstr "Zur Berechnung Ihrer täglichen Terminrestriktionen, können Sie einen Kalender für die Terminberechnung auf Basis von Arbeitstagen nutzen."
 
 #. module: base_automation
 #: model:ir.model.fields,help:base_automation.field_base_automation__sequence
-msgid ""
-"When dealing with multiple actions, the execution order is based on the "
-"sequence. Low number means high priority."
-msgstr ""
-"Wichtig beim Umgang mit mehreren Aktionen. Die Reihenfolge der Ausführung "
-"erfolgt nach aufsteigenden Nummern."
+msgid "When dealing with multiple actions, the execution order is based on the sequence. Low number means high priority."
+msgstr "Wichtig beim Umgang mit mehreren Aktionen. Die Reihenfolge der Ausführung erfolgt nach aufsteigenden Nummern."
 
 #. module: base_automation
 #: model:ir.model.fields,help:base_automation.field_base_automation__trg_date_id
-msgid ""
-"When should the condition be triggered.\n"
+msgid "When should the condition be triggered.\n"
 "                                  If present, will be checked by the scheduler. If empty, will be checked at creation and update."
-msgstr ""
-"Wann die Bedingung ausgelöst werden sollte.\n"
+msgstr "Wann die Bedingung ausgelöst werden sollte.\n"
 " Falls vorhanden, wird der Zeitplaner die Überprüfung vornehmen. Falls leer, wird bei der Erstellung und Aktualisierung eine Überprüfung vorgenommen."
 
 #. module: base_automation
 #: model:ir.model.fields,help:base_automation.field_base_automation__active
 msgid "When unchecked, the rule is hidden and will not be executed."
-msgstr ""
-"Wenn diese Option deaktiviert wurde, wird die Regel ausgeblendet und auch "
-"demnach nicht ausgeführt."
+msgstr "Wenn diese Option deaktiviert wurde, wird die Regel ausgeblendet und auch demnach nicht ausgeführt."
 
 #. module: base_automation
 #: model:ir.model.fields,help:base_automation.field_base_automation__code
-msgid ""
-"Write Python code that the action will execute. Some variables are available"
-" for use; help about python expression is given in the help tab."
-msgstr ""
-"Schreiben Sie Python-Code, den die Aktion ausführen wird. Einige Variablen "
-"stehen zur Verfügung. Hilfe zum Python-Ausdruck finden Sie auf der "
-"Registerkarte \"Hilfe\"."
+msgid "Write Python code that the action will execute. Some variables are available for use; help about python expression is given in the help tab."
+msgstr "Schreiben Sie Python-Code, den die Aktion ausführen wird. Einige Variablen stehen zur Verfügung. Hilfe zum Python-Ausdruck finden Sie auf der Registerkarte \"Hilfe\"."
 
 #. module: base_automation
 #. openerp-web
 #: code:addons/base_automation/static/src/xml/base_automation_error_dialog.xml:0
 #, python-format
-msgid ""
-"You can ask an administrator to disable or correct this automated action."
-msgstr ""
-"Sie können einen Administrator bitten die automatisierte Aufgabe zu "
-"deaktivieren oder zu korrigieren."
+msgid "You can ask an administrator to disable or correct this automated action."
+msgstr "Sie können einen Administrator bitten die automatisierte Aufgabe zu deaktivieren oder zu korrigieren."
 
 #. module: base_automation
 #. openerp-web
 #: code:addons/base_automation/static/src/xml/base_automation_error_dialog.xml:0
 #, python-format
 msgid "You can disable this automated action or edit it to solve the issue."
-msgstr ""
-"Sie können diese automatisierte Aufgabe deaktivieren oder bearbeiten, um das"
-" Problem zu beheben."
+msgstr "Sie können diese automatisierte Aufgabe deaktivieren oder bearbeiten, um das Problem zu beheben."
+
