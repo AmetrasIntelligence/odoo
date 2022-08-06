@@ -1,36 +1,27 @@
-# Translation of Odoo Server.
-# This file contains the translation of the following modules:
-# 	* website_sale_wishlist
-# 
-# Translators:
-# Leon Grill <leg@odoo.com>, 2019
-# e2f <projects@e2f.com>, 2019
-# Martin Trigaux, 2019
-# key six <mobile.umts@gmail.com>, 2019
-# Marco Tarsia <marco.y.tarsia@gmail.com>, 2019
-# Chris Egal <sodaswed@web.de>, 2019
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~12.5\n"
+"Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-26 08:17+0000\n"
-"PO-Revision-Date: 2019-08-26 09:16+0000\n"
-"Last-Translator: Chris Egal <sodaswed@web.de>, 2019\n"
-"Language-Team: German (https://www.transifex.com/odoo/teams/41243/de/)\n"
+"PO-Revision-Date: 2022-08-06 22:45\n"
+"Last-Translator: \n"
+"Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: ametras-xsolutions\n"
+"X-Crowdin-Project-ID: 530964\n"
+"X-Crowdin-Language: de\n"
+"X-Crowdin-File: /[AmetrasIntelligence.odoo] 13.0/addons/website_sale_wishlist/i18n/website_sale_wishlist.pot\n"
+"X-Crowdin-File-ID: 8476\n"
+"Language: de_DE\n"
 
 #. module: website_sale_wishlist
 #: model_terms:ir.ui.view,arch_db:website_sale_wishlist.header
-msgid ""
-"<i class=\"fa fa-heart\"/>\n"
+msgid "<i class=\"fa fa-heart\"/>\n"
 "                        Wishlist"
-msgstr ""
-"<i class=\"fa fa-heart\"/>\n"
+msgstr "<i class=\"fa fa-heart\"/>\n"
 " Wunschliste"
 
 #. module: website_sale_wishlist
@@ -41,16 +32,12 @@ msgstr "<small><i class=\"fa fa-trash-o\"/> Entfernen</small>"
 #. module: website_sale_wishlist
 #: model_terms:ir.ui.view,arch_db:website_sale_wishlist.add_to_wishlist
 msgid "<span class=\"fa fa-heart\" role=\"img\" aria-label=\"Add to wishlist\"/>"
-msgstr "<span class=\"fa fa-heart\" role=\"img\" aria-label=\"Add to wishlist\"/>"
+msgstr ""
 
 #. module: website_sale_wishlist
 #: model_terms:ir.ui.view,arch_db:website_sale_wishlist.product_add_to_wishlist
-msgid ""
-"<span class=\"fa fa-heart\" role=\"img\" aria-label=\"Add to wishlist\"/> "
-"Add to wishlist"
-msgstr ""
-"<span class=\"fa fa-heart\" role=\"img\" aria-label=\"Add to wishlist\"/> "
-"Zur Wunschliste hinzufügen"
+msgid "<span class=\"fa fa-heart\" role=\"img\" aria-label=\"Add to wishlist\"/> Add to wishlist"
+msgstr "<span class=\"fa fa-heart\" role=\"img\" aria-label=\"Add to wishlist\"/> Zur Wunschliste hinzufügen"
 
 #. module: website_sale_wishlist
 #: model:ir.model.fields,field_description:website_sale_wishlist.field_product_wishlist__active
@@ -75,7 +62,7 @@ msgstr "Zur Wunschliste hinzufügen"
 #. module: website_sale_wishlist
 #: model:ir.model,name:website_sale_wishlist.model_ir_autovacuum
 msgid "Automatic Vacuum"
-msgstr "Automatisch aufräumen"
+msgstr "Automatisches Aufräumen"
 
 #. module: website_sale_wishlist
 #: model:ir.model,name:website_sale_wishlist.model_res_partner
@@ -115,7 +102,7 @@ msgstr "ID"
 #. module: website_sale_wishlist
 #: model:ir.model.fields,field_description:website_sale_wishlist.field_product_wishlist____last_update
 msgid "Last Modified on"
-msgstr "Letzte Änderung am"
+msgstr "Zuletzt geändert am"
 
 #. module: website_sale_wishlist
 #: model:ir.model.fields,field_description:website_sale_wishlist.field_product_wishlist__write_uid
@@ -135,7 +122,7 @@ msgstr "Meine Wunschliste"
 #. module: website_sale_wishlist
 #: model:ir.model.fields,field_description:website_sale_wishlist.field_product_wishlist__partner_id
 msgid "Owner"
-msgstr "Besitzer"
+msgstr ""
 
 #. module: website_sale_wishlist
 #: model:ir.model.fields,field_description:website_sale_wishlist.field_product_wishlist__price
@@ -150,7 +137,7 @@ msgstr "Preis des Produkts, wenn es zur Wunschliste hinzugefügt wurde"
 #. module: website_sale_wishlist
 #: model:ir.model.fields,field_description:website_sale_wishlist.field_product_wishlist__pricelist_id
 msgid "Pricelist"
-msgstr "Preisliste"
+msgstr ""
 
 #. module: website_sale_wishlist
 #: model:ir.model.fields,help:website_sale_wishlist.field_product_wishlist__pricelist_id
@@ -191,10 +178,11 @@ msgstr "Benutzer"
 #. module: website_sale_wishlist
 #: model:ir.model.fields,field_description:website_sale_wishlist.field_product_wishlist__website_id
 msgid "Website"
-msgstr "Website"
+msgstr ""
 
 #. module: website_sale_wishlist
 #: model:ir.model.fields,field_description:website_sale_wishlist.field_res_partner__wishlist_ids
 #: model:ir.model.fields,field_description:website_sale_wishlist.field_res_users__wishlist_ids
 msgid "Wishlist"
-msgstr "Wunschliste"
+msgstr ""
+
