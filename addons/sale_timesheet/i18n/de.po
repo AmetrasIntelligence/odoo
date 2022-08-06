@@ -1,46 +1,27 @@
-# Translation of Odoo Server.
-# This file contains the translation of the following modules:
-# 	* sale_timesheet
-# 
-# Translators:
-# e2f <projects@e2f.com>, 2019
-# 4e7311735ad180fde514b5b19202d965, 2019
-# DE T2 <e2f48d4s5vd1s2@outlook.com>, 2019
-# Ralf Hilgenstock <rh@dialoge.info>, 2019
-# Felix Schubert <felix.schubert@go-erp.com>, 2019
-# b4d8887ced18b222d41dc1101b082e15, 2019
-# Renzo Meister, 2019
-# f91684c3ff9ec3e650d5c8461e534581_686eae3 <449b96d9f63071f94d89e129677b83de_366193>, 2019
-# e2f FFE <e2f_de_FFE@outlook.com>, 2019
-# Johannes Croe <jcr@odoo.com>, 2019
-# Leon Grill <leg@odoo.com>, 2019
-# Wolfgang Taferner, 2019
-# Thorsten Vocks <thorsten.vocks@openbig.org>, 2019
-# Chris Egal <sodaswed@web.de>, 2019
-# Martin Trigaux, 2019
-# Oliver Roch <oliver.roch@d9t.de>, 2019
-# Andreas Jonderko <a.jonderko@gastronovi.com>, 2020
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 13.0\n"
+"Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-27 09:22+0000\n"
-"PO-Revision-Date: 2019-08-26 09:14+0000\n"
-"Last-Translator: Andreas Jonderko <a.jonderko@gastronovi.com>, 2020\n"
-"Language-Team: German (https://www.transifex.com/odoo/teams/41243/de/)\n"
+"PO-Revision-Date: 2022-08-06 22:44\n"
+"Last-Translator: \n"
+"Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: ametras-xsolutions\n"
+"X-Crowdin-Project-ID: 530964\n"
+"X-Crowdin-Language: de\n"
+"X-Crowdin-File: /[AmetrasIntelligence.odoo] 13.0/addons/sale_timesheet/i18n/sale_timesheet.pot\n"
+"X-Crowdin-File-ID: 8360\n"
+"Language: de_DE\n"
 
 #. module: sale_timesheet
 #: code:addons/sale_timesheet/models/account_move.py:0
 #: code:addons/sale_timesheet/models/project.py:0
 #, python-format
-msgid ""
-"\n"
+msgid "\n"
 "                <p class=\"o_view_nocontent_smiling_face\">\n"
 "                    Record timesheets\n"
 "                </p><p>\n"
@@ -49,8 +30,7 @@ msgid ""
 "                    customers if required.\n"
 "                </p>\n"
 "            "
-msgstr ""
-"\n"
+msgstr "\n"
 "                <p class=\"o_view_nocontent_smiling_face\">\n"
 "                    Zeit aufnehmen\n"
 "                </p><p>\n"
@@ -61,8 +41,7 @@ msgstr ""
 
 #. module: sale_timesheet
 #: model:ir.model.fields,help:sale_timesheet.field_project_create_sale_order__billable_type
-msgid ""
-"* At Project Rate: All timesheets on the project will be billed at the same rate\n"
+msgid "* At Project Rate: All timesheets on the project will be billed at the same rate\n"
 "* At Employee Rate: Timesheets will be billed at a rate defined at employee level"
 msgstr ""
 
@@ -73,12 +52,10 @@ msgstr "<b>Gesamt</b>"
 
 #. module: sale_timesheet
 #: model_terms:ir.ui.view,arch_db:sale_timesheet.timesheet_plan
-msgid ""
-"<span class=\"btn-link\" style=\"font-weight:normal;\" title=\"Includes the time logged into a task which is not linked to any Sales Order.\">\n"
+msgid "<span class=\"btn-link\" style=\"font-weight:normal;\" title=\"Includes the time logged into a task which is not linked to any Sales Order.\">\n"
 "                                                                Non Billable Tasks\n"
 "                                                            </span>"
-msgstr ""
-"<span class=\"btn-link\" style=\"font-weight:normal;\" title=\"Includes the time logged into a task which is not linked to any Sales Order.\">\n"
+msgstr "<span class=\"btn-link\" style=\"font-weight:normal;\" title=\"Includes the time logged into a task which is not linked to any Sales Order.\">\n"
 "                                                                Nicht abrechenbare Aufgaben\n"
 "                                                            </span>"
 
@@ -100,29 +77,23 @@ msgstr ""
 #. module: sale_timesheet
 #: code:addons/sale_timesheet/models/project.py:0
 #, python-format
-msgid ""
-"A billable project should be linked to a Sales Order Item having a Service "
-"product."
+msgid "A billable project should be linked to a Sales Order Item having a Service product."
 msgstr ""
 
 #. module: sale_timesheet
 #: code:addons/sale_timesheet/models/project.py:0
 #, python-format
-msgid ""
-"A billable project should be linked to a Sales Order Item that does not come"
-" from an expense or a vendor bill."
+msgid "A billable project should be linked to a Sales Order Item that does not come from an expense or a vendor bill."
 msgstr ""
 
 #. module: sale_timesheet
 #: model:ir.model.fields,help:sale_timesheet.field_sale_order_line__qty_delivered_method
-msgid ""
-"According to product configuration, the delivered quantity can be automatically computed by mechanism :\n"
+msgid "According to product configuration, the delivered quantity can be automatically computed by mechanism :\n"
 "  - Manual: the quantity is set manually on the line\n"
 "  - Analytic From expenses: the quantity is the quantity sum from posted expenses\n"
 "  - Timesheet: the quantity is the sum of hours recorded on tasks linked to this sale line\n"
 "  - Stock Moves: the quantity comes from confirmed pickings\n"
-msgstr ""
-"Je nach Produktkonfiguration kann die Liefermenge automatisch durch einen Mechanismus berechnet werden:\n"
+msgstr "Je nach Produktkonfiguration kann die Liefermenge automatisch durch einen Mechanismus berechnet werden:\n"
 "  - Manuell: Die Menge wird manuell auf der Linie eingestellt\n"
 "  - Analytik von Aufwendungen: Die Menge ist die Mengensumme aus gebuchten Aufwendungen\n"
 "  - Arbeitszeitblatt: Die Menge ist die Summe der Stunden, die für Aufgaben erfasst wurden, die mit dieser Verkaufslinie verbunden sind.\n"
@@ -136,20 +107,18 @@ msgstr "Rechnungsbetrag"
 #. module: sale_timesheet
 #: model:ir.model.constraint,message:sale_timesheet.constraint_project_create_sale_order_line_unique_employee_per_wizard
 #: model:ir.model.constraint,message:sale_timesheet.constraint_project_sale_line_employee_map_uniqueness_employee
-msgid ""
-"An employee cannot be selected more than once in the mapping. Please remove "
-"duplicate(s) and try again."
+msgid "An employee cannot be selected more than once in the mapping. Please remove duplicate(s) and try again."
 msgstr ""
 
 #. module: sale_timesheet
 #: model:ir.model.fields,field_description:sale_timesheet.field_project_profitability_report__analytic_account_id
 msgid "Analytic Account"
-msgstr "Kostenstelle"
+msgstr ""
 
 #. module: sale_timesheet
 #: model:ir.model,name:sale_timesheet.model_account_analytic_line
 msgid "Analytic Line"
-msgstr "Kostenstellen-Buchungen"
+msgstr "Analyse Zeile"
 
 #. module: sale_timesheet
 #: model:ir.model.fields,field_description:sale_timesheet.field_sale_order_line__analytic_line_ids
@@ -182,8 +151,7 @@ msgstr ""
 
 #. module: sale_timesheet
 #: model:ir.model.fields,help:sale_timesheet.field_project_project__billable_type
-msgid ""
-"At which rate timesheets will be billed:\n"
+msgid "At which rate timesheets will be billed:\n"
 " - At task rate: each time spend on a task is billed at task rate.\n"
 " - At employee rate: each employee log time billed at his rate.\n"
 " - No Billable: track time without invoicing it"
@@ -223,7 +191,7 @@ msgstr "Stundenabrechnung"
 #. module: sale_timesheet
 #: model_terms:ir.ui.view,arch_db:sale_timesheet.res_config_settings_view_form
 msgid "Billing"
-msgstr "Abrechnung"
+msgstr ""
 
 #. module: sale_timesheet
 #: model:ir.filters,name:sale_timesheet.timesheet_filter_billing
@@ -249,7 +217,7 @@ msgstr "Abbrechen"
 #. module: sale_timesheet
 #: model_terms:ir.ui.view,arch_db:sale_timesheet.timesheet_plan
 msgid "Cancelled"
-msgstr "Abgebrochen"
+msgstr "Storniert"
 
 #. module: sale_timesheet
 #: model:ir.model.fields,field_description:sale_timesheet.field_project_create_invoice__sale_order_id
@@ -279,7 +247,7 @@ msgstr "Kosten und Erlöse"
 #: model_terms:ir.ui.view,arch_db:sale_timesheet.project_create_invoice_view_form
 #, python-format
 msgid "Create Invoice"
-msgstr "Rechnung erzeugen"
+msgstr ""
 
 #. module: sale_timesheet
 #: model:ir.model,name:sale_timesheet.model_project_create_invoice
@@ -398,7 +366,7 @@ msgstr "Aufgabe nicht erstellen"
 #: model:project.task.type,legend_done:sale_timesheet.project_stage_fixed
 #: model:project.task.type,name:sale_timesheet.project_from_sale_order_1_done
 msgid "Done"
-msgstr "Erledigt"
+msgstr ""
 
 #. module: sale_timesheet
 #: model:ir.model.fields,field_description:sale_timesheet.field_project_create_sale_order_line__employee_id
@@ -413,15 +381,14 @@ msgstr ""
 
 #. module: sale_timesheet
 #: model:ir.model.fields,help:sale_timesheet.field_project_project__sale_line_employee_ids
-msgid ""
-"Employee/Sale Order Item Mapping:\n"
+msgid "Employee/Sale Order Item Mapping:\n"
 " Defines to which sales order item an employee's timesheet entry will be linked.By extension, it defines the rate at which an employee's time on the project is billed."
 msgstr ""
 
 #. module: sale_timesheet
 #: model:project.task.type,name:sale_timesheet.project_stage_fixed
 msgid "Fixed"
-msgstr "Fest"
+msgstr ""
 
 #. module: sale_timesheet
 #: model_terms:ir.ui.view,arch_db:sale_timesheet.product_template_view_search_sale_timesheet
@@ -441,7 +408,7 @@ msgstr "Generierte Aufgabe"
 #. module: sale_timesheet
 #: model_terms:ir.ui.view,arch_db:sale_timesheet.project_profitability_report_view_search
 msgid "Group By"
-msgstr "Gruppieren nach"
+msgstr "Gruppiere nach"
 
 #. module: sale_timesheet
 #: model_terms:ir.ui.view,arch_db:sale_timesheet.timesheet_plan
@@ -452,7 +419,7 @@ msgstr "Gruppieren nach"
 #: model:product.template,uom_name:sale_timesheet.product_service_deliver_timesheet_2_product_template
 #: model:product.template,uom_name:sale_timesheet.product_service_order_timesheet_product_template
 msgid "Hours"
-msgstr "Stunden"
+msgstr ""
 
 #. module: sale_timesheet
 #: model_terms:ir.ui.view,arch_db:sale_timesheet.timesheet_plan
@@ -480,34 +447,26 @@ msgstr "ID"
 #: model:project.task.type,legend_normal:sale_timesheet.project_stage_fixed
 #: model:project.task.type,name:sale_timesheet.project_from_sale_order_1_in_progress
 msgid "In Progress"
-msgstr "In Arbeit"
-
-#. module: sale_timesheet
-#: model_terms:ir.ui.view,arch_db:sale_timesheet.timesheet_plan
-msgid ""
-"Includes the time logged from the Timesheet module that is linked to a "
-"project, but not to a task."
 msgstr ""
 
 #. module: sale_timesheet
 #: model_terms:ir.ui.view,arch_db:sale_timesheet.timesheet_plan
-msgid ""
-"Includes the time logged into a task which is linked to a cancelled Sales "
-"Order."
+msgid "Includes the time logged from the Timesheet module that is linked to a project, but not to a task."
 msgstr ""
 
 #. module: sale_timesheet
 #: model_terms:ir.ui.view,arch_db:sale_timesheet.timesheet_plan
-msgid ""
-"Includes the time logged into tasks for which you invoice based on ordered "
-"quantities or on milestones."
+msgid "Includes the time logged into a task which is linked to a cancelled Sales Order."
 msgstr ""
 
 #. module: sale_timesheet
 #: model_terms:ir.ui.view,arch_db:sale_timesheet.timesheet_plan
-msgid ""
-"Includes the time logged into tasks for which you invoice based on "
-"timesheets on tasks."
+msgid "Includes the time logged into tasks for which you invoice based on ordered quantities or on milestones."
+msgstr ""
+
+#. module: sale_timesheet
+#: model_terms:ir.ui.view,arch_db:sale_timesheet.timesheet_plan
+msgid "Includes the time logged into tasks for which you invoice based on timesheets on tasks."
 msgstr ""
 
 #. module: sale_timesheet
@@ -523,7 +482,7 @@ msgstr "Rechnung aus dem Stundenzettel erstellt"
 #. module: sale_timesheet
 #: model_terms:ir.ui.view,arch_db:sale_timesheet.timesheet_plan
 msgid "Invoiced"
-msgstr "Abgerechnet"
+msgstr "fakturiert"
 
 #. module: sale_timesheet
 #: code:addons/sale_timesheet/models/project_overview.py:0
@@ -534,7 +493,7 @@ msgstr "Rechnungen"
 #. module: sale_timesheet
 #: model_terms:ir.ui.view,arch_db:sale_timesheet.project_project_view_form
 msgid "Invoicing"
-msgstr "Abrechnung"
+msgstr ""
 
 #. module: sale_timesheet
 #: model:ir.model.fields,field_description:sale_timesheet.field_project_task__is_project_map_empty
@@ -549,12 +508,12 @@ msgstr "Ist eine Dienstleistung"
 #. module: sale_timesheet
 #: model:ir.model,name:sale_timesheet.model_account_move
 msgid "Journal Entries"
-msgstr "Buchungssätze"
+msgstr "Buchungseinträge"
 
 #. module: sale_timesheet
 #: model:ir.model,name:sale_timesheet.model_account_move_line
 msgid "Journal Item"
-msgstr "Buchungszeile"
+msgstr "Journal Teil"
 
 #. module: sale_timesheet
 #: model:product.product,name:sale_timesheet.product_service_deliver_timesheet_2
@@ -575,7 +534,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:sale_timesheet.field_project_profitability_report____last_update
 #: model:ir.model.fields,field_description:sale_timesheet.field_project_sale_line_employee_map____last_update
 msgid "Last Modified on"
-msgstr "Letzte Änderung am"
+msgstr "Zuletzt geändert am"
 
 #. module: sale_timesheet
 #: model:ir.model.fields,field_description:sale_timesheet.field_project_create_invoice__write_uid
@@ -596,17 +555,15 @@ msgstr "Zuletzt aktualisiert am"
 #. module: sale_timesheet
 #: model:ir.model.fields,field_description:sale_timesheet.field_project_create_sale_order__line_ids
 msgid "Lines"
-msgstr "Zeilen"
+msgstr ""
 
 #. module: sale_timesheet
 #: model:ir.model.fields,help:sale_timesheet.field_product_product__service_type
 #: model:ir.model.fields,help:sale_timesheet.field_product_template__service_type
-msgid ""
-"Manually set quantities on order: Invoice based on the manually entered quantity, without creating an analytic account.\n"
+msgid "Manually set quantities on order: Invoice based on the manually entered quantity, without creating an analytic account.\n"
 "Timesheets on contract: Invoice based on the tracked hours on the related timesheet.\n"
 "Create a task and track hours: Create a task on the sales order validation and track the work hours."
-msgstr ""
-"Mengen für den Auftrag manuell festlegen: Die Rechnung basierend auf der manuell eingegebenen Menge, ohne eine Kostenstelle zu erstellen.\n"
+msgstr "Mengen für den Auftrag manuell festlegen: Die Rechnung basierend auf der manuell eingegebenen Menge, ohne eine Kostenstelle zu erstellen.\n"
 " Stundenzettel auf dem Vertrag: Rechnung basierend auf den aufgezeichneten Stunden auf dem dazugehörigen Stundenzettel.\n"
 " Eine Aufgabe erstellen und Stunden aufzeichnen: Eine Aufgabe bei der Verkaufsauftragsvalidierung erstellen und Arbeitsstunden aufzeichnen."
 
@@ -716,15 +673,14 @@ msgstr "Anzahl der Stundenzettel"
 #. module: sale_timesheet
 #: model:ir.model.fields,help:sale_timesheet.field_product_product__service_tracking
 #: model:ir.model.fields,help:sale_timesheet.field_product_template__service_tracking
-msgid ""
-"On Sales order confirmation, this product can generate a project and/or task.         From those, you can track the service you are selling.\n"
+msgid "On Sales order confirmation, this product can generate a project and/or task.         From those, you can track the service you are selling.\n"
 "         'In sale order's project': Will use the sale order's configured project if defined or fallback to         creating a new project based on the selected template."
 msgstr ""
 
 #. module: sale_timesheet
 #: model:ir.model.fields.selection,name:sale_timesheet.selection__product_template__service_policy__ordered_timesheet
 msgid "Ordered quantities"
-msgstr "Rechnung bei Auftrag"
+msgstr ""
 
 #. module: sale_timesheet
 #: model:ir.model.fields,field_description:sale_timesheet.field_project_profitability_report__expense_cost
@@ -760,15 +716,13 @@ msgstr ""
 #. module: sale_timesheet
 #: model:ir.model.fields,help:sale_timesheet.field_project_create_sale_order__product_id
 #: model:ir.model.fields,help:sale_timesheet.field_project_create_sale_order_line__product_id
-msgid ""
-"Product of the sales order item. Must be a service invoiced based on "
-"timesheets on tasks."
+msgid "Product of the sales order item. Must be a service invoiced based on timesheets on tasks."
 msgstr ""
 
 #. module: sale_timesheet
 #: model:ir.actions.act_window,name:sale_timesheet.product_template_action_default_services
 msgid "Products"
-msgstr "Produkte"
+msgstr ""
 
 #. module: sale_timesheet
 #: model_terms:ir.ui.view,arch_db:sale_timesheet.timesheet_plan
@@ -795,7 +749,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:sale_timesheet.project_profitability_report_view_search
 #, python-format
 msgid "Project"
-msgstr "Projekt"
+msgstr ""
 
 #. module: sale_timesheet
 #: model:ir.model.fields,field_description:sale_timesheet.field_project_profitability_report__company_id
@@ -903,7 +857,7 @@ msgstr ""
 #. module: sale_timesheet
 #: model:ir.model.fields,field_description:sale_timesheet.field_project_profitability_report__sale_line_id
 msgid "Sale Order Line"
-msgstr "Auftragspositionen"
+msgstr ""
 
 #. module: sale_timesheet
 #: model:ir.model.fields,field_description:sale_timesheet.field_project_project__sale_line_employee_ids
@@ -916,7 +870,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:sale_timesheet.field_project_task__sale_order_id
 #: model_terms:ir.ui.view,arch_db:sale_timesheet.project_task_view_form_sale_order
 msgid "Sales Order"
-msgstr "Verkaufsauftrag "
+msgstr "Kundenauftrag"
 
 #. module: sale_timesheet
 #: model:ir.model.fields,field_description:sale_timesheet.field_project_profitability_report__order_confirmation_date
@@ -937,42 +891,24 @@ msgstr "Kundenauftragszeile"
 
 #. module: sale_timesheet
 #: model:ir.model.fields,help:sale_timesheet.field_sale_order_line__is_service
-msgid ""
-"Sales Order item should generate a task and/or a project, depending on the "
-"product settings."
-msgstr ""
-"Auftragselement sollte je nach Produkteinstellungen eine Aufgabe oder ein "
-"Projekt generieren."
+msgid "Sales Order item should generate a task and/or a project, depending on the product settings."
+msgstr "Auftragselement sollte je nach Produkteinstellungen eine Aufgabe oder ein Projekt generieren."
 
 #. module: sale_timesheet
 #: code:addons/sale_timesheet/models/project_overview.py:0
 #, python-format
 msgid "Sales Orders"
-msgstr "Verkaufsaufträge"
+msgstr "Aufträge"
 
 #. module: sale_timesheet
 #: model:ir.model.fields,help:sale_timesheet.field_project_project__sale_line_id
-msgid ""
-"Sales order item to which the project is linked. If an employee timesheets "
-"on a task that does not have a sale order item defines, and if this employee"
-" is not in the 'Employee/Sales Order Item Mapping' of the project, the "
-"timesheet entry will be linked to the sales order item defined on the "
-"project."
+msgid "Sales order item to which the project is linked. If an employee timesheets on a task that does not have a sale order item defines, and if this employee is not in the 'Employee/Sales Order Item Mapping' of the project, the timesheet entry will be linked to the sales order item defined on the project."
 msgstr ""
 
 #. module: sale_timesheet
 #: model:ir.model.fields,help:sale_timesheet.field_project_task__sale_line_id
-msgid ""
-"Sales order item to which the task is linked. If an employee timesheets on a"
-" this task, and if this employee is not in the 'Employee/Sales Order Item "
-"Mapping' of the project, the timesheet entry will be linked to this sales "
-"order item."
-msgstr ""
-"Kundenauftragsposition, mit der die Aufgabe verknüpft ist. Wenn ein "
-"Mitarbeiter Arbeitszeitnachweise für eine dieser Aufgaben erstellt und sich "
-"dieser Mitarbeiter nicht in der 'Zuordnung "
-"Mitarbeiter/Kundenauftragsposition' des Projekts befindet, wird die "
-"Stundenerfassung mit dieser Kundenauftragsposition verknüpft."
+msgid "Sales order item to which the task is linked. If an employee timesheets on a this task, and if this employee is not in the 'Employee/Sales Order Item Mapping' of the project, the timesheet entry will be linked to this sales order item."
+msgstr "Kundenauftragsposition, mit der die Aufgabe verknüpft ist. Wenn ein Mitarbeiter Arbeitszeitnachweise für eine dieser Aufgaben erstellt und sich dieser Mitarbeiter nicht in der 'Zuordnung Mitarbeiter/Kundenauftragsposition' des Projekts befindet, wird die Stundenerfassung mit dieser Kundenauftragsposition verknüpft."
 
 #. module: sale_timesheet
 #: model:ir.model.fields,help:sale_timesheet.field_project_project__sale_order_id
@@ -992,19 +928,13 @@ msgstr ""
 #. module: sale_timesheet
 #: model:ir.model.fields,help:sale_timesheet.field_product_product__project_id
 #: model:ir.model.fields,help:sale_timesheet.field_product_template__project_id
-msgid ""
-"Select a non billable project on which tasks can be created. This setting "
-"must be set for each company."
-msgstr ""
-"Wählen Sie ein nicht abrechenbares Projekt, bei dem Aufgaben erstellt werden"
-" können. Diese Einstellung muss für jedes Unternehmen festgelegt werden."
+msgid "Select a non billable project on which tasks can be created. This setting must be set for each company."
+msgstr "Wählen Sie ein nicht abrechenbares Projekt, bei dem Aufgaben erstellt werden können. Diese Einstellung muss für jedes Unternehmen festgelegt werden."
 
 #. module: sale_timesheet
 #: model:ir.model.fields,help:sale_timesheet.field_product_product__project_template_id
 #: model:ir.model.fields,help:sale_timesheet.field_product_template__project_template_id
-msgid ""
-"Select a non billable project to be the skeleton of the new created project "
-"when selling the current product. Its stages and tasks will be duplicated."
+msgid "Select a non billable project to be the skeleton of the new created project when selling the current product. Its stages and tasks will be duplicated."
 msgstr ""
 
 #. module: sale_timesheet
@@ -1022,7 +952,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:sale_timesheet.field_project_create_sale_order__product_id
 #: model:ir.model.fields,field_description:sale_timesheet.field_project_create_sale_order_line__product_id
 msgid "Service"
-msgstr "Dienstleistung"
+msgstr ""
 
 #. module: sale_timesheet
 #: model:ir.model.fields,field_description:sale_timesheet.field_product_product__service_policy
@@ -1040,12 +970,12 @@ msgstr "Dienstverfolgung"
 #: code:addons/sale_timesheet/models/project_overview.py:0
 #, python-format
 msgid "Sold"
-msgstr "Verkauft"
+msgstr ""
 
 #. module: sale_timesheet
 #: model_terms:ir.ui.view,arch_db:sale_timesheet.timesheet_plan
 msgid "Statistics"
-msgstr "Statistik"
+msgstr ""
 
 #. module: sale_timesheet
 #: model:ir.model,name:sale_timesheet.model_project_task
@@ -1055,11 +985,8 @@ msgstr "Aufgabe"
 #. module: sale_timesheet
 #: code:addons/sale_timesheet/models/sale_order.py:0
 #, python-format
-msgid ""
-"Task Created (%s): <a href=# data-oe-model=project.task data-oe-id=%d>%s</a>"
-msgstr ""
-"Aufgabe erstellt (%s): <a href=# data-oe-model=project.task data-oe-"
-"id=%d>%s</a>"
+msgid "Task Created (%s): <a href=# data-oe-model=project.task data-oe-id=%d>%s</a>"
+msgstr "Aufgabe erstellt (%s): <a href=# data-oe-model=project.task data-oe-id=%d>%s</a>"
 
 #. module: sale_timesheet
 #: model:ir.model.fields,help:sale_timesheet.field_sale_order_line__task_id
@@ -1082,40 +1009,32 @@ msgstr "Aufgaben für diesen Auftrag"
 
 #. module: sale_timesheet
 #: model:ir.model.constraint,message:sale_timesheet.constraint_project_project_sale_order_required_if_sale_line
-msgid ""
-"The Project should be linked to a Sale Order to select an Sale Order Items."
+msgid "The Project should be linked to a Sale Order to select an Sale Order Items."
 msgstr ""
 
 #. module: sale_timesheet
 #: code:addons/sale_timesheet/wizard/project_create_sale_order.py:0
 #, python-format
-msgid ""
-"The Sales Order cannot be created because you did not enter some employees that entered timesheets on this project. Please list all the relevant employees before creating the Sales Order.\n"
+msgid "The Sales Order cannot be created because you did not enter some employees that entered timesheets on this project. Please list all the relevant employees before creating the Sales Order.\n"
 "Missing employee(s): %s"
 msgstr ""
 
 #. module: sale_timesheet
 #: code:addons/sale_timesheet/models/product.py:0
 #, python-format
-msgid ""
-"The product %s should not have a global project since it will generate a "
-"project."
+msgid "The product %s should not have a global project since it will generate a project."
 msgstr ""
 
 #. module: sale_timesheet
 #: code:addons/sale_timesheet/models/product.py:0
 #, python-format
-msgid ""
-"The product %s should not have a project nor a project template since it "
-"will not generate project."
+msgid "The product %s should not have a project nor a project template since it will not generate project."
 msgstr ""
 
 #. module: sale_timesheet
 #: code:addons/sale_timesheet/models/product.py:0
 #, python-format
-msgid ""
-"The product %s should not have a project template since it will generate a "
-"task in a global project."
+msgid "The product %s should not have a project template since it will generate a task in a global project."
 msgstr ""
 
 #. module: sale_timesheet
@@ -1133,9 +1052,7 @@ msgstr ""
 #. module: sale_timesheet
 #: code:addons/sale_timesheet/wizard/project_create_sale_order.py:0
 #, python-format
-msgid ""
-"The sales order cannot be created because some timesheets of this project "
-"are already linked to another sales order."
+msgid "The sales order cannot be created because some timesheets of this project are already linked to another sales order."
 msgstr ""
 
 #. module: sale_timesheet
@@ -1151,42 +1068,29 @@ msgstr "Bisher wurden keine Zeiten erfasst."
 
 #. module: sale_timesheet
 #: model_terms:ir.ui.view,arch_db:sale_timesheet.timesheet_plan
-msgid ""
-"This cost is based on the \"Timesheet cost\" set in the HR Settings of your "
-"employees."
+msgid "This cost is based on the \"Timesheet cost\" set in the HR Settings of your employees."
 msgstr ""
 
 #. module: sale_timesheet
 #: model_terms:ir.actions.act_window,help:sale_timesheet.project_profitability_report_action
-msgid ""
-"This report allows you to analyse the profitability of your projects: "
-"compare the amount to invoice, the ones already invoiced and the project "
-"cost (via timesheet cost of your employees)."
+msgid "This report allows you to analyse the profitability of your projects: compare the amount to invoice, the ones already invoiced and the project cost (via timesheet cost of your employees)."
 msgstr ""
 
 #. module: sale_timesheet
 #: code:addons/sale_timesheet/models/sale_order.py:0
 #, python-format
-msgid ""
-"This task has been created from: <a href=# data-oe-model=sale.order data-oe-"
-"id=%d>%s</a> (%s)"
-msgstr ""
-"Diese Aufgabe wurde erstellt von: <a href=# data-oe-model=sale.order data-"
-"oe-id=%d>%s</a> (%s)"
+msgid "This task has been created from: <a href=# data-oe-model=sale.order data-oe-id=%d>%s</a> (%s)"
+msgstr "Diese Aufgabe wurde erstellt von: <a href=# data-oe-model=sale.order data-oe-id=%d>%s</a> (%s)"
 
 #. module: sale_timesheet
 #: code:addons/sale_timesheet/models/account.py:0
 #, python-format
-msgid ""
-"This timesheet line cannot be billed: there is no Sale Order Item defined on"
-" the task, nor on the project. Please define one to save your timesheet "
-"line."
+msgid "This timesheet line cannot be billed: there is no Sale Order Item defined on the task, nor on the project. Please define one to save your timesheet line."
 msgstr ""
 
 #. module: sale_timesheet
 #: model:ir.model.fields,help:sale_timesheet.field_sale_order__timesheet_encode_uom_id
-msgid ""
-"This will set the unit of measure used to encode timesheet. This will simply provide tools\n"
+msgid "This will set the unit of measure used to encode timesheet. This will simply provide tools\n"
 "        and widgets to help the encoding. All reporting will still be expressed in hours (default value)."
 msgstr ""
 
@@ -1206,7 +1110,7 @@ msgstr "Zeitbasierte Dienste"
 #: model:ir.actions.act_window,name:sale_timesheet.timesheet_action_plan_pivot
 #: model_terms:ir.ui.view,arch_db:sale_timesheet.timesheet_view_pivot_revenue
 msgid "Timesheet"
-msgstr "Zeiterfassung"
+msgstr ""
 
 #. module: sale_timesheet
 #: model:ir.model.fields,field_description:sale_timesheet.field_project_profitability_report__timesheet_cost
@@ -1254,7 +1158,7 @@ msgstr "Stundenlöhne"
 #: model_terms:ir.ui.view,arch_db:sale_timesheet.timesheet_plan
 #, python-format
 msgid "Timesheets"
-msgstr "Zeiterfassung"
+msgstr "Zeiterfassungsbögen"
 
 #. module: sale_timesheet
 #: model:ir.actions.act_window,name:sale_timesheet.timesheet_action_billing_report
@@ -1280,7 +1184,7 @@ msgstr "Stundenzettel für Aufgaben"
 #. module: sale_timesheet
 #: model:project.task.type,name:sale_timesheet.project_from_sale_order_1_to_do
 msgid "To Do"
-msgstr "Zu erledigen"
+msgstr ""
 
 #. module: sale_timesheet
 #: model_terms:ir.ui.view,arch_db:sale_timesheet.timesheet_plan
@@ -1291,13 +1195,11 @@ msgstr "Zu Berechnen"
 #: code:addons/sale_timesheet/models/project_overview.py:0
 #, python-format
 msgid "Total"
-msgstr "Total"
+msgstr "Gesamt"
 
 #. module: sale_timesheet
 #: model:ir.model.fields,help:sale_timesheet.field_project_create_invoice__amount_to_invoice
-msgid ""
-"Total amount to invoice on the sales order, including all items (services, "
-"storables, expenses, ...)"
+msgid "Total amount to invoice on the sales order, including all items (services, storables, expenses, ...)"
 msgstr ""
 
 #. module: sale_timesheet
@@ -1353,9 +1255,7 @@ msgstr ""
 #. module: sale_timesheet
 #: code:addons/sale_timesheet/models/project_overview.py:0
 #, python-format
-msgid ""
-"What is still to deliver based on sold hours and hours already done. Equals "
-"to sold hours - done hours."
+msgid "What is still to deliver based on sold hours and hours already done. Equals to sold hours - done hours."
 msgstr ""
 
 #. module: sale_timesheet
@@ -1373,12 +1273,8 @@ msgstr ""
 #. module: sale_timesheet
 #: code:addons/sale_timesheet/models/account.py:0
 #, python-format
-msgid ""
-"You can not modify already invoiced timesheets (linked to a Sales order "
-"items invoiced on Time and material)."
-msgstr ""
-"Bereits abgerechnete Stundenzettel (verknüpft mit nach Zeit und Material "
-"abgerechneten Auftragselementen) können nicht modifiziert werden."
+msgid "You can not modify already invoiced timesheets (linked to a Sales order items invoiced on Time and material)."
+msgstr "Bereits abgerechnete Stundenzettel (verknüpft mit nach Zeit und Material abgerechneten Auftragselementen) können nicht modifiziert werden."
 
 #. module: sale_timesheet
 #: code:addons/sale_timesheet/models/account.py:0
@@ -1396,14 +1292,12 @@ msgstr ""
 #. module: sale_timesheet
 #: code:addons/sale_timesheet/models/project.py:0
 #, python-format
-msgid ""
-"You cannot link the order item %s - %s to this task because it is a re-"
-"invoiced expense."
+msgid "You cannot link the order item %s - %s to this task because it is a re-invoiced expense."
 msgstr ""
 
 #. module: sale_timesheet
 #: code:addons/sale_timesheet/models/project.py:0
 #, python-format
-msgid ""
-"You have to unlink the task from the sale order item in order to delete it."
+msgid "You have to unlink the task from the sale order item in order to delete it."
 msgstr ""
+
