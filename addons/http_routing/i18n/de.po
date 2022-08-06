@@ -1,28 +1,21 @@
-# Translation of Odoo Server.
-# This file contains the translation of the following modules:
-# 	* http_routing
-# 
-# Translators:
-# Marco Tarsia <marco.y.tarsia@gmail.com>, 2019
-# Leon Grill <leg@odoo.com>, 2019
-# e2f <projects@e2f.com>, 2019
-# Martin Trigaux, 2019
-# Wolfgang Taferner, 2019
-# Kevin Harrings <kha@odoo.com>, 2020
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 13.0\n"
+"Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-07 07:14+0000\n"
-"PO-Revision-Date: 2019-08-26 09:11+0000\n"
-"Last-Translator: Kevin Harrings <kha@odoo.com>, 2020\n"
-"Language-Team: German (https://www.transifex.com/odoo/teams/41243/de/)\n"
+"PO-Revision-Date: 2022-08-06 22:40\n"
+"Last-Translator: \n"
+"Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: ametras-xsolutions\n"
+"X-Crowdin-Project-ID: 530964\n"
+"X-Crowdin-Language: de\n"
+"X-Crowdin-File: /[AmetrasIntelligence.odoo] 13.0/addons/http_routing/i18n/http_routing.pot\n"
+"X-Crowdin-File-ID: 8156\n"
+"Language: de_DE\n"
 
 #. module: http_routing
 #: model_terms:ir.ui.view,arch_db:http_routing.403
@@ -48,17 +41,17 @@ msgstr "Zurück"
 #. module: http_routing
 #: model_terms:ir.ui.view,arch_db:http_routing.http_error_debug
 msgid "Error"
-msgstr "Fehler"
+msgstr ""
 
 #. module: http_routing
 #: model:ir.model,name:http_routing.model_ir_http
 msgid "HTTP Routing"
-msgstr "HTTP Routing"
+msgstr ""
 
 #. module: http_routing
 #: model_terms:ir.ui.view,arch_db:http_routing.500
 msgid "Home"
-msgstr "Home"
+msgstr ""
 
 #. module: http_routing
 #: model_terms:ir.ui.view,arch_db:http_routing.400
@@ -68,7 +61,7 @@ msgstr "Ups! Ein Fehler ist aufgetreten."
 #. module: http_routing
 #: model_terms:ir.ui.view,arch_db:http_routing.http_error_debug
 msgid "QWeb"
-msgstr "QWeb"
+msgstr ""
 
 #. module: http_routing
 #: model_terms:ir.ui.view,arch_db:http_routing.400
@@ -87,8 +80,7 @@ msgstr "Die Seite, die Sie hier suchen konnte nicht authentifiziert werden."
 
 #. module: http_routing
 #: model_terms:ir.ui.view,arch_db:http_routing.404
-msgid ""
-"The page you were looking for could not be found; it is possible you have\n"
+msgid "The page you were looking for could not be found; it is possible you have\n"
 "                            typed the address incorrectly, but it has most probably been removed due\n"
 "                            to the recent reorganisation."
 msgstr ""
@@ -101,9 +93,10 @@ msgstr "Zurückverfolgen"
 #. module: http_routing
 #: model:ir.model,name:http_routing.model_ir_ui_view
 msgid "View"
-msgstr "Ansicht"
+msgstr "Sicht"
 
 #. module: http_routing
 #: model_terms:ir.ui.view,arch_db:http_routing.http_error_debug
 msgid "and evaluating the following expression:"
 msgstr "und entdecken die folgende Einschränkung:"
+
