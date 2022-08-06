@@ -1,33 +1,21 @@
-# Translation of Odoo Server.
-# This file contains the translation of the following modules:
-# 	* website_profile
-# 
-# Translators:
-# Martin Trigaux, 2019
-# Felix Schubert <felix.schubert@go-erp.com>, 2019
-# Wolfgang Taferner, 2019
-# Andi, 2019
-# Marco Tarsia <marco.y.tarsia@gmail.com>, 2019
-# Leon Grill <leg@odoo.com>, 2019
-# UteHaus, 2020
-# Oliver Roch <oliver.roch@d9t.de>, 2020
-# JEK Odoo <jek@odoo.com>, 2020
-# Ermin Trevisan <trevi@twanda.com>, 2020
-# Kevin Harrings <kha@odoo.com>, 2020
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~12.5\n"
+"Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-26 08:17+0000\n"
-"PO-Revision-Date: 2019-08-26 09:16+0000\n"
-"Last-Translator: Kevin Harrings <kha@odoo.com>, 2020\n"
-"Language-Team: German (https://www.transifex.com/odoo/teams/41243/de/)\n"
+"PO-Revision-Date: 2022-08-06 22:45\n"
+"Last-Translator: \n"
+"Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: ametras-xsolutions\n"
+"X-Crowdin-Project-ID: 530964\n"
+"X-Crowdin-Language: de\n"
+"X-Crowdin-File: /[AmetrasIntelligence.odoo] 13.0/addons/website_profile/i18n/website_profile.pot\n"
+"X-Crowdin-File-ID: 8454\n"
+"Language: de_DE\n"
 
 #. module: website_profile
 #: model:mail.template,subject:website_profile.validation_email
@@ -37,7 +25,7 @@ msgstr "${object.company_id.name} Profil Validierung"
 #. module: website_profile
 #: model_terms:ir.ui.view,arch_db:website_profile.email_validation_banner
 msgid "&amp;times;"
-msgstr "&amp;times;"
+msgstr ""
 
 #. module: website_profile
 #: model_terms:ir.ui.view,arch_db:website_profile.user_profile_header
@@ -46,12 +34,8 @@ msgstr "(nicht bestätigt)"
 
 #. module: website_profile
 #: model_terms:ir.ui.view,arch_db:website_profile.rank_badge_main
-msgid ""
-". Collect points on the forum or on the eLearning platform. Those points "
-"will make you reach new ranks."
-msgstr ""
-". Sammeln Sie Punkte auf das Forum und der eLearning Plaform. Dank dieser "
-"Punkte erreichen Sie neue Ränge."
+msgid ". Collect points on the forum or on the eLearning platform. Those points will make you reach new ranks."
+msgstr ". Sammeln Sie Punkte auf das Forum und der eLearning Plaform. Dank dieser Punkte erreichen Sie neue Ränge."
 
 #. module: website_profile
 #: model_terms:ir.ui.view,arch_db:website_profile.users_page_content
@@ -61,13 +45,12 @@ msgstr ". Eine andere Suche versuchen."
 #. module: website_profile
 #: model_terms:ir.ui.view,arch_db:website_profile.user_profile_content
 msgid "40%"
-msgstr "40%"
+msgstr ""
 
 #. module: website_profile
 #: model_terms:ir.ui.view,arch_db:website_profile.user_badges
 msgid "<i class=\"fa fa-arrow-right mr-1\"/>Check all available badges"
-msgstr ""
-"<i class=\"fa fa-arrow-right mr-1\"/>Alle verfügbaren Auszeichnungen sehen"
+msgstr "<i class=\"fa fa-arrow-right mr-1\"/>Alle verfügbaren Auszeichnungen sehen"
 
 #. module: website_profile
 #: model_terms:ir.ui.view,arch_db:website_profile.user_badges
@@ -111,12 +94,8 @@ msgstr "<small class=\"font-weight-bold\">Beigetregen</small>"
 
 #. module: website_profile
 #: model_terms:ir.ui.view,arch_db:website_profile.all_user_card
-msgid ""
-"<span class=\"badge badge-danger font-weight-normal px-2 py-1 "
-"m-1\">Unpublished</span>"
-msgstr ""
-"<span class=\"badge badge-danger font-weight-normal px-2 py-1 "
-"m-1\">Unveröffentlicht</span>"
+msgid "<span class=\"badge badge-danger font-weight-normal px-2 py-1 m-1\">Unpublished</span>"
+msgstr "<span class=\"badge badge-danger font-weight-normal px-2 py-1 m-1\">Unveröffentlicht</span>"
 
 #. module: website_profile
 #: model_terms:ir.ui.view,arch_db:website_profile.user_profile_edit_content
@@ -136,7 +115,7 @@ msgstr "<span class=\"font-weight-bold\">Land</span>"
 #. module: website_profile
 #: model_terms:ir.ui.view,arch_db:website_profile.user_profile_edit_content
 msgid "<span class=\"font-weight-bold\">Email</span>"
-msgstr "<span class=\"font-weight-bold\">Email</span>"
+msgstr ""
 
 #. module: website_profile
 #: model_terms:ir.ui.view,arch_db:website_profile.user_profile_edit_content
@@ -151,7 +130,7 @@ msgstr "<span class=\"font-weight-bold\">Echter Name</span>"
 #. module: website_profile
 #: model_terms:ir.ui.view,arch_db:website_profile.user_profile_edit_content
 msgid "<span class=\"font-weight-bold\">Website</span>"
-msgstr "<span class=\"font-weight-bold\">Website</span>"
+msgstr ""
 
 #. module: website_profile
 #: model_terms:ir.ui.view,arch_db:website_profile.all_user_card
@@ -161,7 +140,7 @@ msgstr "<span class=\"text-muted small font-weight-bold\">Auszeichnungen</span>"
 #. module: website_profile
 #: model_terms:ir.ui.view,arch_db:website_profile.all_user_card
 msgid "<span class=\"text-muted small font-weight-bold\">XP</span>"
-msgstr "<span class=\"text-muted small font-weight-bold\">XP</span>"
+msgstr ""
 
 #. module: website_profile
 #: model_terms:ir.ui.view,arch_db:website_profile.top3_user_card
@@ -171,21 +150,16 @@ msgstr "<span class=\"text-muted\">Auszeichnungen</span>"
 #. module: website_profile
 #: model_terms:ir.ui.view,arch_db:website_profile.top3_user_card
 msgid "<span class=\"text-muted\">XP</span>"
-msgstr "<span class=\"text-muted\">XP</span>"
+msgstr ""
 
 #. module: website_profile
 #: model_terms:ir.ui.view,arch_db:website_profile.email_validation_banner
-msgid ""
-"<span id=\"email_validated_message\">Congratulations! Your email has just "
-"been validated.</span>"
-msgstr ""
-"<span id=\"email_validated_message\">Glückwunsch! Ihre Email wurde soeben "
-"validiert.</span>"
+msgid "<span id=\"email_validated_message\">Congratulations! Your email has just been validated.</span>"
+msgstr "<span id=\"email_validated_message\">Glückwunsch! Ihre Email wurde soeben validiert.</span>"
 
 #. module: website_profile
 #: model:mail.template,body_html:website_profile.validation_email
-msgid ""
-"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #F1F1F1; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
+msgid "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #F1F1F1; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
 "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"padding: 16px; background-color: white; color: #454748; border-collapse:separate;\">\n"
 "<tbody>\n"
 "    <!-- HEADER -->\n"
@@ -275,8 +249,7 @@ msgid ""
 "</td></tr>\n"
 "</table>\n"
 "            "
-msgstr ""
-"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #F1F1F1; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
+msgstr "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #F1F1F1; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
 "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"padding: 16px; background-color: white; color: #454748; border-collapse:separate;\">\n"
 "<tbody>\n"
 "    <!-- HEADER -->\n"
@@ -385,12 +358,10 @@ msgstr "Auszeichnungen"
 
 #. module: website_profile
 #: model_terms:ir.ui.view,arch_db:website_profile.badge_content
-msgid ""
-"Besides gaining reputation with your questions and answers,\n"
+msgid "Besides gaining reputation with your questions and answers,\n"
 "                    you receive badges for being especially helpful.<br class=\"d-none d-lg-inline-block\"/>Badges\n"
 "                    appear on your profile page, and your posts."
-msgstr ""
-"Neben der Möglichkeit durch Fragen und Antworten einen guten Ruf\n"
+msgstr "Neben der Möglichkeit durch Fragen und Antworten einen guten Ruf\n"
 "        zu erhalten, sind Auszeichnungen von besonderem Interesse.\n"
 "        <br class=\"d-none d-lg-inline-block\"/>Auszeichnungen erscheinen auf der Profilseite sowie in Ihren\n"
 "        Beiträgen."
@@ -408,7 +379,7 @@ msgstr "Löschen"
 #. module: website_profile
 #: model_terms:ir.ui.view,arch_db:website_profile.email_validation_banner
 msgid "Close"
-msgstr "Abschliessen"
+msgstr "schließen"
 
 #. module: website_profile
 #: model_terms:ir.ui.view,arch_db:website_profile.user_profile_edit_content
@@ -418,7 +389,7 @@ msgstr "Bitte Land auswählen..."
 #. module: website_profile
 #: model_terms:ir.ui.view,arch_db:website_profile.user_profile_edit_content
 msgid "Edit"
-msgstr "Bearbeiten"
+msgstr ""
 
 #. module: website_profile
 #: model_terms:ir.ui.view,arch_db:website_profile.user_profile_edit_content
@@ -433,7 +404,7 @@ msgstr "Gamification-Pin"
 #. module: website_profile
 #: model_terms:ir.ui.view,arch_db:website_profile.user_profile_sub_nav
 msgid "Home"
-msgstr "Home"
+msgstr ""
 
 #. module: website_profile
 #: model_terms:ir.ui.view,arch_db:website_profile.rank_badge_main
@@ -473,7 +444,7 @@ msgstr "Weitere Infos"
 #. module: website_profile
 #: model_terms:ir.ui.view,arch_db:website_profile.user_profile_sub_nav
 msgid "Nav"
-msgstr "Nav"
+msgstr ""
 
 #. module: website_profile
 #: model_terms:ir.ui.view,arch_db:website_profile.user_profile_content
@@ -492,12 +463,8 @@ msgstr "Keinen Benutzer gefunden für"
 
 #. module: website_profile
 #: model_terms:ir.ui.view,arch_db:website_profile.user_profile_edit_content
-msgid ""
-"Please enter a valid email address in order to receive notifications from "
-"answers or comments."
-msgstr ""
-"Bitte geben Sie eine bestätigte E-Mail Adresse ein, um bei Fragen &amp; "
-"Antworten benachrichtigt zu werden."
+msgid "Please enter a valid email address in order to receive notifications from answers or comments."
+msgstr "Bitte geben Sie eine bestätigte E-Mail Adresse ein, um bei Fragen &amp; Antworten benachrichtigt zu werden."
 
 #. module: website_profile
 #: model_terms:ir.ui.view,arch_db:website_profile.rank_badge_main
@@ -542,7 +509,7 @@ msgstr "Unveröffentlicht"
 #. module: website_profile
 #: model_terms:ir.ui.view,arch_db:website_profile.user_profile_edit_content
 msgid "Update"
-msgstr "Aktualisieren"
+msgstr ""
 
 #. module: website_profile
 #: model_terms:ir.ui.view,arch_db:website_profile.top3_user_card
@@ -558,21 +525,16 @@ msgstr "Benutzer"
 #. module: website_profile
 #: model:ir.model,name:website_profile.model_website
 msgid "Website"
-msgstr "Website"
+msgstr ""
 
 #. module: website_profile
 #: model_terms:ir.ui.view,arch_db:website_profile.rank_badge_main
 msgid "When you finish a course or reach milestones, you're awarded badges."
-msgstr ""
-"Wenn Sie einen Kurs beenden oder Meilensteine erreichen erhalten Sie "
-"Auszeichnungen. "
+msgstr "Wenn Sie einen Kurs beenden oder Meilensteine erreichen erhalten Sie Auszeichnungen. "
 
 #. module: website_profile
 #: model_terms:ir.ui.view,arch_db:website_profile.rank_badge_main
-msgid ""
-"You can score more points by answering quizzes at the end of each course "
-"content. Points can also be earned on the forum. Follow this link to the "
-"guidelines of the forum."
+msgid "You can score more points by answering quizzes at the end of each course content. Points can also be earned on the forum. Follow this link to the guidelines of the forum."
 msgstr ""
 
 #. module: website_profile
@@ -588,9 +550,10 @@ msgstr "Punkt"
 #. module: website_profile
 #: model_terms:ir.ui.view,arch_db:website_profile.profile_next_rank_card
 msgid "xp"
-msgstr "xp"
+msgstr ""
 
 #. module: website_profile
 #: model_terms:ir.ui.view,arch_db:website_profile.user_profile_sub_nav
 msgid "└ Users"
 msgstr "└ Benutzer"
+
