@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-01 12:20+0000\n"
-"PO-Revision-Date: 2022-08-06 22:38\n"
+"PO-Revision-Date: 2022-08-06 23:36\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -845,7 +845,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:account.view_account_search
 #, python-format
 msgid "Account"
-msgstr ""
+msgstr "Konto"
 
 #. module: account
 #: code:addons/account/models/account_move.py:0
@@ -1272,7 +1272,7 @@ msgstr "Rechnungsabgrenzungskonto"
 #: model:ir.model.fields,field_description:account.field_account_move__message_needaction
 #: model:ir.model.fields,field_description:account.field_account_payment__message_needaction
 msgid "Action Needed"
-msgstr ""
+msgstr "Aktion erforderlich"
 
 #. module: account
 #: model:ir.ui.menu,name:account.menu_finance_entries_actions
@@ -1778,7 +1778,7 @@ msgstr "Kostenstelle"
 #: model_terms:ir.ui.view,arch_db:account.view_account_invoice_report_search_analytic_accounting
 #: model_terms:ir.ui.view,arch_db:account.view_account_reconcile_model_form
 msgid "Analytic Account"
-msgstr ""
+msgstr "Kostenstelle"
 
 #. module: account
 #: model:ir.ui.menu,name:account.account_analytic_group_menu
@@ -1961,7 +1961,7 @@ msgstr "Eine Datei anhängen"
 #: model:ir.model.fields,field_description:account.field_account_move__message_attachment_count
 #: model:ir.model.fields,field_description:account.field_account_payment__message_attachment_count
 msgid "Attachment Count"
-msgstr ""
+msgstr "Anzahl der Anhänge"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_invoice_send__attachment_ids
@@ -2092,7 +2092,7 @@ msgstr ""
 #: model:ir.ui.menu,name:account.menu_action_account_invoice_bank_journal_form
 #: model_terms:ir.ui.view,arch_db:account.view_partner_property_form
 msgid "Bank Accounts"
-msgstr ""
+msgstr "Bankkonten"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_journal__bank_statements_source
@@ -2509,7 +2509,8 @@ msgstr "Kann keine unausgeglichene Journalbuchung erstellen. Ids: %s\n"
 #, python-format
 msgid "Cannot find a chart of accounts for this company, You should configure it. \n"
 "Please go to Account Configuration."
-msgstr ""
+msgstr "Es konnte kein Kontenrahmen für diese Firma gefunden werden. \n"
+"Bitte gehen Sie zur Kontenkonfiguration."
 
 #. module: account
 #: code:addons/account/models/account.py:0
@@ -2867,7 +2868,7 @@ msgstr "Beendet am"
 #: model:ir.model.fields,field_description:account.field_account_setup_bank_manual_config__new_journal_code
 #: model:ir.model.fields,field_description:account.field_account_tax_report_line__code
 msgid "Code"
-msgstr ""
+msgstr "Code"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_group__code_prefix
@@ -4699,7 +4700,7 @@ msgstr "Festgestellter Betrag steht im Soll, wenn negativ und im Haben, wenn pos
 #: model:ir.model.fields,field_description:account.field_account_move__message_follower_ids
 #: model:ir.model.fields,field_description:account.field_account_payment__message_follower_ids
 msgid "Followers"
-msgstr ""
+msgstr "Beobachter"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_bank_statement__message_channel_ids
@@ -4707,7 +4708,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:account.field_account_move__message_channel_ids
 #: model:ir.model.fields,field_description:account.field_account_payment__message_channel_ids
 msgid "Followers (Channels)"
-msgstr ""
+msgstr "Beobachter (Kanäle)"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_bank_statement__message_partner_ids
@@ -4715,7 +4716,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:account.field_account_move__message_partner_ids
 #: model:ir.model.fields,field_description:account.field_account_payment__message_partner_ids
 msgid "Followers (Partners)"
-msgstr ""
+msgstr "Beobachter (Partner)"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_journal__inbound_payment_method_ids
@@ -4920,7 +4921,7 @@ msgstr "Bankauszüge aufrufen"
 #: code:addons/account/models/company.py:0
 #, python-format
 msgid "Go to the configuration panel"
-msgstr ""
+msgstr "Zum Konfigurationsbereich gehen"
 
 #. module: account
 #: code:addons/account/models/company.py:0
@@ -5135,7 +5136,7 @@ msgstr "Wenn ein\"Betrag in Fremdwährung\" erfasst wird, ist auch ein \"Betrag\
 #: model:ir.model.fields,help:account.field_account_payment__message_needaction
 #: model:ir.model.fields,help:account.field_account_payment__message_unread
 msgid "If checked, new messages require your attention."
-msgstr ""
+msgstr "Wenn aktiviert, benötigen neue Nachrichten Ihre Aufmerksamkeit."
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_bank_statement__message_has_error
@@ -5147,7 +5148,7 @@ msgstr ""
 #: model:ir.model.fields,help:account.field_account_payment__message_has_error
 #: model:ir.model.fields,help:account.field_account_payment__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
-msgstr ""
+msgstr "Wenn aktiviert, haben einige Nachrichten einen Zustellfehler."
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_account_template__nocreate
@@ -5706,7 +5707,7 @@ msgstr "Regel zum Abgleich von Rechnungen"
 #. module: account
 #: model:ir.model,name:account.model_account_invoice_report
 msgid "Invoices Statistics"
-msgstr ""
+msgstr "Rechnungsstatistik"
 
 #. module: account
 #: code:addons/account/models/account_journal_dashboard.py:0
@@ -5750,7 +5751,7 @@ msgstr "Ist zwischen"
 #: model:ir.model.fields,field_description:account.field_account_move__message_is_follower
 #: model:ir.model.fields,field_description:account.field_account_payment__message_is_follower
 msgid "Is Follower"
-msgstr ""
+msgstr "Ist Beobachter"
 
 #. module: account
 #: model:ir.model.fields.selection,name:account.selection__account_reconcile_model__match_amount__greater
@@ -6486,7 +6487,7 @@ msgstr "E-Mail-Empfängerliste"
 #: model:ir.model.fields,field_description:account.field_account_move__message_main_attachment_id
 #: model:ir.model.fields,field_description:account.field_account_payment__message_main_attachment_id
 msgid "Main Attachment"
-msgstr ""
+msgstr "Hauptanhang"
 
 #. module: account
 #: model:ir.model.fields,help:account.field_res_config_settings__currency_id
@@ -6661,7 +6662,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:account.field_account_move__message_has_error
 #: model:ir.model.fields,field_description:account.field_account_payment__message_has_error
 msgid "Message Delivery error"
-msgstr ""
+msgstr "Fehler beim Versenden der Nachrichten"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_invoice_send__record_name
@@ -6685,7 +6686,7 @@ msgstr "Nachrichtentyp: E-Mail für E-Mail-Nachricht, Mitteilung für Systemnach
 #: model:ir.model.fields,field_description:account.field_account_move__message_ids
 #: model:ir.model.fields,field_description:account.field_account_payment__message_ids
 msgid "Messages"
-msgstr ""
+msgstr "Mitteilungen"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_tax_repartition_line_template__minus_report_line_ids
@@ -7047,7 +7048,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:account.field_account_move__message_needaction_counter
 #: model:ir.model.fields,field_description:account.field_account_payment__message_needaction_counter
 msgid "Number of Actions"
-msgstr ""
+msgstr "Anzahl Aktionen"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_payment_term_line__days
@@ -7065,7 +7066,7 @@ msgstr "Anzahl der Einträge zu diesem Modell"
 #: model:ir.model.fields,field_description:account.field_account_move__message_has_error_counter
 #: model:ir.model.fields,field_description:account.field_account_payment__message_has_error_counter
 msgid "Number of errors"
-msgstr ""
+msgstr "Anzahl Fehler"
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_bank_statement__message_needaction_counter
@@ -7073,7 +7074,7 @@ msgstr ""
 #: model:ir.model.fields,help:account.field_account_move__message_needaction_counter
 #: model:ir.model.fields,help:account.field_account_payment__message_needaction_counter
 msgid "Number of messages which requires an action"
-msgstr ""
+msgstr "Anzahl der Nachrichten, die eine Aktion erfordern"
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_bank_statement__message_has_error_counter
@@ -7081,7 +7082,7 @@ msgstr ""
 #: model:ir.model.fields,help:account.field_account_move__message_has_error_counter
 #: model:ir.model.fields,help:account.field_account_payment__message_has_error_counter
 msgid "Number of messages with delivery error"
-msgstr ""
+msgstr "Anzahl der Nachrichten mit Zustellfehlern"
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_bank_statement__message_unread_counter
@@ -7089,7 +7090,7 @@ msgstr ""
 #: model:ir.model.fields,help:account.field_account_move__message_unread_counter
 #: model:ir.model.fields,help:account.field_account_payment__message_unread_counter
 msgid "Number of unread messages"
-msgstr ""
+msgstr "Anzahl ungelesener Nachrichten"
 
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.res_config_settings_view_form
@@ -7670,7 +7671,7 @@ msgstr "Zahlungsbedingungen"
 #. module: account
 #: model:ir.model,name:account.model_account_payment_term_line
 msgid "Payment Terms Line"
-msgstr ""
+msgstr "Zahlungsbedingungseintrag"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_payment__payment_type
@@ -8726,7 +8727,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:account.field_account_move__message_has_sms_error
 #: model:ir.model.fields,field_description:account.field_account_payment__message_has_sms_error
 msgid "SMS Delivery error"
-msgstr ""
+msgstr "SMS-Zustellungsfehler"
 
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.view_account_tax_search
@@ -9472,7 +9473,7 @@ msgstr "Zeichenfolge zu Hash"
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_invoice_send__subject
 msgid "Subject"
-msgstr ""
+msgstr "Betreff"
 
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.account_invoice_send_wizard_form
@@ -10037,7 +10038,7 @@ msgstr "Technisches Feld zur Speicherung der Bankkontonummer vor ihrer Erstellun
 #. module: account
 #: model:ir.model.fields,field_description:account.field_res_config_settings__chart_template_id
 msgid "Template"
-msgstr ""
+msgstr "Vorlage"
 
 #. module: account
 #: model:ir.model,name:account.model_account_fiscal_position_template
@@ -11110,7 +11111,7 @@ msgstr "Nicht verbuchte Buchungszeilen"
 #: model:ir.model.fields,field_description:account.field_account_move__message_unread
 #: model:ir.model.fields,field_description:account.field_account_payment__message_unread
 msgid "Unread Messages"
-msgstr ""
+msgstr "Ungelesene Nachrichten"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_bank_statement__message_unread_counter
@@ -11118,7 +11119,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:account.field_account_move__message_unread_counter
 #: model:ir.model.fields,field_description:account.field_account_payment__message_unread_counter
 msgid "Unread Messages Counter"
-msgstr ""
+msgstr "Zähler für ungelesene Nachrichten"
 
 #. module: account
 #. openerp-web
@@ -11214,7 +11215,7 @@ msgstr "Verwenden Sie Budgets, um die tatsächlichen mit den erwarteten Einnahme
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_invoice_send__template_id
 msgid "Use template"
-msgstr ""
+msgstr "Vorlage verwenden"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_account__used
@@ -11406,7 +11407,7 @@ msgstr "Warnung"
 #: code:addons/account/models/account_move.py:0
 #, python-format
 msgid "Warning for %s"
-msgstr ""
+msgstr "Warnung vor %s"
 
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.partner_view_buttons
@@ -11445,7 +11446,7 @@ msgstr "Wir können keine Zeitschrift für dieses Unternehmen finden. Sie sollte
 #: model:ir.model.fields,field_description:account.field_account_move__website_message_ids
 #: model:ir.model.fields,field_description:account.field_account_payment__website_message_ids
 msgid "Website Messages"
-msgstr ""
+msgstr "Webseiten Nachrichten"
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_bank_statement__website_message_ids
@@ -11453,7 +11454,7 @@ msgstr ""
 #: model:ir.model.fields,help:account.field_account_move__website_message_ids
 #: model:ir.model.fields,help:account.field_account_payment__website_message_ids
 msgid "Website communication history"
-msgstr ""
+msgstr "Webseiten-Kommunikationsverlauf"
 
 #. module: account
 #: model_terms:ir.actions.act_window,help:account.action_move_in_receipt_type
