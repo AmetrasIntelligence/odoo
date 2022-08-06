@@ -1,40 +1,28 @@
-# Translation of Odoo Server.
-# This file contains the translation of the following modules:
-# 	* portal
-# 
-# Translators:
-# Leon Grill <leg@odoo.com>, 2019
-# Felix Schubert <felix.schubert@go-erp.com>, 2019
-# Wolfgang Taferner, 2019
-# Johannes Croe <jcr@odoo.com>, 2019
-# Marco Tarsia <marco.y.tarsia@gmail.com>, 2019
-# Chris Egal <sodaswed@web.de>, 2019
-# Martin Trigaux, 2019
-# Robert Förster <hello@suppliot.eu>, 2020
-# Caroline Renson <car@odoo.com>, 2020
-# Ermin Trevisan <trevi@twanda.com>, 2020
-# Max-Milan Stoyanov, 2020
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 13.0\n"
+"Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-07 07:14+0000\n"
-"PO-Revision-Date: 2019-08-26 09:12+0000\n"
-"Last-Translator: Max-Milan Stoyanov, 2020\n"
-"Language-Team: German (https://www.transifex.com/odoo/teams/41243/de/)\n"
+"PO-Revision-Date: 2022-08-06 22:42\n"
+"Last-Translator: \n"
+"Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: ametras-xsolutions\n"
+"X-Crowdin-Project-ID: 530964\n"
+"X-Crowdin-Language: de\n"
+"X-Crowdin-File: /[AmetrasIntelligence.odoo] 13.0/addons/portal/i18n/portal.pot\n"
+"X-Crowdin-File-ID: 8274\n"
+"Language: de_DE\n"
 
 #. module: portal
 #. openerp-web
 #: code:addons/portal/static/src/js/portal_sidebar.js:0
 #, python-format
-msgid "%d days overdue"
-msgstr "%d Tage überfällig"
+msgid "%1d days overdue"
+msgstr ""
 
 #. module: portal
 #: code:addons/portal/controllers/portal.py:0
@@ -54,17 +42,13 @@ msgstr "Zurück in den Bearbeitungsmodus wechseln"
 
 #. module: portal
 #: model_terms:ir.ui.view,arch_db:portal.record_pager
-msgid ""
-"<i class=\"fa fa-chevron-left\" role=\"img\" aria-label=\"Previous\" "
-"title=\"Previous\"/>"
+msgid "<i class=\"fa fa-chevron-left\" role=\"img\" aria-label=\"Previous\" title=\"Previous\"/>"
 msgstr ""
-"<i class=\"fa fa-chevron-left\" role=\"img\" aria-label=\"Previous\" "
-"title=\"Previous\"/>"
 
 #. module: portal
 #: model_terms:ir.ui.view,arch_db:portal.record_pager
 msgid "<i class=\"fa fa-chevron-right\" role=\"img\" aria-label=\"Next\" title=\"Next\"/>"
-msgstr "<i class=\"fa fa-chevron-right\" role=\"img\" aria-label=\"Next\" title=\"Next\"/>"
+msgstr ""
 
 #. module: portal
 #: model_terms:ir.ui.view,arch_db:portal.portal_layout
@@ -93,8 +77,7 @@ msgstr "<strong>Öffnen </strong>"
 
 #. module: portal
 #: model:mail.template,body_html:portal.mail_template_data_portal_welcome
-msgid ""
-"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
+msgid "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
 "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"padding: 16px; background-color: white; color: #454748; border-collapse:separate;\">\n"
 "<tbody>\n"
 "    <!-- HEADER -->\n"
@@ -176,8 +159,7 @@ msgid ""
 "</td></tr>\n"
 "</table>\n"
 "            "
-msgstr ""
-"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
+msgstr "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\"><tr><td align=\"center\">\n"
 "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"padding: 16px; background-color: white; color: #454748; border-collapse:separate;\">\n"
 "<tbody>\n"
 "    <!-- HEADER -->\n"
@@ -271,12 +253,12 @@ msgstr "Akzeptieren und signieren"
 #: model:ir.model.fields,field_description:portal.field_portal_mixin__access_warning
 #: model:ir.model.fields,field_description:portal.field_portal_share__access_warning
 msgid "Access warning"
-msgstr "Zugriffswarnung"
+msgstr ""
 
 #. module: portal
 #: model_terms:ir.ui.view,arch_db:portal.portal_share_wizard
 msgid "Add a note"
-msgstr "Eine Notiz hinzufügen"
+msgstr "Notiz hinzufügen"
 
 #. module: portal
 #. openerp-web
@@ -293,8 +275,7 @@ msgstr "Kontakte hinzufügen, um das Dokument freizugeben ..."
 #. module: portal
 #: model:ir.model.fields,help:portal.field_portal_share__note
 msgid "Add extra content to display in the email"
-msgstr ""
-"Fügen Sie zusätzlichen Inhalt hinzu, der in der E-Mail angezeigt werden soll"
+msgstr "Fügen Sie zusätzlichen Inhalt hinzu, der in der E-Mail angezeigt werden soll"
 
 #. module: portal
 #: code:addons/portal/controllers/mail.py:0
@@ -305,7 +286,7 @@ msgstr ""
 #. module: portal
 #: model_terms:ir.ui.view,arch_db:portal.wizard_view
 msgid "Apply"
-msgstr "Anwenden"
+msgstr ""
 
 #. module: portal
 #: model_terms:ir.ui.view,arch_db:portal.portal_archive_groups
@@ -317,7 +298,7 @@ msgstr "Archive"
 #: code:addons/portal/static/src/xml/portal_chatter.xml:0
 #, python-format
 msgid "Avatar"
-msgstr "Avatar"
+msgstr ""
 
 #. module: portal
 #: model_terms:ir.ui.view,arch_db:portal.portal_share_wizard
@@ -328,19 +309,12 @@ msgstr "Abbrechen"
 #. module: portal
 #: code:addons/portal/controllers/portal.py:0
 #, python-format
-msgid ""
-"Changing VAT number is not allowed once document(s) have been issued for "
-"your account. Please contact us directly for this operation."
-msgstr ""
-"Das Ändern der Umsatzsteuer-Identifikationsnummer ist nicht zulässig, sobald"
-" Dokumente für Ihr Konto ausgestellt wurden. Bitte kontaktieren Sie uns "
-"direkt für diesen Vorgang."
+msgid "Changing VAT number is not allowed once document(s) have been issued for your account. Please contact us directly for this operation."
+msgstr "Das Ändern der Umsatzsteuer-Identifikationsnummer ist nicht zulässig, sobald Dokumente für Ihr Konto ausgestellt wurden. Bitte kontaktieren Sie uns direkt für diesen Vorgang."
 
 #. module: portal
 #: model_terms:ir.ui.view,arch_db:portal.portal_my_details
-msgid ""
-"Changing company name is not allowed once document(s) have been issued for "
-"your account. Please contact us directly for this operation."
+msgid "Changing company name is not allowed once document(s) have been issued for your account. Please contact us directly for this operation."
 msgstr ""
 
 #. module: portal
@@ -358,17 +332,16 @@ msgstr "Klicken Sie hier, um Ihr Dokument anzuzeigen."
 #. module: portal
 #: model_terms:ir.ui.view,arch_db:portal.portal_back_in_edit_mode
 msgid "Close"
-msgstr "Abschliessen"
+msgstr "schließen"
 
 #. module: portal
 #: model_terms:ir.ui.view,arch_db:portal.portal_my_details
 msgid "Company Name"
-msgstr "Unternehmensname"
+msgstr ""
 
 #. module: portal
 #: model_terms:ir.ui.view,arch_db:portal.portal_my_details
-msgid ""
-"Confirm\n"
+msgid "Confirm\n"
 "                                <span class=\"fa fa-long-arrow-right\"/>"
 msgstr "<span class=\"fa fa-long-arrow-right\"/>"
 
@@ -415,7 +388,7 @@ msgstr "Erstellt am"
 #. module: portal
 #: model:ir.model.fields,help:portal.field_portal_mixin__access_url
 msgid "Customer Portal URL"
-msgstr "Kundenportal-URL"
+msgstr ""
 
 #. module: portal
 #: model_terms:ir.ui.view,arch_db:portal.portal_share_template
@@ -433,7 +406,7 @@ msgstr "Löschen"
 #: model_terms:ir.ui.view,arch_db:portal.portal_breadcrumbs
 #: model_terms:ir.ui.view,arch_db:portal.portal_layout
 msgid "Details"
-msgstr "Details"
+msgstr ""
 
 #. module: portal
 #: model:ir.model.fields,field_description:portal.field_portal_mixin__display_name
@@ -453,8 +426,8 @@ msgstr "Dokumente"
 #. openerp-web
 #: code:addons/portal/static/src/js/portal_sidebar.js:0
 #, python-format
-msgid "Due in %d days"
-msgstr "In %d Tagen fällig"
+msgid "Due in %1d days"
+msgstr ""
 
 #. module: portal
 #. openerp-web
@@ -467,18 +440,18 @@ msgstr "Bis heute"
 #: model:ir.model.fields,field_description:portal.field_portal_wizard_user__email
 #: model_terms:ir.ui.view,arch_db:portal.portal_my_details
 msgid "Email"
-msgstr "E-Mail"
+msgstr "E-mail"
 
 #. module: portal
 #: model:ir.model,name:portal.model_mail_thread
 msgid "Email Thread"
-msgstr "E-Mail Thread"
+msgstr ""
 
 #. module: portal
 #: model:ir.model,name:portal.model_portal_wizard
 #: model_terms:ir.ui.view,arch_db:portal.wizard_view
 msgid "Grant Portal Access"
-msgstr "Portalzugriff gewähren"
+msgstr ""
 
 #. module: portal
 #: model:ir.actions.act_window,name:portal.partner_wizard_action
@@ -488,12 +461,12 @@ msgstr "Portalzugriff gewähren"
 #. module: portal
 #: model:ir.model,name:portal.model_ir_http
 msgid "HTTP Routing"
-msgstr "HTTP Routing"
+msgstr ""
 
 #. module: portal
 #: model_terms:ir.ui.view,arch_db:portal.portal_breadcrumbs
 msgid "Home"
-msgstr "Home"
+msgstr ""
 
 #. module: portal
 #: model:ir.model.fields,field_description:portal.field_portal_mixin__id
@@ -512,8 +485,7 @@ msgstr "Im Portal"
 #: code:addons/portal/controllers/portal.py:0
 #, python-format
 msgid "Invalid Email! Please enter a valid email address."
-msgstr ""
-"E-mail Addresse ungültig. Bitte geben Sie eine gültige E-mail Adresse ein."
+msgstr "E-mail Addresse ungültig. Bitte geben Sie eine gültige E-mail Adresse ein."
 
 #. module: portal
 #: code:addons/portal/controllers/portal.py:0
@@ -532,7 +504,7 @@ msgstr "Einladungsnachricht"
 #: model:ir.model.fields,field_description:portal.field_portal_wizard____last_update
 #: model:ir.model.fields,field_description:portal.field_portal_wizard_user____last_update
 msgid "Last Modified on"
-msgstr "Letzte Änderung am"
+msgstr "Zuletzt geändert am"
 
 #. module: portal
 #: model:ir.model.fields,field_description:portal.field_portal_share__write_uid
@@ -558,7 +530,7 @@ msgstr "Kommentar hinterlassen"
 #. module: portal
 #: model:ir.model.fields,field_description:portal.field_portal_share__share_link
 msgid "Link"
-msgstr "Link"
+msgstr ""
 
 #. module: portal
 #: model:ir.model.fields,field_description:portal.field_portal_wizard_user__user_id
@@ -573,8 +545,7 @@ msgstr "Abmelden"
 #. module: portal
 #: model_terms:ir.ui.view,arch_db:portal.portal_404
 msgid "Maybe you were looking for one of these popular pages ?"
-msgstr ""
-"Vielleicht haben Sie bereits nach einer dieser populären Seiten gesucht ?"
+msgstr "Vielleicht haben Sie bereits nach einer dieser populären Seiten gesucht ?"
 
 #. module: portal
 #: model:ir.model,name:portal.model_mail_message
@@ -584,8 +555,7 @@ msgstr "Nachricht"
 #. module: portal
 #: code:addons/portal/models/mail_thread.py:0
 #, python-format
-msgid ""
-"Model %s does not support token signature, as it does not have %s field."
+msgid "Model %s does not support token signature, as it does not have %s field."
 msgstr ""
 
 #. module: portal
@@ -604,7 +574,7 @@ msgstr "Name"
 #: model_terms:ir.ui.view,arch_db:portal.pager
 #, python-format
 msgid "Next"
-msgstr "Weiter"
+msgstr ""
 
 #. module: portal
 #: model:ir.model.fields,field_description:portal.field_portal_share__note
@@ -621,19 +591,17 @@ msgstr "Odoo-Logo"
 #: code:addons/portal/static/src/xml/portal_chatter.xml:0
 #, python-format
 msgid "Oops! Something went wrong. Try to reload the page and log in."
-msgstr ""
-"Ups! Es ist ein Fehler aufgetreten. Versuchen Sie, die Seite erneut zu laden"
-" und sich anzumelden."
+msgstr "Ups! Es ist ein Fehler aufgetreten. Versuchen Sie, die Seite erneut zu laden und sich anzumelden."
 
 #. module: portal
 #: model_terms:ir.ui.view,arch_db:portal.portal_my_details
 msgid "Phone"
-msgstr "Telefon"
+msgstr ""
 
 #. module: portal
 #: model:ir.model.fields,field_description:portal.field_portal_mixin__access_url
 msgid "Portal Access URL"
-msgstr "Portalzugriffs-URL"
+msgstr ""
 
 #. module: portal
 #: model:ir.model,name:portal.model_portal_mixin
@@ -665,7 +633,7 @@ msgstr "Zurück"
 #: code:addons/portal/static/src/xml/portal_chatter.xml:0
 #, python-format
 msgid "Previous"
-msgstr "Vorherige"
+msgstr ""
 
 #. module: portal
 #. openerp-web
@@ -682,12 +650,12 @@ msgstr "Empfänger"
 #. module: portal
 #: model:ir.model.fields,field_description:portal.field_portal_share__res_id
 msgid "Related Document ID"
-msgstr "Zugehörige Dokumenten-ID"
+msgstr ""
 
 #. module: portal
 #: model:ir.model.fields,field_description:portal.field_portal_share__res_model
 msgid "Related Document Model"
-msgstr "Zugehöriges Dokumenten-Modell"
+msgstr ""
 
 #. module: portal
 #: model_terms:ir.ui.view,arch_db:portal.portal_searchbar
@@ -697,16 +665,14 @@ msgstr "Suchen"
 #. module: portal
 #: model:ir.model.fields,field_description:portal.field_portal_mixin__access_token
 msgid "Security Token"
-msgstr "Security Token"
+msgstr ""
 
 #. module: portal
 #: model_terms:ir.ui.view,arch_db:portal.wizard_view
-msgid ""
-"Select which contacts should belong to the portal in the list below.\n"
+msgid "Select which contacts should belong to the portal in the list below.\n"
 "                        The email address of each selected contact must be valid and unique.\n"
 "                        If necessary, you can fix any contact's email address directly in the list."
-msgstr ""
-"Wählen Sie die Kontakte aus der Liste, die auf das Portal zugreifen können sollen.\n"
+msgstr "Wählen Sie die Kontakte aus der Liste, die auf das Portal zugreifen können sollen.\n"
 "                       Die E-Mail Adresse jedes ausgewählten Kontakt muss gültig und einmalig sein.\n"
 "                       Wenn nötig, können Sie die E-Mail Adressen der Kontakte direkt in der Liste korrigiert werden."
 
@@ -781,29 +747,25 @@ msgstr ""
 #. module: portal
 #: code:addons/portal/controllers/portal.py:0
 #, python-format
-msgid ""
-"The attachment %s cannot be removed because it is not in a pending state."
+msgid "The attachment %s cannot be removed because it is not in a pending state."
 msgstr ""
 
 #. module: portal
 #: code:addons/portal/controllers/mail.py:0
 #, python-format
-msgid ""
-"The attachment %s does not exist or you do not have the rights to access it."
+msgid "The attachment %s does not exist or you do not have the rights to access it."
 msgstr ""
 
 #. module: portal
 #: code:addons/portal/controllers/portal.py:0
 #, python-format
-msgid ""
-"The attachment does not exist or you do not have the rights to access it."
+msgid "The attachment does not exist or you do not have the rights to access it."
 msgstr ""
 
 #. module: portal
 #: code:addons/portal/controllers/portal.py:0
 #, python-format
-msgid ""
-"The document does not exist or you do not have the rights to access it."
+msgid "The document does not exist or you do not have the rights to access it."
 msgstr ""
 
 #. module: portal
@@ -834,26 +796,20 @@ msgstr "Dies ist eine Vorschau des Kundenportals."
 #. module: portal
 #: model_terms:ir.ui.view,arch_db:portal.wizard_view
 msgid "This text is included in the email sent to new portal users."
-msgstr ""
-"Dieser Text wird an die E-Mail angefügt, die dem neuen Portal-Usern "
-"geschickt wird."
+msgstr "Dieser Text wird an die E-Mail angefügt, die dem neuen Portal-Usern geschickt wird."
 
 #. module: portal
 #: model:ir.model.fields,help:portal.field_portal_wizard__welcome_message
 msgid "This text is included in the email sent to new users of the portal."
-msgstr ""
-"Dieser Text wird an jede E-Mail angehängt, die an neue Benutzer des Portals "
-"geschickt werden."
+msgstr "Dieser Text wird an jede E-Mail angehängt, die an neue Benutzer des Portals geschickt werden."
 
 #. module: portal
 #: code:addons/portal/wizard/portal_wizard.py:0
 #, python-format
-msgid ""
-"To resolve this error, you can: \n"
+msgid "To resolve this error, you can: \n"
 "- Correct the emails of the relevant contacts\n"
 "- Grant access only to contacts with unique emails"
-msgstr ""
-"Zur Lösung dieses Problems können Sie folgendes tun:\n"
+msgstr "Zur Lösung dieses Problems können Sie folgendes tun:\n"
 "- Korrigieren Sie die E-Mail Adresse für den betreffenden Kontakt\n"
 "- Erlauben Sie einen Zugang lediglich für Benutzer mit eindeutiger E-Mail Adresse"
 
@@ -902,7 +858,7 @@ msgstr "USt. Nummer"
 #: model:ir.model.fields,field_description:portal.field_res_partner__website_message_ids
 #: model:ir.model.fields,field_description:portal.field_res_users__website_message_ids
 msgid "Website Messages"
-msgstr "Website-Nachrichten"
+msgstr ""
 
 #. module: portal
 #: model:ir.model.fields,help:portal.field_account_analytic_account__website_message_ids
@@ -934,7 +890,7 @@ msgstr "Website-Nachrichten"
 #: model:ir.model.fields,help:portal.field_res_partner__website_message_ids
 #: model:ir.model.fields,help:portal.field_res_users__website_message_ids
 msgid "Website communication history"
-msgstr "Website-Kommunikationshistorie"
+msgstr ""
 
 #. module: portal
 #: model:ir.model.fields,field_description:portal.field_portal_wizard_user__wizard_id
@@ -970,11 +926,8 @@ msgstr "Sie müssen sein"
 #. module: portal
 #: code:addons/portal/wizard/portal_wizard.py:0
 #, python-format
-msgid ""
-"You must have an email address in your User Preferences to send emails."
-msgstr ""
-"Sie müssen Ihre  E-Mail Adresse in den Benutzereinstellungen erfassen, um "
-"E-Mails senden zu können."
+msgid "You must have an email address in your User Preferences to send emails."
+msgstr "Sie müssen Ihre  E-Mail Adresse in den Benutzereinstellungen erfassen, um E-Mails senden zu können."
 
 #. module: portal
 #: model:mail.template,subject:portal.mail_template_data_portal_welcome
@@ -1022,7 +975,7 @@ msgstr "Eingeloggt"
 #. module: portal
 #: model_terms:ir.ui.view,arch_db:portal.portal_record_sidebar
 msgid "odoo"
-msgstr "odoo"
+msgstr ""
 
 #. module: portal
 #: model_terms:ir.ui.view,arch_db:portal.portal_my_details
@@ -1035,3 +988,9 @@ msgstr "... auswählen"
 #, python-format
 msgid "to post a comment."
 msgstr "um einen Kommentar zu veröffentlichen."
+
+#. module: portal
+#: model_terms:ir.ui.view,arch_db:portal.portal_my_details
+msgid "Changing VAT number is not allowed once document(s) have been issued for your account. Please contact us directly for this operation."
+msgstr "Das Ändern der Umsatzsteuer-Identifikationsnummer ist nicht zulässig, sobald Dokumente für Ihr Konto ausgestellt wurden. Bitte kontaktieren Sie uns direkt für diesen Vorgang."
+
