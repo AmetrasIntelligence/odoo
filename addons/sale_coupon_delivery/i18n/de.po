@@ -1,35 +1,29 @@
-# Translation of Odoo Server.
-# This file contains the translation of the following modules:
-# 	* sale_coupon_delivery
-# 
-# Translators:
-# Leon Grill <leg@odoo.com>, 2019
-# Martin Trigaux, 2019
-# Chris Egal <sodaswed@web.de>, 2019
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~12.5\n"
+"Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-26 08:17+0000\n"
-"PO-Revision-Date: 2019-08-26 09:14+0000\n"
-"Last-Translator: Chris Egal <sodaswed@web.de>, 2019\n"
-"Language-Team: German (https://www.transifex.com/odoo/teams/41243/de/)\n"
+"PO-Revision-Date: 2022-08-06 22:43\n"
+"Last-Translator: \n"
+"Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: ametras-xsolutions\n"
+"X-Crowdin-Project-ID: 530964\n"
+"X-Crowdin-Language: de\n"
+"X-Crowdin-File: /[AmetrasIntelligence.odoo] 13.0/addons/sale_coupon_delivery/i18n/sale_coupon_delivery.pot\n"
+"X-Crowdin-File-ID: 8338\n"
+"Language: de_DE\n"
 
 #. module: sale_coupon_delivery
 #: model:ir.model.fields,help:sale_coupon_delivery.field_sale_coupon_program__reward_type
 #: model:ir.model.fields,help:sale_coupon_delivery.field_sale_coupon_reward__reward_type
-msgid ""
-"Discount - Reward will be provided as discount.\n"
+msgid "Discount - Reward will be provided as discount.\n"
 "Free Product - Free product will be provide as reward \n"
 "Free Shipping - Free shipping will be provided as reward (Need delivery module)"
-msgstr ""
-"Rabatt – Prämie wird als Rabatt ausgezahlt.\n"
+msgstr "Rabatt – Prämie wird als Rabatt ausgezahlt.\n"
 "Gratisprodukt – Prämie in Form eines Gratisproduktes \n"
 "Kostenloser Versand – Prämie in Form von kostenlosem Versand (Liefermodul wird benötigt)"
 
@@ -55,17 +49,17 @@ msgstr "Prämientyp"
 #. module: sale_coupon_delivery
 #: model:ir.model,name:sale_coupon_delivery.model_sale_coupon_program
 msgid "Sales Coupon Program"
-msgstr "Verkaufsgutscheinprogramm"
+msgstr ""
 
 #. module: sale_coupon_delivery
 #: model:ir.model,name:sale_coupon_delivery.model_sale_coupon_reward
 msgid "Sales Coupon Reward"
-msgstr "Verkaufsgutscheinprämie"
+msgstr ""
 
 #. module: sale_coupon_delivery
 #: model:ir.model,name:sale_coupon_delivery.model_sale_order
 msgid "Sales Order"
-msgstr "Verkaufsauftrag "
+msgstr "Kundenauftrag"
 
 #. module: sale_coupon_delivery
 #: model:ir.model,name:sale_coupon_delivery.model_sale_order_line
@@ -78,3 +72,4 @@ msgstr "Kundenauftragszeile"
 #, python-format
 msgid "The shipping costs are not in the order lines."
 msgstr "Die Versandkosten sind nicht in den Auftragspositionen enthalten."
+
