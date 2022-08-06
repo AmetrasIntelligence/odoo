@@ -1,24 +1,21 @@
-# Translation of Odoo Server.
-# This file contains the translation of the following modules:
-# * theme_bootswatch
-# 
-# Translators:
-# Martin Trigaux, 2019
-# Vallen Delobel <edv@odoo.com>, 2020
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~11.5\n"
+"Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-21 13:18+0000\n"
-"PO-Revision-Date: 2019-08-26 09:14+0000\n"
-"Last-Translator: Vallen Delobel <edv@odoo.com>, 2020\n"
-"Language-Team: French (https://www.transifex.com/odoo/teams/41243/fr/)\n"
+"PO-Revision-Date: 2022-08-06 22:44\n"
+"Last-Translator: <>\n"
+"Language-Team: French\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Crowdin-Project: ametras-xsolutions\n"
+"X-Crowdin-Project-ID: 530964\n"
+"X-Crowdin-Language: fr\n"
+"X-Crowdin-File: /[AmetrasIntelligence.odoo] 13.0/addons/theme_bootswatch/i18n/theme_bootswatch.pot\n"
+"X-Crowdin-File-ID: 8390\n"
+"Language: fr_FR\n"
 
 #. module: theme_bootswatch
 #: model:ir.model,name:theme_bootswatch.model_theme_utils
@@ -28,4 +25,5 @@ msgstr "Thèmes utiles"
 #. module: theme_bootswatch
 #: model:ir.actions.act_url,name:theme_bootswatch.action_website
 msgid "Website"
-msgstr "Site Web"
+msgstr ""
+
