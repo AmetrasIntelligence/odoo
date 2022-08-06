@@ -1,25 +1,21 @@
-# Translation of Odoo Server.
-# This file contains the translation of the following modules:
-# 	* mass_mailing_slides
-# 
-# Translators:
-# e2f <projects@e2f.com>, 2019
-# Martin Trigaux, 2019
-# JEK Odoo <jek@odoo.com>, 2020
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~12.5\n"
+"Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-26 08:16+0000\n"
-"PO-Revision-Date: 2019-08-26 09:11+0000\n"
-"Last-Translator: JEK Odoo <jek@odoo.com>, 2020\n"
-"Language-Team: German (https://www.transifex.com/odoo/teams/41243/de/)\n"
+"PO-Revision-Date: 2022-08-06 22:42\n"
+"Last-Translator: \n"
+"Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: ametras-xsolutions\n"
+"X-Crowdin-Project-ID: 530964\n"
+"X-Crowdin-Language: de\n"
+"X-Crowdin-File: /[AmetrasIntelligence.odoo] 13.0/addons/mass_mailing_slides/i18n/mass_mailing_slides.pot\n"
+"X-Crowdin-File-ID: 8220\n"
+"Language: de_DE\n"
 
 #. module: mass_mailing_slides
 #: model_terms:ir.ui.view,arch_db:mass_mailing_slides.slide_channel_view_form
@@ -41,3 +37,4 @@ msgstr "Mitglieder des Massenmail-Kurses"
 #: model:ir.model,name:mass_mailing_slides.model_slide_channel
 msgid "Slide Channel"
 msgstr "Folie-Kanal"
+
