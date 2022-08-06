@@ -1,34 +1,21 @@
-# Translation of Odoo Server.
-# This file contains the translation of the following modules:
-# 	* website_crm
-# 
-# Translators:
-# e2f <projects@e2f.com>, 2019
-# bb76cd9ac0cb7e20167a14728edb858b, 2019
-# Richard Mathot <rim@odoo.com>, 2019
-# Florian Hatat, 2019
-# Clo <clo@odoo.com>, 2019
-# Stephane DAGUET <stephane@darbtech.net>, 2019
-# Lucas Deliege <lud@odoo.com>, 2019
-# Eloïse Stilmant <est@odoo.com>, 2019
-# Bertrand LATOUR <divoir@gmail.com>, 2019
-# gdp Odoo <gdp@odoo.com>, 2019
-# Martin Trigaux, 2019
-# Cécile Collart <cco@odoo.com>, 2020
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~12.5\n"
+"Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-23 11:31+0000\n"
-"PO-Revision-Date: 2019-08-26 09:15+0000\n"
-"Last-Translator: Cécile Collart <cco@odoo.com>, 2020\n"
-"Language-Team: French (https://www.transifex.com/odoo/teams/41243/fr/)\n"
+"PO-Revision-Date: 2022-08-06 22:45\n"
+"Last-Translator: \n"
+"Language-Team: French\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Crowdin-Project: ametras-xsolutions\n"
+"X-Crowdin-Project-ID: 530964\n"
+"X-Crowdin-Language: fr\n"
+"X-Crowdin-File: /[AmetrasIntelligence.odoo] 13.0/addons/website_crm/i18n/website_crm.pot\n"
+"X-Crowdin-File-ID: 8414\n"
+"Language: fr_FR\n"
 
 #. module: website_crm
 #: model:ir.model.fields,field_description:website_crm.field_website_visitor__lead_count
@@ -62,12 +49,12 @@ msgstr "Attribuer pistes/opportunités à un commercial."
 #. module: website_crm
 #: model_terms:ir.ui.view,arch_db:website_crm.res_config_settings_view_form
 msgid "Communication"
-msgstr "Communication"
+msgstr ""
 
 #. module: website_crm
 #: model:ir.model,name:website_crm.model_res_config_settings
 msgid "Config Settings"
-msgstr "Paramètres de config"
+msgstr ""
 
 #. module: website_crm
 #: model_terms:ir.ui.view,arch_db:website_crm.res_config_settings_view_form
@@ -88,9 +75,7 @@ msgstr "Equipe de vente par défaut"
 #: model:ir.model.fields,help:website_crm.field_res_config_settings__crm_default_team_id
 #: model:ir.model.fields,help:website_crm.field_website__crm_default_team_id
 msgid "Default Sales Team for new leads created through the Contact Us form."
-msgstr ""
-"Equipe de vente par défaut pour les nouvelles pistes créées via le "
-"formulaire de contact."
+msgstr "Equipe de vente par défaut pour les nouvelles pistes créées via le formulaire de contact."
 
 #. module: website_crm
 #: model:ir.model.fields,field_description:website_crm.field_website__crm_default_team_id
@@ -107,9 +92,7 @@ msgstr "Commercial par défaut"
 #: model:ir.model.fields,help:website_crm.field_res_config_settings__crm_default_user_id
 #: model:ir.model.fields,help:website_crm.field_website__crm_default_user_id
 msgid "Default salesperson for new leads created through the Contact Us form."
-msgstr ""
-"Vendeur par défaut pour les nouveaux leads créés via le formulaire de "
-"contact."
+msgstr "Vendeur par défaut pour les nouveaux leads créés via le formulaire de contact."
 
 #. module: website_crm
 #. openerp-web
@@ -117,12 +100,12 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:website_crm.contactus_form
 #, python-format
 msgid "Email"
-msgstr "Email"
+msgstr ""
 
 #. module: website_crm
 #: model:ir.model,name:website_crm.model_crm_lead
 msgid "Lead/Opportunity"
-msgstr "Piste/opportunité"
+msgstr ""
 
 #. module: website_crm
 #: model:ir.actions.act_window,name:website_crm.website_visitor_crm_lead_action
@@ -140,9 +123,7 @@ msgstr "Pistes/opportunités"
 #. module: website_crm
 #: model_terms:ir.ui.view,arch_db:website_crm.res_config_settings_view_form
 msgid "New messages are managed as leads or opportunities in your CRM app."
-msgstr ""
-"Les nouveaux messages sont gérés comme des leads et des opportunités dans "
-"votre application CRM."
+msgstr "Les nouveaux messages sont gérés comme des leads et des opportunités dans votre application CRM."
 
 #. module: website_crm
 #: model_terms:ir.actions.act_window,help:website_crm.website_visitor_crm_lead_action
@@ -164,12 +145,8 @@ msgstr "Numéro de téléphone"
 
 #. module: website_crm
 #: model_terms:ir.ui.view,arch_db:website_crm.res_config_settings_view_form
-msgid ""
-"Please set a Sales Team for the website. Otherwise you can't follow related "
-"events."
-msgstr ""
-"Veuillez définir une Equipe de Vente pour le site web. Sinon vous ne pourrez"
-" pas suivre les événements liés."
+msgid "Please set a Sales Team for the website. Otherwise you can't follow related events."
+msgstr "Veuillez définir une Equipe de Vente pour le site web. Sinon vous ne pourrez pas suivre les événements liés."
 
 #. module: website_crm
 #. openerp-web
@@ -181,7 +158,7 @@ msgstr "Equipe de vente"
 #. module: website_crm
 #: model_terms:ir.ui.view,arch_db:website_crm.res_config_settings_view_form
 msgid "Sales Team"
-msgstr "Équipe commerciale"
+msgstr "Équipe de vente"
 
 #. module: website_crm
 #. openerp-web
@@ -189,7 +166,7 @@ msgstr "Équipe commerciale"
 #: model_terms:ir.ui.view,arch_db:website_crm.res_config_settings_view_form
 #, python-format
 msgid "Salesperson"
-msgstr "Vendeur"
+msgstr ""
 
 #. module: website_crm
 #: model_terms:ir.ui.view,arch_db:website_crm.contactus_form
@@ -202,7 +179,7 @@ msgstr "Envoyer"
 #: model_terms:ir.ui.view,arch_db:website_crm.contactus_form
 #, python-format
 msgid "Subject"
-msgstr "Sujet"
+msgstr ""
 
 #. module: website_crm
 #: model_terms:ir.ui.view,arch_db:website_crm.website_visitor_view_search
@@ -217,7 +194,7 @@ msgstr "Visiteurs Web"
 #. module: website_crm
 #: model:ir.model,name:website_crm.model_website
 msgid "Website"
-msgstr "Site Web"
+msgstr ""
 
 #. module: website_crm
 #: model:ir.actions.act_url,name:website_crm.action_open_website
@@ -256,4 +233,5 @@ msgstr "Votre question"
 #. module: website_crm
 #: model_terms:ir.ui.view,arch_db:website_crm.res_config_settings_view_form
 msgid "page"
-msgstr "page"
+msgstr ""
+
