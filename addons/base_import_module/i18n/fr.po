@@ -1,25 +1,21 @@
-# Translation of Odoo Server.
-# This file contains the translation of the following modules:
-# 	* base_import_module
-# 
-# Translators:
-# Martin Trigaux, 2019
-# Eloïse Stilmant <est@odoo.com>, 2019
-# Cécile Collart <cco@odoo.com>, 2019
-# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~12.5\n"
+"Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-26 08:16+0000\n"
-"PO-Revision-Date: 2019-08-26 09:09+0000\n"
-"Last-Translator: Cécile Collart <cco@odoo.com>, 2019\n"
-"Language-Team: French (https://www.transifex.com/odoo/teams/41243/fr/)\n"
+"PO-Revision-Date: 2022-08-06 22:39\n"
+"Last-Translator: \n"
+"Language-Team: French\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Crowdin-Project: ametras-xsolutions\n"
+"X-Crowdin-Project-ID: 530964\n"
+"X-Crowdin-Language: fr\n"
+"X-Crowdin-File: /[AmetrasIntelligence.odoo] 13.0/addons/base_import_module/i18n/base_import_module.pot\n"
+"X-Crowdin-File-ID: 8058\n"
+"Language: fr_FR\n"
 
 #. module: base_import_module
 #: model_terms:ir.ui.view,arch_db:base_import_module.view_base_module_import
@@ -50,7 +46,7 @@ msgstr "Créé le"
 #. module: base_import_module
 #: model:ir.model.fields,field_description:base_import_module.field_base_import_module__display_name
 msgid "Display Name"
-msgstr "Afficher Nom"
+msgstr "Nom d'affichage"
 
 #. module: base_import_module
 #: code:addons/base_import_module/models/ir_module.py:0
@@ -65,16 +61,13 @@ msgstr "Forcer la réinitialisation"
 
 #. module: base_import_module
 #: model:ir.model.fields,help:base_import_module.field_base_import_module__force
-msgid ""
-"Force init mode even if installed. (will update `noupdate='1'` records)"
-msgstr ""
-"Forcer la réinitialisation même si le module a déjà été installé. (remettra "
-"même à jour les enregistrements de type 'noupdate='1'')"
+msgid "Force init mode even if installed. (will update `noupdate='1'` records)"
+msgstr "Forcer la réinitialisation même si le module a déjà été installé. (remettra même à jour les enregistrements de type 'noupdate='1'')"
 
 #. module: base_import_module
 #: model:ir.model.fields,field_description:base_import_module.field_base_import_module__id
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #. module: base_import_module
 #: model_terms:ir.ui.view,arch_db:base_import_module.view_base_module_import
@@ -122,7 +115,7 @@ msgstr "Dernière mise à jour le"
 #. module: base_import_module
 #: model:ir.model,name:base_import_module.model_ir_module_module
 msgid "Module"
-msgstr "Module"
+msgstr ""
 
 #. module: base_import_module
 #: model:ir.model.fields,field_description:base_import_module.field_base_import_module__module_file
@@ -138,9 +131,7 @@ msgstr "Aucun fichier envoyé."
 #. module: base_import_module
 #: model_terms:ir.ui.view,arch_db:base_import_module.view_base_module_import
 msgid "Note: you can only import data modules (.xml files and static assets)"
-msgstr ""
-"Remarque: vous ne pouvez importer que des modules de données (fichiers .xml "
-"et actifs statiques)."
+msgstr "Remarque: vous ne pouvez importer que des modules de données (fichiers .xml et actifs statiques)."
 
 #. module: base_import_module
 #: code:addons/base_import_module/controllers/main.py:0
@@ -167,7 +158,7 @@ msgstr "Sélectionner un module à importer (fichier .zip):"
 #. module: base_import_module
 #: model:ir.model.fields,field_description:base_import_module.field_base_import_module__state
 msgid "Status"
-msgstr "État"
+msgstr ""
 
 #. module: base_import_module
 #: code:addons/base_import_module/models/ir_module.py:0
@@ -184,13 +175,9 @@ msgstr "Les personnalisations Studio nécessitent l'application Studio."
 #. module: base_import_module
 #: code:addons/base_import_module/models/ir_module.py:0
 #, python-format
-msgid ""
-"Unmet module dependencies: \n"
-"\n"
+msgid "Unmet module dependencies: \n\n"
 " - %s"
-msgstr ""
-"Dépendances du module non satisfaites : \n"
-"\n"
+msgstr "Dépendances du module non satisfaites : \n\n"
 "- %s"
 
 #. module: base_import_module
@@ -206,4 +193,5 @@ msgstr "terminée"
 #. module: base_import_module
 #: model:ir.model.fields.selection,name:base_import_module.selection__base_import_module__state__init
 msgid "init"
-msgstr "init"
+msgstr ""
+
