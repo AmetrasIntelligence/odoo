@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-15 13:31+0000\n"
-"PO-Revision-Date: 2022-08-06 22:41\n"
+"PO-Revision-Date: 2022-08-06 23:37\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -261,7 +261,7 @@ msgstr ""
 #. module: l10n_ar
 #: model_terms:ir.ui.view,arch_db:l10n_ar.view_account_invoice_report_search_inherit
 msgid "Account"
-msgstr ""
+msgstr "Konto"
 
 #. module: l10n_ar
 #: model:ir.model,name:l10n_ar.model_account_chart_template
@@ -301,7 +301,7 @@ msgstr ""
 #. module: l10n_ar
 #: model:ir.model,name:l10n_ar.model_res_partner_bank
 msgid "Bank Accounts"
-msgstr ""
+msgstr "Bankkonten"
 
 #. module: l10n_ar
 #: model:product.product,name:l10n_ar.product_product_exento
@@ -469,7 +469,7 @@ msgstr ""
 #. module: l10n_ar
 #: model:ir.model.fields,field_description:l10n_ar.field_l10n_ar_afip_responsibility_type__code
 msgid "Code"
-msgstr ""
+msgstr "Code"
 
 #. module: l10n_ar
 #: model:ir.model.constraint,message:l10n_ar.constraint_l10n_ar_afip_responsibility_type_code
@@ -724,7 +724,7 @@ msgstr ""
 #. module: l10n_ar
 #: model:ir.model,name:l10n_ar.model_account_invoice_report
 msgid "Invoices Statistics"
-msgstr ""
+msgstr "Rechnungsstatistik"
 
 #. module: l10n_ar
 #: model:ir.model,name:l10n_ar.model_account_journal
