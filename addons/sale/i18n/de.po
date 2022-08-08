@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-27 09:22+0000\n"
-"PO-Revision-Date: 2022-08-08 01:54\n"
+"PO-Revision-Date: 2022-08-08 22:28\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -1160,7 +1160,7 @@ msgstr ""
 #. module: sale
 #: model_terms:ir.ui.view,arch_db:sale.view_order_form
 msgid "Confirm"
-msgstr "bestätigen"
+msgstr "Bestätigen"
 
 #. module: sale
 #: model:ir.model.fields,field_description:sale.field_res_config_settings__confirmation_template_id
@@ -2062,7 +2062,7 @@ msgstr "Es ist nicht gestattet, die folgenden Felder in einem gesperrten Auftrag
 #: code:addons/sale/models/sale.py:0
 #, python-format
 msgid "It is not allowed to confirm an order in the following states: %s"
-msgstr "Es ist nicht möglich einen Auftrag zu bestätigen, der sich in einem der folgenden Status befindetL %s"
+msgstr "Es ist nicht möglich einen Auftrag zu bestätigen, der sich in einem der folgenden Status befindet %s"
 
 #. module: sale
 #: model:ir.model,name:sale.model_account_move
