@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-05 12:34+0000\n"
-"PO-Revision-Date: 2022-08-06 23:37\n"
+"PO-Revision-Date: 2022-08-08 01:52\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -1146,7 +1146,7 @@ msgstr "Fehler beim Versenden der Nachrichten"
 #. module: lunch
 #: model:ir.model.fields,field_description:lunch.field_lunch_supplier__message_ids
 msgid "Messages"
-msgstr "Mitteilungen"
+msgstr "Nachrichten"
 
 #. module: lunch
 #: model:ir.model.fields,field_description:lunch.field_lunch_supplier__moment
