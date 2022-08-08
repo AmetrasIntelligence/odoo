@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-07 07:12+0000\n"
-"PO-Revision-Date: 2022-08-06 23:36\n"
+"PO-Revision-Date: 2022-08-08 22:27\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -116,7 +116,7 @@ msgstr "Konfigurationseinstellung"
 #. module: google_drive
 #: model_terms:ir.ui.view,arch_db:google_drive.google_drive_auth_code_wizard
 msgid "Confirm"
-msgstr "bestätigen"
+msgstr "Bestätigen"
 
 #. module: google_drive
 #: model:ir.model.fields,field_description:google_drive.field_google_drive_config__create_uid
