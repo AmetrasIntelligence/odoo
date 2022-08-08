@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-27 09:22+0000\n"
-"PO-Revision-Date: 2022-08-06 23:37\n"
+"PO-Revision-Date: 2022-08-08 01:52\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -3363,7 +3363,7 @@ msgstr "Nachricht-ID"
 #: model_terms:ir.ui.view,arch_db:mail.view_message_tree
 #, python-format
 msgid "Messages"
-msgstr "Mitteilungen"
+msgstr "Nachrichten"
 
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.view_message_search
