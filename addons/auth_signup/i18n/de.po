@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-26 08:16+0000\n"
-"PO-Revision-Date: 2022-08-06 22:38\n"
+"PO-Revision-Date: 2022-08-09 08:58\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -661,7 +661,7 @@ msgstr "Konfigurationseinstellung"
 #. module: auth_signup
 #: model_terms:ir.ui.view,arch_db:auth_signup.reset_password
 msgid "Confirm"
-msgstr "bestätigen"
+msgstr "Bestätigen"
 
 #. module: auth_signup
 #: model_terms:ir.ui.view,arch_db:auth_signup.fields
