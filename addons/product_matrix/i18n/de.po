@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-07 07:13+0000\n"
-"PO-Revision-Date: 2022-08-06 22:43\n"
+"PO-Revision-Date: 2022-08-10 14:04\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -41,7 +41,7 @@ msgstr "schließen"
 #: code:addons/product_matrix/static/src/js/section_and_note_widget.js:0
 #, python-format
 msgid "Confirm"
-msgstr "bestätigen"
+msgstr "Bestätigen"
 
 #. module: product_matrix
 #: model:product.attribute,name:product_matrix.product_attribute_gender
