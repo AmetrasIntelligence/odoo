@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-22 13:00+0000\n"
-"PO-Revision-Date: 2022-08-06 22:40\n"
+"PO-Revision-Date: 2022-08-11 10:55\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr "Aktiv"
 #. module: l10n_latam_base
 #: model_terms:ir.ui.view,arch_db:l10n_latam_base.view_l10n_latam_identification_type_search
 msgid "Archived"
-msgstr ""
+msgstr "Archiviert"
 
 #. module: l10n_latam_base
 #: model:ir.model,name:l10n_latam_base.model_res_company
