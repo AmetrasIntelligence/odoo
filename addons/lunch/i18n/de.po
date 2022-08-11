@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-05 12:34+0000\n"
-"PO-Revision-Date: 2022-08-11 10:55\n"
+"PO-Revision-Date: 2022-08-11 14:13\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -369,7 +369,7 @@ msgstr "In den Warenkorb"
 #: model:ir.model.fields,field_description:lunch.field_lunch_location__address
 #: model_terms:ir.ui.view,arch_db:lunch.lunch_supplier_view_form
 msgid "Address"
-msgstr ""
+msgstr "Adresse"
 
 #. module: lunch
 #: model:res.groups,name:lunch.group_lunch_manager
@@ -1409,7 +1409,7 @@ msgstr "Zahlungen werden zur Erfassung von Liquiditätsschwankungen verwendet. S
 #: model:ir.model.fields,field_description:lunch.field_lunch_supplier__phone
 #: model:ir.model.fields.selection,name:lunch.selection__lunch_supplier__send_by__phone
 msgid "Phone"
-msgstr ""
+msgstr "Telefon"
 
 #. module: lunch
 #: model:ir.model.fields,field_description:lunch.field_lunch_product__price
