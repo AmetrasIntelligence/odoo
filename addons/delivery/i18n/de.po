@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-07 07:12+0000\n"
-"PO-Revision-Date: 2022-08-11 10:54\n"
+"PO-Revision-Date: 2022-08-11 13:16\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -943,7 +943,7 @@ msgstr "Einheiten"
 #. module: delivery
 #: model_terms:ir.ui.view,arch_db:delivery.choose_delivery_carrier_view_form
 msgid "Update"
-msgstr ""
+msgstr "Update"
 
 #. module: delivery
 #: code:addons/delivery/models/sale_order.py:0
