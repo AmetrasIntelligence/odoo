@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-05 12:34+0000\n"
-"PO-Revision-Date: 2022-08-11 10:58\n"
+"PO-Revision-Date: 2022-08-11 14:13\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -887,7 +887,7 @@ msgstr ""
 #. module: website_event_track
 #: model:ir.model.fields,field_description:website_event_track.field_event_track__partner_phone
 msgid "Phone"
-msgstr ""
+msgstr "Telefon"
 
 #. module: website_event_track
 #: model:event.track,name:website_event_track.event_track3
