@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-27 09:21+0000\n"
-"PO-Revision-Date: 2022-08-11 14:13\n"
+"PO-Revision-Date: 2022-08-11 15:31\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -809,7 +809,7 @@ msgstr "Unternehmen"
 #: model_terms:ir.ui.view,arch_db:website_sale.address_b2b
 #, python-format
 msgid "Company Name"
-msgstr ""
+msgstr "Name des Unternehmens"
 
 #. module: website_sale
 #: model:product.public.category,name:website_sale.Components
@@ -1805,7 +1805,7 @@ msgstr "Zahlungsanweisungen"
 #. module: website_sale
 #: model:ir.model.fields,field_description:website_sale.field_website_sale_payment_acquirer_onboarding_wizard__payment_method
 msgid "Payment Method"
-msgstr ""
+msgstr "Zahlungsmethode"
 
 #. module: website_sale
 #: model:ir.ui.menu,name:website_sale.menu_ecommerce_payment_transactions
