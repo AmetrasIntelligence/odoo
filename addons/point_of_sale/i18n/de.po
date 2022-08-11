@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-27 11:49+0000\n"
-"PO-Revision-Date: 2022-08-11 13:20\n"
+"PO-Revision-Date: 2022-08-11 14:13\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -387,7 +387,7 @@ msgstr "Fügen Sie eine neue Zahlungsmethode hinzu"
 #: code:addons/point_of_sale/static/src/xml/pos.xml:0
 #, python-format
 msgid "Address"
-msgstr ""
+msgstr "Adresse"
 
 #. module: point_of_sale
 #: model:res.groups,name:point_of_sale.group_pos_manager
@@ -462,7 +462,7 @@ msgstr "Gesamtbetrag"
 #: code:addons/point_of_sale/static/src/js/models.js:0
 #, python-format
 msgid "An error occurred when loading product prices. Make sure all pricelists are available in the POS."
-msgstr ""
+msgstr "Fehler beim Laden der Produktpreise. Stellen Sie sicher, dass alle Preislisten an der Kasse verfügbar sind."
 
 #. module: point_of_sale
 #: model:ir.model.fields,help:point_of_sale.field_pos_config__name
@@ -2864,7 +2864,7 @@ msgstr ""
 #: code:addons/point_of_sale/static/src/xml/pos.xml:0
 #, python-format
 msgid "Phone"
-msgstr ""
+msgstr "Telefon"
 
 #. module: point_of_sale
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_order__picking_id
@@ -2998,7 +2998,7 @@ msgstr "PoS Aufträge"
 #: model:ir.ui.menu,name:point_of_sale.menu_products_pos_category
 #: model_terms:ir.ui.view,arch_db:point_of_sale.pos_config_view_form
 msgid "PoS Product Categories"
-msgstr ""
+msgstr "PoS Produktkategorien"
 
 #. module: point_of_sale
 #: model_terms:ir.ui.view,arch_db:point_of_sale.product_pos_category_tree_view
@@ -3008,7 +3008,7 @@ msgstr "PoS Produktkategorie"
 #. module: point_of_sale
 #: model_terms:ir.ui.view,arch_db:point_of_sale.view_partner_property_form
 msgid "Point Of Sale"
-msgstr ""
+msgstr "Point of Sale"
 
 #. module: point_of_sale
 #: model:ir.actions.act_window,name:point_of_sale.action_pos_config_kanban
