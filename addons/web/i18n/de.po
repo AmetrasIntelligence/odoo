@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-27 10:17+0000\n"
-"PO-Revision-Date: 2022-08-06 22:44\n"
+"PO-Revision-Date: 2022-08-11 10:57\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -642,7 +642,7 @@ msgstr "Anhang:"
 #: code:addons/web/static/src/xml/name_and_signature.xml:0
 #, python-format
 msgid "Auto"
-msgstr ""
+msgstr "Auto"
 
 #. module: web
 #. openerp-web
