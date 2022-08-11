@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-26 08:16+0000\n"
-"PO-Revision-Date: 2022-08-06 22:42\n"
+"PO-Revision-Date: 2022-08-11 15:28\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:pos_hr.pos_order_form_inherit
 #: model_terms:ir.ui.view,arch_db:pos_hr.pos_order_list_select_inherit
 msgid "Cashier"
-msgstr ""
+msgstr "Kassier"
 
 #. module: pos_hr
 #. openerp-web
@@ -104,7 +104,7 @@ msgstr "Passwort ?"
 #. module: pos_hr
 #: model:ir.model.fields,help:pos_hr.field_pos_order__employee_id
 msgid "Person who uses the cash register. It can be a reliever, a student or an interim employee."
-msgstr ""
+msgstr "Die Person, die den Kassenauftrag angelegt hat."
 
 #. module: pos_hr
 #: model:ir.model,name:pos_hr.model_pos_config
