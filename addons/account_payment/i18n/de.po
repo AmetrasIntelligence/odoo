@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-05 12:32+0000\n"
-"PO-Revision-Date: 2022-08-06 22:38\n"
+"PO-Revision-Date: 2022-08-11 15:25\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -115,12 +115,12 @@ msgstr "Bezahlen mit"
 #. module: account_payment
 #: model:ir.model,name:account_payment.model_payment_transaction
 msgid "Payment Transaction"
-msgstr ""
+msgstr "Zahlungsverkehr"
 
 #. module: account_payment
 #: model_terms:ir.ui.view,arch_db:account_payment.portal_my_invoices_payment
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #. module: account_payment
 #: model_terms:ir.ui.view,arch_db:account_payment.portal_invoice_error
