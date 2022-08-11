@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-27 09:21+0000\n"
-"PO-Revision-Date: 2022-08-11 10:58\n"
+"PO-Revision-Date: 2022-08-11 13:22\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -1982,7 +1982,7 @@ msgstr "Gleiche Höhe"
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.theme_customize
 msgid "Error"
-msgstr ""
+msgstr "Fehler"
 
 #. module: website
 #. openerp-web
