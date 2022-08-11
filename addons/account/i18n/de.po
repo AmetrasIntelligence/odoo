@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-01 12:20+0000\n"
-"PO-Revision-Date: 2022-08-11 14:12\n"
+"PO-Revision-Date: 2022-08-11 15:25\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -1855,7 +1855,7 @@ msgstr "Erscheint im Umsatzsteuerbericht"
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_account_tag__applicability
 msgid "Applicability"
-msgstr ""
+msgstr "Anwendbarkeit"
 
 #. module: account
 #: model:ir.model.fields.selection,name:account.selection__tax_adjustments_wizard__adjustment_type__credit
@@ -4021,7 +4021,7 @@ msgstr "Digitalisieren Sie Ihre gescannten oder PDF-Lieferantenrechnungen mit OC
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.view_move_form
 msgid "Disc.%"
-msgstr ""
+msgstr "Rab.%"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_move_line__discount
@@ -6324,7 +6324,7 @@ msgstr "Letzte Rechnungen & Zahlungen am Datum"
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_invoice_send__layout
 msgid "Layout"
-msgstr ""
+msgstr "Layout"
 
 #. module: account
 #: model:ir.ui.menu,name:account.menu_finance_entries_accounting_ledgers
@@ -6647,7 +6647,7 @@ msgstr "Mai"
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_payment__communication
 msgid "Memo"
-msgstr ""
+msgstr "Notiz"
 
 #. module: account
 #. openerp-web
@@ -7040,7 +7040,7 @@ msgstr "Anzahl Journale ohne Konto"
 #: model:ir.model.fields,field_description:account.field_account_move__name
 #: model:ir.model.fields,field_description:account.field_account_move_line__move_name
 msgid "Number"
-msgstr ""
+msgstr "Nummer"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_bank_statement__message_needaction_counter
@@ -7105,7 +7105,7 @@ msgstr "Oktober"
 #. module: account
 #: model:ir.model.fields.selection,name:account.selection__account_journal__invoice_reference_model__odoo
 msgid "Odoo"
-msgstr ""
+msgstr "Odoo"
 
 #. module: account
 #: model_terms:ir.actions.act_window,help:account.action_bank_statement_line
@@ -7275,12 +7275,12 @@ msgstr "Operation nicht erlaubt. Da der Buchung bereits eine Sequenznummer zugew
 #: code:addons/account/models/account.py:0
 #, python-format
 msgid "Operation not supported"
-msgstr ""
+msgstr "Vorgang wird nicht unterstützt"
 
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.account_journal_dashboard_kanban_view
 msgid "Operations"
-msgstr ""
+msgstr "Vorgänge"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_account_template__nocreate
@@ -7302,7 +7302,7 @@ msgstr "Optionaler eindeutiger Code, um in Summenformeln auf diese Zeile zu verw
 #: model:ir.model.fields,field_description:account.field_account_payment_term_line__option
 #: model_terms:ir.ui.view,arch_db:account.tax_adjustments_wizard
 msgid "Options"
-msgstr ""
+msgstr "Einstellungen"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_move__invoice_origin
@@ -7318,7 +7318,7 @@ msgstr "Originalrechnungen"
 #: model_terms:ir.ui.view,arch_db:account.view_move_line_tree
 #: model_terms:ir.ui.view,arch_db:account.view_move_line_tree_grouped
 msgid "Original Currency"
-msgstr ""
+msgstr "Originalwährung"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_move_line__payment_id
@@ -7607,7 +7607,7 @@ msgstr "Zahlungsabgleich"
 #: model:ir.model.fields,field_description:account.field_account_payment__payment_method_id
 #: model_terms:ir.ui.view,arch_db:account.view_account_payment_search
 msgid "Payment Method"
-msgstr ""
+msgstr "Zahlungsmethode"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_payment_register__payment_method_id
@@ -9110,12 +9110,12 @@ msgstr "Sende Beispiel"
 #: model:ir.model.fields.selection,name:account.selection__account_payment__state__sent
 #: model_terms:ir.ui.view,arch_db:account.view_account_payment_search
 msgid "Sent"
-msgstr ""
+msgstr "Gesendet"
 
 #. module: account
 #: model:ir.model.fields.selection,name:account.selection__res_company__fiscalyear_last_month__9
 msgid "September"
-msgstr ""
+msgstr "September"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_bank_statement_line__sequence
@@ -9202,7 +9202,7 @@ msgstr "Erfassen Sie die Daten Ihres Unternehmens für die Kopf- / Fußzeile von
 #. module: account
 #: model:ir.actions.server,name:account.model_account_move_action_share
 msgid "Share"
-msgstr ""
+msgstr "Teilen"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_journal__code
@@ -9281,12 +9281,12 @@ msgstr "Standardbedingungen & Ampel anzeigen; Bedingungen auf Rechnungen/Bestell
 #: code:addons/account/static/src/xml/account_reconciliation.xml:0
 #, python-format
 msgid "Skip"
-msgstr ""
+msgstr "Überspringen"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_res_config_settings__module_snailmail_account
 msgid "Snailmail"
-msgstr ""
+msgstr "Snailmail"
 
 #. module: account
 #. openerp-web
@@ -9310,7 +9310,7 @@ msgstr "Manchmal BIC oder SWIFT genannt"
 #: model_terms:ir.ui.view,arch_db:account.view_invoice_tree
 #: model_terms:ir.ui.view,arch_db:account.view_move_form
 msgid "Source Document"
-msgstr ""
+msgstr "Quelldokument"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_move__invoice_source_email
@@ -9446,7 +9446,7 @@ msgstr "Anzahl Stati"
 #: model_terms:ir.ui.view,arch_db:account.view_bank_statement_search
 #, python-format
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_journal__activity_state
@@ -9456,7 +9456,10 @@ msgid "Status based on activities\n"
 "Overdue: Due date is already passed\n"
 "Today: Activity date is today\n"
 "Planned: Future activities."
-msgstr ""
+msgstr "Status basierend auf Aktivitäten\n"
+"Überfällig: Fälligkeitsdatum ist bereits überschritten\n"
+"Heute: Aktivitätsdatum ist heute\n"
+"Geplant: Zukünftige Aktivitäten."
 
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.onboarding_bank_account_step
@@ -9522,7 +9525,7 @@ msgstr "In Erstattung/Gutschrift umwandeln"
 #: model:ir.model.fields,field_description:account.field_account_account_tag__name
 #: model:ir.model.fields,field_description:account.field_account_tax_report_line__tag_name
 msgid "Tag Name"
-msgstr ""
+msgstr "Tag Name"
 
 #. module: account
 #: code:addons/account/models/account.py:0
@@ -9543,7 +9546,7 @@ msgstr "Tag-Name und Formel schließen sich gegenseitig aus, sie sollten nicht z
 #: model_terms:ir.ui.view,arch_db:account.account_tag_view_form
 #: model_terms:ir.ui.view,arch_db:account.account_tag_view_tree
 msgid "Tags"
-msgstr ""
+msgstr "Tags"
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_move_line__tag_ids
@@ -9573,7 +9576,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:account.view_invoice_tree
 #: model_terms:ir.ui.view,arch_db:account.view_move_line_tax_audit_tree
 msgid "Tax"
-msgstr ""
+msgstr "Steuer"
 
 #. module: account
 #: code:addons/account/models/chart_template.py:0
@@ -9643,7 +9646,7 @@ msgstr "Steuerfälligkeit"
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.view_invoice_tree
 msgid "Tax Excluded"
-msgstr ""
+msgstr "Steuern exkludiert"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_tax_repartition_line__tag_ids
@@ -9855,7 +9858,7 @@ msgstr "Steuer-inkludiert"
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.res_config_settings_view_form
 msgid "TaxCloud"
-msgstr ""
+msgstr "TaxCloud"
 
 #. module: account
 #. openerp-web
@@ -10075,7 +10078,7 @@ msgstr "Geschäftsbedingungen"
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_move__narration
 msgid "Terms and Conditions"
-msgstr ""
+msgstr "Geschäftsbedingungen"
 
 #. module: account
 #. openerp-web
@@ -10670,7 +10673,7 @@ msgstr "Diese Arten werden in Abhängigkeit von Ihrem Land festgelegt. Die Art b
 #: code:addons/account/models/account_journal_dashboard.py:0
 #, python-format
 msgid "This Week"
-msgstr ""
+msgstr "Diese Woche"
 
 #. module: account
 #: model:ir.model.fields,help:account.field_res_partner__property_account_payable_id
@@ -10876,7 +10879,7 @@ msgstr "Um den Abgleich zu beschleunigen, definieren Sie"
 #: model_terms:ir.ui.view,arch_db:account.view_account_invoice_filter
 #: model_terms:ir.ui.view,arch_db:account.view_account_payment_search
 msgid "Today Activities"
-msgstr ""
+msgstr "Heutige Aktivitäten"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_bank_statement_cashbox__total
@@ -10893,7 +10896,7 @@ msgstr "Gesamt"
 #: model:ir.model.fields,field_description:account.field_account_accrual_accounting_wizard__total_amount
 #: model_terms:ir.ui.view,arch_db:account.view_move_tree
 msgid "Total Amount"
-msgstr ""
+msgstr "Gesamtbetrag"
 
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.view_move_line_tax_audit_tree
@@ -11143,7 +11146,7 @@ msgstr "Offene Posten"
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_move__amount_untaxed
 msgid "Untaxed Amount"
-msgstr ""
+msgstr "Nettobetrag"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_move__amount_untaxed_signed
@@ -11158,7 +11161,7 @@ msgstr "Nettobetrag"
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.view_move_form
 msgid "UoM"
-msgstr ""
+msgstr "Maßeinheit"
 
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.res_config_settings_view_form
@@ -11220,7 +11223,7 @@ msgstr "Vorlage verwenden"
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_account__used
 msgid "Used"
-msgstr ""
+msgstr "Verwendet"
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_account_type__include_initial_balance
@@ -11250,7 +11253,7 @@ msgstr "Wird verwendet, um einen Gewinn zu buchen, wenn der Saldo einer Kasse vo
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_move__user_id
 msgid "User"
-msgstr ""
+msgstr "Benutzer"
 
 #. module: account
 #: model:ir.model,name:account.model_res_users
@@ -11304,7 +11307,7 @@ msgstr "Bestätigt"
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_payment_term_line__value_amount
 msgid "Value"
-msgstr ""
+msgstr "Wert"
 
 #. module: account
 #: model:ir.model.fields.selection,name:account.selection__account_payment__partner_type__supplier
@@ -11312,7 +11315,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:account.view_invoice_tree
 #: model_terms:ir.ui.view,arch_db:account.view_move_form
 msgid "Vendor"
-msgstr ""
+msgstr "Lieferant"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_move__invoice_vendor_bill_id
@@ -11320,7 +11323,7 @@ msgstr ""
 #: model:ir.model.fields.selection,name:account.selection__account_move__type__in_invoice
 #: model_terms:ir.ui.view,arch_db:account.report_invoice_document
 msgid "Vendor Bill"
-msgstr ""
+msgstr "Lieferantenrechnung"
 
 #. module: account
 #: code:addons/account/models/account_move.py:0
