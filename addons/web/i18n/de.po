@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-27 10:17+0000\n"
-"PO-Revision-Date: 2022-08-11 13:21\n"
+"PO-Revision-Date: 2022-08-11 14:13\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -2743,7 +2743,7 @@ msgstr ""
 #: code:addons/web/static/src/js/fields/basic_fields.js:0
 #, python-format
 msgid "Phone"
-msgstr ""
+msgstr "Telefon"
 
 #. module: web
 #: model_terms:ir.ui.view,arch_db:web.external_layout_standard
