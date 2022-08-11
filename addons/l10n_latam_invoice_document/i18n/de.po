@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-29 15:07+0000\n"
-"PO-Revision-Date: 2022-08-11 10:55\n"
+"PO-Revision-Date: 2022-08-11 15:27\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -173,7 +173,7 @@ msgstr "Rechnungsstatistik"
 #: model:ir.model,name:l10n_latam_invoice_document.model_account_journal
 #: model:ir.model.fields,field_description:l10n_latam_invoice_document.field_ir_sequence__l10n_latam_journal_id
 msgid "Journal"
-msgstr ""
+msgstr "Journal"
 
 #. module: l10n_latam_invoice_document
 #: model:ir.model,name:l10n_latam_invoice_document.model_account_move
