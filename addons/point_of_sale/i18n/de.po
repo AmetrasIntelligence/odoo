@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-27 11:49+0000\n"
-"PO-Revision-Date: 2022-08-08 22:28\n"
+"PO-Revision-Date: 2022-08-11 10:56\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -479,7 +479,7 @@ msgstr "Für diesen Point-of-Sale ist bereits eine andere Sitzung  geöffnet."
 #: model_terms:ir.ui.view,arch_db:point_of_sale.pos_config_view_form
 #: model_terms:ir.ui.view,arch_db:point_of_sale.view_pos_config_search
 msgid "Archived"
-msgstr ""
+msgstr "Archiviert"
 
 #. module: point_of_sale
 #. openerp-web
@@ -1408,7 +1408,7 @@ msgstr "Getrennt"
 #: model:product.product,name:point_of_sale.product_product_consumable
 #: model:product.template,name:point_of_sale.product_product_consumable_product_template
 msgid "Discount"
-msgstr ""
+msgstr "Rabatt"
 
 #. module: point_of_sale
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_order_line__discount
