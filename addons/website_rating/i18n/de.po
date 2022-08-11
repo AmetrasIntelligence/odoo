@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-27 09:22+0000\n"
-"PO-Revision-Date: 2022-08-06 22:45\n"
+"PO-Revision-Date: 2022-08-11 14:13\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -89,7 +89,7 @@ msgstr "Löschen"
 #: code:addons/website_rating/static/src/xml/portal_tools.xml:0
 #, python-format
 msgid "Details"
-msgstr ""
+msgstr "Details"
 
 #. module: website_rating
 #. openerp-web
