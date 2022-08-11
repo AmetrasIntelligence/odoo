@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-27 09:21+0000\n"
-"PO-Revision-Date: 2022-08-06 23:36\n"
+"PO-Revision-Date: 2022-08-11 13:17\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -252,7 +252,7 @@ msgstr ""
 #: model:ir.model.fields.selection,name:crm_iap_lead.selection__crm_iap_lead_mining_request__state__error
 #: model_terms:ir.ui.view,arch_db:crm_iap_lead.crm_iap_lead_mining_request_search
 msgid "Error"
-msgstr ""
+msgstr "Fehler"
 
 #. module: crm_iap_lead
 #: model:ir.model,name:crm_iap_lead.model_ir_model_fields
