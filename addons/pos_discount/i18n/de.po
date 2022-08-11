@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-12 11:31+0000\n"
-"PO-Revision-Date: 2022-08-06 22:42\n"
+"PO-Revision-Date: 2022-08-11 10:56\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgstr "Ermöglicht dem Kassierer die Eingabe von Rabatten auf die gesamte Beste
 #: code:addons/pos_discount/static/src/xml/discount_templates.xml:6
 #, python-format
 msgid "Discount"
-msgstr ""
+msgstr "Rabatt"
 
 #. module: pos_discount
 #: model_terms:ir.ui.view,arch_db:pos_discount.pos_config_view_form_inherit_pos_discount
