@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-05 12:32+0000\n"
-"PO-Revision-Date: 2022-08-11 10:54\n"
+"PO-Revision-Date: 2022-08-11 15:25\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -306,7 +306,7 @@ msgstr "Beobachter (Partner)"
 #: model:ir.model.fields,field_description:analytic.field_account_analytic_account__group_id
 #: model:ir.model.fields,field_description:analytic.field_account_analytic_line__group_id
 msgid "Group"
-msgstr ""
+msgstr "Gruppe"
 
 #. module: analytic
 #: model_terms:ir.ui.view,arch_db:analytic.view_account_analytic_account_search
@@ -460,7 +460,7 @@ msgstr "Kontakt"
 #. module: analytic
 #: model:ir.model.fields,field_description:analytic.field_account_analytic_distribution__percentage
 msgid "Percentage"
-msgstr ""
+msgstr "Anteil"
 
 #. module: analytic
 #: model:ir.model.fields,field_description:analytic.field_account_analytic_line__unit_amount
@@ -503,7 +503,7 @@ msgstr "Setzen Sie active auf false, um das Analytic Tag auszublenden, ohne es z
 #. module: analytic
 #: model:ir.model.fields,field_description:analytic.field_account_analytic_line__tag_ids
 msgid "Tags"
-msgstr ""
+msgstr "Tags"
 
 #. module: analytic
 #: model:ir.model.constraint,message:analytic.constraint_account_analytic_distribution_check_percentage
@@ -544,7 +544,7 @@ msgstr "Zähler für ungelesene Nachrichten"
 #. module: analytic
 #: model:ir.model.fields,field_description:analytic.field_account_analytic_line__user_id
 msgid "User"
-msgstr ""
+msgstr "Benutzer"
 
 #. module: analytic
 #: model_terms:ir.ui.view,arch_db:analytic.view_account_analytic_account_form
