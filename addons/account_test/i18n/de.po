@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-26 08:16+0000\n"
-"PO-Revision-Date: 2022-08-11 10:54\n"
+"PO-Revision-Date: 2022-08-11 15:25\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgstr "<br/>\n"
 #. module: account_test
 #: model_terms:ir.ui.view,arch_db:account_test.report_accounttest
 msgid "<strong>Name:</strong>"
-msgstr ""
+msgstr "<strong>Name:</strong>"
 
 #. module: account_test
 #: model:ir.model,name:account_test.model_report_account_test_report_accounttest
@@ -178,7 +178,7 @@ msgstr "Name"
 #. module: account_test
 #: model_terms:ir.ui.view,arch_db:account_test.account_assert_form
 msgid "Python Code"
-msgstr ""
+msgstr "Python Code"
 
 #. module: account_test
 #: model:ir.model.fields,field_description:account_test.field_accounting_assert_test__code_exec
@@ -239,7 +239,7 @@ msgstr "Testbezeichnung"
 #: model_terms:ir.ui.view,arch_db:account_test.account_assert_form
 #: model_terms:ir.ui.view,arch_db:account_test.account_assert_tree
 msgid "Tests"
-msgstr ""
+msgstr "Tests"
 
 #. module: account_test
 #: code:addons/account_test/report/report_account_test.py:0
