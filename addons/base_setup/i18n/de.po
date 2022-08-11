@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-13 11:27+0000\n"
-"PO-Revision-Date: 2022-08-06 22:39\n"
+"PO-Revision-Date: 2022-08-11 15:25\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -200,7 +200,7 @@ msgstr "Unternehmensinformationen"
 #. module: base_setup
 #: model:ir.model.fields,field_description:base_setup.field_res_config_settings__company_name
 msgid "Company Name"
-msgstr ""
+msgstr "Name des Unternehmens"
 
 #. module: base_setup
 #: model:ir.model,name:base_setup.model_res_config_settings
@@ -299,7 +299,7 @@ msgstr "Fußzeilentext, der auf allen Berichten angezeigt wird."
 #. module: base_setup
 #: model_terms:ir.ui.view,arch_db:base_setup.res_config_settings_view_form
 msgid "Format"
-msgstr ""
+msgstr "Format"
 
 #. module: base_setup
 #. openerp-web
@@ -342,12 +342,12 @@ msgstr "Google-Kalender"
 #. module: base_setup
 #: model_terms:ir.ui.view,arch_db:base_setup.res_config_settings_view_form
 msgid "Google Drive"
-msgstr ""
+msgstr "Google Drive"
 
 #. module: base_setup
 #: model:ir.model.fields,field_description:base_setup.field_res_config_settings__module_google_spreadsheet
 msgid "Google Spreadsheet"
-msgstr ""
+msgstr "Google-Tabelle"
 
 #. module: base_setup
 #: model:ir.model,name:base_setup.model_ir_http
@@ -397,7 +397,7 @@ msgstr "Sprachen"
 #. module: base_setup
 #: model_terms:ir.ui.view,arch_db:base_setup.res_config_settings_view_form
 msgid "Layout"
-msgstr ""
+msgstr "Layout"
 
 #. module: base_setup
 #. openerp-web
@@ -461,14 +461,14 @@ msgstr "OAuth-Authentifizierung"
 #: code:addons/base_setup/static/src/xml/res_config_edition.xml:0
 #, python-format
 msgid "Odoo"
-msgstr ""
+msgstr "Odoo"
 
 #. module: base_setup
 #. openerp-web
 #: code:addons/base_setup/static/src/xml/res_config_edition.xml:0
 #, python-format
 msgid "Odoo S.A."
-msgstr ""
+msgstr "Odoo S.A."
 
 #. module: base_setup
 #: model_terms:ir.ui.view,arch_db:base_setup.res_config_settings_view_form
@@ -535,7 +535,7 @@ msgstr "Zeige Effekte"
 #. module: base_setup
 #: model_terms:ir.ui.view,arch_db:base_setup.res_config_settings_view_form
 msgid "Statistics"
-msgstr ""
+msgstr "Statistik"
 
 #. module: base_setup
 #: model_terms:ir.ui.view,arch_db:base_setup.res_config_settings_view_form
