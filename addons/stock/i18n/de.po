@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-27 09:21+0000\n"
-"PO-Revision-Date: 2022-08-11 14:13\n"
+"PO-Revision-Date: 2022-08-11 15:30\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -1559,7 +1559,7 @@ msgstr "Vorgegebene Menge ist 0"
 #: model:ir.model.fields,help:stock.field_stock_quant__product_uom_id
 #: model:ir.model.fields,help:stock.field_stock_warehouse_orderpoint__product_uom
 msgid "Default unit of measure used for all stock operations."
-msgstr ""
+msgstr "Standardmaßeinheit für alle Lagervorgänge."
 
 #. module: stock
 #: model:ir.model.fields.selection,name:stock.selection__stock_move__procure_method__make_to_stock
@@ -2677,7 +2677,7 @@ msgstr "Lagerort Bestandsaufnahme"
 #. module: stock
 #: model:ir.model,name:stock.model_stock_location
 msgid "Inventory Locations"
-msgstr ""
+msgstr "Lagerstandorte"
 
 #. module: stock
 #: model:ir.model.fields.selection,name:stock.selection__stock_location__usage__inventory
@@ -4231,7 +4231,7 @@ msgstr "Produkttyp"
 #: model:ir.model,name:stock.model_uom_uom
 #: model:ir.model.fields,field_description:stock.field_stock_inventory_line__product_uom_id
 msgid "Product Unit of Measure"
-msgstr ""
+msgstr "Produkt Mengeneinheit"
 
 #. module: stock
 #: model:ir.actions.act_window,name:stock.stock_product_normal_action
@@ -4564,7 +4564,7 @@ msgstr "Gebühren für die späte Kommissionierung"
 #: model_terms:ir.ui.view,arch_db:stock.view_move_search
 #: model_terms:ir.ui.view,arch_db:stock.view_picking_internal_search
 msgid "Ready"
-msgstr ""
+msgstr "Bereit"
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_move__product_qty
@@ -4803,7 +4803,7 @@ msgstr "Reserviert"
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_quant__reserved_quantity
 msgid "Reserved Quantity"
-msgstr ""
+msgstr "Reservierte Menge"
 
 #. module: stock
 #: model:ir.model.fields,help:stock.field_res_config_settings__module_procurement_jit
@@ -4975,7 +4975,7 @@ msgstr "SMS-Zustellungsfehler"
 #: model_terms:ir.ui.view,arch_db:stock.view_move_search
 #: model_terms:ir.ui.view,arch_db:stock.view_picking_internal_search
 msgid "Scheduled Date"
-msgstr ""
+msgstr "Geplantes Datum"
 
 #. module: stock
 #: model:ir.model.fields,help:stock.field_stock_move__date_expected
@@ -5309,7 +5309,7 @@ msgstr "Herkunft"
 #: model:ir.model.fields,field_description:stock.field_stock_scrap__origin
 #: model_terms:ir.ui.view,arch_db:stock.view_picking_internal_search
 msgid "Source Document"
-msgstr ""
+msgstr "Quelldokument"
 
 #. module: stock
 #: code:addons/stock/models/stock_rule.py:0
@@ -6389,7 +6389,7 @@ msgstr "Ansicht Lager"
 #: model_terms:ir.ui.view,arch_db:stock.stock_picking_type_kanban
 #: model_terms:ir.ui.view,arch_db:stock.view_picking_internal_search
 msgid "Waiting"
-msgstr ""
+msgstr "Wartend"
 
 #. module: stock
 #: model:ir.model.fields.selection,name:stock.selection__stock_move__state__waiting
