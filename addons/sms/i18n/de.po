@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-07 07:13+0000\n"
-"PO-Revision-Date: 2022-08-06 23:37\n"
+"PO-Revision-Date: 2022-08-11 13:21\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -308,7 +308,7 @@ msgstr ""
 #: model:ir.model.fields.selection,name:sms.selection__sms_sms__state__error
 #, python-format
 msgid "Error"
-msgstr ""
+msgstr "Fehler"
 
 #. module: sms
 #: model:ir.model.fields,field_description:sms.field_sms_sms__error_code
