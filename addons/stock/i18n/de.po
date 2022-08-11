@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-27 09:21+0000\n"
-"PO-Revision-Date: 2022-08-11 10:57\n"
+"PO-Revision-Date: 2022-08-11 13:21\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -1670,7 +1670,7 @@ msgstr "Lieferschein"
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_procurement_group__move_type
 msgid "Delivery Type"
-msgstr ""
+msgstr "Versandart"
 
 #. module: stock
 #: model:ir.model.fields,help:stock.field_product_product__sale_delay
@@ -1984,7 +1984,7 @@ msgstr ""
 #: code:addons/stock/static/src/xml/stock_traceability_report_backend.xml:0
 #, python-format
 msgid "Error"
-msgstr ""
+msgstr "Fehler"
 
 #. module: stock
 #: model_terms:ir.actions.act_window,help:stock.action_location_form
