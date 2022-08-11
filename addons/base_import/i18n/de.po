@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-23 11:32+0000\n"
-"PO-Revision-Date: 2022-08-06 22:39\n"
+"PO-Revision-Date: 2022-08-11 13:16\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -415,7 +415,7 @@ msgstr "Wenn das Modell openchatter verwendet, richtet die Historienverfolgung w
 #: code:addons/base_import/static/src/xml/base_import.xml:0
 #, python-format
 msgid "Import"
-msgstr ""
+msgstr "Import"
 
 #. module: base_import
 #. openerp-web
