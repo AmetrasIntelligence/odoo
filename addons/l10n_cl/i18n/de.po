@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-09-05 16:22+0000\n"
-"PO-Revision-Date: 2022-08-06 22:41\n"
+"PO-Revision-Date: 2022-08-11 15:27\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -305,7 +305,7 @@ msgstr ""
 #. module: l10n_cl
 #: model:ir.model,name:l10n_cl.model_account_journal
 msgid "Journal"
-msgstr ""
+msgstr "Journal"
 
 #. module: l10n_cl
 #: model:ir.model,name:l10n_cl.model_account_move
@@ -380,7 +380,7 @@ msgstr ""
 #. module: l10n_cl
 #: model:ir.model,name:l10n_cl.model_uom_uom
 msgid "Product Unit of Measure"
-msgstr ""
+msgstr "Produkt Mengeneinheit"
 
 #. module: l10n_cl
 #: model:ir.model.fields.selection,name:l10n_cl.selection__l10n_latam_document_type__internal_type__invoice_in
@@ -475,7 +475,7 @@ msgstr ""
 #. module: l10n_cl
 #: model_terms:ir.ui.view,arch_db:l10n_cl.view_complete_invoice_refund_tree
 msgid "Source Document"
-msgstr ""
+msgstr "Quelldokument"
 
 #. module: l10n_cl
 #: model:uom.uom,name:l10n_cl.product_uom_tmb
