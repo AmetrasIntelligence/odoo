@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-16 17:01+0000\n"
-"PO-Revision-Date: 2022-08-06 22:41\n"
+"PO-Revision-Date: 2022-08-11 10:55\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -30,7 +30,7 @@ msgstr "Aktiv"
 #. module: l10n_fi
 #: model_terms:ir.ui.view,arch_db:l10n_fi.res_partner_operator_einvoice_view_search
 msgid "Archived"
-msgstr ""
+msgstr "Archiviert"
 
 #. module: l10n_fi
 #: model:ir.model.fields.selection,name:l10n_fi.selection__res_partner_operator_einvoice__ttype__bank
