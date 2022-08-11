@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-05 12:34+0000\n"
-"PO-Revision-Date: 2022-08-08 01:51\n"
+"PO-Revision-Date: 2022-08-11 10:55\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -352,7 +352,7 @@ msgstr "Ein Benutzer kann nicht zweimal den gleichen Kontakt haben."
 #: model_terms:ir.ui.view,arch_db:calendar.view_calendar_event_form
 #: model_terms:ir.ui.view,arch_db:calendar.view_calendar_event_search
 msgid "Archived"
-msgstr ""
+msgstr "Archiviert"
 
 #. module: calendar
 #: model:ir.model,name:calendar.model_ir_attachment
