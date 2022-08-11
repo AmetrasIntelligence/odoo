@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-27 09:22+0000\n"
-"PO-Revision-Date: 2022-08-08 01:52\n"
+"PO-Revision-Date: 2022-08-11 10:56\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -337,7 +337,7 @@ msgstr "Mailing-Liste Quelle archivieren"
 #: model_terms:ir.ui.view,arch_db:mass_mailing.view_mail_mass_mailing_form
 #: model_terms:ir.ui.view,arch_db:mass_mailing.view_mail_mass_mailing_search
 msgid "Archived"
-msgstr ""
+msgstr "Archiviert"
 
 #. module: mass_mailing
 #: code:addons/mass_mailing/models/mailing_list.py:0
