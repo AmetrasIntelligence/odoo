@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-27 09:21+0000\n"
-"PO-Revision-Date: 2022-08-11 14:13\n"
+"PO-Revision-Date: 2022-08-12 08:02\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -2124,7 +2124,7 @@ msgstr ""
 #: model:ir.ui.menu,name:hr.hr_menu_hr_reports
 #: model:ir.ui.menu,name:hr.menu_hr_reporting_timesheet
 msgid "Reporting"
-msgstr ""
+msgstr "Berichte"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_job__requirements
