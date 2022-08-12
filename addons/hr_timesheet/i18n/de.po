@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-18 09:46+0000\n"
-"PO-Revision-Date: 2022-08-11 15:26\n"
+"PO-Revision-Date: 2022-08-12 08:02\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -388,7 +388,7 @@ msgstr "Verbleibende Stunden"
 #. module: hr_timesheet
 #: model:ir.ui.menu,name:hr_timesheet.menu_timesheets_reports
 msgid "Reporting"
-msgstr ""
+msgstr "Berichte"
 
 #. module: hr_timesheet
 #: code:addons/hr_timesheet/controllers/portal.py:0
