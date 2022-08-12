@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-05 12:32+0000\n"
-"PO-Revision-Date: 2022-08-12 08:02\n"
+"PO-Revision-Date: 2022-08-12 14:55\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -469,7 +469,7 @@ msgstr "Konfigurationseinstellung"
 #. module: crm
 #: model:ir.ui.menu,name:crm.crm_menu_config
 msgid "Configuration"
-msgstr ""
+msgstr "Konfiguration"
 
 #. module: crm
 #. openerp-web
@@ -2533,7 +2533,7 @@ msgstr "Benutzer"
 #. module: crm
 #: model:ir.model.fields,field_description:crm.field_crm_lead_scoring_frequency__value
 msgid "Value"
-msgstr ""
+msgstr "Wert"
 
 #. module: crm
 #: model:ir.model.fields,field_description:crm.field_crm_lead_scoring_frequency__variable
