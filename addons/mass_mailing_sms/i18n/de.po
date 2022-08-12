@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-27 10:11+0000\n"
-"PO-Revision-Date: 2022-08-06 23:37\n"
+"PO-Revision-Date: 2022-08-12 08:02\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -367,7 +367,7 @@ msgstr ""
 #. module: mass_mailing_sms
 #: model:ir.ui.menu,name:mass_mailing_sms.mass_mailing_sms_menu_reporting
 msgid "Reporting"
-msgstr ""
+msgstr "Berichte"
 
 #. module: mass_mailing_sms
 #: model:ir.model.fields,field_description:mass_mailing_sms.field_mailing_trace__sms_sms_id
