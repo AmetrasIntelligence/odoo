@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-05 12:33+0000\n"
-"PO-Revision-Date: 2022-08-11 10:56\n"
+"PO-Revision-Date: 2022-08-12 14:58\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -113,7 +113,7 @@ msgstr "Unternehmen"
 #. module: sales_team
 #: model:ir.ui.menu,name:sales_team.menu_sale_config
 msgid "Configuration"
-msgstr ""
+msgstr "Konfiguration"
 
 #. module: sales_team
 #: model:ir.model,name:sales_team.model_res_partner
