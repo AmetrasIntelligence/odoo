@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-05 12:34+0000\n"
-"PO-Revision-Date: 2022-08-11 14:13\n"
+"PO-Revision-Date: 2022-08-12 08:02\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -1485,7 +1485,7 @@ msgstr "Produkt-Auswertung"
 #: model:ir.ui.menu,name:lunch.lunch_product_menu
 #: model_terms:ir.ui.view,arch_db:lunch.lunch_product_category_view_form
 msgid "Products"
-msgstr ""
+msgstr "Produkte"
 
 #. module: lunch
 #: model_terms:ir.ui.view,arch_db:lunch.lunch_product_view_form
