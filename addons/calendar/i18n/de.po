@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-05 12:34+0000\n"
-"PO-Revision-Date: 2022-08-11 14:13\n"
+"PO-Revision-Date: 2022-08-12 13:04\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -666,7 +666,7 @@ msgstr "Fünfter"
 #. module: calendar
 #: model:ir.model.fields.selection,name:calendar.selection__calendar_event__byday__1
 msgid "First"
-msgstr "Hoch"
+msgstr "Erste"
 
 #. module: calendar
 #: code:addons/calendar/models/calendar.py:0
@@ -1202,7 +1202,7 @@ msgstr "Meetings suchen"
 #. module: calendar
 #: model:ir.model.fields.selection,name:calendar.selection__calendar_event__byday__2
 msgid "Second"
-msgstr "Mittel"
+msgstr "Zweite"
 
 #. module: calendar
 #: model_terms:ir.ui.view,arch_db:calendar.view_calendar_event_form
