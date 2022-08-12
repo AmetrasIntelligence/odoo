@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-05 12:32+0000\n"
-"PO-Revision-Date: 2022-08-11 15:29\n"
+"PO-Revision-Date: 2022-08-12 08:01\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -77,7 +77,7 @@ msgstr "Archiviert"
 #. module: sale_management
 #: model:ir.ui.menu,name:sale_management.menu_product_attribute_action
 msgid "Attributes"
-msgstr ""
+msgstr "Attribute"
 
 #. module: sale_management
 #: code:addons/sale_management/models/sale_order_template.py:0
