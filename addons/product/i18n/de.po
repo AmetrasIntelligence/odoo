@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-27 09:22+0000\n"
-"PO-Revision-Date: 2022-08-11 16:26\n"
+"PO-Revision-Date: 2022-08-12 08:02\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -350,7 +350,7 @@ msgstr "Attributswerte"
 #: model_terms:ir.ui.view,arch_db:product.product_template_attribute_value_view_tree
 #: model_terms:ir.ui.view,arch_db:product.product_template_search_view
 msgid "Attributes"
-msgstr ""
+msgstr "Attribute"
 
 #. module: product
 #: model_terms:ir.ui.view,arch_db:product.product_pricelist_view
@@ -603,7 +603,7 @@ msgstr "Eine neue Preisliste erstellen"
 #: model_terms:ir.actions.act_window,help:product.product_template_action
 #: model_terms:ir.actions.act_window,help:product.product_template_action_all
 msgid "Create a new product"
-msgstr ""
+msgstr "Neues Produkt erstellen"
 
 #. module: product
 #: model_terms:ir.actions.act_window,help:product.product_normal_action
@@ -1730,7 +1730,7 @@ msgstr "Produktverpackung (PDF)"
 #: model:ir.model.fields,field_description:product.field_res_config_settings__group_stock_packaging
 #: model_terms:ir.ui.view,arch_db:product.product_packaging_tree_view
 msgid "Product Packagings"
-msgstr ""
+msgstr "Verpackungen"
 
 #. module: product
 #: model:ir.model,name:product.model_report_product_report_pricelist
@@ -1795,7 +1795,7 @@ msgstr "Werte der Produktvarianten"
 #: model_terms:ir.ui.view,arch_db:product.product_product_tree_view
 #: model_terms:ir.ui.view,arch_db:product.product_product_view_activity
 msgid "Product Variants"
-msgstr ""
+msgstr "Produkt Varianten"
 
 #. module: product
 #: code:addons/product/models/product_pricelist.py:0
@@ -1813,7 +1813,7 @@ msgstr "Produkt: %s"
 #: model_terms:ir.ui.view,arch_db:product.product_template_view_activity
 #: model_terms:ir.ui.view,arch_db:product.res_config_settings_view_form
 msgid "Products"
-msgstr ""
+msgstr "Produkte"
 
 #. module: product
 #: model_terms:ir.ui.view,arch_db:product.product_pricelist_view_search
@@ -1962,7 +1962,7 @@ msgstr "Varianten-Matrix"
 #: model_terms:ir.ui.view,arch_db:product.product_product_tree_view
 #: model_terms:ir.ui.view,arch_db:product.product_template_tree_view
 msgid "Sales Price"
-msgstr ""
+msgstr "Verkaufspreis"
 
 #. module: product
 #: model:ir.model.fields,help:product.field_product_product__categ_id
@@ -2322,7 +2322,7 @@ msgstr "Einheiten"
 #. module: product
 #: model:ir.model.fields,field_description:product.field_res_config_settings__group_uom
 msgid "Units of Measure"
-msgstr ""
+msgstr "Mengeneinheiten"
 
 #. module: product
 #: model:ir.model.fields,field_description:product.field_product_product__message_unread
@@ -2468,7 +2468,7 @@ msgstr "Lieferanteninformation"
 #. module: product
 #: model:ir.actions.act_window,name:product.product_supplierinfo_type_action
 msgid "Vendor Pricelists"
-msgstr ""
+msgstr "Lieferantenpreislisten"
 
 #. module: product
 #: model:ir.model.fields,field_description:product.field_product_supplierinfo__product_code
