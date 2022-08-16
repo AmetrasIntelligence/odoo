@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-18 09:48+0000\n"
-"PO-Revision-Date: 2022-08-06 22:45\n"
+"PO-Revision-Date: 2022-08-16 15:04\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -323,7 +323,7 @@ msgstr "Designvorlage updaten"
 #: model:ir.model.fields,field_description:website_theme_install.field_theme_website_menu__url
 #: model:ir.model.fields,field_description:website_theme_install.field_theme_website_page__url
 msgid "Url"
-msgstr ""
+msgstr "Url"
 
 #. module: website_theme_install
 #: model_terms:ir.ui.view,arch_db:website_theme_install.theme_view_kanban
