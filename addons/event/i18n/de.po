@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-05 12:33+0000\n"
-"PO-Revision-Date: 2022-08-12 14:55\n"
+"PO-Revision-Date: 2022-08-16 15:04\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -2064,7 +2064,7 @@ msgstr "Standard-Zeitzone verwenden"
 #. module: event
 #: model:res.groups,name:event.group_event_user
 msgid "User"
-msgstr ""
+msgstr "Benutzer"
 
 #. module: event
 #: model_terms:ir.ui.view,arch_db:event.view_event_type_form
