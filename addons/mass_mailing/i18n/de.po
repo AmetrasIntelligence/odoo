@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-27 09:22+0000\n"
-"PO-Revision-Date: 2022-08-12 14:56\n"
+"PO-Revision-Date: 2022-08-16 15:03\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -2232,7 +2232,7 @@ msgstr "Jetzt verwenden"
 #. module: mass_mailing
 #: model:res.groups,name:mass_mailing.group_mass_mailing_user
 msgid "User"
-msgstr ""
+msgstr "Benutzer"
 
 #. module: mass_mailing
 #: model_terms:ir.ui.view,arch_db:mass_mailing.view_mail_mass_mailing_contact_search
