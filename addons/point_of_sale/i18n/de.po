@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-27 11:49+0000\n"
-"PO-Revision-Date: 2022-08-12 14:57\n"
+"PO-Revision-Date: 2022-08-16 15:04\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -4793,7 +4793,7 @@ msgstr "Verwenden Sie die Anmeldeinformationen der Mitarbeiter, um sich an der P
 #: model_terms:ir.ui.view,arch_db:point_of_sale.view_report_pos_order_search
 #: model:res.groups,name:point_of_sale.group_pos_user
 msgid "User"
-msgstr ""
+msgstr "Benutzer"
 
 #. module: point_of_sale
 #: model:ir.actions.report,name:point_of_sale.report_user_label
