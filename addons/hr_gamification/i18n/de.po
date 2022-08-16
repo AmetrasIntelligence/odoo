@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-12 11:32+0000\n"
-"PO-Revision-Date: 2022-08-06 22:40\n"
+"PO-Revision-Date: 2022-08-16 15:04\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -204,7 +204,7 @@ msgstr "Der ausgewählte Mitarbeiter/ die ausgewählte Mitarbeiterin entspricht 
 #. module: hr_gamification
 #: model:ir.model.fields,field_description:hr_gamification.field_gamification_badge_user_wizard__user_id
 msgid "User"
-msgstr ""
+msgstr "Benutzer"
 
 #. module: hr_gamification
 #: model:ir.model,name:hr_gamification.model_res_users
