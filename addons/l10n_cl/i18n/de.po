@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-09-05 16:22+0000\n"
-"PO-Revision-Date: 2022-08-11 15:27\n"
+"PO-Revision-Date: 2022-08-16 10:09\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -65,7 +65,7 @@ msgstr "<span>Steuern</span>"
 #. module: l10n_cl
 #: model_terms:ir.ui.view,arch_db:l10n_cl.informations
 msgid "<strong>Due Date:</strong>"
-msgstr ""
+msgstr "<strong>Fälligkeitsdatum:</strong>"
 
 #. module: l10n_cl
 #: model_terms:ir.ui.view,arch_db:l10n_cl.informations
