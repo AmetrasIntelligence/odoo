@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-01 12:20+0000\n"
-"PO-Revision-Date: 2022-08-12 08:01\n"
+"PO-Revision-Date: 2022-08-16 10:09\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -556,7 +556,7 @@ msgstr "<span>Berichte</span>"
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.report_invoice_document
 msgid "<span>Source Document</span>"
-msgstr ""
+msgstr "<span>Referenzbeleg</span>"
 
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.report_invoice_document
@@ -626,7 +626,7 @@ msgstr "<strong>Kunde: </strong>"
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.report_invoice_document
 msgid "<strong>Due Date:</strong>"
-msgstr ""
+msgstr "<strong>Fälligkeitsdatum:</strong>"
 
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.report_statement
