@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-27 09:22+0000\n"
-"PO-Revision-Date: 2022-08-12 14:56\n"
+"PO-Revision-Date: 2022-08-16 15:04\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -2738,7 +2738,7 @@ msgstr "Zähler für ungelesene Nachrichten"
 #. module: hr_holidays
 #: model:ir.model.fields,field_description:hr_holidays.field_hr_leave__user_id
 msgid "User"
-msgstr ""
+msgstr "Benutzer"
 
 #. module: hr_holidays
 #. openerp-web
