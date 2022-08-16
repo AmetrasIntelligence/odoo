@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-05 12:34+0000\n"
-"PO-Revision-Date: 2022-08-12 14:56\n"
+"PO-Revision-Date: 2022-08-16 14:03\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -1004,7 +1004,7 @@ msgstr "Standort"
 #. module: lunch
 #: model:ir.model.fields,field_description:lunch.field_lunch_location__name
 msgid "Location Name"
-msgstr ""
+msgstr "Name Lagerort"
 
 #. module: lunch
 #: model:ir.ui.menu,name:lunch.lunch_location_menu
