@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-27 09:22+0000\n"
-"PO-Revision-Date: 2022-08-17 13:42\n"
+"PO-Revision-Date: 2022-08-17 14:59\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -297,7 +297,7 @@ msgstr "Konnte keine Preisliste passend zu Produkt und Menge finden.\n\n"
 #: model_terms:ir.ui.view,arch_db:repair.view_make_invoice
 #: model_terms:ir.ui.view,arch_db:repair.view_repair_order_form
 msgid "Create Invoice"
-msgstr ""
+msgstr "Rechnung erstellen"
 
 #. module: repair
 #: model:ir.model,name:repair.model_repair_order_make_invoice
@@ -1038,7 +1038,7 @@ msgstr "Reparatur starten"
 #: model:ir.model.fields,field_description:repair.field_repair_order__state
 #: model_terms:ir.ui.view,arch_db:repair.view_repair_order_form_filter
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #. module: repair
 #: model:ir.model.fields,help:repair.field_repair_order__activity_state
@@ -1142,7 +1142,7 @@ msgstr "Gesamt"
 #. module: repair
 #: model_terms:ir.ui.view,arch_db:repair.view_repair_order_form
 msgid "Total amount"
-msgstr ""
+msgstr "Gesamtbetrag"
 
 #. module: repair
 #: model:ir.model,name:repair.model_stock_traceability_report
