@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-27 09:22+0000\n"
-"PO-Revision-Date: 2022-08-17 15:00\n"
+"PO-Revision-Date: 2022-08-17 15:59\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -1485,7 +1485,7 @@ msgstr "Tage"
 #: model_terms:ir.ui.view,arch_db:mail.mail_activity_view_search
 #, python-format
 msgid "Deadline"
-msgstr ""
+msgstr "Deadline"
 
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.message_user_assigned
