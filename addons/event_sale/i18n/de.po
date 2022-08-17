@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-07 07:12+0000\n"
-"PO-Revision-Date: 2022-08-11 14:13\n"
+"PO-Revision-Date: 2022-08-17 09:39\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -432,7 +432,7 @@ msgstr "Herkunft Verkaufsauftrag"
 #: model:event.event.ticket,name:event_sale.event_0_ticket_1
 #: model:event.event.ticket,name:event_sale.event_2_ticket_1
 msgid "Standard"
-msgstr ""
+msgstr "Standard"
 
 #. module: event_sale
 #: code:addons/event_sale/models/event.py:0
