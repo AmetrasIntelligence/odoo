@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-05 12:34+0000\n"
-"PO-Revision-Date: 2022-08-17 12:46\n"
+"PO-Revision-Date: 2022-08-17 15:59\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -1116,7 +1116,7 @@ msgstr ""
 #. module: website_event_track
 #: model:ir.model.constraint,message:website_event_track.constraint_event_track_tag_name_uniq
 msgid "Tag name already exists !"
-msgstr ""
+msgstr "Der Tag existiert bereits !"
 
 #. module: website_event_track
 #: model:ir.model.fields,field_description:website_event_track.field_event_track__tag_ids
