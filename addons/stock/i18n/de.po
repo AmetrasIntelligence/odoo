@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-27 09:21+0000\n"
-"PO-Revision-Date: 2022-08-17 14:59\n"
+"PO-Revision-Date: 2022-08-17 15:59\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -3478,7 +3478,7 @@ msgstr "Normalversand"
 #: model:ir.model.fields.selection,name:stock.selection__stock_move__priority__0
 #: model:ir.model.fields.selection,name:stock.selection__stock_picking__priority__0
 msgid "Not urgent"
-msgstr ""
+msgstr "Nicht dringend"
 
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.view_picking_form
@@ -6140,7 +6140,7 @@ msgstr "Art"
 #: model:ir.model.fields,field_description:stock.field_stock_picking_type__code
 #: model_terms:ir.ui.view,arch_db:stock.view_pickingtype_filter
 msgid "Type of Operation"
-msgstr ""
+msgstr "Operationstyp"
 
 #. module: stock
 #: model:ir.model.fields,help:stock.field_stock_picking__activity_exception_decoration
@@ -6240,7 +6240,7 @@ msgstr ""
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.view_picking_form
 msgid "Unlock"
-msgstr ""
+msgstr "Entsperren"
 
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.view_quant_package_form
@@ -6296,7 +6296,7 @@ msgstr "Menge aktualisieren"
 #: model:ir.model.fields.selection,name:stock.selection__stock_move__priority__2
 #: model:ir.model.fields.selection,name:stock.selection__stock_picking__priority__2
 msgid "Urgent"
-msgstr ""
+msgstr "Dringend"
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_move_line__picking_type_use_existing_lots
@@ -6372,7 +6372,7 @@ msgstr "Lagerorte der Lieferanten"
 #: model:ir.model.fields.selection,name:stock.selection__stock_move__priority__3
 #: model:ir.model.fields.selection,name:stock.selection__stock_picking__priority__3
 msgid "Very Urgent"
-msgstr ""
+msgstr "Sehr dringlich"
 
 #. module: stock
 #: model:ir.model.fields.selection,name:stock.selection__stock_location__usage__view
