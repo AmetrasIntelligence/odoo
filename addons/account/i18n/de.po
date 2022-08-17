@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-01 12:20+0000\n"
-"PO-Revision-Date: 2022-08-16 10:09\n"
+"PO-Revision-Date: 2022-08-17 16:56\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -4127,7 +4127,7 @@ msgstr "Bewahren Sie keine Kopie der E-Mail in der Historie des Dokuments auf (n
 #: model:ir.model.fields.selection,name:account.selection__res_company__account_setup_coa_state__done
 #: model:ir.model.fields.selection,name:account.selection__res_company__account_setup_fy_data_state__done
 msgid "Done"
-msgstr ""
+msgstr "Erledigt"
 
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.portal_invoice_page
