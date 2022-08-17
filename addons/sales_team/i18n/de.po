@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-05 12:33+0000\n"
-"PO-Revision-Date: 2022-08-12 14:58\n"
+"PO-Revision-Date: 2022-08-17 15:59\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -389,12 +389,12 @@ msgstr "Verkaufsteam des Benutzers"
 #. module: sales_team
 #: model:res.groups,name:sales_team.group_sale_salesman_all_leads
 msgid "User: All Documents"
-msgstr ""
+msgstr "Benutzer: Alle Dokumente"
 
 #. module: sales_team
 #: model:res.groups,name:sales_team.group_sale_salesman
 msgid "User: Own Documents Only"
-msgstr ""
+msgstr "Benutzer: Nur eigene Dokumente"
 
 #. module: sales_team
 #: model:ir.model,name:sales_team.model_res_users
