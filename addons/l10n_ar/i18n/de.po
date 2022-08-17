@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-15 13:31+0000\n"
-"PO-Revision-Date: 2022-08-11 15:27\n"
+"PO-Revision-Date: 2022-08-17 15:00\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -1139,7 +1139,7 @@ msgstr "Einheiten"
 #. module: l10n_ar
 #: model:ir.model.fields.selection,name:l10n_ar.selection__account_tax_group__l10n_ar_vat_afip_code__1
 msgid "Untaxed"
-msgstr ""
+msgstr "Unbesteuert"
 
 #. module: l10n_ar
 #: model:product.product,name:l10n_ar.product_product_no_gravado
