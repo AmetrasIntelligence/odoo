@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-27 11:49+0000\n"
-"PO-Revision-Date: 2022-08-16 15:04\n"
+"PO-Revision-Date: 2022-08-17 13:42\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -4749,7 +4749,7 @@ msgstr "Nicht unterstütztes Dateiformat"
 #. module: point_of_sale
 #: model_terms:ir.ui.view,arch_db:point_of_sale.view_pos_pos_form
 msgid "UoM"
-msgstr ""
+msgstr "Maßeinheit"
 
 #. module: point_of_sale
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_config__use_existing_lots
