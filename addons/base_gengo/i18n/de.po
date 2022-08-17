@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-22 08:19+0000\n"
-"PO-Revision-Date: 2022-08-06 22:38\n"
+"PO-Revision-Date: 2022-08-17 09:39\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -273,7 +273,7 @@ msgstr "Sende neue Konditionen"
 #. module: base_gengo
 #: model:ir.model.fields.selection,name:base_gengo.selection__ir_translation__gengo_translation__standard
 msgid "Standard"
-msgstr ""
+msgstr "Standard"
 
 #. module: base_gengo
 #: model:ir.model.fields,field_description:base_gengo.field_base_gengo_translations__sync_type
