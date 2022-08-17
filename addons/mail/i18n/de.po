@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-27 09:22+0000\n"
-"PO-Revision-Date: 2022-08-16 15:04\n"
+"PO-Revision-Date: 2022-08-17 13:42\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -1880,7 +1880,7 @@ msgstr "E-mail"
 #. module: mail
 #: model:ir.model.fields,field_description:mail.field_mail_blacklist__email
 msgid "Email Address"
-msgstr ""
+msgstr "E-Mail Adresse"
 
 #. module: mail
 #: model:ir.model,name:mail.model_mail_address_mixin
