@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-27 09:22+0000\n"
-"PO-Revision-Date: 2022-08-06 22:41\n"
+"PO-Revision-Date: 2022-08-17 14:59\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -193,7 +193,7 @@ msgstr "Subunternehmer"
 #. module: mrp_subcontracting
 #: model:ir.model,name:mrp_subcontracting.model_product_supplierinfo
 msgid "Supplier Pricelist"
-msgstr ""
+msgstr "Lieferantenpreisliste"
 
 #. module: mrp_subcontracting
 #: model:ir.model.fields,field_description:mrp_subcontracting.field_stock_move__is_subcontract
