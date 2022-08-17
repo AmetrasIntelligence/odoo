@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-27 09:22+0000\n"
-"PO-Revision-Date: 2022-08-17 15:59\n"
+"PO-Revision-Date: 2022-08-17 16:56\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -1761,7 +1761,7 @@ msgstr "Dokument kann nicht heruntergeladen werden"
 #: code:addons/mail/static/src/xml/activity.xml:0
 #, python-format
 msgid "Done"
-msgstr ""
+msgstr "Erledigt"
 
 #. module: mail
 #. openerp-web
