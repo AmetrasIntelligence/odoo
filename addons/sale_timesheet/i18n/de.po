@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-27 09:22+0000\n"
-"PO-Revision-Date: 2022-08-17 14:59\n"
+"PO-Revision-Date: 2022-08-17 16:56\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -366,7 +366,7 @@ msgstr "Aufgabe nicht erstellen"
 #: model:project.task.type,legend_done:sale_timesheet.project_stage_fixed
 #: model:project.task.type,name:sale_timesheet.project_from_sale_order_1_done
 msgid "Done"
-msgstr ""
+msgstr "Erledigt"
 
 #. module: sale_timesheet
 #: model:ir.model.fields,field_description:sale_timesheet.field_project_create_sale_order_line__employee_id
