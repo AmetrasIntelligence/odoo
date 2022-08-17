@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-07 07:13+0000\n"
-"PO-Revision-Date: 2022-08-11 13:22\n"
+"PO-Revision-Date: 2022-08-17 13:43\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -315,7 +315,7 @@ msgstr "Technische Daten auf dem Kontaktformular"
 #. module: website_form
 #: model_terms:ir.ui.view,arch_db:website_form.snippet_options
 msgid "Text"
-msgstr ""
+msgstr "Text"
 
 #. module: website_form
 #: model_terms:ir.ui.view,arch_db:website_form.contactus_thanks_ir_ui_view
