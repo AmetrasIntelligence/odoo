@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-23 11:31+0000\n"
-"PO-Revision-Date: 2022-08-18 13:38\n"
+"PO-Revision-Date: 2022-08-18 15:53\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -166,7 +166,7 @@ msgstr "Verkaufsteam"
 #: model_terms:ir.ui.view,arch_db:website_crm.res_config_settings_view_form
 #, python-format
 msgid "Salesperson"
-msgstr ""
+msgstr "Verkäufer"
 
 #. module: website_crm
 #: model_terms:ir.ui.view,arch_db:website_crm.contactus_form
