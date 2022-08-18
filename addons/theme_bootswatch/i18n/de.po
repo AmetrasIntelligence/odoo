@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-21 13:18+0000\n"
-"PO-Revision-Date: 2022-08-06 22:44\n"
+"PO-Revision-Date: 2022-08-18 13:38\n"
 "Last-Translator: <>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -25,5 +25,5 @@ msgstr "Werkzeuge"
 #. module: theme_bootswatch
 #: model:ir.actions.act_url,name:theme_bootswatch.action_website
 msgid "Website"
-msgstr ""
+msgstr "Website"
 
