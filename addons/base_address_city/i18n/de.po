@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-12 11:31+0000\n"
-"PO-Revision-Date: 2022-08-06 22:38\n"
+"PO-Revision-Date: 2022-08-18 11:31\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -43,7 +43,7 @@ msgstr "Stadt"
 #: model:ir.model.fields,field_description:base_address_city.field_res_partner__city_id
 #: model:ir.model.fields,field_description:base_address_city.field_res_users__city_id
 msgid "City of Address"
-msgstr ""
+msgstr "Stadt der Anschrift"
 
 #. module: base_address_city
 #: model:ir.model,name:base_address_city.model_res_partner
