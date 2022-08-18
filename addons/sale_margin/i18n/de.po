@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-12 11:32+0000\n"
-"PO-Revision-Date: 2022-08-06 22:43\n"
+"PO-Revision-Date: 2022-08-18 08:01\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -32,7 +32,7 @@ msgstr "Zeigt die Spanne zwischen Einstands- und Verkaufspreis"
 #: model:ir.model.fields,field_description:sale_margin.field_sale_order_line__margin
 #: model:ir.model.fields,field_description:sale_margin.field_sale_report__margin
 msgid "Margin"
-msgstr ""
+msgstr "Marge"
 
 #. module: sale_margin
 #: model:ir.model,name:sale_margin.model_sale_report
