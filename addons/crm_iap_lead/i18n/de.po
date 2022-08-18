@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-27 09:21+0000\n"
-"PO-Revision-Date: 2022-08-18 13:38\n"
+"PO-Revision-Date: 2022-08-18 15:54\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -597,7 +597,7 @@ msgstr "Verkaufsteam"
 #: model:ir.model.fields,field_description:crm_iap_lead.field_crm_iap_lead_mining_request__user_id
 #: model_terms:ir.ui.view,arch_db:crm_iap_lead.crm_iap_lead_mining_request_search
 msgid "Salesperson"
-msgstr ""
+msgstr "Verkäufer"
 
 #. module: crm_iap_lead
 #: model:crm.iap.lead.industry,name:crm_iap_lead.crm_iap_lead_industry_164
