@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-07 07:13+0000\n"
-"PO-Revision-Date: 2022-08-18 11:31\n"
+"PO-Revision-Date: 2022-08-18 13:38\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -355,7 +355,7 @@ msgstr "Wir melden uns in Kürze bei Ihnen."
 #. module: website_form
 #: model:ir.model,name:website_form.model_website
 msgid "Website"
-msgstr ""
+msgstr "Website"
 
 #. module: website_form
 #: model:ir.model.fields,field_description:website_form.field_ir_model__website_form_key
