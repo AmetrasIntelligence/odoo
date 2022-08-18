@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-27 09:22+0000\n"
-"PO-Revision-Date: 2022-08-18 08:01\n"
+"PO-Revision-Date: 2022-08-18 11:31\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -3321,7 +3321,7 @@ msgstr "wurde gesendet. Klicken Sie hier, um auf die Frage zuzugreifen:"
 #: code:addons/website_forum/static/src/xml/website_forum_share_templates.xml:0
 #, python-format
 msgid "here"
-msgstr ""
+msgstr "hier"
 
 #. module: website_forum
 #: model_terms:forum.forum,faq:website_forum.forum_help
