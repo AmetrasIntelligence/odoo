@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-27 09:21+0000\n"
-"PO-Revision-Date: 2022-08-18 08:01\n"
+"PO-Revision-Date: 2022-08-18 13:38\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -1086,7 +1086,7 @@ msgstr "Erfahrener Entwickler"
 #. module: hr
 #: model:ir.model.fields.selection,name:hr.selection__hr_employee__gender__female
 msgid "Female"
-msgstr ""
+msgstr "Weiblich"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_employee__study_field
@@ -1152,7 +1152,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:hr.field_hr_employee__gender
 #: model:ir.model.fields,field_description:hr.field_res_users__gender
 msgid "Gender"
-msgstr ""
+msgstr "Geschlecht"
 
 #. module: hr
 #: model_terms:ir.ui.view,arch_db:hr.view_employee_form
@@ -1518,7 +1518,7 @@ msgstr "Hauptanhang"
 #. module: hr
 #: model:ir.model.fields.selection,name:hr.selection__hr_employee__gender__male
 msgid "Male"
-msgstr ""
+msgstr "Männlich"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_department__manager_id
