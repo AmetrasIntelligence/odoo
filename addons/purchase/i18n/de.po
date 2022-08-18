@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-05 12:32+0000\n"
-"PO-Revision-Date: 2022-08-17 16:56\n"
+"PO-Revision-Date: 2022-08-18 08:56\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -1446,7 +1446,7 @@ msgstr "In den letzten 365 Tagen gekauft"
 #. module: purchase
 #: model_terms:ir.ui.view,arch_db:purchase.res_partner_view_purchase_buttons
 msgid "Purchases"
-msgstr ""
+msgstr "Einkäufe"
 
 #. module: purchase
 #: model:ir.model,name:purchase.model_purchase_bill_union
