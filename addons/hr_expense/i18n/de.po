@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-05 09:01+0000\n"
-"PO-Revision-Date: 2022-08-18 14:51\n"
+"PO-Revision-Date: 2022-08-18 15:54\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -1109,7 +1109,7 @@ msgstr "Zahlungsmethode"
 #. module: hr_expense
 #: model:ir.model.fields,field_description:hr_expense.field_hr_expense_sheet_register_payment_wizard__payment_method_id
 msgid "Payment Type"
-msgstr ""
+msgstr "Zahlungsart"
 
 #. module: hr_expense
 #: code:addons/hr_expense/models/hr_expense.py:0
