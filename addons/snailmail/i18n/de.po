@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-27 09:11+0000\n"
-"PO-Revision-Date: 2022-08-17 14:59\n"
+"PO-Revision-Date: 2022-08-18 13:38\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -625,5 +625,5 @@ msgstr "PLZ"
 #: model:ir.model.fields,field_description:snailmail.field_snailmail_letter__zip
 #: model:ir.model.fields,field_description:snailmail.field_snailmail_letter_missing_required_fields__zip
 msgid "Zip"
-msgstr ""
+msgstr "PLZ"
 
