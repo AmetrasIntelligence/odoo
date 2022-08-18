@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-08 14:33+0000\n"
-"PO-Revision-Date: 2022-08-11 15:27\n"
+"PO-Revision-Date: 2022-08-18 10:34\n"
 "Last-Translator: <>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -111,7 +111,7 @@ msgstr "Gesprochene Sprachen"
 #. module: l10n_multilang
 #: model:ir.model.fields,field_description:l10n_multilang.field_res_country_state__name
 msgid "State Name"
-msgstr ""
+msgstr "Bundesland"
 
 #. module: l10n_multilang
 #: model:ir.model.fields,help:l10n_multilang.field_account_chart_template__spoken_languages
