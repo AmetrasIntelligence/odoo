@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-27 09:21+0000\n"
-"PO-Revision-Date: 2022-08-18 12:41\n"
+"PO-Revision-Date: 2022-08-18 15:53\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -118,7 +118,7 @@ msgstr "Preis ändern"
 #: model:ir.model,name:stock_account.model_stock_change_standard_price
 #: model_terms:ir.ui.view,arch_db:stock_account.view_change_standard_price
 msgid "Change Standard Price"
-msgstr ""
+msgstr "Standardpreis ändern"
 
 #. module: stock_account
 #: code:addons/stock_account/models/product.py:0
@@ -251,7 +251,7 @@ msgstr ""
 #. module: stock_account
 #: model:ir.model.fields,help:stock_account.field_stock_valuation_layer__active
 msgid "If unchecked, it will allow you to hide the product without removing it."
-msgstr ""
+msgstr "Wenn nicht markiert, wird das Produkt ausgeblendet, ohne es zu entfernen."
 
 #. module: stock_account
 #: model:ir.model,name:stock_account.model_stock_inventory
@@ -566,7 +566,7 @@ msgstr "Maßeinheit"
 #: model_terms:ir.ui.view,arch_db:stock_account.product_variant_easy_edit_view_inherit
 #: model_terms:ir.ui.view,arch_db:stock_account.view_template_property_form
 msgid "Update Cost"
-msgstr ""
+msgstr "Kosten aktualisieren"
 
 #. module: stock_account
 #: model:ir.model.fields,field_description:stock_account.field_stock_move__to_refund
@@ -672,5 +672,5 @@ msgstr ""
 #. module: stock_account
 #: model_terms:ir.ui.view,arch_db:stock_account.view_change_standard_price
 msgid "_Apply"
-msgstr ""
+msgstr "Übernehmen"
 
