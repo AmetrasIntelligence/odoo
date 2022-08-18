@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-07 07:11+0000\n"
-"PO-Revision-Date: 2022-08-18 13:38\n"
+"PO-Revision-Date: 2022-08-18 15:53\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -595,7 +595,7 @@ msgstr "Odoo-Logo"
 #: code:addons/pos_restaurant/static/src/xml/printbill.xml:0
 #, python-format
 msgid "Ok"
-msgstr ""
+msgstr "Bestätigen"
 
 #. module: pos_restaurant
 #. openerp-web
