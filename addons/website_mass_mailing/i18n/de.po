@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-27 09:22+0000\n"
-"PO-Revision-Date: 2022-08-06 22:44\n"
+"PO-Revision-Date: 2022-08-18 13:38\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -174,7 +174,7 @@ msgstr ""
 #. module: website_mass_mailing
 #: model:ir.model.fields,field_description:website_mass_mailing.field_website_mass_mailing_popup__website_id
 msgid "Website"
-msgstr ""
+msgstr "Website"
 
 #. module: website_mass_mailing
 #: model:ir.model.fields,field_description:website_mass_mailing.field_website_mass_mailing_popup__popup_content
