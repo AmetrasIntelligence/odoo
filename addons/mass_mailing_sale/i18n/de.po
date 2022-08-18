@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-07 07:12+0000\n"
-"PO-Revision-Date: 2022-08-06 22:42\n"
+"PO-Revision-Date: 2022-08-18 10:34\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -45,7 +45,7 @@ msgstr "Angebotszähler"
 #. module: mass_mailing_sale
 #: model_terms:ir.ui.view,arch_db:mass_mailing_sale.mailing_mailing_view_form
 msgid "Quotations"
-msgstr ""
+msgstr "Angebote"
 
 #. module: mass_mailing_sale
 #: model:mailing.mailing,name:mass_mailing_sale.mass_mail_sale_order_0
