@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-01 12:20+0000\n"
-"PO-Revision-Date: 2022-08-17 16:56\n"
+"PO-Revision-Date: 2022-08-18 08:01\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -4285,7 +4285,7 @@ msgstr ""
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.view_move_line_tree_grouped
 msgid "Edit"
-msgstr ""
+msgstr "Bearbeiten"
 
 #. module: account
 #: code:addons/account/models/account_move.py:0
@@ -8344,7 +8344,7 @@ msgstr "Ref"
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_analytic_line__ref
 msgid "Ref."
-msgstr ""
+msgstr "Ref."
 
 #. module: account
 #: code:addons/account/controllers/portal.py:0
