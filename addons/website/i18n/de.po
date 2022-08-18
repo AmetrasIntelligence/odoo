@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-27 09:21+0000\n"
-"PO-Revision-Date: 2022-08-17 14:59\n"
+"PO-Revision-Date: 2022-08-18 08:01\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -1200,7 +1200,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:website.bs_debug_page_ir_ui_view
 #: model_terms:website.page,arch_db:website.bs_debug_page
 msgid "Card"
-msgstr ""
+msgstr "Karte"
 
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.bs_debug_page_ir_ui_view
@@ -1889,7 +1889,7 @@ msgstr "Duplizieren Sie Blöcke und Spalten, um weitere Funktionen hinzuzufügen
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.publish_management
 msgid "Edit"
-msgstr ""
+msgstr "Bearbeiten"
 
 #. module: website
 #. openerp-web
@@ -3897,7 +3897,7 @@ msgstr "Veröffentlichungsdatum"
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.snippet_options
 msgid "Purple"
-msgstr ""
+msgstr "Lila"
 
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.s_rating
@@ -3927,7 +3927,7 @@ msgstr ""
 #. module: website
 #: model_terms:ir.ui.view,arch_db:website.snippet_options
 msgid "Red"
-msgstr ""
+msgstr "Rot"
 
 #. module: website
 #. openerp-web
@@ -4072,7 +4072,7 @@ msgstr "Abgerundete Ecken"
 #: model:ir.model.fields,field_description:website.field_website_rewrite__route_id
 #: model:ir.model.fields,field_description:website.field_website_route__path
 msgid "Route"
-msgstr ""
+msgstr "Tour"
 
 #. module: website
 #: model:ir.model,name:website.model_website_seo_metadata
