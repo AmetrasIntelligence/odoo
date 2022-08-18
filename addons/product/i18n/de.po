@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-27 09:22+0000\n"
-"PO-Revision-Date: 2022-08-18 14:51\n"
+"PO-Revision-Date: 2022-08-18 15:53\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -1016,7 +1016,7 @@ msgstr ""
 #: model:ir.model.fields,help:product.field_product_product__active
 #: model:ir.model.fields,help:product.field_product_template__active
 msgid "If unchecked, it will allow you to hide the product without removing it."
-msgstr ""
+msgstr "Wenn nicht markiert, wird das Produkt ausgeblendet, ohne es zu entfernen."
 
 #. module: product
 #: model:ir.model.fields,field_description:product.field_product_product__image_1920
