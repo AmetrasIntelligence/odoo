@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-27 11:49+0000\n"
-"PO-Revision-Date: 2022-08-17 14:59\n"
+"PO-Revision-Date: 2022-08-18 08:01\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -842,7 +842,7 @@ msgstr "Überprüfen Sie beim Öffnen und Schließen den Betrag in der Kasse."
 #: code:addons/point_of_sale/static/src/js/screens.js:0
 #, python-format
 msgid "Check your internet connection and try again."
-msgstr ""
+msgstr "Überprüfen Sie Ihre Internetverbindung und versuchen Sie es erneut."
 
 #. module: point_of_sale
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_category__child_id
@@ -1033,7 +1033,7 @@ msgstr "Anschließen an die IoT Box"
 #: code:addons/point_of_sale/static/src/xml/pos.xml:0
 #, python-format
 msgid "Connection error"
-msgstr ""
+msgstr "Verbindungsfehler"
 
 #. module: point_of_sale
 #. openerp-web
@@ -1540,7 +1540,7 @@ msgstr "fällig"
 #: code:addons/point_of_sale/static/src/xml/pos.xml:0
 #, python-format
 msgid "Edit"
-msgstr ""
+msgstr "Bearbeiten"
 
 #. module: point_of_sale
 #. openerp-web
@@ -3105,7 +3105,7 @@ msgstr "Bestellungen am Point of Sale"
 #. module: point_of_sale
 #: model:ir.model,name:point_of_sale.model_report_pos_order
 msgid "Point of Sale Orders Report"
-msgstr ""
+msgstr "POS Bericht Verkaufsaufträge"
 
 #. module: point_of_sale
 #: model:ir.model,name:point_of_sale.model_pos_payment_method
@@ -3745,7 +3745,7 @@ msgstr ""
 #: code:addons/point_of_sale/static/src/xml/pos.xml:0
 #, python-format
 msgid "Send by email"
-msgstr ""
+msgstr "Sende per E-Mail"
 
 #. module: point_of_sale
 #: model:ir.model.fields,field_description:point_of_sale.field_pos_category__sequence
@@ -4232,7 +4232,7 @@ msgstr "Die Anzahl der Point-of-Sales-Aufträge für diesen Kunden"
 #: code:addons/point_of_sale/static/src/js/screens.js:0
 #, python-format
 msgid "The order could not be sent"
-msgstr ""
+msgstr "Die Bestellung konnte nicht gesendet werden"
 
 #. module: point_of_sale
 #. openerp-web
