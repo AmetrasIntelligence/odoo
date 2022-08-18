@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-18 09:48+0000\n"
-"PO-Revision-Date: 2022-08-16 15:04\n"
+"PO-Revision-Date: 2022-08-18 13:38\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -344,7 +344,7 @@ msgstr ""
 #. module: website_theme_install
 #: model:ir.model,name:website_theme_install.model_website
 msgid "Website"
-msgstr ""
+msgstr "Website"
 
 #. module: website_theme_install
 #: model:ir.model,name:website_theme_install.model_website_menu
