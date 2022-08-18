@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-05 12:32+0000\n"
-"PO-Revision-Date: 2022-08-18 08:56\n"
+"PO-Revision-Date: 2022-08-18 10:34\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -454,7 +454,7 @@ msgstr "Rechnungen"
 #. module: purchase
 #: model_terms:ir.ui.view,arch_db:purchase.purchase_order_view_search
 msgid "Bills Received"
-msgstr ""
+msgstr "Rechnungen erhalten"
 
 #. module: purchase
 #: model:ir.model.fields.selection,name:purchase.selection__product_template__purchase_line_warn__block
@@ -1424,12 +1424,12 @@ msgstr "Kaufwarnungen"
 #. module: purchase
 #: model_terms:ir.ui.view,arch_db:purchase.purchase_order_view_search
 msgid "Purchase orders that have been invoiced."
-msgstr ""
+msgstr "Bestellungen, die abgerechnet wurden."
 
 #. module: purchase
 #: model_terms:ir.ui.view,arch_db:purchase.purchase_order_view_search
 msgid "Purchase orders that include lines not invoiced."
-msgstr ""
+msgstr "Bestellen mit nicht abgerechneten Zeilen."
 
 #. module: purchase
 #: model:ir.model.fields,field_description:purchase.field_product_product__purchased_product_qty
@@ -1557,7 +1557,7 @@ msgstr "Empfangen"
 #. module: purchase
 #: model:ir.model.fields,field_description:purchase.field_purchase_order_line__qty_received
 msgid "Received Qty"
-msgstr ""
+msgstr "Erhaltene Menge"
 
 #. module: purchase
 #: model:ir.model.fields,field_description:purchase.field_purchase_order_line__qty_received_method
@@ -1808,7 +1808,7 @@ msgstr ""
 #. module: purchase
 #: model:ir.model.fields,field_description:purchase.field_purchase_order__notes
 msgid "Terms and Conditions"
-msgstr ""
+msgstr "Geschäftsbedingungen"
 
 #. module: purchase
 #: model_terms:ir.actions.act_window,help:purchase.purchase_rfq
@@ -1968,7 +1968,7 @@ msgstr "Unbesteuert"
 #. module: purchase
 #: model:ir.model.fields,field_description:purchase.field_purchase_order__amount_untaxed
 msgid "Untaxed Amount"
-msgstr ""
+msgstr "Nettobetrag"
 
 #. module: purchase
 #: model_terms:ir.ui.view,arch_db:purchase.portal_my_purchase_order
@@ -2063,7 +2063,7 @@ msgstr "Volumen"
 #: model:ir.model.fields.selection,name:purchase.selection__purchase_order__invoice_status__to_invoice
 #: model_terms:ir.ui.view,arch_db:purchase.purchase_order_view_search
 msgid "Waiting Bills"
-msgstr ""
+msgstr "Abzurechnende Rechnungen"
 
 #. module: purchase
 #: model:ir.model.fields.selection,name:purchase.selection__product_template__purchase_line_warn__warning
@@ -2109,7 +2109,7 @@ msgstr "Webseiten-Kommunikationsverlauf"
 #: model:ir.model.fields,help:purchase.field_purchase_order__partner_id
 #: model:ir.model.fields,help:purchase.field_purchase_order_line__partner_id
 msgid "You can find a vendor by its Name, TIN, Email or Internal Reference."
-msgstr ""
+msgstr "Sie können einen Hersteller nach Name, TIN, E-Mail oder Interne Referenz finden."
 
 #. module: purchase
 #: model_terms:ir.actions.act_window,help:purchase.product_product_action
