@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-27 09:22+0000\n"
-"PO-Revision-Date: 2022-08-18 10:34\n"
+"PO-Revision-Date: 2022-08-18 15:53\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -731,7 +731,7 @@ msgstr "Es können nur Reparaturentwürfe bestätigt werden."
 #: model:ir.model.fields,field_description:repair.field_repair_order__fees_lines
 #: model_terms:ir.ui.view,arch_db:repair.view_repair_order_form
 msgid "Operations"
-msgstr ""
+msgstr "Vorgänge"
 
 #. module: repair
 #: model:ir.model.fields,field_description:repair.field_repair_order__operations
