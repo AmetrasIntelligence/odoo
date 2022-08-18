@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-27 11:49+0000\n"
-"PO-Revision-Date: 2022-08-18 14:51\n"
+"PO-Revision-Date: 2022-08-18 15:53\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -355,7 +355,7 @@ msgstr ""
 #. module: point_of_sale
 #: model_terms:ir.ui.view,arch_db:point_of_sale.view_pos_session_form
 msgid "Actual in Cash"
-msgstr ""
+msgstr "Tatsächlich in Bar"
 
 #. module: point_of_sale
 #. openerp-web
@@ -573,7 +573,7 @@ msgstr "Kontrolle des Kontostands"
 #: code:addons/point_of_sale/models/pos_config.py:0
 #, python-format
 msgid "Bank"
-msgstr ""
+msgstr "Bank"
 
 #. module: point_of_sale
 #: model:ir.model,name:point_of_sale.model_account_bank_statement
@@ -2476,7 +2476,7 @@ msgstr "Offline Verkäufe"
 #: code:addons/point_of_sale/static/src/xml/pos.xml:0
 #, python-format
 msgid "Ok"
-msgstr ""
+msgstr "Bestätigen"
 
 #. module: point_of_sale
 #. openerp-web
@@ -3973,7 +3973,7 @@ msgstr "Anfangssaldo"
 #. module: point_of_sale
 #: model_terms:ir.ui.view,arch_db:point_of_sale.view_pos_session_form
 msgid "Starting Cash"
-msgstr ""
+msgstr "Anfangsbestand in Bar"
 
 #. module: point_of_sale
 #. openerp-web
@@ -4601,7 +4601,7 @@ msgstr "Steuer insgesamt"
 #. module: point_of_sale
 #: model:ir.model.fields,help:point_of_sale.field_pos_payment__amount
 msgid "Total amount of the payment."
-msgstr ""
+msgstr "Gesamter Zahlungsbetrag."
 
 #. module: point_of_sale
 #: model:ir.model.fields,help:point_of_sale.field_pos_session__cash_register_total_entry_encoding
