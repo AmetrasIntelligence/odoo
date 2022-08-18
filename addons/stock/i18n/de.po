@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-27 09:21+0000\n"
-"PO-Revision-Date: 2022-08-17 16:56\n"
+"PO-Revision-Date: 2022-08-18 08:01\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -4884,7 +4884,7 @@ msgstr "Rücklieferung"
 #: model_terms:ir.ui.view,arch_db:stock.stock_location_route_view_search
 #: model_terms:ir.ui.view,arch_db:stock.view_stock_rule_filter
 msgid "Route"
-msgstr ""
+msgstr "Tour"
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_rule__route_sequence
@@ -4903,7 +4903,7 @@ msgstr "Routenreihenfolge"
 #: model_terms:ir.ui.view,arch_db:stock.stock_location_route_tree
 #: model_terms:ir.ui.view,arch_db:stock.view_warehouse
 msgid "Routes"
-msgstr ""
+msgstr "Touren"
 
 #. module: stock
 #: model:ir.model.fields,help:stock.field_stock_warehouse__resupply_wh_ids
@@ -6349,7 +6349,7 @@ msgstr "Bestätigt"
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_change_product_qty__product_variant_count
 msgid "Variant Count"
-msgstr ""
+msgstr "Variantenanzahl"
 
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.view_location_search
