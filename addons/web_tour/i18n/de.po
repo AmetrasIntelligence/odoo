@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-21 13:18+0000\n"
-"PO-Revision-Date: 2022-08-06 22:44\n"
+"PO-Revision-Date: 2022-08-18 10:34\n"
 "Last-Translator: <>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -99,7 +99,7 @@ msgstr "Spitze"
 #: code:addons/web_tour/static/src/xml/debug_manager.xml:25
 #, python-format
 msgid "Tour"
-msgstr ""
+msgstr "Tour"
 
 #. module: web_tour
 #: model:ir.model.fields,field_description:web_tour.field_web_tour_tour__name
