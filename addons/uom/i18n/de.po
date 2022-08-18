@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-26 08:17+0000\n"
-"PO-Revision-Date: 2022-08-12 08:01\n"
+"PO-Revision-Date: 2022-08-18 14:51\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -326,7 +326,7 @@ msgstr "Volumen"
 #. module: uom
 #: model:uom.category,name:uom.product_uom_categ_kgm
 msgid "Weight"
-msgstr ""
+msgstr "Gewicht"
 
 #. module: uom
 #: model:uom.category,name:uom.uom_categ_wtime
