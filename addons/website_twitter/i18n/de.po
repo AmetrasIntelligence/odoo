@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-12 11:33+0000\n"
-"PO-Revision-Date: 2022-08-18 10:34\n"
+"PO-Revision-Date: 2022-08-18 13:38\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -339,7 +339,7 @@ msgstr "Wir haben keinen Twitter-Server erreicht."
 #: model:ir.model,name:website_twitter.model_website
 #: model:ir.model.fields,field_description:website_twitter.field_website_twitter_tweet__website_id
 msgid "Website"
-msgstr ""
+msgstr "Website"
 
 #. module: website_twitter
 #: model:ir.model,name:website_twitter.model_website_twitter_tweet
