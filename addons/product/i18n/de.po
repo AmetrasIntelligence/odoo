@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ametras-xsolutions\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-27 09:22+0000\n"
-"PO-Revision-Date: 2022-08-18 15:53\n"
+"PO-Revision-Date: 2022-08-25 09:16\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -1571,7 +1571,7 @@ msgstr "Preisliste"
 #: model_terms:ir.ui.view,arch_db:product.product_pricelist_item_tree_view_from_product
 #: model_terms:ir.ui.view,arch_db:product.product_pricelist_item_view_search
 msgid "Pricelist"
-msgstr ""
+msgstr "Preisliste"
 
 #. module: product
 #: model:ir.model.fields,help:product.field_product_pricelist_item__applied_on
